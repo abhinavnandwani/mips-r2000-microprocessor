@@ -7,8 +7,13 @@
 */
 `default_nettype none
 module memory (/* TODO: Add appropriate inputs/outputs for your memory stage here*/);
+   input [15:0] ALU;
+   input [15:0] writeData;
+   output [15:0] readData;
+   wire MemWrt;
 
-   // TODO: Your code here
+   // Data Memory NOT DONE
+   memory2c data_mem(.data_out(readData), .data_in(writeData), .addr(ALU), .enable(nHaltSig), .wr(MemWrt), .createdump(~nHaltSig), .clk(clk), .rst(rst));
    
 endmodule
 `default_nettype wire

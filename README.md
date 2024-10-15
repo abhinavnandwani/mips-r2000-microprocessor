@@ -1,7 +1,7 @@
 # WISC-F24 Microarchitecture Specification
 
 ## Project Overview
-This project involves the hardware implementation of the WISC-F24 microarchitecture, as specified in the provided document. **Abhinav Nandwani** and **Anna Huang** are responsible for designing the hardware components based on the given specification
+This project involves the hardware implementation of the WISC-F24 microarchitecture, as specified in the provided document. Me and **Anna** were responsible for designing the hardware components based on the given specification
 
 The WISC-F24 architecture shares many resemblances with the MIPS R2000, with major differences being a smaller instruction set and 16-bit words[1].
 

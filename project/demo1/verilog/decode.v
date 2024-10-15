@@ -5,19 +5,22 @@
    Description     : This is the module for the overall decode stage of the processor.
 */
 `default_nettype none
-module decode (clk, rst, instr, WB, PC_Next, err, RSData, RTData, Imm5, Imm8, sImm8, sImm11);
+module decode (clk, rst, instr, WB, PC_Next, err, RSData, RTData, Imm5, Imm8, sImm8, sImm11, PC_Out);
    input clk, rst;
    input [15:0] instr, WB;
    input [15:0] PC_Next;
    output err;
    output [15:0] RSData, RTData;
    output [15:0] Imm5, Imm8, sImm8, sImm11;
+   output [15:0] PC_Out;
 
-   wire RegWrt, 0Ext;
-   wire [1:0] RegDst;
    wire [2:0] RD;
 
+   assign PC_Out = PC_Next
 
+   // Control Signals
+   wire [1:0] RegSrc, RegDst, Bsrc;
+   wire nHaltSig, ALUJmp, ALUSign, invB, invA, ALUOpr, ImmSrc, RegWrt, 0Ext, MemWrt, SpecOpr;
 
    //Instruction Decoder/Control NOT DONE
 

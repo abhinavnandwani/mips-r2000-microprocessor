@@ -22,7 +22,7 @@ module alu (InA, InB, Cin, Oper, invA, invB, sign, Out, ZF,SF,OF,CF);
     input                       invA; // Signal to invert A
     input                       invB; // Signal to invert B
     input                       sign; // Signal for signed operation
-    output [OPERAND_WIDTH -1:0] Out ; // Result of computation
+    output reg [OPERAND_WIDTH -1:0] Out ; // Result of computation
     output                      OF ; // Signal if overflow occured
     output                      ZF,CF,SF; // Signal if Out is 0
 
@@ -56,10 +56,12 @@ module alu (InA, InB, Cin, Oper, invA, invB, sign, Out, ZF,SF,OF,CF);
         casex(Oper)
             4'b00xx: Out = BitOut;
             4'b01xx: Out = ShOut; 
-            4'b1000: if(ZF) Out = 16'h0001
-            4'b1001: if(~SF & ~ZF) Out = 16'h0001;
-            4'b1010: if(~SF) Out = 16'h0001;
-            4'b1111: if(CF) Out = 16'h0001;
+            4'b1000: Out = ZF;
+            4'b1001: Out = (~SF & ~ZF);
+            4'b1010: Out = ~SF;
+            4'b1011: Out = CF;
+            4'b1100: Out[0:15] = A;
+
             default: Out = 0;
         endcase
 

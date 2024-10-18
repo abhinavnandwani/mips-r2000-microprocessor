@@ -1,7 +1,6 @@
 /* $Author: karu $ */
 /* $LastChangedDate: 2009-03-04 23:09:45 -0600 (Wed, 04 Mar 2009) $ */
 /* $Rev: 45 $ */
-`default_nettype none
 module proc_hier_bench();
 
    /* BEGIN DO NOT TOUCH */
@@ -170,5 +169,4 @@ module proc_hier_bench();
 
    
 endmodule
-`default_nettype wire
 // DUMMY LINE FOR REV CONTROL :0:

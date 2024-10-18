@@ -116,57 +116,51 @@ module proc_hier_bench();
    end
 
    /* END DO NOT TOUCH */
-
-   /* Assign internal signals to top level wires
-      The internal module names and signal names will vary depending
-      on your naming convention and your design */
-
+  /* Assign internal signals to top-level wires */
+   
    // Fetch stage assignments
-   assign PC = DUT.p0.fetch0.PC_Next;  // Next PC from fetch stage
-   assign Inst = DUT.p0.fetch0.instr;   // Instruction fetched
+   assign PC = DUT.p0.fetch0.PC_Next;       // Next PC from fetch stage
+   assign Inst = DUT.p0.fetch0.instr;       // Fetched instruction
 
    // Decode stage assignments
    assign RegWrite = DUT.p0.decode0.RegWrt;  // Register write signal
    assign WriteRegister = DUT.p0.decode0.RegDst; // Register destination
-   assign WriteData = DUT.p0.decode0.WB;  // Data to write to register
+   assign WriteData = DUT.p0.decode0.WB;    // Data to write to register
 
    // Memory stage assignments
-   assign MemRead = DUT.p0.memory0.readData; // Memory read signal
-   assign MemWrite = (DUT.p0.memory0.nHaltSig & DUT.p0.memory0.MemWrt); // Memory write signal
-   assign MemAddress = DUT.p0.memory0.ALU; // Address for memory access
+   assign MemRead = DUT.p0.memory0.readData;  // Memory read signal
+   assign MemWrite = (DUT.p0.memory0.nHaltSig & DUT.p0.memory0.MemWrt);  // Memory write signal
+   assign MemAddress = DUT.p0.memory0.ALU;   // Address for memory access
    assign MemData = DUT.p0.memory0.writeData; // Data to write to memory
 
    // Control and status signals
-   assign Halt = DUT.p0.memory0.nHaltSig; // Processor halt signal
+   assign Halt = DUT.p0.memory0.nHaltSig;    // Processor halt signal
 
-   // Additional control signals from instruction decoder
-   assign ZeroExt = DUT.p0.control0.ZeroExt;  // Zero extension signal
-   assign BSrc = DUT.p0.control0.BSrc;        // Source selection for ALU
-   assign ImmSrc = DUT.p0.control0.ImmSrc;    // Immediate source selection
-   assign ALUOpr = DUT.p0.control0.ALUOpr;    // ALU operation code
-   assign invA = DUT.p0.control0.invA;        // Invert A signal for ALU
-   assign invB = DUT.p0.control0.invB;        // Invert B signal for ALU
-   assign ALUSign = DUT.p0.control0.ALUSign;  // ALU sign control
-   assign cin = DUT.p0.control0.cin;          // Carry-in for ALU
-   assign ALUJmp = DUT.p0.control0.ALUJmp;    // ALU jump signal
-   assign RegSrc = DUT.p0.control0.RegSrc;    // Source for register write
+   /* Additional control signals for debugging and tracing */
+   assign ZeroExt = DUT.p0.control0.ZeroExt;     // Zero extension signal
+   assign BSrc = DUT.p0.control0.BSrc;           // Source selection for ALU
+   assign ImmSrc = DUT.p0.control0.ImmSrc;       // Immediate source selection
+   assign ALUOpr = DUT.p0.control0.ALUOpr;       // ALU operation code
+   assign invA = DUT.p0.control0.invA;           // Invert A signal for ALU
+   assign invB = DUT.p0.control0.invB;           // Invert B signal for ALU
+   assign ALUSign = DUT.p0.control0.ALUSign;     // ALU sign control
+   //assign cin = DUT.p0.control0.Cin;             // Carry-in for ALU
+   assign ALUJmp = DUT.p0.control0.ALUJmp;       // ALU jump signal
+   assign RegSrc = DUT.p0.control0.RegSrc;       // Source for register write
    assign BranchTaken = DUT.p0.control0.BranchTaken; // Branch taken signal
 
    // Additional signals from decode stage
-   assign err = DUT.p0.decode0.err;           // Error signal from decode stage
-   assign RSData = DUT.p0.decode0.RSData;     // Data for source register
-   assign RTData = DUT.p0.decode0.RTData;     // Data for target register
-   assign Imm5 = DUT.p0.decode0.Imm5;         // 5-bit immediate value
-   assign Imm8 = DUT.p0.decode0.Imm8;         // 8-bit immediate value
-   assign sImm8 = DUT.p0.decode0.sImm8;       // Sign-extended 8-bit immediate
-   assign sImm11 = DUT.p0.decode0.sImm11;     // Sign-extended 11-bit immediate
+   assign err = DUT.p0.decode0.err;              // Error signal from decode stage
+   assign RSData = DUT.p0.decode0.RSData;        // Data for source register
+   assign RTData = DUT.p0.decode0.RTData;        // Data for target register
+   assign Imm5 = DUT.p0.decode0.Imm5;            // 5-bit immediate value
+   assign Imm8 = DUT.p0.decode0.Imm8;            // 8-bit immediate value
+   assign sImm8 = DUT.p0.decode0.sImm8;          // Sign-extended 8-bit immediate
+   assign sImm11 = DUT.p0.decode0.sImm11;        // Sign-extended 11-bit immediate
 
    // ALU output assignment
-   assign ALU_Out = DUT.p0.execute0.ALU_Out;  // Output from the ALU
+   assign ALU_Out = DUT.p0.execute0.ALU_Out;     // Output from the ALU
 
    /* Add any other necessary assignments here */
 
-
-   
 endmodule
-// DUMMY LINE FOR REV CONTROL :0:

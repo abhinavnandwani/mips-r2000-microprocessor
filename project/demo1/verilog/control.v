@@ -1,8 +1,8 @@
     module control (instr, nHaltSig, RegDst, RegWrt, ZeroExt, BSrc, ImmSrc, ALUOpr, invA, invB, ALUSign, Cin, err,ALUJmp, MemWrt, RegSrc, BranchTaken);
         input [15:0] instr;   
-        output reg nHaltSig, RegDst, RegWrt, ZeroExt, ImmSrc, invA, invB, ALUSign, Cin, ALUJmp, MemWrt,err;      
+        output reg nHaltSig, RegWrt, ZeroExt, ImmSrc, invA, invB, ALUSign, Cin, ALUJmp, MemWrt,err;      
         output reg [5:0] ALUOpr;   
-        output reg [1:0] RegSrc, BSrc;      
+        output reg [1:0] RegSrc, BSrc,RegDst;      
         output reg [2:0] BranchTaken;
         wire funct;
         assign funct = instr[1:0];

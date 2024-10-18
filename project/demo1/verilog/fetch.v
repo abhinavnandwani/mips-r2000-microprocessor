@@ -5,24 +5,25 @@
    Description     : This is the module for the overall fetch stage of the processor.
 */
 `default_nettype none
-module fetch (/* TODO: Add appropriate inputs/outputs for your fetch stage here*/);
+module fetch (clk, rst, PC_B, nHaltSig, instr, PC_Next);
    input clk, rst;
+   input [15:0] PC_B; //PC from Branch/Jump Mux
+   input nHaltSig;
    output [15:0] instr;
    output [15:0] PC_Next;
 
-   wire nHaltSig;
-   wire [15:0] PC_B;
+
 
    wire [15:0] PC;
    wire err;
    wire [15:0] add2;
    wire c_out;
 
-   // PC Register NOT DONE
-   regFile pc_reg (.read1Data(PC), .read2Data(), .err(err), .clk(clk), .rst(rst), .read1RegSel(3'b111), .read2RegSel(3'b000), .writeRegSel(), .writeData(PC_B), .writeEn(1'b1));
+   // PC Register
+   register pc_reg (.r(PC), .w(PC_B), .clk(clk), .rst(rst), .we(1'b1));
 
    // Instruction Memory
-   memory2c instr_mem(.data_out(instr), .data_in(16'h0000), .addr(PC), .enable(nHaltSig), .wr(1'b0), .createdump(~nHaltSig), .clk(clk), .rst(rst));
+   memory2c instr_mem(.data_out(instr), .data_in(16'h0000), .addr(PC), .enable(nHaltSig), .wr(1'b0), .createdump(1'b0), .clk(clk), .rst(rst));
 
    // Adder: PC + 2
    assign add2 = 16'h0002;

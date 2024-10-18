@@ -6,14 +6,13 @@
                      processor.
 */
 `default_nettype none
-module memory (/* TODO: Add appropriate inputs/outputs for your memory stage here*/);
-   input [15:0] ALU;
-   input [15:0] writeData;
+module memory (ALU, writeData, MemWrt, readData);
+   input [15:0] ALU, writeData;
+   input MemWrt;
    output [15:0] readData;
-   wire MemWrt;
 
-   // Data Memory NOT DONE
-   memory2c data_mem(.data_out(readData), .data_in(writeData), .addr(ALU), .enable(nHaltSig), .wr(MemWrt), .createdump(~nHaltSig), .clk(clk), .rst(rst));
+   // Data Memory
+   memory2c data_mem(.data_out(readData), .data_in(writeData), .addr(ALU), .enable(nHaltSig), .wr(MemWrt), .createdump(1'b0), .clk(clk), .rst(rst));
    
 endmodule
 `default_nettype wire

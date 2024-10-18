@@ -5,7 +5,7 @@
    Description     : This module contains all components in the Memory stage of the 
                      processor.
 */
-`default_nettype none
+
 module memory (ALU, writeData, MemWrt, readData);
    input [15:0] ALU, writeData;
    input MemWrt;
@@ -15,4 +15,4 @@ module memory (ALU, writeData, MemWrt, readData);
    memory2c data_mem(.data_out(readData), .data_in(writeData), .addr(ALU), .enable(nHaltSig), .wr(MemWrt), .createdump(1'b0), .clk(clk), .rst(rst));
    
 endmodule
-`default_nettype wire
+

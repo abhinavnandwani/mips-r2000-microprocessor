@@ -32,7 +32,7 @@ module proc (/*AUTOARG*/
    control instruction_decoder(.instr(instr), .nHaltSig(nHaltSig), .RegDst(RegDst), .RegWrt(RegWrt), .ZeroExt(ZeroExt), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUOpr(ALUOpr), .invA(invA), .invB(invB), .ALUSign(ALUSign), .cin(cin), .ALUJmp(ALUJmp), .MemWrt(MemWrt), .RegSrc(RegSrc), .BranchTaken(BranchTaken));
    //aluOpr
    
-   fetch fetch0(.clk(clk), .rst(rst), .PC_B(PC_Jump), nHaltSig(nHaltSig), .instr(instr), .PC_Next(PC_f));
+   fetch fetch0(.clk(clk), .rst(rst), .PC_B(PC_Jump), .nHaltSig(nHaltSig), .instr(instr), .PC_Next(PC_f));
    decode decode0(.clk(clk), .rst(rst), .instr(instr), .WB(WB), .PC(PC_f), .RegDst(RegDst), .ZeroExt(OExt), .RegWrt(RegWrt), .err(err), .RSData(RSData), .RTData(RTData), .Imm5(Imm5), .Imm8(Imm8), .sImm8(sIMm8), .sImm11(sImm11), .PC_Next(PC_d));
    execute execute0(.RSData(RSData), .RTData(RTData), .PC(PC_d), .Imm5(Imm5), .Imm8(Imm8), .sImm8(sImm8), .sImm11(sImm11), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUJmp(ALUJmp), .invA(invA), .invB(invB), .ALUSign(ALUSign), .cin(cin), .BranchTaken(BranchTaken), .ALU_Out(ALU), .PC_Next(PC_Jump));
    memory memory0(.ALU(ALU), .writeData(RTData), .MemWrt(MemWrt), .readData(readData));

@@ -1,12 +1,13 @@
-    module control (instr, nHaltSig, RegDst, RegWrt, ZeroExt, BSrc, ImmSrc, ALUOpr, invA, invB, ALUSign, cin, ALUJmp, MemWrt, RegSrc, BranchTaken);
+    module control (instr, nHaltSig, RegDst, RegWrt, ZeroExt, BSrc, ImmSrc, ALUOpr, invA, invB, ALUSign, Cin, err,ALUJmp, MemWrt, RegSrc, BranchTaken);
         input [15:0] instr;   
-        output nHaltSig, RegDst, RegWrt, ZeroExt, ImmSrc, invA, invB, ALUSign, cin, ALUJmp, MemWrt;      
-        output [5:0] ALUOpr;   
-        output [1:0] RegSrc, BSrc;      
-        output [2:0] BranchTaken;
-
+        output reg nHaltSig, RegDst, RegWrt, ZeroExt, ImmSrc, invA, invB, ALUSign, Cin, ALUJmp, MemWrt,err;      
+        output reg [5:0] ALUOpr;   
+        output reg [1:0] RegSrc, BSrc;      
+        output reg [2:0] BranchTaken;
+        wire funct;
         assign funct = instr[1:0];
-		
+
+		always@(*) begin
 		case(instr[15:11])
 			5'b00000: begin		// HALT
 				nHaltSig = 1'b0;
@@ -454,6 +455,7 @@
 			
 			default: err = 1'b1;		// Control OpCode error
 		endcase
-	end   
+        end
+	
 
 endmodule

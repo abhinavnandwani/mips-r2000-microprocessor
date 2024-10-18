@@ -18,7 +18,11 @@ module decode (clk, rst, instr, WB, PC, RegDst, ZeroExt, RegWrt, err, RSData, RT
    wire [2:0] RD;
    
    //Register File
-   assign RD = (RegDst = 2'b00) ? instr[7:5] : (RegDst = 2'b01) ? instr[10:8] : (RegDst = 2'b10) ? instr[4:2] : 3'b111;
+assign RD = (RegDst == 2'b00) ? instr[7:5] :
+            (RegDst == 2'b01) ? instr[10:8] :
+            (RegDst == 2'b10) ? instr[4:2] :
+            3'b111;
+
    regFile_bypass regFile0 (.read1Data(RSData), .read2Data(RTData), .err(err), .clk(clk), .rst(rst), .read1RegSel(instr[10:8]), .read2RegSel(instr[7:5]), .writeRegSel(RD), .writeData(WB), .writeEn(RegWrt));
 
    //Sign Extension

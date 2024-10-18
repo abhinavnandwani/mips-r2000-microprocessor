@@ -3,7 +3,7 @@ module brchcnd (SF, ZF, brch_instr, BrchCnd);
    input [2:0] brch_instr;
    output BrchCnd;
 
-   wire brch_sig;
+   reg brch_sig;
 
    always @(*) begin
       case (brch_instr[1:0])

@@ -6,8 +6,9 @@
                      processor.
 */
 
-module memory (ALU, writeData, MemWrt, readData);
+module memory (ALU, writeData, nHaltSig, MemWrt, readData);
    input [15:0] ALU, writeData;
+   input nHaltSig;
    input MemWrt;
    output [15:0] readData;
 

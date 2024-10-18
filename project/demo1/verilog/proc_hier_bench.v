@@ -122,37 +122,51 @@ module proc_hier_bench();
       The internal module names and signal names will vary depending
       on your naming convention and your design */
 
-   // Edit the example below. You must change the signal
-   // names on the right hand side
-    
-   assign PC = DUT.p0.fetch0.pcCurrent;
-   assign Inst = DUT.p0.fetch0.instr;
-   
-   assign RegWrite = DUT.p0.decode0.regFile0.write;
-   // Is register being written, one bit signal (1 means yes, 0 means no)
-   
-   assign WriteRegister = DUT.p0.decode0.regFile0.RegWrt;
-   // The name of the register being written to. (3 bit signal)
+   // Fetch stage assignments
+   assign PC = DUT.p0.fetch0.PC_Next;  // Next PC from fetch stage
+   assign Inst = DUT.p0.fetch0.instr;   // Instruction fetched
 
-   assign WriteData = DUT.p0.decode0.regFile0.WB;
-   // Data being written to the register. (16 bits)
-   
-   assign MemRead =  DUT.p0.memory0.readData;
-   // Is memory being read, one bit signal (1 means yes, 0 means no)
-   
-   assign MemWrite = (DUT.p0.memory0.nHaltSig & DUT.p0.memory0.memWrt);
-   // Is memory being written to (1 bit signal)
-   
-   assign MemAddress = DUT.p0.memory0.ALU;
-   // Address to access memory with (for both reads and writes to memory, 16 bits)
-   
-   assign MemData = DUT.p0.memory0.writeData;
-   // Data to be written to memory for memory writes (16 bits)
-   
-   assign Halt = DUT.p0.memory0.nHaltSig;
-   // Is processor halted (1 bit signal)
-   
-   /* Add anything else you want here */
+   // Decode stage assignments
+   assign RegWrite = DUT.p0.decode0.RegWrt;  // Register write signal
+   assign WriteRegister = DUT.p0.decode0.RegDst; // Register destination
+   assign WriteData = DUT.p0.decode0.WB;  // Data to write to register
+
+   // Memory stage assignments
+   assign MemRead = DUT.p0.memory0.readData; // Memory read signal
+   assign MemWrite = (DUT.p0.memory0.nHaltSig & DUT.p0.memory0.MemWrt); // Memory write signal
+   assign MemAddress = DUT.p0.memory0.ALU; // Address for memory access
+   assign MemData = DUT.p0.memory0.writeData; // Data to write to memory
+
+   // Control and status signals
+   assign Halt = DUT.p0.memory0.nHaltSig; // Processor halt signal
+
+   // Additional control signals from instruction decoder
+   assign ZeroExt = DUT.p0.control0.ZeroExt;  // Zero extension signal
+   assign BSrc = DUT.p0.control0.BSrc;        // Source selection for ALU
+   assign ImmSrc = DUT.p0.control0.ImmSrc;    // Immediate source selection
+   assign ALUOpr = DUT.p0.control0.ALUOpr;    // ALU operation code
+   assign invA = DUT.p0.control0.invA;        // Invert A signal for ALU
+   assign invB = DUT.p0.control0.invB;        // Invert B signal for ALU
+   assign ALUSign = DUT.p0.control0.ALUSign;  // ALU sign control
+   assign cin = DUT.p0.control0.cin;          // Carry-in for ALU
+   assign ALUJmp = DUT.p0.control0.ALUJmp;    // ALU jump signal
+   assign RegSrc = DUT.p0.control0.RegSrc;    // Source for register write
+   assign BranchTaken = DUT.p0.control0.BranchTaken; // Branch taken signal
+
+   // Additional signals from decode stage
+   assign err = DUT.p0.decode0.err;           // Error signal from decode stage
+   assign RSData = DUT.p0.decode0.RSData;     // Data for source register
+   assign RTData = DUT.p0.decode0.RTData;     // Data for target register
+   assign Imm5 = DUT.p0.decode0.Imm5;         // 5-bit immediate value
+   assign Imm8 = DUT.p0.decode0.Imm8;         // 8-bit immediate value
+   assign sImm8 = DUT.p0.decode0.sImm8;       // Sign-extended 8-bit immediate
+   assign sImm11 = DUT.p0.decode0.sImm11;     // Sign-extended 11-bit immediate
+
+   // ALU output assignment
+   assign ALU_Out = DUT.p0.execute0.ALU_Out;  // Output from the ALU
+
+   /* Add any other necessary assignments here */
+
 
    
 endmodule

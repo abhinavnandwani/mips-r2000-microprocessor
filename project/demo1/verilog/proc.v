@@ -28,8 +28,12 @@ module proc (/*AUTOARG*/
    wire [15:0] WB;
    wire [15:0] RSData, RTData, ALU, readData;
    wire [15:0] Imm5, Imm8, sImm8, sImm11;
+   wire nHaltSig, RegDst, RegWrt, ZeroExt, ImmSrc, invA, invB, ALUSign, Cin, ALUJmp, MemWrt,err;      
+   wire [5:0] ALUOpr;   
+   wire [1:0] RegSrc, BSrc;      
+   wire [2:0] BranchTaken;
 
-   control instruction_decoder(.instr(instr), .nHaltSig(nHaltSig), .RegDst(RegDst), .RegWrt(RegWrt), .ZeroExt(ZeroExt), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUOpr(ALUOpr), .invA(invA), .invB(invB), .ALUSign(ALUSign), .cin(cin), .ALUJmp(ALUJmp), .MemWrt(MemWrt), .RegSrc(RegSrc), .BranchTaken(BranchTaken));
+   control control0(.instr(instr), .nHaltSig(nHaltSig), .RegDst(RegDst), .RegWrt(RegWrt), .ZeroExt(ZeroExt), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUOpr(ALUOpr), .invA(invA), .invB(invB), .ALUSign(ALUSign), .cin(cin), .ALUJmp(ALUJmp), .MemWrt(MemWrt), .RegSrc(RegSrc), .BranchTaken(BranchTaken));
    //aluOpr
    
    fetch fetch0(.clk(clk), .rst(rst), .PC_B(PC_Jump), .nHaltSig(nHaltSig), .instr(instr), .PC_Next(PC_f));

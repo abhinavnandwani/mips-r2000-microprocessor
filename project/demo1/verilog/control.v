@@ -1,6 +1,6 @@
-    module control (instr, nHaltSig, RegDst, RegWrt, 0Ext, BSrc, ImmSrc, ALUOpr, invA, invB, ALUSign, cin, ALUJmp, MemWrt, RegSrc, BranchTaken);
+    module control (instr, nHaltSig, RegDst, RegWrt, ZeroExt, BSrc, ImmSrc, ALUOpr, invA, invB, ALUSign, cin, ALUJmp, MemWrt, RegSrc, BranchTaken);
         input [15:0] instr;   
-        output nHaltSig, RegDst, RegWrt, 0Ext, ImmSrc, invA, invB, ALUSign, cin, ALUJmp, MemWrt;      
+        output nHaltSig, RegDst, RegWrt, ZeroExt, ImmSrc, invA, invB, ALUSign, cin, ALUJmp, MemWrt;      
         output [5:0] ALUOpr;   
         output [1:0] RegSrc, BSrc;      
         output [2:0] BranchTaken;
@@ -22,7 +22,7 @@
                 RegDst = 2'b10;
                 RegWrt = 1'b1;
                 MemWrt = 1'b0;
-				0Ext = 1'b0;
+				ZeroExt = 1'b0;
 				BSrc = 2'b01;
 				ALUSign = 1'b0;
                 invA = 1'b0;
@@ -37,7 +37,7 @@
                 RegDst = 2'b10;
                 RegWrt = 1'b1;
                 MemWrt = 1'b0;
-				0Ext = 1'b0;
+				ZeroExt = 1'b0;
 				BSrc = 2'b01;
 				ALUSign = 1'b1;
                 invA = 1'b1;
@@ -51,7 +51,7 @@
                 RegDst = 2'b10;
                 RegWrt = 1'b1;
                 MemWrt = 1'b0;
-				0Ext = 1'b1;
+				ZeroExt = 1'b1;
 				BSrc = 2'b01;
 				ALUSign = 1'b1;
                 invA = 1'b0;
@@ -65,7 +65,7 @@
                 RegDst = 2'b10;
                 RegWrt = 1'b1;
                 MemWrt = 1'b0;
-				0Ext = 1'b1;
+				ZeroExt = 1'b1;
 				BSrc = 2'b01;
 				ALUSign = 1'b1;
                 invA = 1'b0;
@@ -79,7 +79,7 @@
                 RegDst = 2'b10;
                 RegWrt = 1'b1;
                 MemWrt = 1'b0;
-				0Ext = 1'b1;
+				ZeroExt = 1'b1;
 				BSrc = 2'b01;
 				ALUSign = 1'b1;
                 invA = 1'b0;
@@ -93,7 +93,7 @@
                 RegDst = 2'b10;
                 RegWrt = 1'b1;
                 MemWrt = 1'b0;
-				0Ext = 1'b1;
+				ZeroExt = 1'b1;
 				BSrc = 2'b01;
 				ALUSign = 1'b1;
                 invA = 1'b0;
@@ -107,7 +107,7 @@
                 RegDst = 2'b10;
                 RegWrt = 1'b1;
                 MemWrt = 1'b0;
-				0Ext = 1'b1;
+				ZeroExt = 1'b1;
 				BSrc = 2'b01;
 				ALUSign = 1'b1;
                 invA = 1'b0;
@@ -121,7 +121,7 @@
                 RegDst = 2'b10;
                 RegWrt = 1'b1;
                 MemWrt = 1'b0;
-				0Ext = 1'b1;
+				ZeroExt = 1'b1;
 				BSrc = 2'b01;
 				ALUSign = 1'b1;
                 invA = 1'b0;
@@ -135,7 +135,7 @@
                 RegDst = 2'b00;
                 RegWrt = 1'b0;
                 MemWrt = 1'b1;
-				0Ext = 1'b1;
+				ZeroExt = 1'b1;
 				BSrc = 2'b01;
 				ALUSign = 1'b0;
                 invA = 1'b0;
@@ -149,7 +149,7 @@
                 RegDst = 2'b00;
                 RegWrt = 1'b1;
                 MemWrt = 1'b0;
-				0Ext = 1'b0;
+				ZeroExt = 1'b0;
 				BSrc = 2'b01;
 				ALUSign = 1'b0;
                 invA = 1'b0;
@@ -163,7 +163,7 @@
                 RegDst = 2'b01;
                 RegWrt = 1'b1;
                 MemWrt = 1'b0;
-				0Ext = 1'b0;
+				ZeroExt = 1'b0;
 				BSrc = 2'b01;
 				ALUSign = 1'b0;
                 invA = 1'b0;
@@ -180,7 +180,7 @@
                 RegDst = 2'b00;
                 RegWrt = 1'b0;
                 MemWrt = 1'b1;
-				0Ext = 1'b1;
+				ZeroExt = 1'b1;
 				BSrc = 2'b01;
 				ALUSign = 1'b0;
                 invA = 1'b0;
@@ -421,7 +421,7 @@
                 MemWrt = 1'b0;
                 ALUJmp = 1'b1;
                 ImmSrc = 1'b1;
-                //0Ext = 1'b1;
+                //ZeroExt = 1'b1;
                 BranchTaken = 3'b000;
 			end
 			5'b00110: begin		// JAL

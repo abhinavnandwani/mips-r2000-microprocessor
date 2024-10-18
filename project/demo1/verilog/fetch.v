@@ -4,7 +4,6 @@
    Filename        : fetch.v
    Description     : This is the module for the overall fetch stage of the processor.
 */
-`default_nettype none
 module fetch (clk, rst, PC_B, nHaltSig, instr, PC_Next);
    input clk, rst;
    input [15:0] PC_B; //PC from Branch/Jump Mux
@@ -32,6 +31,4 @@ module fetch (clk, rst, PC_B, nHaltSig, instr, PC_Next);
    // Halt Mux
    assign PC_Next = (nHaltSig) ? PC_Next : PC;
 
-
 endmodule
-`default_nettype wire

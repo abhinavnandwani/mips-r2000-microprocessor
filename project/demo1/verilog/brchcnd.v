@@ -1,4 +1,3 @@
-`default_nettype none
 module brchcnd (SF, ZF, brch_instr, BrchCnd);
    input SF, ZF;
    input [2:0] brch_instr;
@@ -19,4 +18,3 @@ module brchcnd (SF, ZF, brch_instr, BrchCnd);
    assign BrchCnd = (brch_instr[2]) ? brch_sig : 1'b0;
 
 endmodule
-`default_nettype wire

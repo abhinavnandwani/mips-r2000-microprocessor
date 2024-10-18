@@ -28,7 +28,7 @@ module proc (/*AUTOARG*/
    wire [15:0] WB;
    wire [15:0] RSData, RTData, ALU, readData;
    wire [15:0] Imm5, Imm8, sImm8, sImm11;
-   wire nHaltSig, RegDst, RegWrt, ZeroExt, ImmSrc, invA, invB, ALUSign, Cin, ALUJmp, MemWrt,err;      
+   wire nHaltSig, RegDst, RegWrt, ZeroExt, ImmSrc, invA, invB, ALUSign, Cin, ALUJmp, MemWrt;      
    wire [5:0] ALUOpr;   
    wire [1:0] RegSrc, BSrc;      
    wire [2:0] BranchTaken;

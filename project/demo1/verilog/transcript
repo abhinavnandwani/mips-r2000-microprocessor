@@ -1,5 +1,5 @@
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 17:34:00 on Oct 18,2024
+# Start time: 18:05:05 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -40,54 +40,28 @@
 # Loading __work.xor2
 # Loading __work.nand2
 # Loading __work.fullAdder_1b
-# ** Warning: (vsim-3008) [CNNODP] - Component name (RegWrt) is not on a downward path.
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench File: proc_hier_bench.v Line: 134
-# ** Error: (vsim-3043) Unresolved reference to 'RegWrt' in DUT.p0.decode0.regFile0.RegWrt.
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench File: proc_hier_bench.v Line: 134
-# ** Warning: (vsim-3008) [CNNODP] - Component name (WB) is not on a downward path.
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench File: proc_hier_bench.v Line: 137
-# ** Error: (vsim-3043) Unresolved reference to 'WB' in DUT.p0.decode0.regFile0.WB.
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench File: proc_hier_bench.v Line: 137
-# ** Warning: (vsim-3008) [CNNODP] - Component name (write) is not on a downward path.
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench File: proc_hier_bench.v Line: 131
-# ** Error: (vsim-3043) Unresolved reference to 'write' in DUT.p0.decode0.regFile0.write.
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench File: proc_hier_bench.v Line: 131
-# ** Warning: (vsim-3008) [CNNODP] - Component name (pcCurrent) is not on a downward path.
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench File: proc_hier_bench.v Line: 128
-# ** Error: (vsim-3043) Unresolved reference to 'pcCurrent' in DUT.p0.fetch0.pcCurrent.
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench File: proc_hier_bench.v Line: 128
-# ** Warning: (vsim-3008) [CNNODP] - Component name (memWrt) is not on a downward path.
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench File: proc_hier_bench.v Line: 143
-# ** Error: (vsim-3043) Unresolved reference to 'memWrt' in DUT.p0.memory0.memWrt.
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench File: proc_hier_bench.v Line: 143
-# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'instruction_decoder'.  Expected 17, found 16.
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/instruction_decoder File: proc.v Line: 32
-# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'BSrc'. The port definition is at: control.v(1).
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/instruction_decoder File: proc.v Line: 32
-# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (1) for port 'ALUOpr'. The port definition is at: control.v(1).
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/instruction_decoder File: proc.v Line: 32
+# ** Warning: (vsim-3008) [CNNODP] - Component name (cin) is not on a downward path.
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench File: proc_hier_bench.v Line: 150
+# ** Error: (vsim-3043) Unresolved reference to 'cin' in DUT.p0.control0.cin.
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench File: proc_hier_bench.v Line: 150
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'control0'.  Expected 17, found 16.
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/control0 File: proc.v Line: 36
 # ** Error: (vsim-3063) Port 'cin' not found in the connected module (12th connection).
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/instruction_decoder File: proc.v Line: 32
-# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'RegSrc'. The port definition is at: control.v(1).
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/instruction_decoder File: proc.v Line: 32
-# ** Warning: (vsim-3015) [PCDPC] - Port size (3) does not match connection size (1) for port 'BranchTaken'. The port definition is at: control.v(1).
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/instruction_decoder File: proc.v Line: 32
-# ** Warning: (vsim-3722) proc.v(32): [TFMPC] - Missing connection for port 'Cin'.
-# ** Warning: (vsim-3722) proc.v(32): [TFMPC] - Missing connection for port 'err'.
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/control0 File: proc.v Line: 36
+# ** Warning: (vsim-3722) proc.v(36): [TFMPC] - Missing connection for port 'Cin'.
+# ** Warning: (vsim-3722) proc.v(36): [TFMPC] - Missing connection for port 'err'.
 # ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (1) for port 'PC_B'. The port definition is at: fetch.v(7).
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/fetch0 File: proc.v Line: 35
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/fetch0 File: proc.v Line: 39
 # ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'RegDst'. The port definition is at: decode.v(7).
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/decode0 File: proc.v Line: 36
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/decode0 File: proc.v Line: 40
 # ** Error (suppressible): (vsim-3053) Illegal output or inout port connection for port 'err'.
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/decode0 File: proc.v Line: 36
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/decode0 File: proc.v Line: 40
 # ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (1) for port 'sImm8'. The port definition is at: decode.v(7).
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/decode0 File: proc.v Line: 36
-# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'BSrc'. The port definition is at: execute.v(7).
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/execute0 File: proc.v Line: 37
-# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (1) for port 'BranchTaken'. The port definition is at: execute.v(7).
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/execute0 File: proc.v Line: 37
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/decode0 File: proc.v Line: 40
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (3) for port 'BranchTaken'. The port definition is at: execute.v(7).
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/execute0 File: proc.v Line: 41
 # ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (1) for port 'PC_Next'. The port definition is at: execute.v(7).
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/execute0 File: proc.v Line: 37
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/execute0 File: proc.v Line: 41
 # ** Error: (vsim-3063) Port 'Zero' not found in the connected module (9th connection).
 #    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/execute0/alu1 File: execute.v Line: 32
 # ** Error: (vsim-3063) Port 'Ofl' not found in the connected module (11th connection).
@@ -96,5 +70,5 @@
 #    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/execute0/alu1 File: alu.v Line: 63
 # FATAL ERROR while loading design
 # Error loading design
-# End time: 17:34:02 on Oct 18,2024, Elapsed time: 0:00:02
-# Errors: 10, Warnings: 18
+# End time: 18:05:06 on Oct 18,2024, Elapsed time: 0:00:01
+# Errors: 6, Warnings: 9

@@ -10,10 +10,10 @@
     (OFL).
 */
 
-module alu (InA, InB, Cin, Oper, invA, invB, sign, Out, Zero, Ofl);
+module alu (InA, InB, Cin, Oper, invA, invB, sign, Out, ZF,SF,OF,CF);
 
     parameter OPERAND_WIDTH = 16;    
-    parameter NUM_OPERATIONS = 3;
+    parameter NUM_OPERATIONS = 4;
        
     input  [OPERAND_WIDTH -1:0] InA ; // Input operand A
     input  [OPERAND_WIDTH -1:0] InB ; // Input operand B
@@ -23,8 +23,8 @@ module alu (InA, InB, Cin, Oper, invA, invB, sign, Out, Zero, Ofl);
     input                       invB; // Signal to invert B
     input                       sign; // Signal for signed operation
     output [OPERAND_WIDTH -1:0] Out ; // Result of computation
-    output                      Ofl ; // Signal if overflow occured
-    output                      Zero; // Signal if Out is 0
+    output                      OF ; // Signal if overflow occured
+    output                      ZF,CF,SF; // Signal if Out is 0
 
     wire Cout;
     wire [15:0] S, ShOut, BitOut;
@@ -35,17 +35,35 @@ module alu (InA, InB, Cin, Oper, invA, invB, sign, Out, Zero, Ofl);
     assign B = invB ? ~InB : InB;
 
     
-    cla_16b cla(.sum(S), .c_out(Cout), .a((A)), .b((B)), .c_in(Cin));
+    cla_16b cla(.sum(S), .c_out(Cout), .a((B)), .b((A)), .c_in(Cin));
 
     shifter shift(.In(A), .ShAmt(B[3:0]), .Oper(Oper[1:0]), .Out(ShOut));
 
     assign BitOut = (Oper[1:0] == 2'b01) ? (A & B) : ((Oper[1:0] == 2'b10) ? (A | B) : (A^B));
 
-    assign Out = (Oper[2]) ? ((Oper[1:0] == 2'b00) ? S : BitOut) : ShOut;
-    assign Ofl = (sign) ? ((A[15]~^B[15]) & (S[15]^A[15])) : Cout;
+    //assign Out = (Oper[2]) ? ((Oper[1:0] == 2'b00) ? S : BitOut) : ShOut;
+    
 
-                 
-    assign Zero = (Out == 16'h0000) ? 1'b1 : 1'b0;
+    
+
+    //// branch conditions ////
+    assign ZF = (BitOut == 16'h0000) ? 1'b1 : 1'b0;
+    assign OF = (sign) ? ((A[15]~^B[15]) & (S[15]^A[15])) : Cout;
+    assign CF = Cout;
+    assign SF = BitOut[OPERAND_WIDTH-1];
+
+    always@(*) begin
+        casex(Oper)
+            4'b00xx: Out = BitOut;
+            4'b01xx: Out = ShOut; 
+            4'b1000: if(ZF) Out = 16'h0001
+            4'b1001: if(~SF & ~ZF) Out = 16'h0001;
+            4'b1010: if(~SF) Out = 16'h0001;
+            4'b1111: if(CF) Out = 16'h0001;
+            default: Out = 0;
+        endcase
+
+    end
     
 
 endmodule

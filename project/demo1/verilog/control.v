@@ -212,7 +212,7 @@
                         RegWrt = 1'b1;
                         MemWrt = 1'b0;
                         BSrc = 2'b00;
-                        ALUSign = 1'b1;
+                        ALUSign = 1'b0; // TODO: have to decide ALUSign 
                         invA = 1'b0;
                         invB = 1'b0;
                         Cin = 1'b0;

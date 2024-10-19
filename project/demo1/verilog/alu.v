@@ -39,7 +39,9 @@ module alu (InA, InB, Cin, Oper, invA, invB, sign, Out, ZF,SF,OF,CF);
 
     shifter shift(.In(A), .ShAmt(B[3:0]), .Oper(Oper[1:0]), .Out(ShOut));
 
-    assign BitOut = (Oper[1:0] == 2'b01) ? (A & B) : ((Oper[1:0] == 2'b10) ? (A | B) : (A^B));
+    assign BitOut = (Oper[1:0] == 2'b00) ? S : 
+                    (Oper[1:0] == 2'b01) ? (A & B) :   
+                    ((Oper[1:0] == 2'b10) ? (A | B) : (A^B));
 
     //assign Out = (Oper[2]) ? ((Oper[1:0] == 2'b00) ? S : BitOut) : ShOut;
     

@@ -134,7 +134,7 @@ module proc_hier_bench();
    assign MemData = DUT.p0.memory0.writeData; // Data to write to memory
 
    // Control and status signals
-   assign Halt = DUT.p0.memory0.nHaltSig;    // Processor halt signal
+   assign Halt = ~(DUT.p0.memory0.nHaltSig);    // negated case our signal is active low Processor halt signal
 
    /* Additional control signals for debugging and tracing */
    assign ZeroExt = DUT.p0.control0.ZeroExt;     // Zero extension signal

@@ -32,7 +32,7 @@ module proc (/*AUTOARG*/
    wire [15:0] Imm5, Imm8, sImm8, sImm11;
    wire nHaltSig, RegWrt, ZeroExt, ImmSrc, invA, invB, ALUSign, Cin, ALUJmp, MemWrt;        
    wire [1:0] RegSrc, BSrc,RegDst;      
-   wire [2:0] BranchTaken,RD;  // Fix size mismatch by defining BranchTaken as a 3-bit wire
+   wire [2:0] BranchTaken,RD;  
 
 
    control control0(.instr(instr), .err(err), .nHaltSig(nHaltSig), .RegDst(RegDst), .RegWrt(RegWrt), .ZeroExt(ZeroExt), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUOpr(ALUOpr), .invA(invA), .invB(invB), .ALUSign(ALUSign), .Cin(Cin), .ALUJmp(ALUJmp), .MemWrt(MemWrt), .RegSrc(RegSrc), .BranchTaken(BranchTaken));

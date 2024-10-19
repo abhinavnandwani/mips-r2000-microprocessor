@@ -1,4 +1,4 @@
-          // addiTest#1
+          // addiTest
           //
           // test program for WISC-SP08 architecture
           // for the addi instruction.
@@ -7,7 +7,8 @@
           // Abhishek Sinkar  15 March 2008
           //
           
-          //Test of loading a register with addi
-0000 c100 lbi r1, 0x0
-0002 413a addi r1, r1, 0x1a
+          //Test of common case of incrementing a register by 1
+          //this could be the common case while executing a loop
+0000 c140 lbi r1, 0x40
+0002 4141 addi r2, r1, 0x1
 0004 0000 halt

@@ -39,7 +39,7 @@
                 RegWrt = 1'b1;
                 BSrc = 2'b01;
                 ALUSign = 1'b0;
-                ALUOpr = {000,instr[13:11]}; 
+                ALUOpr = {3'b000,instr[13:11]}; 
             end
 
 			5'b01001: begin		// SUBI
@@ -53,7 +53,7 @@
                 invA = 1'b1;
                 invB = 1'b0;
                 Cin = 1'b1;
-                ALUOpr = {000,instr[13:11]};
+                ALUOpr = {3'b000,instr[13:11]}; 
                 BranchTaken = 3'b000;
 			end	
 			5'b01010: begin		// XORI
@@ -67,7 +67,7 @@
                 invA = 1'b0;
                 invB = 1'b0;
                 Cin = 1'b0;
-                ALUOpr = {000,instr[13:11]};
+                ALUOpr = {3'b000,instr[13:11]}; 
                 BranchTaken = 3'b000;
 			end
 			5'b01011: begin		// ANDNI
@@ -81,7 +81,7 @@
                 invA = 1'b0;
                 invB = 1'b1;
                 Cin = 1'b0;
-                ALUOpr = {000,instr[13:11]};
+                ALUOpr = {3'b000,instr[13:11]}; 
                 BranchTaken = 3'b000;
 			end
 			5'b10100: begin		// ROLI
@@ -95,7 +95,7 @@
                 invA = 1'b0;
                 invB = 1'b0;
                 Cin = 1'b0;
-                ALUOpr = {000,instr[13:11]};
+                ALUOpr = {3'b000,instr[13:11]}; 
                 BranchTaken = 3'b000;
 			end
 			5'b10101: begin		// SLLI
@@ -109,7 +109,7 @@
                 invA = 1'b0;
                 invB = 1'b0;
                 Cin = 1'b0;
-                ALUOpr = {000,instr[13:11]};
+                ALUOpr = {3'b000,instr[13:11]}; 
                 BranchTaken = 3'b000;
 			end
 			5'b10110: begin		// RORI
@@ -123,7 +123,7 @@
                 invA = 1'b0;
                 invB = 1'b0;
                 Cin = 1'b0;
-                ALUOpr = {000,instr[13:11]};
+                ALUOpr = {3'b000,instr[13:11]}; 
                 BranchTaken = 3'b000;
 			end
 			5'b10111: begin		// SRLI
@@ -137,7 +137,7 @@
                 invA = 1'b0;
                 invB = 1'b0;
                 Cin = 1'b0;
-                ALUOpr = {000,instr[13:11]};
+                ALUOpr = {3'b000,instr[13:11]}; 
                 BranchTaken = 3'b000;
 			end
 

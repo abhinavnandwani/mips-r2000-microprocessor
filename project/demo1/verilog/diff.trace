@@ -1,8 +1,8 @@
-INST:    1100 0001 1111 1111 lbi r1, 0xff ***DIFF***
-ARCH:    INUM:        0 PC: 0x0000 REG: 1 VALUE: 0xffff
+INST:    1100 0001 0000 0000 lbi r1, 0x0 ***DIFF***
+ARCH:    INUM:        0 PC: 0x0000 REG: 1 VALUE: 0x0000
 VERILOG: INUM:        0 PC: 0x0002
-INST:    0100 0001 0100 0001 addi r2, r1, 0x1 ***DIFF***
-ARCH:    INUM:        1 PC: 0x0002 REG: 2 VALUE: 0x0000
+INST:    0100 0001 0011 1010 addi r1, r1, 0x1a ***DIFF***
+ARCH:    INUM:        1 PC: 0x0002 REG: 1 VALUE: 0xfffa
 VERILOG: 
 INST:    0000 0000 0000 0000 halt ***DIFF***
 ARCH:    INUM:        2 PC: 0x0004

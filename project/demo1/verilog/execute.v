@@ -23,7 +23,7 @@ module execute (RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc, ImmSrc, ALU
    cla_16b pc_adder(.sum(Branch), .c_out(), .a(PC), .b(PC_I), .c_in(1'b0));
    
    //Branch & Jump Mux
-   assign PC_Branch = (1'b0) ? Branch : PC;
+   assign PC_Branch = (BrchCnd) ? Branch : PC;
    assign PC_Next = (1'b0) ? ALU_Out : PC_Branch;
 
    // Register Mux

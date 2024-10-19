@@ -5,13 +5,19 @@ Type "help" for more information
 
 Loading program...
 Executing...
-lbi r1, 15
-INUM:        0 PC: 0x0000 REG: 1 VALUE: 0x000f
-lbi r2, 15
-INUM:        1 PC: 0x0002 REG: 2 VALUE: 0x000f
-ror r3, r1, r2
-INUM:        2 PC: 0x0004 REG: 3 VALUE: 0x001e
+jal 40
+INUM:        0 PC: 0x0000 REG: 7 VALUE: 0x0002
+nop
+INUM:        1 PC: 0x002a
+jal 4
+INUM:        2 PC: 0x002c REG: 7 VALUE: 0x002e
+nop
+INUM:        3 PC: 0x0032
+jalr r7, -24
+INUM:        4 PC: 0x0034 REG: 7 VALUE: 0x0036
+nop
+INUM:        5 PC: 0x0016
 halt
 program halted
-INUM:        3 PC: 0x0006
+INUM:        6 PC: 0x0018
 Program Finished

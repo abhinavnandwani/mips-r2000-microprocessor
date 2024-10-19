@@ -8,9 +8,8 @@
         assign funct = instr[1:0];
 
 		always@(*) begin
-        // default outpus //
+        // Default outputs //
         nHaltSig = 1'b1;
-        ImmSrc = 1'b0;
         RegWrt = 1'b0;
         ZeroExt = 1'b0;
         ImmSrc = 1'b0;
@@ -20,6 +19,12 @@
         Cin = 1'b0;
         ALUJmp = 1'b0;
         MemWrt = 1'b0;
+        err = 1'b0;
+        ALUOpr = 6'b000000;  // Ensure it's a 6-bit value
+        RegSrc = 2'b00;
+        RegDst = 2'b00;
+        BSrc = 2'b00;
+        BranchTaken = 3'b000;
 
 		case(instr[15:11])
 			5'b00000: nHaltSig = 1'b0;		// HALT 
@@ -28,21 +33,15 @@
 
 			/* I format 1 below: */
             
-			5'b01000: begin		// ADDI
-				RegSrc = 2'b10;
+            5'b01000: begin // ADDI
+                RegSrc = 2'b10;
                 RegDst = 2'b10;
                 RegWrt = 1'b1;
-                MemWrt = 1'b0;
-				ZeroExt = 1'b0;
-				BSrc = 2'b01;
-				ALUSign = 1'b0;
-                invA = 1'b0;
-                invB = 1'b0;
-                Cin = 1'b0;
-                ALUOpr = 3'b011;
-                BranchTaken = 3'b000;
-				
-			end
+                BSrc = 2'b01;
+                ALUSign = 1'b0;
+                ALUOpr = {000,instr[13:11]}; 
+            end
+
 			5'b01001: begin		// SUBI
 				RegSrc = 2'b10;
                 RegDst = 2'b10;
@@ -54,7 +53,7 @@
                 invA = 1'b1;
                 invB = 1'b0;
                 Cin = 1'b1;
-                ALUOpr = 3'b011;
+                ALUOpr = {000,instr[13:11]};
                 BranchTaken = 3'b000;
 			end	
 			5'b01010: begin		// XORI
@@ -68,7 +67,7 @@
                 invA = 1'b0;
                 invB = 1'b0;
                 Cin = 1'b0;
-                ALUOpr = 3'b011;
+                ALUOpr = {000,instr[13:11]};
                 BranchTaken = 3'b000;
 			end
 			5'b01011: begin		// ANDNI
@@ -82,7 +81,7 @@
                 invA = 1'b0;
                 invB = 1'b1;
                 Cin = 1'b0;
-                ALUOpr = 3'b011;
+                ALUOpr = {000,instr[13:11]};
                 BranchTaken = 3'b000;
 			end
 			5'b10100: begin		// ROLI
@@ -96,7 +95,7 @@
                 invA = 1'b0;
                 invB = 1'b0;
                 Cin = 1'b0;
-                ALUOpr = 3'b011;
+                ALUOpr = {000,instr[13:11]};
                 BranchTaken = 3'b000;
 			end
 			5'b10101: begin		// SLLI
@@ -110,7 +109,7 @@
                 invA = 1'b0;
                 invB = 1'b0;
                 Cin = 1'b0;
-                ALUOpr = 3'b011;
+                ALUOpr = {000,instr[13:11]};
                 BranchTaken = 3'b000;
 			end
 			5'b10110: begin		// RORI
@@ -124,7 +123,7 @@
                 invA = 1'b0;
                 invB = 1'b0;
                 Cin = 1'b0;
-                ALUOpr = 3'b011;
+                ALUOpr = {000,instr[13:11]};
                 BranchTaken = 3'b000;
 			end
 			5'b10111: begin		// SRLI
@@ -138,9 +137,10 @@
                 invA = 1'b0;
                 invB = 1'b0;
                 Cin = 1'b0;
-                ALUOpr = 3'b011;
+                ALUOpr = {000,instr[13:11]};
                 BranchTaken = 3'b000;
 			end
+
 			5'b10000: begin		// ST
 				RegSrc = 2'b01;
                 RegDst = 2'b00;
@@ -197,9 +197,10 @@
                 invA = 1'b0;
                 invB = 1'b0;
                 Cin = 1'b0;
-                ALUOpr = 3'b100;
+                ALUOpr = 6'b111xxx;
                 BranchTaken = 3'b000;
 			end
+            // R Type //
 			5'b11011: begin		// ADD, SUB, XOR, ANDN
 				case(funct)
 					2'b00: begin		// ADD
@@ -212,7 +213,7 @@
                         invA = 1'b0;
                         invB = 1'b0;
                         Cin = 1'b0;
-                        ALUOpr = 3'b000;
+                        ALUOpr = {3'b010,~instr[11],2'bxx};
                         BranchTaken = 3'b000;
 					end
 					2'b01: begin		// SUB
@@ -225,7 +226,7 @@
                         invA = 1'b1;
                         invB = 1'b0;
                         Cin = 1'b1;
-                        ALUOpr = 3'b000;
+                        ALUOpr = {3'b010,~instr[11],2'bxx};
                         BranchTaken = 3'b000;
 					end
 					2'b10: begin		// XOR
@@ -238,7 +239,7 @@
                         invA = 1'b0;
                         invB = 1'b0;
                         Cin = 1'b0;
-                        ALUOpr = 3'b000;
+                        ALUOpr = {3'b010,~instr[11],2'bxx};
                         BranchTaken = 3'b000;
 					end
 					2'b11: begin		// ANDN
@@ -251,7 +252,7 @@
                         invA = 1'b0;
                         invB = 1'b1;
                         Cin = 1'b0;
-                        ALUOpr = 3'b000;
+                        ALUOpr = {3'b010,~instr[11],2'bxx};
                         BranchTaken = 3'b000;
 					end
 					default: err = 1'b1;			// R format funct code error
@@ -269,7 +270,7 @@
                         invA = 1'b0;
                         invB = 1'b0;
                         Cin = 1'b0;
-                        ALUOpr = 3'b001;
+                        ALUOpr = {3'b010,~instr[11],2'bxx};
                         BranchTaken = 3'b000;
 					end
 					2'b01: begin		// SLL
@@ -282,7 +283,7 @@
                         invA = 1'b0;
                         invB = 1'b0;
                         Cin = 1'b0;
-                        ALUOpr = 3'b001;
+                        ALUOpr = {3'b010,~instr[11],2'bxx};
                         BranchTaken = 3'b000;
 					end
 					2'b10: begin		// ROR
@@ -295,7 +296,7 @@
                         invA = 1'b0;
                         invB = 1'b0;
                         Cin = 1'b0;
-                        ALUOpr = 3'b001;
+                        ALUOpr = {3'b010,~instr[11],2'bxx};
                         BranchTaken = 3'b000;
 					end
 					2'b11: begin		// SRL
@@ -308,7 +309,7 @@
                         invA = 1'b0;
                         invB = 1'b0;
                         Cin = 1'b0;
-                        ALUOpr = 3'b001;
+                        ALUOpr = {3'b010,~instr[11],2'bxx};
                         BranchTaken = 3'b000;
 					end
 					default: err = 1'b1;			// R format funct code error
@@ -324,7 +325,7 @@
                 invA = 1'b0;
                 invB = 1'b0;
                 Cin = 1'b0;
-                ALUOpr = 3'b010;
+                ALUOpr = 6'b011xxx;
                 BranchTaken = 3'b000;
 			end
 			5'b11101: begin		// SLT
@@ -337,7 +338,7 @@
                 invA = 1'b0;
                 invB = 1'b0;
                 Cin = 1'b0;
-                ALUOpr = 3'b010;
+                ALUOpr = 6'b100xxx;
                 BranchTaken = 3'b000;
 			end
 			5'b11110: begin		// SLE
@@ -350,7 +351,7 @@
                 invA = 1'b0;
                 invB = 1'b0;
                 Cin = 1'b0;
-                ALUOpr = 3'b010;
+                ALUOpr = 6'b101xxx;
                 BranchTaken = 3'b000;
 			end
 			5'b11111: begin		// SCO
@@ -363,7 +364,7 @@
                 invA = 1'b0;
                 invB = 1'b0;
                 Cin = 1'b0;
-                ALUOpr = 3'b010;
+                ALUOpr = 6'b110xxx;
                 BranchTaken = 3'b000;
 			end
 			

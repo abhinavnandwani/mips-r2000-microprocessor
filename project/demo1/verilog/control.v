@@ -7,6 +7,9 @@
         wire funct;
         assign funct = instr[1:0];
 
+
+
+        
 		always@(*) begin
         // Default outputs //
         nHaltSig = 1'b1;

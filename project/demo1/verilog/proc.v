@@ -25,11 +25,12 @@ module proc (/*AUTOARG*/
    /* your code here -- should include instantiations of fetch, decode, execute, mem and wb modules */
    wire [15:0] PC_Jump;
    wire [15:0] instr, PC_f, PC_d;
+   wire [5:0] ALUOpr;
+   wire [3:0] Oper;
    wire [15:0] WB;
    wire [15:0] RSData, RTData, ALU, readData;
    wire [15:0] Imm5, Imm8, sImm8, sImm11;
-   wire nHaltSig, RegWrt, ZeroExt, ImmSrc, invA, invB, ALUSign, Cin, ALUJmp, MemWrt;      
-   wire [5:0] ALUOpr;   
+   wire nHaltSig, RegWrt, ZeroExt, ImmSrc, invA, invB, ALUSign, Cin, ALUJmp, MemWrt;        
    wire [1:0] RegSrc, BSrc,RegDst;      
    wire [2:0] BranchTaken;  // Fix size mismatch by defining BranchTaken as a 3-bit wire
 
@@ -38,8 +39,8 @@ module proc (/*AUTOARG*/
    //aluOpr
 
    fetch fetch0(.clk(clk), .rst(rst), .PC_B(PC_Jump), .nHaltSig(nHaltSig), .instr(instr), .PC_Next(PC_f));
-   decode decode0(.clk(clk), .rst(rst), .instr(instr), .WB(WB), .PC(PC_f), .RegDst(RegDst), .ZeroExt(ZeroExt), .RegWrt(RegWrt), .err(err), .RSData(RSData), .RTData(RTData), .Imm5(Imm5), .Imm8(Imm8), .sImm8(sImm8), .sImm11(sImm11), .PC_Next(PC_d));
-   execute execute0(.RSData(RSData), .RTData(RTData), .PC(PC_d), .Imm5(Imm5), .Imm8(Imm8), .sImm8(sImm8), .sImm11(sImm11), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUJmp(ALUJmp), .invA(invA), .invB(invB), .ALUSign(ALUSign), .cin(Cin), .BranchTaken(BranchTaken), .ALU_Out(ALU), .PC_Next(PC_Jump));
+   decode decode0(.clk(clk), .rst(rst), .instr(instr), .WB(WB), .PC(PC_f), .ALUOpr(ALUOpr),.Oper(Oper),.RegDst(RegDst), .ZeroExt(ZeroExt), .RegWrt(RegWrt), .err(err), .RSData(RSData), .RTData(RTData), .Imm5(Imm5), .Imm8(Imm8), .sImm8(sImm8), .sImm11(sImm11), .PC_Next(PC_d));
+   execute execute0(.RSData(RSData), .RTData(RTData), .Oper(Oper), .PC(PC_d), .Imm5(Imm5), .Imm8(Imm8), .sImm8(sImm8), .sImm11(sImm11), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUJmp(ALUJmp), .invA(invA), .invB(invB), .ALUSign(ALUSign), .cin(Cin), .BranchTaken(BranchTaken), .ALU_Out(ALU), .PC_Next(PC_Jump));
    memory memory0(.ALU(ALU), .writeData(RTData), .nHaltSig(nHaltSig), .MemWrt(MemWrt), .readData(readData));
    wb wb0(.MemIn(readData), .PcIn(PC_d), .ALUIn(ALU), .RegSrc(RegSrc), .WB(WB));
 

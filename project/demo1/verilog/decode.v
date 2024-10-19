@@ -4,12 +4,14 @@
    Filename        : decode.v
    Description     : This is the module for the overall decode stage of the processor.
 */
-module decode (clk, rst, instr, WB, PC, RegDst, ZeroExt, RegWrt, err, RSData, RTData, Imm5, Imm8, sImm8, sImm11, PC_Next);
+module decode (clk, rst, instr, WB, PC, RegDst, ALUOpr, ZeroExt, RegWrt, err, RSData, RTData, Imm5, Imm8, sImm8, sImm11, PC_Next,Oper);
    input clk, rst;
    input [15:0] instr, WB;
    input [15:0] PC;
    input [1:0] RegDst;
    input ZeroExt, RegWrt;
+   input [5:0] ALUOpr;
+   output [3:0] Oper;
    output err;
    output [15:0] RSData, RTData;
    output [15:0] Imm5, Imm8, sImm8, sImm11;
@@ -32,5 +34,6 @@ assign RD = (RegDst == 2'b00) ? instr[7:5] :
    assign sImm11 = {{5{instr[10]}}, instr[10:0]};
 
    assign PC_Next = PC;
+   alu_control aluc(.aluoper(ALUOpr),.instr(instr[1:0]),.op(Oper));
    
 endmodule

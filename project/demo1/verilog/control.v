@@ -24,7 +24,7 @@
         MemWrt = 1'b0;
         err = 1'b0;
         ALUOpr = 6'b000000;  // Ensure it's a 6-bit value
-        RegSrc = 2'b00;
+        RegSrc = 2'b10;
         RegDst = 2'b00;
         BSrc = 2'b00;
         BranchTaken = 3'b000;
@@ -406,11 +406,15 @@
                 BranchTaken = {1'b1, instr[12:11]};
 			end
 			5'b11000: begin		// LBI FIX
-                RegWrt = 1'b0;
+                RegWrt = 1'b1;
+                RegDst = 2'b01;
                 MemWrt = 1'b0;
                 ALUJmp = 1'b0;
                 ImmSrc = 1'b1;
-                ALUOpr = 3'b101;
+                ZeroExt = 1'b0;
+                BSrc = 2'b10;
+                ALUOpr = 6'b001xxx;
+                RegSrc = 2'b10;
                 BranchTaken = 3'b000;
 			end
 			5'b10010: begin		// SLBI FIX

@@ -9,7 +9,7 @@ module alu_control(aluoper,instr,op);
         case(aluoper[5:3])
         
         3'b000: op = {1'b0,aluoper[2:0]}; // I-type 1 //
-        3'b001: op = 4'b0000;  // I-type 2 TO DO//
+        3'b001: op = 4'b1101;  // I-type 2 TO DO//
         3'b010: op = {1'b0,aluoper[0],instr}; // R-type //
 
         // set if operations //

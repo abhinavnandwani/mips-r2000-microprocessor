@@ -23,11 +23,11 @@ module execute (RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc, ImmSrc, ALU
    cla_16b pc_adder(.sum(Branch), .c_out(), .a(PC), .b(PC_I), .c_in(1'b0));
    
    //Branch & Jump Mux
-   assign PC_Branch = (BrchCnd) ? Branch : PC;
-   assign PC_Next = (ALUJmp) ? ALU_Out : PC_Branch;
+   assign PC_Branch = (1'b0) ? Branch : PC;
+   assign PC_Next = (1'b0) ? ALU_Out : PC_Branch;
 
    // Register Mux
-   assign ALUIn = (BSrc == 2'b00) ? RTData : (BSrc == 2'b01) ? Imm5 : (BSrc == 2'b10) ? Imm5 : 16'h0000;
+   assign ALUIn = (BSrc == 2'b00) ? RTData : (BSrc == 2'b01) ? Imm5 : (BSrc == 2'b10) ? Imm8 : 16'h0000;
    
    // Register Adder NOT DONE NEED TO FIX ALU
    alu alu1(.InA(RSData), .InB(ALUIn), .Cin(cin), .Oper(Oper), .invA(invA), .invB(invB), .sign(ALUSign), .Out(ALU_Out), .ZF(ZF), .SF(SF), .OF(OF), .CF(CF));

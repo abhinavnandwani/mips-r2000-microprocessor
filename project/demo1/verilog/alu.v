@@ -61,6 +61,7 @@ module alu (InA, InB, Cin, Oper, invA, invB, sign, Out, ZF,SF,OF,CF);
             4'b1010: Out = ~SF;
             4'b1011: Out = CF;
             4'b1100: Out = A; //TODO
+            4'b1101: Out = B;
 
             default: Out = 0;
         endcase

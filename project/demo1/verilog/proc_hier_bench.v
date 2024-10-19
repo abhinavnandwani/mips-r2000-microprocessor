@@ -119,12 +119,12 @@ module proc_hier_bench();
   /* Assign internal signals to top-level wires */
    
    // Fetch stage assignments
-   assign PC = DUT.p0.fetch0.PC_Next;       // Next PC from fetch stage
+   assign PC = DUT.p0.fetch0.PC_curr;       // Next PC from fetch stage
    assign Inst = DUT.p0.fetch0.instr;       // Fetched instruction
 
    // Decode stage assignments
    assign RegWrite = DUT.p0.decode0.RegWrt;  // Register write signal
-   assign WriteRegister = DUT.p0.decode0.RegDst; // Register destination
+   assign WriteRegister = DUT.p0.decode0.RD; // Register destination
    assign WriteData = DUT.p0.decode0.WB;    // Data to write to register
 
    // Memory stage assignments

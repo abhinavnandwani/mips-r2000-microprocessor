@@ -1,36 +1,6 @@
-          // Original test: ./bolanows/hw4/problem6/jalr_3.asm
-          // Author: bolanows
-          // Test source code follows
-          
-          
-          // Checks addition of negative immediates to jump
-0000 3028 JAL 40 // Jumps to TargetA, PC = 42
-0002 0800 Nop
-0004 0800 Nop
-0006 0800 Nop
-0008 0800 Nop
-000a 0800 Nop
-000c 0800 Nop
-000e 0800 Nop
-0010 0800 Nop
-0012 0800 Nop
-0014 0800 Nop
-0016 0800 Nop // PC = 22 TargetC
-0018 0000 Halt
-001a 0800 Nop
-001c 0800 Nop
-001e 0800 Nop
-0020 0800 Nop
-0022 0800 Nop
-0024 0800 Nop
-0026 0800 Nop
-0028 0800 Nop
-002a 0800 Nop // PC = 42 TargetA
-002c 3004 JAL 4 // Jumps to TargetB, PC = 50. Old r7 gets clobbered
-002e 0800 Nop
-0030 0800 Nop
-0032 0800 Nop // PC = 50 TargetB
-0034 3fe8 JALR r7, -24 // Jumps to TargetC, PC = 22
-0036 0800 Nop
-0038 0800 Nop
-003a 0000 Halt
+          // Test provided by Karu 
+          // Generic Test (-)-(+)=(-)
+0000 c18c lbi r1, 0x8c
+0002 c204 lbi r2, 0x04
+0004 da2d sub r3, r2, r1
+0006 0000 halt

@@ -30,5 +30,7 @@ assign RD = (RegDst == 2'b00) ? instr[7:5] :
    assign sImm8 = {{8{instr[7]}}, instr[7:0]};
    assign Imm8 = (ZeroExt) ? {8'h00, instr[7:0]} : sImm8;
    assign sImm11 = {{5{instr[10]}}, instr[10:0]};
+
+   assign PC_Next = PC;
    
 endmodule

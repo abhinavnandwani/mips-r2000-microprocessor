@@ -8,16 +8,26 @@
         assign funct = instr[1:0];
 
 		always@(*) begin
+        // default outpus //
+        nHaltSig = 1'b1;
+        ImmSrc = 1'b0;
+        RegWrt = 1'b0;
+        ZeroExt = 1'b0;
+        ImmSrc = 1'b0;
+        invA = 1'b0;
+        invB = 1'b0;
+        ALUSign = 1'b0;
+        Cin = 1'b0;
+        ALUJmp = 1'b0;
+        MemWrt = 1'b0;
+
 		case(instr[15:11])
-			5'b00000: begin		// HALT
-				nHaltSig = 1'b0;
-			end
-			5'b00001: begin		// NOP
+			5'b00000: nHaltSig = 1'b0;		// HALT 
+			//5'b00001: begin		// NOP
 				// none
-			end
-			
+
 			/* I format 1 below: */
-			
+            
 			5'b01000: begin		// ADDI
 				RegSrc = 2'b10;
                 RegDst = 2'b10;

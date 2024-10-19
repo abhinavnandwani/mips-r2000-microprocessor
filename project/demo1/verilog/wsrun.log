@@ -1,5 +1,5 @@
 Model Technology ModelSim DE vlog 10.7c Compiler 2018.08 Aug 17 2018
-Start time: 18:46:04 on Oct 18,2024
+Start time: 22:05:01 on Oct 18,2024
 vlog "+define+RANDSEED=3" -work __work alu.v alu_control.v alu_hier.v bit_2shift.v bit_4shift.v bit_8shift.v bit_shift.v brchcnd.v cla_16b.v cla_4b.v clkrst.v control.v decode.v dff.v execute.v fetch.v fullAdder_1b.v memory.v memory2c.v nand2.v nand3.v nor2.v nor3.v not1.v proc.v proc_hier.v proc_hier_bench.v regFile.v regFile_bypass.v regFile_hier.v register.v shifter.v wb.v xor2.v xor3.v 
 -- Compiling module alu
 -- Compiling module alu_control
@@ -47,14 +47,14 @@ Top level modules:
 	proc_hier_bench
 	regFile_hier
 	xor3
-End time: 18:46:04 on Oct 18,2024, Elapsed time: 0:00:00
+End time: 22:05:02 on Oct 18,2024, Elapsed time: 0:00:01
 Errors: 0, Warnings: 0
 Reading pref.tcl
 
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:46:05 on Oct 18,2024
+# Start time: 22:05:02 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -100,11 +100,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:46:06 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:02 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/add_1.asm
 Created the following files
@@ -119,7 +117,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:46:10 on Oct 18,2024
+# Start time: 22:05:03 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -165,11 +163,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:46:11 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:03 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/add_2.asm
 Created the following files
@@ -184,7 +180,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:46:16 on Oct 18,2024
+# Start time: 22:05:04 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -230,11 +226,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:46:17 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:04 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/addi_0.asm
 Created the following files
@@ -249,7 +243,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:46:22 on Oct 18,2024
+# Start time: 22:05:05 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -295,11 +289,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:46:23 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:05 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/addi_1.asm
 Created the following files
@@ -314,7 +306,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:46:28 on Oct 18,2024
+# Start time: 22:05:05 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -360,11 +352,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:46:29 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:06 on Oct 18,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/addi_2.asm
 Created the following files
@@ -379,7 +369,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:46:34 on Oct 18,2024
+# Start time: 22:05:06 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -425,11 +415,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:46:35 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:06 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/addi_3.asm
 Created the following files
@@ -444,7 +432,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:46:40 on Oct 18,2024
+# Start time: 22:05:07 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -490,11 +478,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:46:41 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:07 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/andn_0.asm
 Created the following files
@@ -509,7 +495,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:46:46 on Oct 18,2024
+# Start time: 22:05:08 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -555,11 +541,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:46:47 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:08 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/andn_1.asm
 Created the following files
@@ -574,7 +558,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:46:54 on Oct 18,2024
+# Start time: 22:05:09 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -620,11 +604,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:46:54 on Oct 18,2024, Elapsed time: 0:00:00
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:09 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/andn_2.asm
 Created the following files
@@ -639,7 +621,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:46:59 on Oct 18,2024
+# Start time: 22:05:10 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -685,11 +667,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:47:00 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:10 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/andni_0.asm
 Created the following files
@@ -704,7 +684,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:47:05 on Oct 18,2024
+# Start time: 22:05:11 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -750,11 +730,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:47:06 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:11 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/andni_1.asm
 Created the following files
@@ -769,7 +747,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:47:10 on Oct 18,2024
+# Start time: 22:05:11 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -815,11 +793,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:47:11 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:12 on Oct 18,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/andni_2.asm
 Created the following files
@@ -834,7 +810,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:47:16 on Oct 18,2024
+# Start time: 22:05:12 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -880,11 +856,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:47:17 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:12 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/andni_3.asm
 Created the following files
@@ -899,7 +873,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:47:22 on Oct 18,2024
+# Start time: 22:05:13 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -945,11 +919,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:47:23 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:13 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/andni_4.asm
 Created the following files
@@ -964,7 +936,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:47:27 on Oct 18,2024
+# Start time: 22:05:14 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -1010,11 +982,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:47:28 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:14 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/bgez_1.asm
 Created the following files
@@ -1029,7 +999,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:47:33 on Oct 18,2024
+# Start time: 22:05:15 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -1075,11 +1045,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:47:34 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:15 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/bgez_2.asm
 Created the following files
@@ -1094,7 +1062,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:47:38 on Oct 18,2024
+# Start time: 22:05:16 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -1140,11 +1108,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:47:39 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:16 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/bgez_3.asm
 Created the following files
@@ -1159,7 +1125,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:47:44 on Oct 18,2024
+# Start time: 22:05:16 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -1205,11 +1171,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:47:44 on Oct 18,2024, Elapsed time: 0:00:00
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:17 on Oct 18,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/bgez_4.asm
 Created the following files
@@ -1224,7 +1188,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:47:49 on Oct 18,2024
+# Start time: 22:05:17 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -1270,11 +1234,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:47:50 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:17 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/bgez_5.asm
 Created the following files
@@ -1289,7 +1251,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:47:55 on Oct 18,2024
+# Start time: 22:05:18 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -1335,11 +1297,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:47:55 on Oct 18,2024, Elapsed time: 0:00:00
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:18 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/bgez_6.asm
 Created the following files
@@ -1354,7 +1314,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:48:00 on Oct 18,2024
+# Start time: 22:05:19 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -1400,11 +1360,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:48:01 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:19 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/bgez_7.asm
 Created the following files
@@ -1419,7 +1377,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:48:07 on Oct 18,2024
+# Start time: 22:05:20 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -1465,11 +1423,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:48:08 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:20 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/bgez_8.asm
 Created the following files
@@ -1484,7 +1440,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:48:12 on Oct 18,2024
+# Start time: 22:05:21 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -1530,11 +1486,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:48:13 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:21 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/bgez_9.asm
 Created the following files
@@ -1549,7 +1503,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:48:18 on Oct 18,2024
+# Start time: 22:05:21 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -1595,11 +1549,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:48:19 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:22 on Oct 18,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/beqz_0.asm
 Created the following files
@@ -1614,7 +1566,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:48:24 on Oct 18,2024
+# Start time: 22:05:22 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -1660,11 +1612,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:48:24 on Oct 18,2024, Elapsed time: 0:00:00
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:23 on Oct 18,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/bltz_0.asm
 Created the following files
@@ -1679,7 +1629,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:48:29 on Oct 18,2024
+# Start time: 22:05:23 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -1725,11 +1675,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:48:30 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:23 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/bltz_1.asm
 Created the following files
@@ -1744,7 +1692,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:48:35 on Oct 18,2024
+# Start time: 22:05:24 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -1790,11 +1738,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:48:36 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:24 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/bltz_2.asm
 Created the following files
@@ -1809,7 +1755,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:48:40 on Oct 18,2024
+# Start time: 22:05:25 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -1855,11 +1801,9 @@ Reading pref.tcl
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
-# hmm....more than 100004 cycles of simulation...error?
-# 
-# ** Note: $finish    : clkrst.v(48)
-#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
-# End time: 18:48:41 on Oct 18,2024, Elapsed time: 0:00:01
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:25 on Oct 18,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/bltz_3.asm
 Created the following files
@@ -1874,7 +1818,1582 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:48:46 on Oct 18,2024
+# Start time: 22:05:26 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:26 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/bnez_0.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:27 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:27 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/bnez_2.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:27 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:28 on Oct 18,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/bnez_3.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:28 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:28 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/bnez_4.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:29 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:29 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/bnez_5.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:30 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:30 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/bnez_6.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:31 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:31 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/btr_0.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:32 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:32 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/btr_1.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:32 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:33 on Oct 18,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/btr_2.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:33 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:33 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/btr_3.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:34 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:34 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/btr_4.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:35 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:35 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/btr_5.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:36 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:36 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/btr_6.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:37 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:37 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/btr_7.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:37 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:38 on Oct 18,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/btr_8.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:38 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:38 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/j_0.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:39 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:39 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/j_1.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:40 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:40 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/j_2.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:41 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:41 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/j_3.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:42 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:42 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/j_4.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:42 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:43 on Oct 18,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_0.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:43 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 400 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:43 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_10.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:44 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 400 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:44 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_11.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:45 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:45 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_12.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:46 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 400 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:46 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_15.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:47 on Oct 18,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -1924,3 +3443,1922 @@ Reading pref.tcl
 # 
 # ** Note: $finish    : clkrst.v(48)
 #    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
+# End time: 22:05:47 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_16.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:54 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 400 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:54 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_17.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:55 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 400 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:55 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_19.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:55 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:56 on Oct 18,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_1.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:56 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:56 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_22.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_24.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:57 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 400 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:57 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_25.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:58 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 400 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:58 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_26.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:05:59 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:05:59 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_27.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:06:00 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 400 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:06:00 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:06:01 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 400 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:06:01 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_29.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:06:01 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 400 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:06:02 on Oct 18,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_2.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:06:02 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# hmm....more than 100004 cycles of simulation...error?
+# 
+# ** Note: $finish    : clkrst.v(48)
+#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
+# End time: 22:06:03 on Oct 18,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_30.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:06:09 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:06:10 on Oct 18,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_31.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:06:10 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 400 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:06:11 on Oct 18,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_32.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:06:11 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 400 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:06:11 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Break key hit
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_33.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:06:12 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# hmm....more than 100004 cycles of simulation...error?
+# 
+# ** Note: $finish    : clkrst.v(48)
+#    Time: 10000400 ns  Iteration: 1  Instance: /proc_hier_bench/DUT/c0
+# End time: 22:06:13 on Oct 18,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_35.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:06:17 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:06:18 on Oct 18,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_36.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:06:18 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:06:18 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_3.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:06:19 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 400 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:06:19 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_4.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:06:20 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:06:20 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_5.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:06:21 on Oct 18,2024
+# Break key hit
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Error loading design
+# End time: 22:06:21 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_6.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# Break key hit
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:06:22 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Error loading design
+# End time: 22:06:22 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jal_8.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_0.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:06:23 on Oct 18,2024
+# Break key hit
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Error loading design
+# End time: 22:06:23 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Break key hit
+# Break key hit
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_12.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_13.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_14.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_15.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_16.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_17.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_18.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_19.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_1.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_27.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_28.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_29.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_2.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_30.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_31.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_32.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_33.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_34.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_36.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_3.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_4.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_5.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_6.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jalr_7.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jr_0.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/lbi_0.asm
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/lbi_1.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/ld_0.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/ld_1.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/ld_2.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/ld_3.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/rol_0.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/rol_1.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/roli_0.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/roli_1.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/roli_2.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/roli_3.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/roli_4.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:06:31 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:06:31 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/ror_0.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:06:32 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:06:32 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/ror_1.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:06:32 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:06:33 on Oct 18,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/ror_2.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:06:33 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:06:33 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/ror_3.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 22:06:34 on Oct 18,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# log -howmany -rec /* 
+# 2852
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:06:34 on Oct 18,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/ror_4.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst

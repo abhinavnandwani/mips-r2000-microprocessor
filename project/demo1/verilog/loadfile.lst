@@ -1,14 +1,5 @@
-          // Original test: ./neel/hw4/problem6/bltz_3.asm
-          // Author: neel
-          // Test source code follows
-          
-          
-          //Tests bltz for error when register < 0
-          //when branch offset is negative
-          
-0000 c2fd lbi r2,-3
-0002 7204 bltz r2,4
-0004 c2ff lbi  r2,-1
-0006 0000 halt
-0008 72fa bltz r2,-6
-000a 0000 halt
+          // Test provided by Karu 
+0000 c111 lbi r1, 17
+0002 c201 lbi r2, 1
+0004 d14e ror r3, r1, r2
+0006 0000 halt // added by Karu

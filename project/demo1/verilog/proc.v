@@ -40,7 +40,7 @@ module proc (/*AUTOARG*/
 
    fetch fetch0(.clk(clk), .rst(rst), .PC_B(PC_Jump), .PC_curr(PC),.nHaltSig(nHaltSig), .instr(instr), .PC_Next(PC_f));
    decode decode0(.clk(clk), .rst(rst), .instr(instr), .RD(RD),.WB(WB), .PC(PC_f), .ALUOpr(ALUOpr),.Oper(Oper),.RegDst(RegDst), .ZeroExt(ZeroExt), .RegWrt(RegWrt), .err(err), .RSData(RSData), .RTData(RTData), .Imm5(Imm5), .Imm8(Imm8), .sImm8(sImm8), .sImm11(sImm11), .PC_Next(PC_d));
-   execute execute0(.RSData(RSData), .RTData(RTData), .Oper(Oper), .PC(PC_d), .Imm5(Imm5), .Imm8(Imm8), .sImm8(sImm8), .sImm11(sImm11), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUJmp(ALUJmp), .invA(invA), .invB(invB), .ALUSign(ALUSign), .cin(Cin), .BranchTaken(BranchTaken), .ALU_Out(ALU), .PC_Next(PC_Jump));
+   execute execute0(.RSData(RSData), .RTData(RTData), .nHaltSig(nHaltSig),.Oper(Oper), .PC(PC_d), .Imm5(Imm5), .Imm8(Imm8), .sImm8(sImm8), .sImm11(sImm11), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUJmp(ALUJmp), .invA(invA), .invB(invB), .ALUSign(ALUSign), .cin(Cin), .BranchTaken(BranchTaken), .ALU_Out(ALU), .PC_Next(PC_Jump));
    memory memory0(.ALU(ALU), .writeData(RTData), .nHaltSig(nHaltSig), .MemWrt(MemWrt), .readData(readData));
    wb wb0(.MemIn(readData), .PcIn(PC_d), .ALUIn(ALU), .RegSrc(RegSrc), .WB(WB));
 

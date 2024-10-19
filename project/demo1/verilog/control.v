@@ -437,26 +437,27 @@
 			5'b00100: begin		// J displacement
                 RegWrt = 1'b0;
                 MemWrt = 1'b0;
-                ALUJmp = 1'b1;
+                ALUJmp = 1'b0;
                 ImmSrc = 1'b0;
-                BranchTaken = 3'b000;
+                BranchTaken = 3'b100;
 			end
 			5'b00101: begin		// JR
                 RegWrt = 1'b0;
                 MemWrt = 1'b0;
                 ALUJmp = 1'b1;
                 ImmSrc = 1'b1;
+                BSrc = 2'b10;
                 //ZeroExt = 1'b1;
-                BranchTaken = 3'b000;
+                BranchTaken = 3'b100;
 			end
 			5'b00110: begin		// JAL
                 RegSrc = 2'b00;
                 RegDst = 2'b11;
                 RegWrt = 1'b1;
                 MemWrt = 1'b0;
-                ALUJmp = 1'b1;
+                ALUJmp = 1'b0;
                 ImmSrc = 1'b0;
-                BranchTaken = 3'b000;
+                BranchTaken = 3'b100;
 			end
 			5'b00111: begin		// JALR
                 RegSrc = 2'b00;
@@ -465,7 +466,8 @@
                 MemWrt = 1'b0;
                 ALUJmp = 1'b1;
                 ImmSrc = 1'b1;
-                BranchTaken = 3'b000;
+                BSrc = 2'b10;
+                BranchTaken = 3'b100;
 			end
 			
 			/* TODO: Extra Credit below: */

@@ -38,7 +38,7 @@
             
             5'b01000: begin // ADDI
                 RegSrc = 2'b10;
-                RegDst = 2'b10;
+                RegDst = 2'b00;
                 RegWrt = 1'b1;
                 BSrc = 2'b01;
                 ALUSign = 1'b0;
@@ -47,12 +47,12 @@
 
 			5'b01001: begin		// SUBI
 				RegSrc = 2'b10;
-                RegDst = 2'b10;
+                RegDst = 2'b00;
                 RegWrt = 1'b1;
                 MemWrt = 1'b0;
 				ZeroExt = 1'b0;
 				BSrc = 2'b01;
-				ALUSign = 1'b1;
+				//ALUSign = 1'b1;
                 invA = 1'b1;
                 invB = 1'b0;
                 Cin = 1'b1;
@@ -61,7 +61,7 @@
 			end	
 			5'b01010: begin		// XORI
 				RegSrc = 2'b10;
-                RegDst = 2'b10;
+                RegDst = 2'b00;
                 RegWrt = 1'b1;
                 MemWrt = 1'b0;
 				ZeroExt = 1'b1;
@@ -75,7 +75,7 @@
 			end
 			5'b01011: begin		// ANDNI
 				RegSrc = 2'b10;
-                RegDst = 2'b10;
+                RegDst = 2'b00;
                 RegWrt = 1'b1;
                 MemWrt = 1'b0;
 				ZeroExt = 1'b1;
@@ -89,7 +89,7 @@
 			end
 			5'b10100: begin		// ROLI
 				RegSrc = 2'b10;
-                RegDst = 2'b10;
+                RegDst = 2'b00;
                 RegWrt = 1'b1;
                 MemWrt = 1'b0;
 				ZeroExt = 1'b1;
@@ -103,7 +103,7 @@
 			end
 			5'b10101: begin		// SLLI
 				RegSrc = 2'b10;
-                RegDst = 2'b10;
+                RegDst = 2'b00;
                 RegWrt = 1'b1;
                 MemWrt = 1'b0;
 				ZeroExt = 1'b1;
@@ -117,7 +117,7 @@
 			end
 			5'b10110: begin		// RORI
 				RegSrc = 2'b10;
-                RegDst = 2'b10;
+                RegDst = 2'b00;
                 RegWrt = 1'b1;
                 MemWrt = 1'b0;
 				ZeroExt = 1'b1;
@@ -131,7 +131,7 @@
 			end
 			5'b10111: begin		// SRLI
 				RegSrc = 2'b10;
-                RegDst = 2'b10;
+                RegDst = 2'b00;
                 RegWrt = 1'b1;
                 MemWrt = 1'b0;
 				ZeroExt = 1'b1;
@@ -224,6 +224,7 @@
                         RegDst = 2'b10;
                         RegWrt = 1'b1;
                         MemWrt = 1'b0;
+                        ZeroExt = 0;
                         BSrc = 2'b00;
                         ALUSign = 1'b1;
                         invA = 1'b1;
@@ -413,16 +414,21 @@
                 ImmSrc = 1'b1;
                 ZeroExt = 1'b0;
                 BSrc = 2'b10;
-                ALUOpr = 6'b001xxx;
+                ALUOpr = 6'b00101x;
                 RegSrc = 2'b10;
                 BranchTaken = 3'b000;
 			end
 			5'b10010: begin		// SLBI FIX
-                RegWrt = 1'b0;
+                RegWrt = 1'b01;
+                RegDst = 2'b01;
                 MemWrt = 1'b0;
                 ALUJmp = 1'b0;
                 ImmSrc = 1'b1;
-                ALUOpr = 3'b101;
+                ALUSign = 1'b0;
+                ZeroExt = 1'b1;
+                BSrc = 2'b10;
+                ALUOpr = 6'b00110x;
+                RegSrc = 2'b10;
                 BranchTaken = 3'b000;
 			end
 			

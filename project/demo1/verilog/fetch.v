@@ -6,7 +6,7 @@
 */
 module fetch (clk, rst, PC_B,nHaltSig, instr, PC_Next);
    input clk, rst;
-   input [15:0] PC_B; //PC back from Branch/Jump Mux
+   input [15:0] PC_B; //PC from Branch/Jump Mux
    input nHaltSig;
    output [15:0] instr;
    output [15:0] PC_Next;
@@ -28,9 +28,8 @@ module fetch (clk, rst, PC_B,nHaltSig, instr, PC_Next);
    // Adder: PC + 2
    assign add2 = 16'h0002;
    cla_16b pc_add2 (.sum(PC_Sum), .c_out(c_out), .a(PC), .b(add2), .c_in(1'b0));
-   
 
    // Halt Mux
-   assign PC_Next =  nHaltSig ? PC_Sum: PC;
+   assign PC_Next =  PC+16'h0002;
 
 endmodule

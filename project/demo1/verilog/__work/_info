@@ -9,7 +9,7 @@ z2
 cModel Technology
 Z0 d/home/nandwani/private/cs552/mips-r2000-microprocessor/project/demo1/verilog
 valu
-Z1 !s110 1729383892
+Z1 !s110 1729384574
 !i10b 1
 !s100 _[2BSPcK18M4zn38Qgl7D3
 IN0G7oYJS36eTfa@TgH5b:2
@@ -23,7 +23,7 @@ Z4 OP;L;10.7c;67
 r1
 !s85 0
 31
-Z5 !s108 1729383892.000000
+Z5 !s108 1729384574.000000
 !s107 xor3.v|xor2.v|wb.v|shifter.v|register.v|regFile.v|regFile_hier.v|regFile_bypass.v|proc.v|proc_hier.v|proc_hier_bench.v|not1.v|nor3.v|nor2.v|nand3.v|nand2.v|memory.v|memory2c.v|fullAdder_1b.v|fetch.v|execute.v|dff.v|decode.v|control.v|clkrst.v|cla_4b.v|cla_16b.v|brchcnd.v|bit_shift.v|bit_8shift.v|bit_4shift.v|bit_2shift.v|alu.v|alu_hier.v|alu_control.v|
 Z6 !s90 +define+RANDSEED=3|-work|__work|alu_control.v|alu_hier.v|alu.v|bit_2shift.v|bit_4shift.v|bit_8shift.v|bit_shift.v|brchcnd.v|cla_16b.v|cla_4b.v|clkrst.v|control.v|decode.v|dff.v|execute.v|fetch.v|fullAdder_1b.v|memory2c.v|memory.v|nand2.v|nand3.v|nor2.v|nor3.v|not1.v|proc_hier_bench.v|proc_hier.v|proc.v|regFile_bypass.v|regFile_hier.v|regFile.v|register.v|shifter.v|wb.v|xor2.v|xor3.v|
 !i113 1
@@ -253,11 +253,11 @@ R9
 vcontrol
 R1
 !i10b 1
-!s100 >M5`gmF2KRII_C5?]OBOX2
-ICEJk?Y=J3>l_c;=KODGzi0
+!s100 DA4V[S;<liRK5CGZHk5HB0
+I3B8CCTO60<UjA<PnATGYH1
 R2
 R0
-w1729383888
+w1729384567
 8control.v
 Fcontrol.v
 L0 1

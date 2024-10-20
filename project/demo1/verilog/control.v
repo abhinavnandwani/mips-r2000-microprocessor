@@ -379,9 +379,9 @@
                 MemWrt = 1'b0;
                 ALUJmp = 1'b0;
                 ImmSrc = 1'b1;
-                invA = 1'b1;
+               invA = 1'b1;
+                Cin = 1'b1;
                 BSrc = 2'b11;
-                ALUOpr = 3'b101;
                 BranchTaken = {1'b1, instr[12:11]};
 			end
 			5'b01101: begin		// BNEZ
@@ -390,6 +390,7 @@
                 ALUJmp = 1'b0;
                 ImmSrc = 1'b1;
                 invA = 1'b1;
+                Cin = 1'b1;
                 BSrc = 2'b11;
                 ALUOpr = 3'b101;
                 BranchTaken = {1'b1, instr[12:11]};
@@ -401,6 +402,7 @@
                 ImmSrc = 1'b1;
                 BSrc = 2'b11;
                 invA = 1'b1;
+                Cin = 1'b1;
                 ALUOpr = 3'b101;
                 BranchTaken = {1'b1, instr[12:11]};
 			end
@@ -410,8 +412,8 @@
                 ALUJmp = 1'b0;
                 ImmSrc = 1'b1;
                 invA = 1'b1;
+                Cin = 1'b1;
                 BSrc = 2'b11;
-                ALUOpr = 3'b101;
                 BranchTaken = {1'b1, instr[12:11]};
 			end
 			5'b11000: begin		// LBI FIX

@@ -5,26 +5,26 @@
     A multi-bit ALU module (defaults to 16-bit). It is designed to choose
     the correct operation to perform on 2 multi-bit numbers from rotate
     left, shift left, shift right arithmetic, shift right logical, add,
-    or, xor, & and.  Upon doing this, it should output the multi-bit result
-    of the operation, as well as drive the output signals Zero and Overflow
+    or, xor, & and.  Upon doing this, it should output wire the multi-bit result
+    of the operation, as well as drive the output wire signals Zero and Overflow
     (OFL).
 */
-
+`default_nettype none
 module alu (InA, InB, Cin, Oper, invA, invB, sign, Out, ZF,SF,OF,CF);
 
     parameter OPERAND_WIDTH = 16;    
     parameter NUM_OPERATIONS = 4;
        
-    input  [OPERAND_WIDTH -1:0] InA ; // Input operand A
-    input  [OPERAND_WIDTH -1:0] InB ; // Input operand B
-    input                       Cin ; // Carry in
-    input  [NUM_OPERATIONS-1:0] Oper; // Operation type
-    input                       invA; // Signal to invert A
-    input                       invB; // Signal to invert B
-    input                       sign; // Signal for signed operation
-    output reg [OPERAND_WIDTH -1:0] Out ; // Result of computation
-    output                      OF ; // Signal if overflow occured
-    output                      ZF,CF,SF; // Signal if Out is 0
+    input wire  [OPERAND_WIDTH -1:0] InA ; // input wire operand A
+    input wire  [OPERAND_WIDTH -1:0] InB ; // input wire operand B
+    input wire                       Cin ; // Carry in
+    input wire  [NUM_OPERATIONS-1:0] Oper; // Operation type
+    input wire                       invA; // Signal to invert A
+    input wire                       invB; // Signal to invert B
+    input wire                       sign; // Signal for signed operation
+    output reg  [OPERAND_WIDTH -1:0] Out ; // Result of computation
+    output wire                      OF ; // Signal if overflow occured
+    output wire                      ZF,CF,SF; // Signal if Out is 0
 
     wire Cout;
     wire [15:0] S, ShOut, BitOut;
@@ -40,7 +40,7 @@ module alu (InA, InB, Cin, Oper, invA, invB, sign, Out, ZF,SF,OF,CF);
     shifter shift(.In(A), .ShAmt(B[3:0]), .Oper(Oper[1:0]), .Out(ShOut));
 
     assign BitOut = (Oper[1:0] == 2'b00) ? S : 
-                    (Oper[1:0] == 2'b11) ? (A) :   
+                    (Oper[1:0] == 2'b11) ? (A&B) :   
                     ((Oper[1:0] == 2'b10) ? (A^B) : (S));
 
     //assign Out = (Oper[2]) ? ((Oper[1:0] == 2'b00) ? S : BitOut) : ShOut;
@@ -72,3 +72,4 @@ module alu (InA, InB, Cin, Oper, invA, invB, sign, Out, ZF,SF,OF,CF);
     
 
 endmodule
+`default_nettype wire

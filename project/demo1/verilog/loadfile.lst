@@ -1,8 +1,13 @@
-          // Original test: ./shojaei/hw4/problem6/xori_2.asm
-          // Author: shojaei
+          // Original test: ./tschaefe/hw4/problem6/j_2.asm
+          // Author: tschaefe
           // Test source code follows
           
           
-0000 c118 lbi r1, 24
-0002 5147 xori r2, r1, 7
-0004 0000 halt
+          // j test 2
+          // Jump instruction should cause looping to earlier portion of program
+0000 c1fd lbi r1, 0xfd
+0002 4121 addi r1, r1, 0x01
+0004 7902 bgez r1, .done		//after 3 total executions of add, go to halt
+0006 27fa j 0x7fa
+0008      .done:
+0008 0000 halt

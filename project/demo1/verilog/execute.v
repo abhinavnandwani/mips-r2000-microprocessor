@@ -4,14 +4,15 @@
    Filename        : execute.v
    Description     : This is the overall module for the execute stage of the processor.
 */
+`default_nettype none
 module execute (RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc, ,nHaltSig,ImmSrc, ALUJmp, invA, invB, ,Oper, ALUSign, cin, BranchTaken, ALU_Out, PC_Next);
-   input [15:0] RSData, RTData, PC;
-   input [15:0] Imm5, Imm8, sImm8, sImm11;
-   input [1:0] BSrc;
-   input [3:0] Oper;
-   input [2:0] BranchTaken;
-   input ImmSrc, ALUJmp, invA, invB, ALUSign, cin,nHaltSig;
-   output [15:0] ALU_Out, PC_Next;
+   input wire [15:0] RSData, RTData, PC;
+   input wire [15:0] Imm5, Imm8, sImm8, sImm11;
+   input wire [1:0] BSrc;
+   input wire [3:0] Oper;
+   input wire [2:0] BranchTaken;
+   input wire ImmSrc, ALUJmp, invA, invB, ALUSign, cin,nHaltSig;
+   output wire [15:0] ALU_Out, PC_Next;
 
    wire [15:0] ALUIn;
    wire [15:0] PC_I, PC_Branch, Branch;
@@ -37,3 +38,4 @@ module execute (RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc, ,nHaltSig,I
    brchcnd branch_ctrl(.SF(SF), .ZF(ZF), .brch_instr(BranchTaken), .BrchCnd(BrchCnd));
 
 endmodule
+`default_nettype wire

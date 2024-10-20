@@ -136,31 +136,4 @@ module proc_hier_bench();
    // Control and status signals
    assign Halt = ~(DUT.p0.control0.nHaltSig);    // negated case our signal is active low Processor halt signal
 
-   /* Additional control signals for debugging and tracing */
-   assign ZeroExt = DUT.p0.control0.ZeroExt;     // Zero extension signal
-   assign BSrc = DUT.p0.control0.BSrc;           // Source selection for ALU
-   assign ImmSrc = DUT.p0.control0.ImmSrc;       // Immediate source selection
-   assign ALUOpr = DUT.p0.control0.ALUOpr;       // ALU operation code
-   assign invA = DUT.p0.control0.invA;           // Invert A signal for ALU
-   assign invB = DUT.p0.control0.invB;           // Invert B signal for ALU
-   assign ALUSign = DUT.p0.control0.ALUSign;     // ALU sign control
-   //assign cin = DUT.p0.control0.Cin;             // Carry-in for ALU
-   assign ALUJmp = DUT.p0.control0.ALUJmp;       // ALU jump signal
-   assign RegSrc = DUT.p0.control0.RegSrc;       // Source for register write
-   assign BranchTaken = DUT.p0.control0.BranchTaken; // Branch taken signal
-
-   // Additional signals from decode stage
-   assign err = DUT.p0.decode0.err;              // Error signal from decode stage
-   assign RSData = DUT.p0.decode0.RSData;        // Data for source register
-   assign RTData = DUT.p0.decode0.RTData;        // Data for target register
-   assign Imm5 = DUT.p0.decode0.Imm5;            // 5-bit immediate value
-   assign Imm8 = DUT.p0.decode0.Imm8;            // 8-bit immediate value
-   assign sImm8 = DUT.p0.decode0.sImm8;          // Sign-extended 8-bit immediate
-   assign sImm11 = DUT.p0.decode0.sImm11;        // Sign-extended 11-bit immediate
-
-   // ALU output assignment
-   assign ALU_Out = DUT.p0.execute0.ALU_Out;     // Output from the ALU
-
-   /* Add any other necessary assignments here */
-
 endmodule

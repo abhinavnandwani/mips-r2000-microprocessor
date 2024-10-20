@@ -9,13 +9,13 @@ z2
 cModel Technology
 Z0 d/home/nandwani/private/cs552/mips-r2000-microprocessor/project/demo1/verilog
 valu
-Z1 !s110 1729395683
+Z1 !s110 1729404743
 !i10b 1
-!s100 fRg^]XN6n467Z25L[H`iF3
-IacjcJOF48S4jGSNk9<cHL2
+!s100 KoPcH_>GUZEi`<3JV9c4W2
+IiKDRVTn1Czj^3n0G0h2<>1
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1729395451
+w1729399516
 8alu.v
 Falu.v
 Z3 L0 13
@@ -23,7 +23,7 @@ Z4 OP;L;10.7c;67
 r1
 !s85 0
 31
-Z5 !s108 1729395683.000000
+Z5 !s108 1729404743.000000
 !s107 xor3.v|xor2.v|wb.v|shifter.v|register.v|regFile.v|regFile_hier.v|regFile_bypass.v|proc.v|proc_hier.v|proc_hier_bench.v|not1.v|nor3.v|nor2.v|nand3.v|nand2.v|memory.v|memory2c.v|fullAdder_1b.v|fetch.v|execute.v|dff.v|decode.v|control.v|clkrst.v|cla_4b.v|cla_16b.v|brchcnd.v|bit_shift.v|bit_8shift.v|bit_4shift.v|bit_2shift.v|alu.v|alu_hier.v|alu_control.v|
 Z6 !s90 +define+RANDSEED=3|-work|__work|alu_control.v|alu_hier.v|alu.v|bit_2shift.v|bit_4shift.v|bit_8shift.v|bit_shift.v|brchcnd.v|cla_16b.v|cla_4b.v|clkrst.v|control.v|decode.v|dff.v|execute.v|fetch.v|fullAdder_1b.v|memory2c.v|memory.v|nand2.v|nand3.v|nor2.v|nor3.v|not1.v|proc_hier_bench.v|proc_hier.v|proc.v|regFile_bypass.v|regFile_hier.v|regFile.v|register.v|shifter.v|wb.v|xor2.v|xor3.v|
 !i113 1
@@ -33,11 +33,11 @@ Z9 tCvgOpt 0
 valu_control
 R1
 !i10b 1
-!s100 G5EkRXc6SzH]?=`YhnaBd1
-I[CBnek0]kl0nd1hb>nG9V0
+!s100 ed;`aJ?lL9nQMW1gIn>Ze1
+I1C8BTA:AC@6a400G[A7]A3
 R2
 R0
-w1729383635
+w1729404274
 8alu_control.v
 Falu_control.v
 L0 1
@@ -121,11 +121,11 @@ R9
 vbit_8shift
 R1
 !i10b 1
-!s100 P^O0z9`QACKP91AJE0@>d0
-I10WCGIgG^Po8`g2bBmHc]2
+!s100 @<`hmZD=D523lW9I2z7GH0
+IjkJ;Ul^=UM_5^EFLS9Fh=2
 R2
 R0
-w1729385771
+w1729396138
 8bit_8shift.v
 Fbit_8shift.v
 L0 1
@@ -253,11 +253,11 @@ R9
 vcontrol
 R1
 !i10b 1
-!s100 zOCNl@8B5zbGkk<U?JWcV1
-Ig=h4?QFSzhIBMK>mOOjHo2
+!s100 SD<imW7<BXS7g0;i8H99l3
+IVV0Pc2LGa<CkD8>ODFR^Z2
 R2
 R0
-w1729395659
+w1729403662
 8control.v
 Fcontrol.v
 L0 2
@@ -275,11 +275,11 @@ R9
 vdecode
 R1
 !i10b 1
-!s100 XDVj^4W0ck3V:@NGFCLIY1
-IRh_78A>`=X_H>lZ5WFPOB1
+!s100 ROJLD6Q?<QEV7`?^17_>=0
+IcZ9;02L[1b:eYdO7V8RKB2
 R2
 R0
-w1729392295
+w1729399487
 8decode.v
 Fdecode.v
 L0 7
@@ -319,14 +319,14 @@ R9
 vexecute
 R1
 !i10b 1
-!s100 9S_Y:=FSgSL1CegidjR9X2
-IjAH6fg<g5Ba=Y9;O68I_02
+!s100 >P2W7GT=P^ChCmjQjj[Xh1
+IM[Hme0KH>l59dVJ=adEEF2
 R2
 R0
-w1729390820
+w1729401309
 8execute.v
 Fexecute.v
-L0 7
+L0 8
 R4
 r1
 !s85 0
@@ -540,11 +540,11 @@ R9
 vproc
 R1
 !i10b 1
-!s100 c1f43GJLZBlY:g_>nT5c<0
-I_SC[aJJmILZV_E];[nzTS2
+!s100 EPJLU=]1U`9K?`QIR>m1h3
+IcH9e729;z^0l2[>zeojdD1
 R2
 R0
-w1729395356
+w1729399454
 8proc.v
 Fproc.v
 L0 5
@@ -584,11 +584,11 @@ R9
 vproc_hier_bench
 R1
 !i10b 1
-!s100 [T@?^a300CH@_k[;=nOlH2
-IZ08f>`a:PDLC=jaBC<TBS1
+!s100 cl4L`NMPkiOIf<LI1LCOC0
+IIWG2n2:IzcTm=]8Ac>J[h0
 R2
 R0
-w1729395273
+w1729401835
 8proc_hier_bench.v
 Fproc_hier_bench.v
 L0 4

@@ -9,7 +9,7 @@ z2
 cModel Technology
 Z0 d/home/ahuang62/ECE552/mips-r2000-microprocessor/project/demo1/verilog
 valu
-Z1 !s110 1729460043
+Z1 !s110 1729463399
 !i10b 1
 !s100 _5kL9m;e_bhI0X>g=da`?3
 IX97`okJ_UeZ`892WnnT0E3
@@ -23,9 +23,9 @@ Z5 OP;L;10.7c;67
 r1
 !s85 0
 31
-Z6 !s108 1729460043.000000
-!s107 xor3.v|xor2.v|wb.v|shifter.v|register.v|regFile.v|regFile_hier.v|regFile_bypass.v|proc.v|proc_hier.v|proc_hier_bench.v|not1.v|nor3.v|nor2.v|nand3.v|nand2.v|memory.v|memory2c.v|fullAdder_1b.v|fetch.v|execute.v|dff.v|decode.v|control.v|clkrst.v|cla_4b.v|cla_16b.v|brchcnd.v|bit_shift.v|bit_8shift.v|bit_4shift.v|bit_2shift.v|alu.v|alu_hier.v|alu_control.v|
-Z7 !s90 +define+RANDSEED=3|-work|__work|alu_control.v|alu_hier.v|alu.v|bit_2shift.v|bit_4shift.v|bit_8shift.v|bit_shift.v|brchcnd.v|cla_16b.v|cla_4b.v|clkrst.v|control.v|decode.v|dff.v|execute.v|fetch.v|fullAdder_1b.v|memory2c.v|memory.v|nand2.v|nand3.v|nor2.v|nor3.v|not1.v|proc_hier_bench.v|proc_hier.v|proc.v|regFile_bypass.v|regFile_hier.v|regFile.v|register.v|shifter.v|wb.v|xor2.v|xor3.v|
+Z6 !s108 1729463399.000000
+!s107 xor3.v|xor2.v|wb.v|shifter.v|register.v|regFile_hier.v|regFile_bypass.v|regFile.v|proc_hier_bench.v|proc_hier.v|proc.v|not1.v|nor3.v|nor2.v|nand3.v|nand2.v|memory2c.v|memory.v|fullAdder_1b.v|fetch.v|execute.v|dff.v|decode.v|control.v|clkrst.v|cla_4b.v|cla_16b.v|brchcnd.v|bit_shift.v|bit_8shift.v|bit_4shift.v|bit_2shift.v|alu_hier.v|alu_control.v|alu.v|
+Z7 !s90 +define+RANDSEED=3|-work|__work|alu.v|alu_control.v|alu_hier.v|bit_2shift.v|bit_4shift.v|bit_8shift.v|bit_shift.v|brchcnd.v|cla_16b.v|cla_4b.v|clkrst.v|control.v|decode.v|dff.v|execute.v|fetch.v|fullAdder_1b.v|memory.v|memory2c.v|nand2.v|nand3.v|nor2.v|nor3.v|not1.v|proc.v|proc_hier.v|proc_hier_bench.v|regFile.v|regFile_bypass.v|regFile_hier.v|register.v|shifter.v|wb.v|xor2.v|xor3.v|
 !i113 1
 Z8 o-work __work
 Z9 !s92 +define+RANDSEED=3 -work __work
@@ -46,7 +46,7 @@ r1
 !s85 0
 31
 R6
-Z11 !s107 xor3.v|xor2.v|wb.v|shifter.v|register.v|regFile.v|regFile_hier.v|regFile_bypass.v|proc.v|proc_hier.v|proc_hier_bench.v|not1.v|nor3.v|nor2.v|nand3.v|nand2.v|memory.v|memory2c.v|fullAdder_1b.v|fetch.v|execute.v|dff.v|decode.v|control.v|clkrst.v|cla_4b.v|cla_16b.v|brchcnd.v|bit_shift.v|bit_8shift.v|bit_4shift.v|bit_2shift.v|alu.v|alu_hier.v|alu_control.v|
+Z11 !s107 xor3.v|xor2.v|wb.v|shifter.v|register.v|regFile_hier.v|regFile_bypass.v|regFile.v|proc_hier_bench.v|proc_hier.v|proc.v|not1.v|nor3.v|nor2.v|nand3.v|nand2.v|memory2c.v|memory.v|fullAdder_1b.v|fetch.v|execute.v|dff.v|decode.v|control.v|clkrst.v|cla_4b.v|cla_16b.v|brchcnd.v|bit_shift.v|bit_8shift.v|bit_4shift.v|bit_2shift.v|alu_hier.v|alu_control.v|alu.v|
 R7
 !i113 1
 R8
@@ -675,11 +675,11 @@ nreg@file_hier
 vregister
 R1
 !i10b 1
-!s100 ?Xg>mD;7acDeYRmX<3:AX1
-IBjkzDG;F8TzbebP5kXH9M0
+!s100 dJ84@VGhLPKRS9WUlF6mF3
+I0<Dfc4<1JHjnHbTN8nEhH3
 R2
 R0
-R12
+w1729462936
 8register.v
 Fregister.v
 L0 1

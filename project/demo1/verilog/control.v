@@ -4,7 +4,7 @@ module control (instr, nHaltSig, RegDst, RegWrt, MemRead, ZeroExt, BSrc, ImmSrc,
     output reg nHaltSig, RegWrt, ZeroExt, MemRead,ImmSrc, ALUSign, ALUJmp, MemWrt,err;      
     output reg [5:0] ALUOpr;   
     output reg [1:0] RegSrc, BSrc,RegDst;      
-    output reg [2:0] BranchTaken;
+    output reg [3:0] BranchTaken;
     wire funct;
     assign funct = instr[1:0];
 
@@ -25,13 +25,13 @@ module control (instr, nHaltSig, RegDst, RegWrt, MemRead, ZeroExt, BSrc, ImmSrc,
     RegDst = 2'b00;
     BSrc = 2'b00;
     MemRead = 1'b0;
-    BranchTaken = 3'b000;
+    BranchTaken = 4'b000;
 
     casex(instr[15:11])
         5'b00000: nHaltSig = 1'b0;		// HALT 
-        //5'b00001: begin		// NOP
+        5'b00001:begin		// NOP
             // none
-
+            end
         /* I format 1 below: */
         5'b010xx: begin   //ADDI, SUBI, XORI, ANDNI
             RegSrc = 2'b10;
@@ -157,7 +157,7 @@ module control (instr, nHaltSig, RegDst, RegWrt, MemRead, ZeroExt, BSrc, ImmSrc,
     
             ALUJmp = 1'b0;
             ImmSrc = 1'b0;
-            BranchTaken = 3'b100;
+            BranchTaken = 4'b1000;
         end
         5'b00101: begin		// JR
             RegWrt = 1'b0;
@@ -175,7 +175,7 @@ module control (instr, nHaltSig, RegDst, RegWrt, MemRead, ZeroExt, BSrc, ImmSrc,
     
             ALUJmp = 1'b0;
             ImmSrc = 1'b0;
-            BranchTaken = 3'b100;
+            BranchTaken = 4'b1000;
         end
         5'b00111: begin		// JALR
             RegSrc = 2'b00;
@@ -185,7 +185,7 @@ module control (instr, nHaltSig, RegDst, RegWrt, MemRead, ZeroExt, BSrc, ImmSrc,
             ALUJmp = 1'b1;
             ImmSrc = 1'b1;
             BSrc = 2'b10;
-            BranchTaken = 3'b100;
+            BranchTaken = 4'b1000;
         end
         
         /* TODO: Extra Credit below: */

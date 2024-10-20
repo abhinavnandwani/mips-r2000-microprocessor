@@ -10,7 +10,7 @@ module execute (RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc, ,nHaltSig,I
    input wire [15:0] Imm5, Imm8, sImm8, sImm11;
    input wire [1:0] BSrc;
    input wire [3:0] Oper;
-   input wire [2:0] BranchTaken;
+   input wire [3:0] BranchTaken;
    input wire ImmSrc, ALUJmp, invA, invB, ALUSign, cin,nHaltSig;
    output wire [15:0] ALU_Out, PC_Next;
 

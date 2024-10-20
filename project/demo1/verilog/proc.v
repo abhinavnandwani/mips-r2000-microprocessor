@@ -27,13 +27,13 @@ module proc (/*AUTOARG*/
    wire [15:0] PC_Jump,PC;
    wire [15:0] instr, PC_f, PC_d;
    wire [5:0] ALUOpr;
-   wire [3:0] Oper;
+   wire [3:0] Oper,BranchTaken;
    wire [15:0] WB;
    wire [15:0] RSData, RTData, ALU, readData;
    wire [15:0] Imm5, Imm8, sImm8, sImm11;
    wire nHaltSig, RegWrt, ZeroExt, ImmSrc, invA, invB, ALUSign, Cin, ALUJmp, MemWrt,MemRead,err;        
    wire [1:0] RegSrc, BSrc,RegDst;      
-   wire [2:0] BranchTaken,RD;  
+   wire [2:0] RD;  
 
 
    control control0(.instr(instr), .err(err), .nHaltSig(nHaltSig), .MemRead(MemRead),.RegDst(RegDst), .RegWrt(RegWrt), .ZeroExt(ZeroExt), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUOpr(ALUOpr), .ALUSign(ALUSign), .ALUJmp(ALUJmp), .MemWrt(MemWrt), .RegSrc(RegSrc), .BranchTaken(BranchTaken));

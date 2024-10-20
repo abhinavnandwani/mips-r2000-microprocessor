@@ -1,9 +1,8 @@
-          // Original test: ./lavallee/hw4/problem6/bnez_3.asm
-          // Author: lavallee
+          // Original test: ./shojaei/hw4/problem6/xori_2.asm
+          // Author: shojaei
           // Test source code follows
           
           
-          	//// This program test the lowest limit of branch
-0000 c3fc 	lbi r3, -4		// set r3 to non zero value
-0002 6b80 	bnez r3, -128		// tests the lowest twos comp number
-0004 0000 	halt
+0000 c118 lbi r1, 24
+0002 5147 xori r2, r1, 7
+0004 0000 halt

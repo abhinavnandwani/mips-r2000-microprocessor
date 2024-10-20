@@ -139,7 +139,7 @@ module control (instr, nHaltSig, RegDst, RegWrt, MemRead, ZeroExt, BSrc, ImmSrc,
             BranchTaken = 3'b000;
         end
         5'b10010: begin		// SLBI FIX
-            RegWrt = 1'b01;
+            RegWrt = 1'b1;
             RegDst = 2'b01;
             ALUJmp = 1'b0;
             ImmSrc = 1'b1;

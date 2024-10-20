@@ -5,7 +5,7 @@
    Description     : This is the overall module for the execute stage of the processor.
 */
 `default_nettype none
-module execute (RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc, ,nHaltSig,ImmSrc, ALUJmp, invA, invB, ,Oper, ALUSign, cin, BranchTaken, ALU_Out, PC_Next);
+module execute (RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc, nHaltSig, ImmSrc, ALUJmp, invA, invB, Oper, ALUSign, cin, BranchTaken, ALU_Out, PC_Next);
    input wire [15:0] RSData, RTData, PC;
    input wire [15:0] Imm5, Imm8, sImm8, sImm11;
    input wire [1:0] BSrc;

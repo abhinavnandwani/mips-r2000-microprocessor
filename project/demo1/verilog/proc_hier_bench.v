@@ -125,16 +125,16 @@ module proc_hier_bench();
    // Decode stage assignments
    assign RegWrite = DUT.p0.decode0.RegWrt;  // Register write signal
    assign WriteRegister = DUT.p0.decode0.RD; // Register destination
-   assign WriteData = DUT.p0.decode0.WB;    // Data to write to register
+    assign WriteData = DUT.p0.decode0.WB;   // Data to write to register
 
    // Memory stage assignments
-   assign MemRead = DUT.p0.memory0.readData;  // Memory read signal
-   assign MemWrite = (DUT.p0.memory0.nHaltSig & DUT.p0.memory0.MemWrt);  // Memory write signal
+   assign MemRead = DUT.p0.memory0.readEn;  // Memory read signal
+   assign MemWrite = DUT.p0.memory0.MemWrt;  // Memory write signal
    assign MemAddress = DUT.p0.memory0.ALU;   // Address for memory access
    assign MemData = DUT.p0.memory0.writeData; // Data to write to memory
 
    // Control and status signals
-   assign Halt = ~(DUT.p0.memory0.nHaltSig);    // negated case our signal is active low Processor halt signal
+   assign Halt = ~(DUT.p0.control0.nHaltSig);    // negated case our signal is active low Processor halt signal
 
    /* Additional control signals for debugging and tracing */
    assign ZeroExt = DUT.p0.control0.ZeroExt;     // Zero extension signal

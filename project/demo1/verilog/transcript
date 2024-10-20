@@ -1,5 +1,5 @@
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 19:39:16 on Oct 19,2024
+# Start time: 22:00:36 on Oct 19,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -43,11 +43,11 @@
 # ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'execute0'.  Expected 21, found 19.
 #    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/execute0 File: proc.v Line: 43
 # log -howmany -rec /* 
-# 2851
+# 2855
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.trace for output
 # ** Note: $finish    : proc_hier_bench.v(96)
-#    Time: 500 ns  Iteration: 1  Instance: /proc_hier_bench
-# End time: 19:39:17 on Oct 19,2024, Elapsed time: 0:00:01
+#    Time: 218300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 22:00:37 on Oct 19,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 1

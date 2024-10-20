@@ -7,7 +7,7 @@ module bit_2shift (in,oper,out);
     
     assign out = (oper == 2'b00) ? {in[13:0], in[15:14]} :  //rotate left
                  (oper == 2'b01) ? {in[13:0], 2'b00} : //shift left
-                 (oper == 2'b10) ? {in[15],in[15],in[15:2]} : //shift right arithmetic
+                 (oper == 2'b10) ? {in[1:0],in[15:2]} : //rotate right 
                   {2'b00,in[15:2]}; //shift right logical   
 
 endmodule

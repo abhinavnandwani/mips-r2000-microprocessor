@@ -9,9 +9,9 @@ module brchcnd (SF, ZF, brch_instr, BrchCnd);
       case (brch_instr[1:0])
          2'b00: brch_sig = ZF;             // BEQZ
          2'b01: brch_sig = ~ZF;            // BNEZ
-         2'b10: brch_sig = SF & ~ZF;       // BLTZ (ZF should be low case it is pure "less than")
-         2'b11: brch_sig = ~SF;             // BGEZ
-         default: brch_sig = 1'b0;          // Default to no branch
+         2'b10: brch_sig = ~SF & ~ZF;       // BLTZ (ZF should be low case it is pure "less than")
+         2'b11: brch_sig = SF;             // BGEZ
+        // default: brch_sig = 1'b0;          // Default to no branch
       endcase
    end
 

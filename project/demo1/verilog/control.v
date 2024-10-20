@@ -1,6 +1,6 @@
-    module control (instr, nHaltSig, RegDst, RegWrt, ZeroExt, BSrc, ImmSrc, ALUOpr, invA, invB, ALUSign, Cin, err,ALUJmp, MemWrt, RegSrc, BranchTaken);
+    module control (instr, nHaltSig, RegDst, RegWrt, MemRead, ZeroExt, BSrc, ImmSrc, ALUOpr, invA, invB, ALUSign, Cin, err,ALUJmp, MemWrt, RegSrc, BranchTaken);
         input [15:0] instr;   
-        output reg nHaltSig, RegWrt, ZeroExt, ImmSrc, invA, invB, ALUSign, Cin, ALUJmp, MemWrt,err;      
+        output reg nHaltSig, RegWrt, ZeroExt, MemRead,ImmSrc, invA, invB, ALUSign, Cin, ALUJmp, MemWrt,err;      
         output reg [5:0] ALUOpr;   
         output reg [1:0] RegSrc, BSrc,RegDst;      
         output reg [2:0] BranchTaken;
@@ -22,11 +22,13 @@
         Cin = 1'b0;
         ALUJmp = 1'b0;
         MemWrt = 1'b0;
+        MemRead = 1'b0;
         err = 1'b0;
         ALUOpr = 6'b000000;  // Ensure it's a 6-bit value
         RegSrc = 2'b10;
         RegDst = 2'b00;
         BSrc = 2'b00;
+        MemRead = 1'b0;
         BranchTaken = 3'b000;
 
 		case(instr[15:11])
@@ -146,16 +148,15 @@
 
 			5'b10000: begin		// ST
 				RegSrc = 2'b01;
-                RegDst = 2'b00;
                 RegWrt = 1'b0;
                 MemWrt = 1'b1;
-				ZeroExt = 1'b1;
+				ZeroExt = 1'b0;
 				BSrc = 2'b01;
 				ALUSign = 1'b0;
                 invA = 1'b0;
                 invB = 1'b0;
                 Cin = 1'b0;
-                ALUOpr = 3'b100;
+                ALUOpr = {3'b000,instr[13:11]}; //ADDI
                 BranchTaken = 3'b000;
 			end
 			5'b10001: begin		// LD
@@ -167,33 +168,34 @@
 				BSrc = 2'b01;
 				ALUSign = 1'b0;
                 invA = 1'b0;
+                MemRead = 1'b1;
                 invB = 1'b0;
                 Cin = 1'b0;
-                ALUOpr = 3'b100;
+                ALUOpr = {3'b000,instr[13:11]}; //ADDI
                 BranchTaken = 3'b000;
 			end
 			5'b10011: begin		// STU
 				RegSrc = 2'b10;
                 RegDst = 2'b01;
                 RegWrt = 1'b1;
-                MemWrt = 1'b0;
+                MemWrt = 1'b1;
 				ZeroExt = 1'b0;
 				BSrc = 2'b01;
 				ALUSign = 1'b0;
                 invA = 1'b0;
                 invB = 1'b0;
                 Cin = 1'b0;
-                ALUOpr = 3'b100;
+                ALUOpr = {3'b000,instr[13:11]}; //ADDI
                 BranchTaken = 3'b000;
 			end
 						
 			/* R format below: */
 			
 			5'b11001: begin		// BTR FIX!!
-				RegSrc = 2'b01;
-                RegDst = 2'b00;
-                RegWrt = 1'b0;
-                MemWrt = 1'b1;
+				RegSrc = 2'b10;
+                RegDst = 2'b10;
+                RegWrt = 1'b1;
+                MemWrt = 1'b0;
 				ZeroExt = 1'b1;
 				BSrc = 2'b01;
 				ALUSign = 1'b0;

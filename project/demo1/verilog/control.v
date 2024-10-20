@@ -122,6 +122,7 @@ module control (instr, nHaltSig, RegDst, RegWrt, MemRead, ZeroExt, BSrc, ImmSrc,
             RegWrt = 1'b0;
             ALUJmp = 1'b0;
             ImmSrc = 1'b1;
+            ALUSign = 1'b1;
             BSrc = 2'b11;
             ALUOpr = 6'b000001; //SUBI
             BranchTaken = {1'b1, instr[12:11]};

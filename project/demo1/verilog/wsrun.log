@@ -1,0 +1,564 @@
+Model Technology ModelSim DE vlog 10.7c Compiler 2018.08 Aug 17 2018
+Start time: 02:26:10 on Oct 20,2024
+vlog "+define+RANDSEED=3" -work __work alu.v alu_control.v alu_hier.v bit_2shift.v bit_4shift.v bit_8shift.v bit_shift.v brchcnd.v cla_16b.v cla_4b.v clkrst.v control.v decode.v dff.v execute.v fetch.v fullAdder_1b.v memory.v memory2c.v nand2.v nand3.v nor2.v nor3.v not1.v proc.v proc_hier.v proc_hier_bench.v regFile.v regFile_bypass.v regFile_hier.v register.v shifter.v wb.v xor2.v xor3.v 
+-- Compiling module alu
+-- Compiling module alu_control
+-- Compiling module alu_hier
+-- Compiling module bit_2shift
+-- Compiling module bit_4shift
+-- Compiling module bit_8shift
+-- Compiling module bit_shift
+-- Compiling module brchcnd
+-- Compiling module cla_16b
+-- Compiling module cla_4b
+-- Compiling module clkrst
+-- Compiling module control
+** Warning: control.v(142): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+-- Compiling module decode
+-- Compiling module dff
+-- Compiling module execute
+-- Compiling module fetch
+-- Compiling module fullAdder_1b
+-- Compiling module memory
+-- Compiling module memory2c
+-- Compiling module nand2
+-- Compiling module nand3
+-- Compiling module nor2
+-- Compiling module nor3
+-- Compiling module not1
+-- Compiling module proc
+-- Compiling module proc_hier
+-- Compiling module proc_hier_bench
+-- Compiling module regFile
+-- Compiling module regFile_bypass
+-- Compiling module regFile_hier
+-- Compiling module register
+-- Compiling module shifter
+-- Compiling module wb
+-- Compiling module xor2
+-- Compiling module xor3
+
+Top level modules:
+	alu_hier
+	nand3
+	nor2
+	nor3
+	not1
+	proc_hier_bench
+	regFile_bypass
+	regFile_hier
+	xor3
+End time: 02:26:10 on Oct 20,2024, Elapsed time: 0:00:00
+Errors: 0, Warnings: 1
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 02:26:10 on Oct 20,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.alu_control
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'execute0'.  Expected 21, found 19.
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/execute0 File: proc.v Line: 44
+# log -howmany -rec /* 
+# 2839
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 225700 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 02:26:11 on Oct 20,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 1
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/rand_mem/t_2_mem.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 02:26:13 on Oct 20,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.alu_control
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'execute0'.  Expected 21, found 19.
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/execute0 File: proc.v Line: 44
+# log -howmany -rec /* 
+# 2839
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 233700 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 02:26:13 on Oct 20,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/rand_mem/t_3_mem.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 02:26:17 on Oct 20,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.alu_control
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'execute0'.  Expected 21, found 19.
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/execute0 File: proc.v Line: 44
+# log -howmany -rec /* 
+# 2839
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 217300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 02:26:17 on Oct 20,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/rand_mem/t_4_mem.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 02:26:20 on Oct 20,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.alu_control
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'execute0'.  Expected 21, found 19.
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/execute0 File: proc.v Line: 44
+# log -howmany -rec /* 
+# 2839
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 202700 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 02:26:21 on Oct 20,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 1
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/rand_mem/t_5_mem.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 02:26:24 on Oct 20,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.alu_control
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'execute0'.  Expected 21, found 19.
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/execute0 File: proc.v Line: 44
+# log -howmany -rec /* 
+# 2839
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 223300 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 02:26:24 on Oct 20,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/rand_mem/t_6_mem.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 02:26:26 on Oct 20,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.alu_control
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'execute0'.  Expected 21, found 19.
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/execute0 File: proc.v Line: 44
+# log -howmany -rec /* 
+# 2839
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 217500 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 02:26:27 on Oct 20,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 1
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/rand_mem/t_7_mem.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 02:26:28 on Oct 20,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.alu_control
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'execute0'.  Expected 21, found 19.
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/execute0 File: proc.v Line: 44
+# log -howmany -rec /* 
+# 2839
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 228700 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 02:26:29 on Oct 20,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 1
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/rand_mem/t_8_mem.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 02:26:30 on Oct 20,2024
+# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading __work.proc_hier_bench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.control
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.memory2c
+# Loading __work.cla_16b
+# Loading __work.decode
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.alu_control
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.memory
+# Loading __work.wb
+# Loading __work.dff
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.fullAdder_1b
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'execute0'.  Expected 21, found 19.
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_bench/DUT/p0/execute0 File: proc.v Line: 44
+# log -howmany -rec /* 
+# 2839
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.trace for output
+# ** Note: $finish    : proc_hier_bench.v(96)
+#    Time: 215500 ns  Iteration: 1  Instance: /proc_hier_bench
+# End time: 02:26:31 on Oct 20,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 1

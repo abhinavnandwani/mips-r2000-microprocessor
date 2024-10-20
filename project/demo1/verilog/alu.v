@@ -59,8 +59,8 @@ module alu (InA, InB, Cin, Oper, invA, invB, sign, Out, ZF,SF,OF,CF);
             4'b00xx: Out = BitOut;
             4'b01xx: Out = ShOut; 
             4'b1000: Out = {15'b000000000000000,ZF};
-            4'b1001: Out = {15'b000000000000000,(~SF & ~ZF)}; //SLT
-            4'b1010: Out = {15'b000000000000000,(~SF |ZF)}; //SLE
+            4'b1001: Out = {15'b000000000000000, (~SF & ~ZF & ~OF)} | (OF & SF);
+            4'b1010: Out = {15'b000000000000000, (ZF | (~SF & ~OF)) | (OF &SF)}; // SLE
             4'b1011: Out = {15'b000000000000000,CF};
             4'b1100: Out = {A[0],A[1],A[2],A[3],A[4],A[5],A[6],A[7],A[8],A[9],A[10],A[11],A[12],A[13],A[14],A[15]}; //TODO BTR
             4'b1101: Out = B; //LBI

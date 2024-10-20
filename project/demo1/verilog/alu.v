@@ -40,7 +40,7 @@ module alu (InA, InB, Cin, Oper, invA, invB, sign, Out, ZF,SF,OF,CF);
     shifter shift(.In(A), .ShAmt(B[3:0]), .Oper(Oper[1:0]), .Out(ShOut));
 
     assign BitOut = (Oper[1:0] == 2'b00) ? S : 
-                    (Oper[1:0] == 2'b11) ? (A & B) :   
+                    (Oper[1:0] == 2'b11) ? (A) :   
                     ((Oper[1:0] == 2'b10) ? (A^B) : (S));
 
     //assign Out = (Oper[2]) ? ((Oper[1:0] == 2'b00) ? S : BitOut) : ShOut;
@@ -49,19 +49,19 @@ module alu (InA, InB, Cin, Oper, invA, invB, sign, Out, ZF,SF,OF,CF);
     
 
     //// branch conditions ////
-    assign ZF = (BitOut == 16'h0000) ? 1'b1 : 1'b0;
+    assign ZF = (S == 16'h0000) ? 1'b1 : 1'b0;
     assign OF = (sign) ? ((A[15]~^B[15]) & (S[15]^A[15])) : Cout;
     assign CF = Cout;
-    assign SF = BitOut[OPERAND_WIDTH-1];
+    assign SF = S[OPERAND_WIDTH-1];
 
     always@(*) begin
         casex(Oper)
             4'b00xx: Out = BitOut;
             4'b01xx: Out = ShOut; 
-            4'b1000: Out = ZF;
-            4'b1001: Out = (~SF & ~ZF);
-            4'b1010: Out = ~SF;
-            4'b1011: Out = CF;
+            4'b1000: Out = {15'b000000000000000,ZF};
+            4'b1001: Out = {15'b000000000000000,(~SF & ~ZF)}; //SLT
+            4'b1010: Out = {15'b000000000000000,~SF}; //SLE
+            4'b1011: Out = {15'b000000000000000,CF};
             4'b1100: Out = A; //TODO
             4'b1101: Out = B; //LBI
             4'b1110: Out = {A[7:0],B[7:0]};

@@ -219,7 +219,7 @@
                         ALUOpr = {3'b010,~instr[11],2'bxx};
                         BranchTaken = 3'b000;
 					end
-					2'b01: begin		// SUB
+				    2'b01: begin		// SUB
                         RegSrc = 2'b10;
                         RegDst = 2'b10;
                         RegWrt = 1'b1;
@@ -232,7 +232,7 @@
                         Cin = 1'b1;
                         ALUOpr = {3'b010,~instr[11],2'bxx};
                         BranchTaken = 3'b000;
-					end
+					end 
 					2'b10: begin		// XOR
                         RegSrc = 2'b10;
                         RegDst = 2'b10;
@@ -326,9 +326,9 @@
                 MemWrt = 1'b0;
                 BSrc = 2'b00;
                 ALUSign = 1'b1;
-                invA = 1'b0;
+                invA = 1'b1;
                 invB = 1'b0;
-                Cin = 1'b0;
+                Cin = 1'b1;
                 ALUOpr = 6'b011xxx;
                 BranchTaken = 3'b000;
 			end
@@ -339,9 +339,9 @@
                 MemWrt = 1'b0;
                 BSrc = 2'b00;
                 ALUSign = 1'b1;
-                invA = 1'b0;
+                invA = 1'b1;
                 invB = 1'b0;
-                Cin = 1'b0;
+                Cin = 1'b1;
                 ALUOpr = 6'b100xxx;
                 BranchTaken = 3'b000;
 			end
@@ -352,9 +352,9 @@
                 MemWrt = 1'b0;
                 BSrc = 2'b00;
                 ALUSign = 1'b1;
-                invA = 1'b0;
+                invA = 1'b1;
                 invB = 1'b0;
-                Cin = 1'b0;
+                Cin = 1'b1;
                 ALUOpr = 6'b101xxx;
                 BranchTaken = 3'b000;
 			end
@@ -379,6 +379,8 @@
                 MemWrt = 1'b0;
                 ALUJmp = 1'b0;
                 ImmSrc = 1'b1;
+                invA = 1'b1;
+                BSrc = 2'b11;
                 ALUOpr = 3'b101;
                 BranchTaken = {1'b1, instr[12:11]};
 			end
@@ -387,6 +389,8 @@
                 MemWrt = 1'b0;
                 ALUJmp = 1'b0;
                 ImmSrc = 1'b1;
+                invA = 1'b1;
+                BSrc = 2'b11;
                 ALUOpr = 3'b101;
                 BranchTaken = {1'b1, instr[12:11]};
 			end
@@ -395,6 +399,8 @@
                 MemWrt = 1'b0;
                 ALUJmp = 1'b0;
                 ImmSrc = 1'b1;
+                BSrc = 2'b11;
+                invA = 1'b1;
                 ALUOpr = 3'b101;
                 BranchTaken = {1'b1, instr[12:11]};
 			end
@@ -403,6 +409,8 @@
                 MemWrt = 1'b0;
                 ALUJmp = 1'b0;
                 ImmSrc = 1'b1;
+                invA = 1'b1;
+                BSrc = 2'b11;
                 ALUOpr = 3'b101;
                 BranchTaken = {1'b1, instr[12:11]};
 			end

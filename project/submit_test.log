@@ -21,7 +21,7 @@ Executing rm -rf __work dump.wlf dump.vcd diff.trace diff.ptrace archsim.trace a
 Executing vlib __work
 Executing vlog +define+RANDSEED=3 -work __work alu_control.v alu_hier.v alu.v bit_2shift.v bit_4shift.v bit_8shift.v bit_shift.v brchcnd.v cla_16b.v cla_4b.v clkrst.v control.v decode.v dff.v execute.v fetch.v fullAdder_1b.v memory2c.v memory.v nand2.v nand3.v nor2.v nor3.v not1.v proc_hier_bench.v proc_hier.v proc.v regFile_bypass.v regFile_hier.v regFile.v register.v shifter.v wb.v xor2.v xor3.v
 Model Technology ModelSim DE vlog 10.7c Compiler 2018.08 Aug 17 2018
-Start time: 17:33:32 on Oct 20,2024
+Start time: 20:23:59 on Oct 20,2024
 vlog "+define+RANDSEED=3" -work __work alu_control.v alu_hier.v alu.v bit_2shift.v bit_4shift.v bit_8shift.v bit_shift.v brchcnd.v cla_16b.v cla_4b.v clkrst.v control.v decode.v dff.v execute.v fetch.v fullAdder_1b.v memory2c.v memory.v nand2.v nand3.v nor2.v nor3.v not1.v proc_hier_bench.v proc_hier.v proc.v regFile_bypass.v regFile_hier.v regFile.v register.v shifter.v wb.v xor2.v xor3.v 
 -- Compiling module alu_control
 -- Compiling module alu_hier
@@ -69,7 +69,7 @@ Top level modules:
 	regFile_bypass
 	regFile_hier
 	xor3
-End time: 17:33:32 on Oct 20,2024, Elapsed time: 0:00:00
+End time: 20:23:59 on Oct 20,2024, Elapsed time: 0:00:00
 Errors: 0, Warnings: 0
 -------------------------------------------------
 Step: 3
@@ -79,7 +79,7 @@ Reading pref.tcl
 # 10.7c
 
 # vsim -c proc_hier_bench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 17:33:33 on Oct 20,2024
+# Start time: 20:24:00 on Oct 20,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -127,7 +127,7 @@ Reading pref.tcl
 # See verilogsim.log and verilogsim.trace for output
 # ** Note: $finish    : proc_hier_bench.v(96)
 #    Time: 800 ns  Iteration: 1  Instance: /proc_hier_bench
-# End time: 17:33:33 on Oct 20,2024, Elapsed time: 0:00:00
+# End time: 20:24:00 on Oct 20,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 -------------------------------------------------
 Step: 4

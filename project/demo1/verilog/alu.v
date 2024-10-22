@@ -30,8 +30,8 @@ module alu (InA, InB, Cin, Oper, invA, invB, sign, Out, ZF,SF,OF,CF);
     assign B = invB ? ~InB : InB;
 
     
-    //cla_16b cla(.sum(S), .c_out(Cout), .a((B)), .b((A)), .c_in(Cin));
-    assign {Cout,S} = {A+B+Cin};
+    cla_16b cla(.sum(S), .c_out(Cout), .a((B)), .b((A)), .c_in(Cin));
+
 
     shifter shift(.In(A), .ShAmt(B[3:0]), .Oper(Oper[1:0]), .Out(ShOut));
 

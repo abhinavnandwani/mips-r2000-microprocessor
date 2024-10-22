@@ -1,3 +1,8 @@
+/* 
+    Author          : Abhinav Nandwani, Anna Huang
+    Filename        : bit_8shift.v
+    Description     : This module does a 8-bit shift of the input based on the oper(ation)
+*/
 module bit_8shift (in,oper,out);
 
     input [15:0] in;  //16 bit input 

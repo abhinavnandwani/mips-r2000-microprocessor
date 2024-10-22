@@ -1,3 +1,8 @@
+/* 
+    Author          : Abhinav Nandwani, Anna Huang
+    Filename        : bit_1shift.v
+    Description     : This module does a 1-bit shift of the input based on the oper(ation)
+*/
 module bit_shift (in,oper,out);
 
     input [15:0] in;  //16 bit input 

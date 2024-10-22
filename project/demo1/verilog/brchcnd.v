@@ -1,3 +1,9 @@
+/* 
+    Author          : Abhinav Nandwani, Anna Huang
+    Filename        : brchcnd.v
+    Description     : This module generates the "BrchCnd" control signal for the branch mux in the execute.v module
+*/
+
 module brchcnd (SF, ZF, brch_instr, BrchCnd);
    input SF, ZF;
    input [3:0] brch_instr;
@@ -11,7 +17,6 @@ module brchcnd (SF, ZF, brch_instr, BrchCnd);
          2'b01: brch_sig = ~ZF;            // BNEZ
          2'b10: brch_sig = ~SF & ~ZF;       // BLTZ (ZF should be low case it is pure "less than")
          2'b11: brch_sig = SF | ZF;             // BGEZ
-        // default: brch_sig = 1'b1;          // unconditional to no branch
       endcase
    end
 

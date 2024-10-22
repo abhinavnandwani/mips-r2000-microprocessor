@@ -1,12 +1,12 @@
-/*
-   CS/ECE 552 Spring '22
-  
-   Filename        : fetch.v
-   Description     : This is the module for the overall fetch stage of the processor.
+/* 
+    Author          : Abhinav Nandwani, Anna Huang
+    Filename        : fetch.v
+    Description     : This is the overall module for the fetch state of the processor. 
 */
+
 module fetch (clk, rst, PC_B,nHaltSig, instr, PC_Next,PC_curr);
    input clk, rst;
-   input [15:0] PC_B; //PC from Branch/Jump Mux
+   input [15:0] PC_B; // The PC value "back" from the execute stage. 
    input nHaltSig;
    output [15:0] instr;
    output [15:0] PC_Next,PC_curr;
@@ -26,11 +26,11 @@ module fetch (clk, rst, PC_B,nHaltSig, instr, PC_Next,PC_curr);
    memory2c instr_mem(.data_out(instr), .data_in(16'h0000), .addr(PC), .enable(1'b1), .wr(1'b0), .createdump(~nHaltSig), .clk(clk), .rst(rst));
 
    // Adder: PC + 2
-   assign add2 = 16'h0002;
-   cla_16b pc_add2 (.sum(PC_Sum), .c_out(c_out), .a(PC), .b(add2), .c_in(1'b0));
 
+   //cla_16b pc_add2 (.sum(PC_Sum), .c_out(c_out), .a(PC), .b(16'h0002), .c_in(1'b0));
+   assign {c_out, PC_Sum} = PC + 16'h0002;
    // Halt Mux
    assign PC_Next =  (!nHaltSig) ? PC:PC_Sum;
-   //assign PC_Next = PC_Sum;
+ 
 
 endmodule

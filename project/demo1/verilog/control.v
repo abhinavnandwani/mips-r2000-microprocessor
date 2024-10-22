@@ -1,3 +1,9 @@
+/* 
+    Author          : Abhinav Nandwani, Anna Huang
+    Filename        : control.v
+    Description     : This module decodes the instruction and generates control signals for all the sub-modules of the processor. 
+*/
+
 `default_nettype none
 module control (instr, nHaltSig, RegDst, RegWrt, MemRead, ZeroExt, BSrc, ImmSrc, ALUOpr, ALUSign, err,ALUJmp, MemWrt, RegSrc, BranchTaken);
     input wire [15:0] instr;   

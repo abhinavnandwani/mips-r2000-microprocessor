@@ -1,9 +1,7 @@
-/*
-   CS/ECE 552 Spring '22
-  
-   Filename        : memory.v
-   Description     : This module contains all components in the Memory stage of the 
-                     processor.
+/* 
+    Author          : Abhinav Nandwani, Anna Huang
+    Filename        : memory.v
+    Description     : This module contains all components in the Memory stage of the processor.
 */
 `default_nettype none
 module memory (clk,rst,ALU, writeData, readEn, MemWrt, readData,nHaltSig);

@@ -1,9 +1,9 @@
-/*
-   CS/ECE 552 Spring '22
-  
+/*  
+   Author          : Abhinav Nandwani, Anna Huang
    Filename        : execute.v
    Description     : This is the overall module for the execute stage of the processor.
 */
+
 `default_nettype none
 module execute (RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc, nHaltSig, ImmSrc, ALUJmp, invA, invB, Oper, ALUSign, cin, BranchTaken, ALU_Out, PC_Next);
    input wire [15:0] RSData, RTData, PC;
@@ -21,7 +21,8 @@ module execute (RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc, nHaltSig, I
 
    // PC Adder
    assign PC_I = (ImmSrc) ? sImm8 : sImm11;
-   cla_16b pc_adder(.sum(Branch), .c_out(), .a(PC), .b(PC_I), .c_in(1'b0));
+   //cla_16b pc_adder(.sum(Branch), .c_out(), .a(PC), .b(PC_I), .c_in(1'b0));
+   assign Branch = PC + PC_I;
    
    //Branch & Jump Mux
    assign PC_Branch = (nHaltSig ? BrchCnd : 1'b0) ? Branch : PC;
@@ -30,7 +31,7 @@ module execute (RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc, nHaltSig, I
    // Register Mux
    assign ALUIn = (BSrc == 2'b00) ? RTData : (BSrc == 2'b01) ? Imm5 : (BSrc == 2'b10) ? Imm8 : 16'h0000;
    
-   // Register Adder NOT DONE NEED TO FIX ALU
+   // Register Adder 
    alu alu1(.InA(RSData), .InB(ALUIn), .Cin(cin), .Oper(Oper), .invA(invA), .invB(invB), .sign(ALUSign), .Out(ALU_Out), .ZF(ZF), .SF(SF), .OF(OF), .CF(CF));
    
    

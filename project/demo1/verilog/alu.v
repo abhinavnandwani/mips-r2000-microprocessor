@@ -1,14 +1,9 @@
-/*
-    CS/ECE 552 FALL '22
-    Homework #2, Problem 3
-
-    A multi-bit ALU module (defaults to 16-bit). It is designed to choose
-    the correct operation to perform on 2 multi-bit numbers from rotate
-    left, shift left, shift right arithmetic, shift right logical, add,
-    or, xor, & and.  Upon doing this, it should output wire the multi-bit result
-    of the operation, as well as drive the output wire signals Zero and Overflow
-    (OFL).
+/* 
+    Author          : Abhinav Nandwani, Anna Huang
+    Filename        : alu.v
+    Description     : A multi-bit ALU module (defaults to 16-bit). As various flags for branching and jumps. 
 */
+
 `default_nettype none
 module alu (InA, InB, Cin, Oper, invA, invB, sign, Out, ZF,SF,OF,CF);
 
@@ -35,7 +30,8 @@ module alu (InA, InB, Cin, Oper, invA, invB, sign, Out, ZF,SF,OF,CF);
     assign B = invB ? ~InB : InB;
 
     
-    cla_16b cla(.sum(S), .c_out(Cout), .a((B)), .b((A)), .c_in(Cin));
+    //cla_16b cla(.sum(S), .c_out(Cout), .a((B)), .b((A)), .c_in(Cin));
+    assign {Cout,S} = {A+B+Cin};
 
     shifter shift(.In(A), .ShAmt(B[3:0]), .Oper(Oper[1:0]), .Out(ShOut));
 
@@ -43,11 +39,7 @@ module alu (InA, InB, Cin, Oper, invA, invB, sign, Out, ZF,SF,OF,CF);
                     (Oper[1:0] == 2'b11) ? (A&B) :   
                     ((Oper[1:0] == 2'b10) ? (A^B) : (S));
 
-    //assign Out = (Oper[2]) ? ((Oper[1:0] == 2'b00) ? S : BitOut) : ShOut;
     
-
-    
-
     //// branch conditions ////
     assign ZF = (S == 16'h0000) ? 1'b1 : 1'b0;
     assign OF = (sign) ? ((A[15]~^B[15]) & (S[15]^A[15])) : Cout;

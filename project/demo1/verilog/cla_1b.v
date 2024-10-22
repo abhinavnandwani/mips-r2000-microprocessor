@@ -1,10 +1,9 @@
-/*
-    CS/ECE 552 FALL '22
-    Homework #2, Problem 1
-    
-    a 1-bit full adder
+/* 
+    Author          : Abhinav Nandwani, Anna Huang
+    Filename        : cla_1b.v
+    Description     : 1 bit adder, used by cla_4b.v to perform addition. 
 */
-module fullAdder_1b(s, c_out, a, b, c_in);
+module cla_1b(s, c_out, a, b, c_in);
     output  s;
     output c_out;
 	input   a, b;

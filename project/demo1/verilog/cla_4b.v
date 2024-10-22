@@ -1,8 +1,7 @@
-/*
-    CS/ECE 552 FALL'22
-    Homework #2, Problem 1
-    
-    a 4-bit CLA module
+/* 
+    Author          : Abhinav Nandwani, Anna Huang
+    Filename        : cla_4b.v
+    Description     : 4 bit carry look-ahead adder, used by cla_16b.v to instantiate a 16 bit adder
 */
 module cla_4b(sum, c_out, a, b, c_in);
 
@@ -29,7 +28,7 @@ module cla_4b(sum, c_out, a, b, c_in);
     nand2 nand_2 [3:0](.out(cp),.in1(p),.in2({carries[3:1], c_in}));
     nand2 nand_3 [3:0](.out({c_out, carries[3:1]}),.in1(cp),.in2(ng));
     
-    fullAdder_1b fa [3:0] (.s(sum), .c_out(), .a(a), .b(b), .c_in({carries[3:1], c_in}));
+    cla_1b fa [3:0] (.s(sum), .c_out(), .a(a), .b(b), .c_in({carries[3:1], c_in}));
 
 
     

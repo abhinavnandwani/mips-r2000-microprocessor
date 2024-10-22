@@ -1,3 +1,10 @@
+/* 
+Author          : Abhinav Nandwani, Anna Huang
+Filename        : alu_control.v
+Description     : This module generates control signals for the ALU
+*/
+
+
 module alu_control(aluoper,instr,op,invA,invB,Cin);
 
     input [1:0] instr;

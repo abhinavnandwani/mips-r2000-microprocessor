@@ -22,7 +22,7 @@ module execute (RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc, nHaltSig, I
    // PC Adder
    assign PC_I = (ImmSrc) ? sImm8 : sImm11;
    cla_16b pc_adder(.sum(Branch), .c_out(), .a(PC), .b(PC_I), .c_in(1'b0));
- 
+
    
    //Branch & Jump Mux
    assign PC_Branch = (nHaltSig ? BrchCnd : 1'b0) ? Branch : PC;

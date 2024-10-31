@@ -12,7 +12,7 @@ module proc (/*AUTOARG*/
    input wire clk;
    input wire rst;
 
-   output reg err;
+   output err;
 
    // None of the above lines can be modified
 
@@ -24,7 +24,27 @@ module proc (/*AUTOARG*/
    
    
    /* your code here -- should include instantiations of fetch, decode, execute, mem and wb modules */
-   
+   wire [15:0] PC_Jump,PC;
+   wire [15:0] instr, PC_f, PC_d;
+   wire [5:0] ALUOpr;
+   wire [3:0] Oper,BranchTaken;
+   wire [15:0] WB;
+   wire [15:0] RSData, RTData, ALU, readData;
+   wire [15:0] Imm5, Imm8, sImm8, sImm11;
+   wire nHaltSig, RegWrt, ZeroExt, ImmSrc, invA, invB, ALUSign, Cin, ALUJmp, MemWrt,MemRead,err;        
+   wire [1:0] RegSrc, BSrc,RegDst;      
+   wire [2:0] RD;  
+
+
+   control control0(.instr(instr), .err(err), .nHaltSig(nHaltSig), .MemRead(MemRead),.RegDst(RegDst), .RegWrt(RegWrt), .ZeroExt(ZeroExt), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUOpr(ALUOpr), .ALUSign(ALUSign), .ALUJmp(ALUJmp), .MemWrt(MemWrt), .RegSrc(RegSrc), .BranchTaken(BranchTaken));
+   //aluOpr
+
+   fetch fetch0(.clk(clk), .rst(rst), .PC_B(PC_Jump), .PC_curr(PC),.nHaltSig(nHaltSig), .instr(instr), .PC_Next(PC_f));
+   decode decode0(.clk(clk), .rst(rst), .instr(instr), .invA(invA),.invB(invB),.Cin(Cin),.RD(RD),.WB(WB), .PC(PC_f), .ALUOpr(ALUOpr),.Oper(Oper),.RegDst(RegDst), .ZeroExt(ZeroExt), .RegWrt(RegWrt), .err(err), .RSData(RSData), .RTData(RTData), .Imm5(Imm5), .Imm8(Imm8), .sImm8(sImm8), .sImm11(sImm11), .PC_Next(PC_d));
+   execute execute0(.RSData(RSData), .RTData(RTData), .nHaltSig(nHaltSig),.Oper(Oper), .PC(PC_d), .Imm5(Imm5), .Imm8(Imm8), .sImm8(sImm8), .sImm11(sImm11), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUJmp(ALUJmp), .invA(invA), .invB(invB), .ALUSign(ALUSign), .cin(Cin), .BranchTaken(BranchTaken), .ALU_Out(ALU), .PC_Next(PC_Jump));
+   memory memory0(.clk(clk),.rst(rst),.ALU(ALU), .nHaltSig(nHaltSig),.writeData(RTData), .readEn(MemRead), .MemWrt(MemWrt), .readData(readData));
+   wb wb0(.MemIn(readData), .PcIn(PC_d), .ALUIn(ALU), .RegSrc(RegSrc), .WB(WB));
+
 endmodule // proc
 `default_nettype wire
 // DUMMY LINE FOR REV CONTROL :0:

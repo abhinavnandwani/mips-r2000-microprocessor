@@ -36,6 +36,33 @@ module proc (/*AUTOARG*/
    wire [2:0] RD;  
 
 
+
+    // Flopped Signals for Fetch Stage
+    wire [15:0] PC_f_flopped;
+    wire [15:0] pc_curr_f_flopped;
+    wire [15:0] instr_f_flopped;
+
+    // Flopped Signals for Decode Stage
+    wire [3:0] oper_d_flopped;
+    wire [15:0] RSData_d_flopped;
+    wire [15:0] RTData_d_flopped;
+    wire [15:0] Imm5_d_flopped;
+    wire [15:0] Imm8_d_flopped;
+    wire [15:0] sImm8_d_flopped;
+    wire [15:0] sImm11_d_flopped;
+    wire [15:0] PC_d_flopped;
+    wire invA_d_flopped;
+    wire invB_d_flopped;
+    wire Cin_d_flopped;
+
+    // Flopped Signals for Execute Stage
+    wire [15:0] ALU_e_flopped;
+    wire [15:0] PC_Jump_e_flopped;
+
+    // Flopped Signals for Memory Stage
+    wire [15:0] readData_m_flopped;
+
+
    control control0(.instr(instr), .err(err), .nHaltSig(nHaltSig), .MemRead(MemRead),.RegDst(RegDst), .RegWrt(RegWrt), .ZeroExt(ZeroExt), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUOpr(ALUOpr), .ALUSign(ALUSign), .ALUJmp(ALUJmp), .MemWrt(MemWrt), .RegSrc(RegSrc), .BranchTaken(BranchTaken));
    
    fetch fetch0(
@@ -48,7 +75,7 @@ module proc (/*AUTOARG*/
       .PC_Next(PC_f)
       );
 
-   dff dff_f_pc(q(PC_f_flopped), d(PC_f), .clk(clk), .rst(rst)); \\ will move later
+   dff dff_f_pc(.q(PC_f_flopped), .d(PC_f), .clk(clk), .rst(rst)); \\ will move later
    dff dff_f_pc_curr(.q(pc_curr_f_flopped), .d(PC), .clk(clk), .rst(rst));
    dff dff_f_instr(.q(instr_f_flopped), .d(instr), .clk(clk), .rst(rst));
    
@@ -76,18 +103,18 @@ module proc (/*AUTOARG*/
       .sImm11(sImm11), 
       .PC_Next(PC_d)
       );
-      
+
    dff dff_d_oper(.q(oper_d_flopped), .d(Oper), .clk(clk), .rst(rst));
    dff dff_d_RSData(.q(RSData_d_flopped), .d(RSData), .clk(clk), .rst(rst));
-   dff dff_d_RTData(.q(RTData_d_flopped), .d(RSData), .clk(clk), .rst(rst));
+   dff dff_d_RTData(.q(RTData_d_flopped), .d(RTData), .clk(clk), .rst(rst));
    dff dff_d_Imm5(.q(Imm5_d_flopped), .d(Imm5), .clk(clk), .rst(rst));
    dff dff_d_Imm8(.q(Imm8_d_flopped), .d(Imm8), .clk(clk), .rst(rst));
    dff dff_d_sImm8(.q(sImm8_d_flopped), .d(sImm8), .clk(clk), .rst(rst));
    dff dff_d_sImm11(.q(sImm11_d_flopped), .d(sImm11), .clk(clk), .rst(rst));
    dff dff_d_PC(.q(PC_d_flopped), .d(PC_d), .clk(clk), .rst(rst));
    dff dff_d_invA(.q(invA_d_flopped), .d(invA), .clk(clk), .rst(rst));
-   dff dff_d_RSData(.q(invB_d_flopped), .d(invB), .clk(clk), .rst(rst));
-   dff dff_d_RSData(.q(Cin_d_flopped), .d(Cin), .clk(clk), .rst(rst));
+   dff dff_d_invB(.q(invB_d_flopped), .d(invB), .clk(clk), .rst(rst));
+   dff dff_d_Cin(.q(Cin_d_flopped), .d(Cin), .clk(clk), .rst(rst));
 
    execute execute0(.RSData(RSData), .RTData(RTData), .nHaltSig(nHaltSig),.Oper(Oper), .PC(PC_d), .Imm5(Imm5), .Imm8(Imm8), .sImm8(sImm8), .sImm11(sImm11), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUJmp(ALUJmp), .invA(invA), .invB(invB), .ALUSign(ALUSign), .cin(Cin), .BranchTaken(BranchTaken), .ALU_Out(ALU), .PC_Next(PC_Jump));
    dff dff_e_ALU(.q(ALU_e_flopped), .d(ALU), .clk(clk), .rst(rst));
@@ -97,6 +124,8 @@ module proc (/*AUTOARG*/
    dff dff_memory(.q(readData_m_flopped), .d(readData), .clk(clk), .rst(rst));
 
    wb wb0(.MemIn(readData), .PcIn(PC_d), .ALUIn(ALU), .RegSrc(RegSrc), .WB(WB));
+
+
 
 endmodule // proc
 `default_nettype wire

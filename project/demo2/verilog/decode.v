@@ -42,7 +42,7 @@ module decode (
                (RegDst == 2'b10) ? instr[4:2] :
                3'b111;
 
-   regFile regFile0 (.read1Data(RSData), .read2Data(RTData), .err(err), .clk(clk), .rst(rst), .read1RegSel(instr[10:8]), .read2RegSel(instr[7:5]), .writeRegSel(RD), .writeData(WB), .writeEn(RegWrt));
+   regFile_bypass regFile0 (.read1Data(RSData), .read2Data(RTData), .err(err), .clk(clk), .rst(rst), .read1RegSel(instr[10:8]), .read2RegSel(instr[7:5]), .writeRegSel(RD), .writeData(WB), .writeEn(RegWrt));
 
    //Sign Extension
    assign Imm5 = (ZeroExt) ? {11'h000, instr[4:0]} : {{11{instr[4]}}, instr[4:0]};

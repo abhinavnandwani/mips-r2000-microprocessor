@@ -34,19 +34,16 @@ module proc (/*AUTOARG*/
    wire nHaltSig, RegWrt, ZeroExt, ImmSrc, invA, invB, ALUSign, Cin, ALUJmp, MemWrt,MemRead,err;        
    wire [1:0] RegSrc, BSrc,RegDst;      
    wire [2:0] RD;  
-   reg [15:0] PC_f_flopped, instr_f_flopped, pc_curr_f_flopped;
-   reg [15:0] oper_d_flopped, RSData_d_flopped, RTData_d_flopped, Imm5_d_flopped, Imm8_d_flopped, sImm8_d_flopped, sImm11_d_flopped, PC_d_flopped, invA_d_flopped, invB_d_flopped, Cin_d_flopped;
-   reg [15:0] ALU_e_flopped, PC_Jump_e_flopped;
-   reg [15:0] readData_m_flopped;
+
 
    control control0(.instr(instr), .err(err), .nHaltSig(nHaltSig), .MemRead(MemRead),.RegDst(RegDst), .RegWrt(RegWrt), .ZeroExt(ZeroExt), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUOpr(ALUOpr), .ALUSign(ALUSign), .ALUJmp(ALUJmp), .MemWrt(MemWrt), .RegSrc(RegSrc), .BranchTaken(BranchTaken));
    
-   fetch fetch0(.clk(clk), .rst(rst), .PC_B(PC_Jump), .PC_curr(PC),.nHaltSig(nHaltSig), .instr(instr), .PC_Next(PC_f));
+  //fetch 
    dff dff_f_pc(q(PC_f_flopped), d(PC_f), .clk(clk), .rst(rst)); \\ will move later
    dff dff_f_pc_curr(.q(pc_curr_f_flopped), .d(PC), .clk(clk), .rst(rst));
    dff dff_f_instr(.q(instr_f_flopped), .d(instr), .clk(clk), .rst(rst));
    
-   decode decode0(.clk(clk), .rst(rst), .instr(instr), .invA(invA),.invB(invB),.Cin(Cin),.RD(RD),.WB(WB), .PC(PC_f), .ALUOpr(ALUOpr),.Oper(Oper),.RegDst(RegDst), .ZeroExt(ZeroExt), .RegWrt(RegWrt), .err(err), .RSData(RSData), .RTData(RTData), .Imm5(Imm5), .Imm8(Imm8), .sImm8(sImm8), .sImm11(sImm11), .PC_Next(PC_d));
+   // decode
    dff dff_d_oper(.q(oper_d_flopped), .d(Oper), .clk(clk), .rst(rst));
    dff dff_d_RSData(.q(RSData_d_flopped), .d(RSData), .clk(clk), .rst(rst));
    dff dff_d_RTData(.q(RTData_d_flopped), .d(RSData), .clk(clk), .rst(rst));

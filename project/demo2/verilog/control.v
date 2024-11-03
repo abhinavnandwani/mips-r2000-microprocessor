@@ -5,12 +5,29 @@
 */
 
 `default_nettype none
-module control (instr, nHaltSig, RegDst, RegWrt, MemRead, ZeroExt, BSrc, ImmSrc, ALUOpr, ALUSign, err,ALUJmp, MemWrt, RegSrc, BranchTaken);
-    input wire [15:0] instr;   
-    output reg nHaltSig, RegWrt, ZeroExt, MemRead,ImmSrc, ALUSign, ALUJmp, MemWrt,err;      
-    output reg [5:0] ALUOpr;   
-    output reg [1:0] RegSrc, BSrc,RegDst;      
-    output reg [3:0] BranchTaken;
+module control (
+    input wire [15:0] instr,
+    
+    // Control Signals
+    output reg nHaltSig,
+    output reg RegWrt,
+    output reg ZeroExt,
+    output reg MemRead,
+    output reg ImmSrc,
+    output reg ALUSign,
+    output reg ALUJmp,
+    output reg MemWrt,
+    output reg err,
+
+    // ALU Control
+    output reg [5:0] ALUOpr,
+
+    // Register and Branch Controls
+    output reg [1:0] RegSrc,
+    output reg [1:0] BSrc,
+    output reg [1:0] RegDst,
+    output reg [3:0] BranchTaken
+    );
     wire funct;
     assign funct = instr[1:0];
 

@@ -4,21 +4,37 @@
     Description     : This is the overall module for the decode stage of the processor. 
 */
 
-module decode (clk, rst, instr, WB, RD, PC, RegDst, ALUOpr, ZeroExt, RegWrt, err, RSData, RTData, Imm5, Imm8, sImm8, sImm11, PC_Next,Oper,invA,invB,Cin);
-   input clk, rst;
-   input [15:0] instr, WB;
-   input [15:0] PC;
-   input [1:0] RegDst;
-   input ZeroExt, RegWrt;
-   input [5:0] ALUOpr;
-   output [3:0] Oper;
-   output err;
-   output [15:0] RSData, RTData;
-   output [15:0] Imm5, Imm8, sImm8, sImm11;
-   output [15:0] PC_Next;
-   output invA,invB,Cin;
+module decode (
+    // Clock and Reset
+    input wire clk,
+    input wire rst,
 
-   output [2:0] RD;
+    // Instruction and Data Inputs
+    input wire [15:0] instr,
+    input wire [15:0] WB,
+    input wire [15:0] PC,
+    
+    // Control Signals
+    input wire [1:0] RegDst,
+    input wire ZeroExt,
+    input wire RegWrt,
+    input wire [5:0] ALUOpr,
+
+    // Outputs
+    output wire [3:0] Oper,
+    output wire err,
+    output wire [15:0] RSData,
+    output wire [15:0] RTData,
+    output wire [15:0] Imm5,
+    output wire [15:0] Imm8,
+    output wire [15:0] sImm8,
+    output wire [15:0] sImm11,
+    output wire [15:0] PC_Next,
+    output wire invA,
+    output wire invB,
+    output wire Cin,
+    output wire [2:0] RD
+    );
    
    //Register File
    assign RD = (RegDst == 2'b00) ? instr[7:5] :

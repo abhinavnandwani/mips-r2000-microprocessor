@@ -75,9 +75,9 @@ module proc (/*AUTOARG*/
       .PC_Next(PC_f)
       );
 
-   dff dff_f_pc(.q(PC_f_flopped), .d(PC_f), .clk(clk), .rst(rst)); //will move later
-   dff dff_f_pc_curr(.q(pc_curr_f_flopped), .d(PC), .clk(clk), .rst(rst));
-   dff dff_f_instr(.q(instr_f_flopped), .d(instr), .clk(clk), .rst(rst));
+   register dff_f_pc(.r(PC_f_flopped), .w(PC_f), .clk(clk), .rst(rst),.we(1'b1)); //will move later
+   register dff_f_pc_curr(.r(pc_curr_f_flopped), .w(PC), .clk(clk), .rst(rst),.we(1'b1));
+   register dff_f_instr(.r(instr_f_flopped), .w(instr), .clk(clk), .rst(rst),.we(1'b1));
    
    decode decode0(
       .clk(clk), 
@@ -104,24 +104,26 @@ module proc (/*AUTOARG*/
       .PC_Next(PC_d)
       );
 
-   dff dff_d_oper(.q(oper_d_flopped), .d(Oper), .clk(clk), .rst(rst));
-   dff dff_d_RSData(.q(RSData_d_flopped), .d(RSData), .clk(clk), .rst(rst));
-   dff dff_d_RTData(.q(RTData_d_flopped), .d(RTData), .clk(clk), .rst(rst));
-   dff dff_d_Imm5(.q(Imm5_d_flopped), .d(Imm5), .clk(clk), .rst(rst));
-   dff dff_d_Imm8(.q(Imm8_d_flopped), .d(Imm8), .clk(clk), .rst(rst));
-   dff dff_d_sImm8(.q(sImm8_d_flopped), .d(sImm8), .clk(clk), .rst(rst));
-   dff dff_d_sImm11(.q(sImm11_d_flopped), .d(sImm11), .clk(clk), .rst(rst));
-   dff dff_d_PC(.q(PC_d_flopped), .d(PC_d), .clk(clk), .rst(rst));
+   dff dff_d_oper[3:0](.q(oper_d_flopped), .d(Oper), .clk({4{clk}}), .rst({4{rst}}));
+
+   register dff_d_RSData(.r(RSData_d_flopped), .w(RSData), .clk(clk), .rst(rst), .we(1'b1));
+   register dff_d_RTData(.r(RTData_d_flopped), .w(RTData), .clk(clk), .rst(rst), .we(1'b1));
+   register dff_d_Imm5(.r(Imm5_d_flopped), .w(Imm5), .clk(clk), .rst(rst), .we(1'b1));
+   register dff_d_Imm8(.r(Imm8_d_flopped), .w(Imm8), .clk(clk), .rst(rst), .we(1'b1));
+   register dff_d_sImm8(.r(sImm8_d_flopped), .w(sImm8), .clk(clk), .rst(rst), .we(1'b1));
+   register dff_d_sImm11(.r(sImm11_d_flopped), .w(sImm11), .clk(clk), .rst(rst), .we(1'b1));
+   register dff_d_PC(.r(PC_d_flopped), .w(PC_d), .clk(clk), .rst(rst), .we(1'b1));
+
    dff dff_d_invA(.q(invA_d_flopped), .d(invA), .clk(clk), .rst(rst));
    dff dff_d_invB(.q(invB_d_flopped), .d(invB), .clk(clk), .rst(rst));
    dff dff_d_Cin(.q(Cin_d_flopped), .d(Cin), .clk(clk), .rst(rst));
 
    execute execute0(.RSData(RSData), .RTData(RTData), .nHaltSig(nHaltSig),.Oper(Oper), .PC(PC_d), .Imm5(Imm5), .Imm8(Imm8), .sImm8(sImm8), .sImm11(sImm11), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUJmp(ALUJmp), .invA(invA), .invB(invB), .ALUSign(ALUSign), .cin(Cin), .BranchTaken(BranchTaken), .ALU_Out(ALU), .PC_Next(PC_Jump));
-   dff dff_e_ALU(.q(ALU_e_flopped), .d(ALU), .clk(clk), .rst(rst));
-   dff dff_e_PC(.q(PC_Jump_e_flopped), .d(PC_Jump), .clk(clk), .rst(rst));
+   register dff_e_ALU(.r(ALU_e_flopped), .w(ALU), .clk(clk), .rst(rst),.we(1'b1));
+   register dff_e_PC(.w(PC_Jump_e_flopped), .r(PC_Jump), .clk(clk), .rst(rst),.we(1'b1));
 
    memory memory0(.clk(clk),.rst(rst),.ALU(ALU), .nHaltSig(nHaltSig),.writeData(RTData), .readEn(MemRead), .MemWrt(MemWrt), .readData(readData));
-   dff dff_memory(.q(readData_m_flopped), .d(readData), .clk(clk), .rst(rst));
+   register dff_memory(.w(readData_m_flopped), .r(readData), .clk(clk), .rst(rst),.we(1'b1));
 
    wb wb0(.MemIn(readData), .PcIn(PC_d), .ALUIn(ALU), .RegSrc(RegSrc), .WB(WB));
 

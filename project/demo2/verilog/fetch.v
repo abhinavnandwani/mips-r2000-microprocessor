@@ -12,16 +12,17 @@ module fetch (clk, rst, PC_B,nHaltSig, instr, PC_Next,PC_curr);
    output [15:0] PC_Next,PC_curr;
 
 
-   wire [15:0] PC;
+   wire [15:0] PC,PC_regs;
    wire err;
    wire [15:0] add2,PC_Sum;
    wire c_out;
 
-   // PC Register
-   
-   register pc_reg (.r(PC), .w(PC_B), .clk(clk), .rst(rst), .we(1'b1));
-   assign PC_curr = PC;
 
+   // PC Register
+   assign PC_regs = (1'b0) ? PC_B:PC_Sum;
+   register pc_reg (.r(PC), .w(PC_regs), .clk(clk), .rst(rst), .we(1'b1));
+   assign PC_curr = PC;
+   
    // Instruction Memory
    memory2c instr_mem(.data_out(instr), .data_in(16'h0000), .addr(PC), .enable(1'b1), .wr(1'b0), .createdump(~nHaltSig), .clk(clk), .rst(rst));
 
@@ -31,6 +32,4 @@ module fetch (clk, rst, PC_B,nHaltSig, instr, PC_Next,PC_curr);
    
    // Halt Mux
    assign PC_Next =  (!nHaltSig) ? PC:PC_Sum;
- 
-
 endmodule

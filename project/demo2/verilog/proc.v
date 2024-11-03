@@ -75,7 +75,7 @@ module proc (/*AUTOARG*/
       .PC_Next(PC_f)
       );
 
-   dff dff_f_pc(.q(PC_f_flopped), .d(PC_f), .clk(clk), .rst(rst)); \\ will move later
+   dff dff_f_pc(.q(PC_f_flopped), .d(PC_f), .clk(clk), .rst(rst)); //will move later
    dff dff_f_pc_curr(.q(pc_curr_f_flopped), .d(PC), .clk(clk), .rst(rst));
    dff dff_f_instr(.q(instr_f_flopped), .d(instr), .clk(clk), .rst(rst));
    

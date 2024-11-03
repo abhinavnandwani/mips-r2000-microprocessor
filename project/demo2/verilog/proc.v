@@ -38,12 +38,45 @@ module proc (/*AUTOARG*/
 
    control control0(.instr(instr), .err(err), .nHaltSig(nHaltSig), .MemRead(MemRead),.RegDst(RegDst), .RegWrt(RegWrt), .ZeroExt(ZeroExt), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUOpr(ALUOpr), .ALUSign(ALUSign), .ALUJmp(ALUJmp), .MemWrt(MemWrt), .RegSrc(RegSrc), .BranchTaken(BranchTaken));
    
-  //fetch 
+   fetch fetch0(
+      .clk(clk), 
+      .rst(rst), 
+      .PC_B(PC_Jump), 
+      .PC_curr(PC),
+      .nHaltSig(nHaltSig),
+      .instr(instr), 
+      .PC_Next(PC_f)
+      );
+
    dff dff_f_pc(q(PC_f_flopped), d(PC_f), .clk(clk), .rst(rst)); \\ will move later
    dff dff_f_pc_curr(.q(pc_curr_f_flopped), .d(PC), .clk(clk), .rst(rst));
    dff dff_f_instr(.q(instr_f_flopped), .d(instr), .clk(clk), .rst(rst));
    
-   // decode
+   decode decode0(
+      .clk(clk), 
+      .rst(rst), 
+      .instr(instr), 
+      .invA(invA),
+      .invB(invB),
+      .Cin(Cin),
+      .RD(RD),
+      .WB(WB), 
+      .PC(PC_f), 
+      .ALUOpr(ALUOpr),
+      .Oper(Oper),
+      .RegDst(RegDst), 
+      .ZeroExt(ZeroExt), 
+      .RegWrt(RegWrt), 
+      .err(err), 
+      .RSData(RSData), 
+      .RTData(RTData), 
+      .Imm5(Imm5), 
+      .Imm8(Imm8), 
+      .sImm8(sImm8), 
+      .sImm11(sImm11), 
+      .PC_Next(PC_d)
+      );
+      
    dff dff_d_oper(.q(oper_d_flopped), .d(Oper), .clk(clk), .rst(rst));
    dff dff_d_RSData(.q(RSData_d_flopped), .d(RSData), .clk(clk), .rst(rst));
    dff dff_d_RTData(.q(RTData_d_flopped), .d(RSData), .clk(clk), .rst(rst));

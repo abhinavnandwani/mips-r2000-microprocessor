@@ -34,7 +34,7 @@ module control (
     
     always@(*) begin
     // Default outputs //
-    nHaltSig = 1'b1;
+    nHaltSig = 1'b0;
     RegWrt = 1'b0;
     ZeroExt = 1'b0;
     ImmSrc = 1'b0;
@@ -51,7 +51,7 @@ module control (
     BranchTaken = 4'b000;
 
     casex(instr[15:11])
-        5'b00000: nHaltSig = 1'b0;		// HALT 
+        5'b00000: nHaltSig = 1'b1;		// HALT 
         5'b00001:begin		// NOP
             // none
             end

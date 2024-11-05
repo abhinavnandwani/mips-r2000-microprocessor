@@ -18,8 +18,8 @@ module fetch (clk, rst, PC_B,nHaltSig, instr, PC_Next,PC_curr);
    wire c_out;
 
    // PC Register
-   assign PC_regs = (1'b0) ? PC_B:PC_Sum;
-   register pc_reg (.r(PC), .w(PC_regs), .clk(clk), .rst(rst), .we(1'b1));
+   assign PC_regs = (1'b0) ? PC_B:PC_Next;
+   register pc_reg (.r(PC), .w(PC_Sum), .clk(clk), .rst(rst), .we(1'b1));
    assign PC_curr = PC;
    
    // Instruction Memory

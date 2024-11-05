@@ -141,7 +141,7 @@ module proc_hier_pbench();
 
    // Memory stage signals
    assign MemRead = DUT.p0.memory0.readEn;      // Memory read enable
-   assign MemWrite = DUT.p0.memory0.MemWrt;     // Memory write enable
+   assign MemWrite = DUT.p0.MemWrt_2flopped;     // Memory write enable
    assign MemAddress = DUT.p0.memory0.ALU;      // Address for memory read/write
    assign MemDataIn = DUT.p0.memory0.writeData; // Data to write to memory
    assign MemDataOut = DUT.p0.memory0.readData; // Data read from memory
@@ -149,7 +149,8 @@ module proc_hier_pbench();
 
 
    // Halt signal
-   assign Halt = ~DUT.p0.decode0.nHaltSig;    // Processor halt signal (active low)
+   assign Halt = DUT.p0.nHaltSig_3ff;    // Processor halt signal (active low)
+   //assign Halt = 1'b0;
 
 
 

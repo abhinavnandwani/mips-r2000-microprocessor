@@ -128,54 +128,29 @@ module proc_hier_pbench();
    // Edit the example below. You must change the signal
    // names on the right hand side
     
- //  assign PC = DUT.PC_Out;
-//   assign Inst = DUT.Instruction_f;
-   
- //  assign RegWrite = DUT.p0.regWrite;
-   // Is register file being written to, one bit signal (1 means yes, 0 means no)
-   //    
- //  assign WriteRegister = DUT.p0.DstwithJmout;
-   // The name of the register being written to. (3 bit signal)
-   
- //  assign WriteData = DUT.p0.wData;
-   // Data being written to the register. (16 bits)
-   
- //  assign MemRead =  (DUT.p0.memRxout & ~DUT.p0.notdonem);
-   // Is memory being read, one bit signal (1 means yes, 0 means no)
-   
- //  assign MemWrite = (DUT.p0.memWxout & ~DUT.p0.notdonem);
-   // Is memory being written to (1 bit signal)
-   
-  // assign MemAddress = DUT.p0.data1out;
-   // Address to access memory with (for both reads and writes to memory, 16 bits)
-   
- //  assign MemDataIn = DUT.p0.data2out;
-   // Data to be written to memory for memory writes (16 bits)
-   
- //  assign MemDataOut = DUT.p0.readData;
-   // Data read from memory for memory reads (16 bits)
+  // Connect DUT signals to testbench wires
 
-//// FROM DEMO 1 ////
-   // Fetch stage assignments
-   assign PC = DUT.p0.fetch0.PC_curr;       // Next PC from fetch stage
-   assign Inst = DUT.p0.fetch0.instr;       // Fetched instruction
+   // Fetch stage signals
+   assign PC = DUT.p0.fetch0.PC_curr;       // Current PC from fetch stage
+   assign Inst = DUT.p0.instr_f_flopped;       // Instruction fetched
 
-   // Decode stage assignments
-   assign RegWrite = DUT.p0.decode0.RegWrt;  // Register write signal
-   assign WriteRegister = DUT.p0.decode0.RD; // Register destination
-   assign WriteData = DUT.p0.decode0.WB;   // Data to write to register
+   // Decode stage signals
+   assign RegWrite = DUT.p0.decode0.RegWrt;     // Register write enable
+   assign WriteRegister = DUT.p0.decode0.RD;    // Register destination address
+   assign WriteData = DUT.p0.decode0.WB;        // Data to write to register
 
-   // Memory stage assignments
-   assign MemRead = DUT.p0.memory0.readEn;  // Memory read signal
-   assign MemWrite = DUT.p0.memory0.MemWrt;  // Memory write signal
-   assign MemAddress = DUT.p0.memory0.ALU;   // Address for memory access
+   // Memory stage signals
+   assign MemRead = DUT.p0.memory0.readEn;      // Memory read enable
+   assign MemWrite = DUT.p0.memory0.MemWrt;     // Memory write enable
+   assign MemAddress = DUT.p0.memory0.ALU;      // Address for memory read/write
    assign MemDataIn = DUT.p0.memory0.writeData; // Data to write to memory
-   assign MemDataOut = DUT.p0.memory0.readData;
+   assign MemDataOut = DUT.p0.memory0.readData; // Data read from memory
 
-   // Control and status signals
-   assign Halt = ~(DUT.p0.decode0.nHaltSig);    // negated case our signal is active low Processor halt signal
 
-//// END OF FROM DEMO 1 ////
+
+   // Halt signal
+   assign Halt = ~DUT.p0.decode0.nHaltSig;    // Processor halt signal (active low)
+
 
 
    // new added 05/03

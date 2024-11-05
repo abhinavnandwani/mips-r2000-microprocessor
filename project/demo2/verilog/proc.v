@@ -12,7 +12,7 @@ module proc (/*AUTOARG*/
    input wire clk;
    input wire rst;
 
-   output err;
+   output wire err;
 
    // None of the above lines can be modified
 
@@ -24,181 +24,132 @@ module proc (/*AUTOARG*/
    
    
    /* your code here -- should include instantiations of fetch, decode, execute, mem and wb modules */
-   wire [15:0] PC_Jump,PC;
-   wire [15:0] instr, PC_f, PC_d;
-   wire [5:0] ALUOpr;
-   wire [3:0] Oper,BranchTaken;
-   wire [15:0] WB;
+     // Internal signals for each pipeline stage
+   wire [15:0] PC, instr, PC_f, PC_d;
+   wire [15:0] PC_Jump, WB;
    wire [15:0] RSData, RTData, ALU, readData;
    wire [15:0] Imm5, Imm8, sImm8, sImm11;
-   wire nHaltSig, RegWrt, ZeroExt, ImmSrc, invA, invB, ALUSign, Cin, ALUJmp, MemWrt,MemRead,err;        
-   wire [1:0] RegSrc, BSrc,RegDst;      
-   wire [2:0] RD;  
 
+   // Control signals
+   wire nHaltSig, RegWrt, ZeroExt, ImmSrc, invA, invB;
+   wire ALUSign, Cin, ALUJmp, MemWrt, MemRead;
+   wire [1:0] RegSrc, BSrc, RegDst;
+   wire [3:0] Oper, BranchTaken;
+   wire [2:0] RD;
 
+   // Flopped signals between pipeline stages
+   wire [15:0] PC_f_flopped, instr_f_flopped;
+   wire [15:0] PC_d_2flopped;
+   wire [15:0] ALU_e_flopped, ALU_e_2flopped;
+   wire [15:0] readData_m_flopped;
+   wire MemWrt_2flopped, MemRead_2flopped;
 
-    // Flopped Signals for Fetch Stage
-    wire [15:0] PC_f_flopped;
-    wire [15:0] pc_curr_f_flopped;
-    wire [15:0] instr_f_flopped;
+   /* Fetch Stage */
+   fetch fetch0 (
+       .clk(clk), 
+       .rst(rst), 
+       .PC_B(PC_Jump), 
+       .PC_curr(PC),
+       .nHaltSig(nHaltSig),
+       .instr(instr), 
+       .PC_Next(PC_f)
+   );
 
-    // Flopped Signals for Decode Stage
-   //  wire [3:0] oper_d_flopped;
-   //  wire [15:0] RSData_d_flopped;
-   //  wire [15:0] RTData_d_flopped;
-   //  wire [15:0] Imm5_d_flopped;
-   //  wire [15:0] Imm8_d_flopped;
-   //  wire [15:0] sImm8_d_flopped;
-   //  wire [15:0] sImm11_d_flopped;
-   //  wire [15:0] PC_d_flopped; 
-    wire [15:0] PC_d_2flopped;
-   //  wire invA_d_flopped;
-   //  wire invB_d_flopped;
-   //  wire Cin_d_flopped;
+   // DFFs for fetch stage signals
+   register dff_f_pc(.r(PC_f_flopped), .w(PC_f), .clk(clk), .rst(rst), .we(1'b1));
+   register dff_f_instr(.r(instr_f_flopped), .w(instr), .clk(clk), .rst(rst), .we(1'b1));
 
-    // Flopped Signals for Execute Stage
-    wire [15:0] ALU_e_flopped,ALU_e_2flopped;
-    wire [15:0] PC_Jump_e_flopped;
+   /* Decode Stage */
+   decode decode0 (
+       .clk(clk), 
+       .rst(rst), 
+       .instr(instr_f_flopped), 
+       .invA(invA),
+       .invB(invB),
+       .Cin(Cin),
+       .RD(RD),
+       .WB(WB), 
+       .PC(PC_f_flopped), 
+       .nHaltSig(nHaltSig),
+       .MemRead(MemRead),
+       .ImmSrc(ImmSrc),
+       .ALUSign(ALUSign),
+       .ALUJmp(ALUJmp),
+       .MemWrt(MemWrt),
+       .RegSrc(RegSrc),
+       .BSrc(BSrc),
+       .BranchTaken(BranchTaken),
+       .Oper(Oper),
+       .err(err), 
+       .RSData(RSData), 
+       .RTData(RTData), 
+       .Imm5(Imm5), 
+       .Imm8(Imm8), 
+       .sImm8(sImm8), 
+       .sImm11(sImm11), 
+       .PC_Next(PC_d)
+   );
 
-    // Flopped Signals for Memory Stage
-    wire [15:0] readData_m_flopped;
-
-
-   // Control Signals //
-   // wire nHaltSig_flopped, nHaltSig_2flopped, nHaltSig_3flopped
-    //wire RegWrt_flopped, ZeroExt_flopped, ImmSrc_flopped, ALUSign_flopped;
-    //wire ALUJmp_flopped, MemWrt_flopped,MemRead_flopped;
-    wire MemWrt_2flopped,  MemRead_2_flopped;
-    //wire err_flopped;
-
-    //wire [1:0] RegSrc_flopped, RegSrc_2_flopped, RegSrc_3_flopped;
-
-    //wire [1:0] BSrc_flopped;
-
-    // D Flip-Flop Instances for Each Control Signal //
-    //dff dff_nHaltSig(.q(nHaltSig_flopped), .d(nHaltSig), .clk(clk), .rst(rst));
-
-   //  dff dff_ImmSrc(.q(ImmSrc_flopped), .d(ImmSrc), .clk(clk), .rst(rst)); // ID to X 
-   //  dff dff_ALUSign(.q(ALUSign_flopped), .d(ALUSign), .clk(clk), .rst(rst)); // ID to X
-   //  dff dff_ALUJmp(.q(ALUJmp_flopped), .d(ALUJmp), .clk(clk), .rst(rst)); // ID to X
-    //dff dff_BSrc[1:0](.q(BSrc_flopped), .d(BSrc), .clk({2{clk}}), .rst({2{rst}})); // ID to X
-
-   // dff dff_err(.q(err_flopped), .d(err), .clk(clk), .rst(rst)); // TODO 
-
-    // signals to DM //
-   //  dff dff_MemRead(.q(MemRead_flopped), .d(MemRead), .clk(clk), .rst(rst)); // ID to X
-    dff dff_MemRead_2(.q(MemRead_2_flopped), .d(MemRead), .clk(clk), .rst(rst)); // X to DM
-
-   //  dff dff_MemWrt(.q(MemWrt_flopped), .d(MemWrt), .clk(clk), .rst(rst)); // ID to X
-    dff dff_MemWrt_2(.q(MemWrt_2flopped), .d(MemWrt), .clk(clk), .rst(rst)); // X to DM 
-
-    // to WB //
-    //[5:0](.q({RegSrc_3_flopped,RegSrc_2_flopped,RegSrc_flopped}), .d({RegSrc_2_flopped,RegSrc_flopped, RegSrc}), .clk({6{clk}}), .rst({6{rst}})); // ID to X
-
-
-   //control control0(.instr(instr), .err(err), .nHaltSig(nHaltSig), .MemRead(MemRead),.RegDst(RegDst), .RegWrt(RegWrt), .ZeroExt(ZeroExt), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUOpr(ALUOpr), .ALUSign(ALUSign), .ALUJmp(ALUJmp), .MemWrt(MemWrt), .RegSrc(RegSrc), .BranchTaken(BranchTaken));
-
-   fetch fetch0(
-      .clk(clk), 
-      .rst(rst), 
-      .PC_B(PC_Jump_e_flopped), 
-      .PC_curr(PC),
-      .nHaltSig(nHaltSig),
-      .instr(instr), 
-      .PC_Next(PC_f)
-      );
-
-   register dff_f_pc(.r(PC_f_flopped), .w(PC_f), .clk(clk), .rst(rst),.we(1'b1)); //will move later
-   register dff_f_pc_curr(.r(pc_curr_f_flopped), .w(PC), .clk(clk), .rst(rst),.we(1'b1));
-   register dff_f_instr(.r(instr_f_flopped), .w(instr), .clk(clk), .rst(rst),.we(1'b1));
-   
-   decode decode0(
-      .clk(clk), 
-      .rst(rst), 
-      .instr(instr_f_flopped), 
-      .invA(invA),
-      .invB(invB),
-      .Cin(Cin),
-      .RD(RD),
-      .WB(WB), 
-      .PC(PC_f_flopped), 
-      .nHaltSig(nHaltSig),
-      .MemRead(MemRead),
-      .ImmSrc(ImmSrc),
-      .ALUSign(ALUSign),
-      .ALUJmp(ALUJmp),
-      .MemWrt(MemWrt),
-      .RegSrc(RegSrc),
-      .BSrc(BSrc),
-      .BranchTaken(BranchTaken),
-      .Oper(Oper),
-      .err(err), 
-      .RSData(RSData), 
-      .RTData(RTData), 
-      .Imm5(Imm5), 
-      .Imm8(Imm8), 
-      .sImm8(sImm8), 
-      .sImm11(sImm11), 
-      .PC_Next(PC_d)
-      );
-
-   // dff dff_d_oper[3:0](.q(oper_d_flopped), .d(Oper), .clk({4{clk}}), .rst({4{rst}}));
-
-   // register dff_d_RSData(.r(RSData_d_flopped), .w(RSData), .clk(clk), .rst(rst), .we(1'b1));
-   // register dff_d_RTData(.r(RTData_d_flopped), .w(RTData), .clk(clk), .rst(rst), .we(1'b1));
-   // register dff_d_Imm5(.r(Imm5_d_flopped), .w(Imm5), .clk(clk), .rst(rst), .we(1'b1));
-   // register dff_d_Imm8(.r(Imm8_d_flopped), .w(Imm8), .clk(clk), .rst(rst), .we(1'b1));
-   // register dff_d_sImm8(.r(sImm8_d_flopped), .w(sImm8), .clk(clk), .rst(rst), .we(1'b1));
-   // register dff_d_sImm11(.r(sImm11_d_flopped), .w(sImm11), .clk(clk), .rst(rst), .we(1'b1));
-   // register dff_d_PC(.r(PC_d_flopped), .w(PC_d), .clk(clk), .rst(rst), .we(1'b1));
+   // DFF for decode stage PC signal
    register dff_d_PC2(.r(PC_d_2flopped), .w(PC_d), .clk(clk), .rst(rst), .we(1'b1));
 
-   // dff dff_d_invA(.q(invA_d_flopped), .d(invA), .clk(clk), .rst(rst));
-   // dff dff_d_invB(.q(invB_d_flopped), .d(invB), .clk(clk), .rst(rst));
-   // dff dff_d_Cin(.q(Cin_d_flopped), .d(Cin), .clk(clk), .rst(rst));
+   /* Execute Stage */
+   execute execute0 (
+       .clk(clk),
+       .rst(rst),
+       .NOP(), // Placeholder if NOP signal is needed
+       .RSData(RSData), 
+       .RTData(RTData), 
+       .nHaltSig(nHaltSig),
+       .Oper(Oper), 
+       .PC(PC_d), 
+       .Imm5(Imm5), 
+       .Imm8(Imm8), 
+       .sImm8(sImm8), 
+       .sImm11(sImm11), 
+       .BSrc(BSrc), 
+       .ImmSrc(ImmSrc), 
+       .ALUJmp(ALUJmp), 
+       .invA(invA), 
+       .invB(invB), 
+       .ALUSign(ALUSign), 
+       .cin(Cin), 
+       .BranchTaken(BranchTaken), 
+       .ALU_Out(ALU), 
+       .PC_Next(PC_Jump),
+       .MemRead_ff(MemRead), 
+       .MemRead_2ff(MemRead_2flopped), 
+       .MemWrt_ff(MemWrt), 
+       .MemWrt_2ff(MemWrt_2flopped) 
+   );
 
-   execute execute0(
-      .clk(clk),
-      .rst(rst),
-      .NOP(),
-      .RSData(RSData), 
-      .RTData(RTData), 
-      .nHaltSig(nHaltSig),
-      .Oper(Oper), 
-      .PC(PC_d), 
-      .Imm5(Imm5), 
-      .Imm8(Imm8), 
-      .sImm8(sImm8), 
-      .sImm11(sImm11), 
-      .BSrc(BSrc), 
-      .ImmSrc(ImmSrc), 
-      .ALUJmp(ALUJmp), 
-      .invA(invA), 
-      .invB(invB), 
-      .ALUSign(ALUSign), 
-      .cin(Cin), 
-      .BranchTaken(BranchTaken), 
-      .ALU_Out(ALU), 
-      .PC_Next(PC_Jump),
-      .MemRead_ff(), //MemRead input from decode
-      .MemRead_2ff(), //MemRead to DM
-      .MemWrt_ff(), //input from decode 
-      .MemWrt_2ff(), // output to DM
-      .RegWrt_ff(), //input from deocde
-      .RegWrt_2ff() //output to DM to WB
-      
-      );
+   // DFFs for execute stage signals
+   register dff_e_ALU(.r(ALU_e_flopped), .w(ALU), .clk(clk), .rst(rst), .we(1'b1));
+   register dff_e_ALU2(.r(ALU_e_2flopped), .w(ALU_e_flopped), .clk(clk), .rst(rst), .we(1'b1));
 
-   register dff_e_ALU(.r(ALU_e_flopped), .w(ALU), .clk(clk), .rst(rst),.we(1'b1));
-   register dff_e_ALU2(.r(ALU_e_2flopped), .w(ALU_e_flopped), .clk(clk), .rst(rst),.we(1'b1));
-  // register dff_e_PC(.w(PC_Jump_e_flopped), .r(PC_Jump), .clk(clk), .rst(rst),.we(1'b1));
+   /* Memory Stage */
+   memory memory0 (
+       .clk(clk),
+       .rst(rst),
+       .ALU(ALU_e_flopped), 
+       .nHaltSig(nHaltSig),
+       .writeData(RTData), 
+       .readEn(MemRead_2flopped), 
+       .MemWrt(MemWrt_2flopped), 
+       .readData(readData)
+   );
 
-   memory memory0(.clk(clk),.rst(rst),.ALU(ALU_e_flopped), .nHaltSig(nHaltSig),.writeData(RTData), .readEn(MemRead_2_flopped), .MemWrt(MemWrt_2flopped), .readData(readData));
-   register dff_memory(.w(readData_m_flopped), .r(readData), .clk(clk), .rst(rst),.we(1'b1));
+   // DFF for memory stage read data
+   register dff_memory(.w(readData_m_flopped), .r(readData), .clk(clk), .rst(rst), .we(1'b1));
 
-   wb wb0(.MemIn(readData_m_flopped), .PcIn(PC_d_2flopped), .ALUIn(ALU_e_2flopped), .RegSrc(RegSrc), .WB(WB));
-
-
+   /* Write-Back (WB) Stage */
+   wb wb0 (
+       .MemIn(readData_m_flopped), 
+       .PcIn(PC_d_2flopped), 
+       .ALUIn(ALU_e_2flopped), 
+       .RegSrc(RegSrc), 
+       .WB(WB)
+   );
 
 endmodule // proc
 `default_nettype wire

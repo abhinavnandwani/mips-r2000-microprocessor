@@ -62,14 +62,14 @@ module proc (/*AUTOARG*/
        .clk(clk), 
        .rst(rst), 
        .nHaltSig_comb(nHaltSig_comb),
-       .instr(instr_f_flopped), 
+       .instr(instr), 
        .invA(invA),
        .invB(invB),
        .RegWrt(),
        .Cin(Cin),
        .RD(RD),
        .WB(WB), 
-       .PC(PC_f_flopped), 
+       .PC(PC_f), 
        .nHaltSig(nHaltSig),
        .MemRead(MemRead),
        .ImmSrc(ImmSrc),
@@ -120,6 +120,7 @@ module proc (/*AUTOARG*/
        .MemWrt_2ff(MemWrt_2flopped),
        .PC_2ff(PC_2ff)
        .nHaltSig_2ff(nHaltSig_2ff)
+       .PC_2ff(PC_2ff)
    );
 
     wire nHaltSig_3ff;

@@ -23,8 +23,6 @@ module execute (clk,rst,NOP,RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc,
 
    output wire [15:0] PC_2ff;
    output wire nHaltSig_2ff;
- 
-   output [15:0] PC_2ff;
 
    // DFF for decode stage PC signal
    register dff_d_PC2(.r(PC_2ff), .w(PC), .clk(clk), .rst(rst), .we(1'b1));

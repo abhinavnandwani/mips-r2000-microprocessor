@@ -120,7 +120,6 @@ module proc (/*AUTOARG*/
        .MemWrt_2ff(MemWrt_2flopped),
        .PC_2ff(PC_2ff)
        .nHaltSig_2ff(nHaltSig_2ff)
-       .PC_2ff(PC_2ff)
    );
 
     wire nHaltSig_3ff;

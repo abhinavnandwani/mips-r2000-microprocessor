@@ -118,12 +118,12 @@ module proc (/*AUTOARG*/
        .MemRead_2ff(MemRead_2flopped), 
        .MemWrt_ff(MemWrt), 
        .MemWrt_2ff(MemWrt_2flopped),
-       .PC_2ff(PC_2ff)
+       .PC_2ff(PC_2ff),
        .nHaltSig_2ff(nHaltSig_2ff)
    );
 
     wire nHaltSig_3ff;
-    dff nHaltSig_2dff(.q(nHaltSig_3ff), .d(1'b0 ? nHaltSig_3ff : nHaltSig_2ff), .clk(clk), .rst(rst));
+    dff nHaltSig_3dff(.q(nHaltSig_3ff), .d(1'b0 ? nHaltSig_3ff : nHaltSig_2ff), .clk(clk), .rst(rst));
 
    /* Memory Stage */
    memory memory0 (

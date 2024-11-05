@@ -23,7 +23,7 @@ module decode (
     output wire ALUJmp,
     output wire MemWrt,
     output reg err,
-    output reg RegWrt,
+    output wire RegWrt,
 
     // Register and Branch Controls
     output wire [1:0] RegSrc,
@@ -48,7 +48,7 @@ module decode (
     // Control Signals
     wire ZeroExt;
     wire RegWrt_nflopped;
-    reg RegWrt_1_nflopped, RegWrt_2_nflopped;
+    wire RegWrt_1_nflopped, RegWrt_2_nflopped;
     wire [5:0] ALUOpr;
     wire [1:0] RegDst;
 
@@ -92,13 +92,13 @@ module decode (
     alu_control aluc (.aluoper(ALUOpr), .instr(instr[1:0]), .op(Oper_nflopped), .invA(invA_nflopped), .invB(invB_nflopped), .Cin(Cin_nflopped));
     
 
-    always@(posedge clk, posedge rst)
-        if (rst)
-            {RegWrt,RegWrt_2_nflopped,RegWrt_1_nflopped} <= 3'b0;
-        else
-             {RegWrt,RegWrt_2_nflopped,RegWrt_1_nflopped} <=  {RegWrt_2_nflopped,RegWrt_1_nflopped,RegWrt_nflopped}; 
+   // always@(posedge clk, posedge rst)
+     //   if (rst)
+       //     {RegWrt,RegWrt_2_nflopped,RegWrt_1_nflopped} <= 3'b0;
+        //else
+          //   {RegWrt,RegWrt_2_nflopped,RegWrt_1_nflopped} <=  {RegWrt_2_nflopped,RegWrt_1_nflopped,RegWrt_nflopped}; 
 
-   // dff dff_d_RegWrt[2:0](.q({RegWrt, RegWrt_2_nflopped, RegWrt_1_nflopped}), .d({RegWrt_2_nflopped, RegWrt_1_nflopped, RegWrt_nflopped}), .clk({clk,clk,clk}), .rst({rst,rst,rst}));
+   dff dff_d_RegWrt[2:0](.q({RegWrt, RegWrt_2_nflopped, RegWrt_1_nflopped}), .d({RegWrt_2_nflopped, RegWrt_1_nflopped, RegWrt_nflopped}), .clk({clk,clk,clk}), .rst({rst,rst,rst}));
     control control0 (.instr(instr), .err(), .nHaltSig(nHaltSig_nflopped), .MemRead(MemRead_nflopped), .RegDst(RegDst), .RegWrt(RegWrt_nflopped), .ZeroExt(ZeroExt), .BSrc(BSrc_nflopped), .ImmSrc(ImmSrc_nflopped), .ALUOpr(ALUOpr), .ALUSign(ALUSign_nflopped), .ALUJmp(ALUJmp_nflopped), .MemWrt(MemWrt_nflopped), .RegSrc(RegSrc_nflopped), .BranchTaken(BranchTaken));
 
     dff dff_RegSrc[5:0](.q({RegSrc, RegSrc_2_nflopped, RegSrc_1_nflopped}), .d({RegSrc_2_nflopped, RegSrc_1_nflopped, RegSrc_nflopped}), .clk({6{clk}}), .rst({6{rst}})); 

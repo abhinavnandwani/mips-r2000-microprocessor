@@ -149,7 +149,7 @@ module proc_hier_pbench();
 
 
    // Halt signal
-   assign Halt = DUT.p0.nHaltSig_3ff;    // Processor halt signal (active low)
+   assign #400 Halt = DUT.p0.nHaltSig_comb;    // Processor halt signal (active low)
    //assign Halt = 1'b0;
 
 

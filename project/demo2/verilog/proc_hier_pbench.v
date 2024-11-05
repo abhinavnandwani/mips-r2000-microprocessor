@@ -173,7 +173,7 @@ module proc_hier_pbench();
    assign MemDataOut = DUT.p0.memory0.readData;
 
    // Control and status signals
-   assign Halt = ~(DUT.p0.control0.nHaltSig);    // negated case our signal is active low Processor halt signal
+   assign Halt = ~(DUT.p0.decode0.nHaltSig);    // negated case our signal is active low Processor halt signal
 
 //// END OF FROM DEMO 1 ////
 

@@ -19,28 +19,27 @@ module decode (
     //input wire ZeroExt,
     //input wire RegWrt,
     //input wire [5:0] ALUOpr,
-    output reg nHaltSig,
-    //output reg RegWrt,
-    //output reg ZeroExt,
-    output reg MemRead,
-    output reg ImmSrc,
-    output reg ALUSign,
-    output reg ALUJmp,
-    output reg MemWrt,
-    output reg err,
+    output wire nHaltSig,
+    //output wire wireWrt,
+    //output wire ZeroExt,
+    output wire MemRead,
+    output wire ImmSrc,
+    output wire ALUSign,
+    output wire ALUJmp,
+    output wire MemWrt,
+    output wire err,
 
     // ALU Control
-    //output reg [5:0] ALUOpr,
+    //output wire [5:0] ALUOpr,
 
-    // Register and Branch Controls
-    output reg [1:0] RegSrc,
-    output reg [1:0] BSrc,
-    //output reg [1:0] RegDst,
-    output reg [3:0] BranchTaken
+    // wireister and Branch Controls
+    output wire [1:0] RegSrc,
+    output wire [1:0] BSrc,
+    //output wire [1:0] wireDst,
+    output wire [3:0] BranchTaken,
 
     // Outputs
     output wire [3:0] Oper,
-    output wire err,
     output wire [15:0] RSData,
     output wire [15:0] RTData,
     output wire [15:0] Imm5,
@@ -89,7 +88,7 @@ module decode (
                 3'b111;
 
     //triple flopped RD
-    dff dff_d_oper[8:0](.q({RD,RD_2_nflopped,RD_1_nflopped}), .d({RD_2_nflopped,RD_1_nflopped,RD_nflopped}), .clk({9{clk}}), .rst({9{rst}}));
+    dff dff_RD[8:0](.q({RD,RD_2_nflopped,RD_1_nflopped}), .d({RD_2_nflopped,RD_1_nflopped,RD_nflopped}), .clk({9{clk}}), .rst({9{rst}}));
 
     regFile regFile0 (.read1Data(RSData_nflopped), .read2Data(RTData_nflopped), .err(err), .clk(clk), .rst(rst), .read1RegSel(instr[10:8]), .read2RegSel(instr[7:5]), .writeRegSel(RD), .writeData(WB), .writeEn(RegWrt));
 
@@ -101,7 +100,7 @@ module decode (
 
     alu_control aluc(.aluoper(ALUOpr),.instr(instr[1:0]),.op(Oper_nflopped), .invA(invA_nflopped), .invB(invB_nflopped), .Cin(Cin_nflopped));
     
-     dff dff_d_oper[3:0](.q({RegWrt,RegWrt_2_nflopped,RegWrt_1_nflopped}), .d({RegWrt_2_nflopped,RegWrt_1_nflopped,RegWrt_nflopped}), .clk({3{clk}}), .rst({3{rst}}));
+     dff dff_d_RegWrt[2:0](.q({RegWrt,RegWrt_2_nflopped,RegWrt_1_nflopped}), .d({RegWrt_2_nflopped,RegWrt_1_nflopped,RegWrt_nflopped}), .clk({3{clk}}), .rst({3{rst}}));
     control control0(.instr(instr), .err(err), .nHaltSig(nHaltSig), .MemRead(MemRead_nflopped),.RegDst(RegDst), .RegWrt(RegWrt_nflopped), .ZeroExt(ZeroExt), .BSrc(BSrc_nflopped), .ImmSrc(ImmSrc_nflopped), .ALUOpr(ALUOpr), .ALUSign(ALUSign_nflopped), .ALUJmp(ALUJmp_nflopped), .MemWrt(MemWrt_nflopped), .RegSrc(RegSrc_nflopped), .BranchTaken(BranchTaken));
 
     dff dff_RegSrc[5:0](.q({RegSrc,RegSrc_2_nflopped,RegSrc_1_nflopped}), .d({RegSrc_2_nflopped,RegSrc_1_nflopped, RegSrc_nflopped}), .clk({6{clk}}), .rst({6{rst}})); // ID to X
@@ -121,7 +120,7 @@ module decode (
     register dff_d_Imm8(.r(Imm8), .w(Imm8_nflopped), .clk(clk), .rst(rst), .we(1'b1));
     register dff_d_sImm8(.r(sImm8), .w(sImm8_nflopped), .clk(clk), .rst(rst), .we(1'b1));
     register dff_d_sImm11(.r(sImm11), .w(sImm11_nflopped), .clk(clk), .rst(rst), .we(1'b1));
-    register dff_d_PC(.r(PC_Next), .w(PC)), .clk({clk}), .rst(rst), .we(1'b1);
+    register dff_d_PC(.r(PC_Next), .w(PC), .clk({clk}), .rst(rst), .we(1'b1));
 
     dff dff_d_invA(.q(invA), .d(invA_nflopped), .clk(clk), .rst(rst));
     dff dff_d_invB(.q(invB), .d(invB_nflopped), .clk(clk), .rst(rst));

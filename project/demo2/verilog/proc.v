@@ -68,7 +68,7 @@ module proc (/*AUTOARG*/
    // wire nHaltSig_flopped, nHaltSig_2flopped, nHaltSig_3flopped
     //wire RegWrt_flopped, ZeroExt_flopped, ImmSrc_flopped, ALUSign_flopped;
     //wire ALUJmp_flopped, MemWrt_flopped,MemRead_flopped;
-    wire MemWrt_2flopped,  MemRead_2_flopped;;
+    wire MemWrt_2flopped,  MemRead_2_flopped;
     //wire err_flopped;
 
     //wire [1:0] RegSrc_flopped, RegSrc_2_flopped, RegSrc_3_flopped;
@@ -132,9 +132,6 @@ module proc (/*AUTOARG*/
       .BSrc(BSrc),
       .BranchTaken(BranchTaken),
       .Oper(Oper),
-      .RegDst(RegDst), 
-      .ZeroExt(ZeroExt), 
-      .RegWrt(RegWrt), 
       .err(err), 
       .RSData(RSData), 
       .RTData(RTData), 
@@ -142,11 +139,7 @@ module proc (/*AUTOARG*/
       .Imm8(Imm8), 
       .sImm8(sImm8), 
       .sImm11(sImm11), 
-      .PC_Next(PC_d),
-      .invA(invA),
-      .invB(invB),
-      .Cin(Cin),
-      .RD(RD)
+      .PC_Next(PC_d)
       );
 
    // dff dff_d_oper[3:0](.q(oper_d_flopped), .d(Oper), .clk({4{clk}}), .rst({4{rst}}));
@@ -165,6 +158,9 @@ module proc (/*AUTOARG*/
    // dff dff_d_Cin(.q(Cin_d_flopped), .d(Cin), .clk(clk), .rst(rst));
 
    execute execute0(
+      .clk(clk),
+      .rst(rst),
+      .NOP(),
       .RSData(RSData), 
       .RTData(RTData), 
       .nHaltSig(nHaltSig),
@@ -183,8 +179,16 @@ module proc (/*AUTOARG*/
       .cin(Cin), 
       .BranchTaken(BranchTaken), 
       .ALU_Out(ALU), 
-      .PC_Next(PC_Jump)
+      .PC_Next(PC_Jump),
+      .MemRead_ff(), //MemRead input from decode
+      .MemRead_2ff(), //MemRead to DM
+      .MemWrt_ff(), //input from decode 
+      .MemWrt_2ff(), // output to DM
+      .RegWrt_ff(), //input from deocde
+      .RegWrt_2ff() //output to DM to WB
+      
       );
+
    register dff_e_ALU(.r(ALU_e_flopped), .w(ALU), .clk(clk), .rst(rst),.we(1'b1));
    register dff_e_ALU2(.r(ALU_e_2flopped), .w(ALU_e_flopped), .clk(clk), .rst(rst),.we(1'b1));
   // register dff_e_PC(.w(PC_Jump_e_flopped), .r(PC_Jump), .clk(clk), .rst(rst),.we(1'b1));

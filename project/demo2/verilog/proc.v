@@ -39,9 +39,8 @@ module proc (/*AUTOARG*/
 
    // Flopped signals between pipeline stages
    wire [15:0] PC_f_flopped, instr_f_flopped;
-   wire [15:0] PC_d_2flopped;
-   wire [15:0] ALU_e_flopped, ALU_e_2flopped;
-   wire [15:0] readData_m_flopped;
+   wire [15:0] PC_2ff, PC_3ff;
+   wire [15:0] ALU_ff;
    wire MemWrt_2flopped, MemRead_2flopped;
 
    /* Fetch Stage */
@@ -55,21 +54,17 @@ module proc (/*AUTOARG*/
        .PC_Next(PC_f)
    );
 
-   // DFFs for fetch stage signals
-   register dff_f_pc(.r(PC_f_flopped), .w(PC_f), .clk(clk), .rst(rst), .we(1'b1));
-   register dff_f_instr(.r(instr_f_flopped), .w(instr), .clk(clk), .rst(rst), .we(1'b1));
-
    /* Decode Stage */
    decode decode0 (
        .clk(clk), 
        .rst(rst), 
-       .instr(instr_f_flopped), 
+       .instr(instr), 
        .invA(invA),
        .invB(invB),
        .Cin(Cin),
        .RD(RD),
        .WB(WB), 
-       .PC(PC_f_flopped), 
+       .PC(PC_f), 
        .nHaltSig(nHaltSig),
        .MemRead(MemRead),
        .ImmSrc(ImmSrc),
@@ -89,9 +84,6 @@ module proc (/*AUTOARG*/
        .sImm11(sImm11), 
        .PC_Next(PC_d)
    );
-
-   // DFF for decode stage PC signal
-   register dff_d_PC2(.r(PC_d_2flopped), .w(PC_d), .clk(clk), .rst(rst), .we(1'b1));
 
    /* Execute Stage */
    execute execute0 (
@@ -120,33 +112,30 @@ module proc (/*AUTOARG*/
        .MemRead_ff(MemRead), 
        .MemRead_2ff(MemRead_2flopped), 
        .MemWrt_ff(MemWrt), 
-       .MemWrt_2ff(MemWrt_2flopped) 
+       .MemWrt_2ff(MemWrt_2flopped),
+       .PC_2ff(PC_2ff)
    );
-
-   // DFFs for execute stage signals
-   register dff_e_ALU(.r(ALU_e_flopped), .w(ALU), .clk(clk), .rst(rst), .we(1'b1));
-   register dff_e_ALU2(.r(ALU_e_2flopped), .w(ALU_e_flopped), .clk(clk), .rst(rst), .we(1'b1));
 
    /* Memory Stage */
    memory memory0 (
        .clk(clk),
        .rst(rst),
-       .ALU(ALU_e_flopped), 
+       .PC(PC_2ff),
+       .ALU(ALU), 
        .nHaltSig(nHaltSig),
        .writeData(RTData), 
        .readEn(MemRead_2flopped), 
        .MemWrt(MemWrt_2flopped), 
-       .readData(readData)
+       .readData(readData), 
+       .ALU_ff(ALU_ff),
+       .PC_Next(PC_3ff)
    );
-
-   // DFF for memory stage read data
-   register dff_memory(.w(readData_m_flopped), .r(readData), .clk(clk), .rst(rst), .we(1'b1));
 
    /* Write-Back (WB) Stage */
    wb wb0 (
-       .MemIn(readData_m_flopped), 
-       .PcIn(PC_d_2flopped), 
-       .ALUIn(ALU_e_2flopped), 
+       .MemIn(readData), 
+       .PcIn(PC_3ff), 
+       .ALUIn(ALU_ff), 
        .RegSrc(RegSrc), 
        .WB(WB)
    );

@@ -54,17 +54,20 @@ module proc (/*AUTOARG*/
        .PC_Next(PC_f)
    );
 
+   register dff_f_pc(.r(PC_f_flopped), .w(PC_f), .clk(clk), .rst(rst), .we(1'b1));
+   register dff_f_instr(.r(instr_f_flopped), .w(instr), .clk(clk), .rst(rst), .we(1'b1));
+
    /* Decode Stage */
    decode decode0 (
        .clk(clk), 
        .rst(rst), 
-       .instr(instr), 
+       .instr(instr_f_flopped), 
        .invA(invA),
        .invB(invB),
        .Cin(Cin),
        .RD(RD),
        .WB(WB), 
-       .PC(PC_f), 
+       .PC(PC_f_flopped), 
        .nHaltSig(nHaltSig),
        .MemRead(MemRead),
        .ImmSrc(ImmSrc),

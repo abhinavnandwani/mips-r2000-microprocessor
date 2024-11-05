@@ -12,13 +12,10 @@ module fetch (clk, rst, PC_B,nHaltSig, instr, PC_Next,PC_curr);
    output [15:0] PC_Next,PC_curr;
 
 
-   wire [15:0] PC,PC_regs;
+   wire [15:0] PC,PC_regs, PC_Next_nflopped, instr_nflopped;
    wire err;
    wire [15:0] add2,PC_Sum;
    wire c_out;
-
-   register dff_f_pc(.r(PC_Next), .w(PC_Next_nflopped), .clk(clk), .rst(rst), .we(1'b1));
-   register dff_f_instr(.r(instr), .w(instr_nflopped), .clk(clk), .rst(rst), .we(1'b1));
 
    // PC Register
    assign PC_regs = (1'b0) ? PC_B:PC_Sum;

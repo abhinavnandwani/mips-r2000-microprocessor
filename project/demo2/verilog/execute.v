@@ -21,11 +21,11 @@ module execute (clk,rst,NOP,RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc,
    input wire MemRead_ff;
    output wire MemRead_2ff;
 
-   input RegSrc_ff;
-   output RegSrc_2ff;
-   output [15:0] PC_2ff;
+   // wire RegSrc_ff;
+   // output wire RegSrc_2ff;
+   output wire [15:0] PC_2ff;
 
-      // DFF for decode stage PC signal
+   // DFF for decode stage PC signal
    register dff_d_PC2(.r(PC_2ff), .w(PC), .clk(clk), .rst(rst), .we(1'b1));
 
    dff MemWrt_2dff(.q(MemWrt_2ff), .d(1'b0 ? MemWrt_2ff : MemWrt_ff), .clk(clk), .rst(rst)); // X to DM

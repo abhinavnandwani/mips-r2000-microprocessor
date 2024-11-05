@@ -31,5 +31,5 @@ module fetch (clk, rst, PC_B,nHaltSig, instr, PC_Next,PC_curr);
    cla_16b pc_add2 (.sum(PC_Sum), .c_out(c_out), .a(PC), .b(16'h0002), .c_in(1'b0));
    
    // Halt Mux
-   assign PC_Next =  (!1'b1) ? PC:PC_Sum;
+   assign PC_Next =  (nHaltSig) ? PC:PC_Sum;
 endmodule

@@ -21,6 +21,8 @@ module execute (clk,rst,NOP,RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc,
    input wire MemRead_ff;
    output wire MemRead_2ff;
 
+   input RegSrc_ff;
+   output RegSrc_2ff;
 
 
    dff MemWrt_2dff(.q(MemWrt_2ff), .d(1'b0 ? MemWrt_2ff : MemWrt_ff), .clk(clk), .rst(rst)); // X to DM

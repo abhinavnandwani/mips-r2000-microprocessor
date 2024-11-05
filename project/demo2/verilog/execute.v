@@ -5,13 +5,13 @@
 */
 
 `default_nettype none
-module execute (clk,rst,NOP,RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc, nHaltSig, ImmSrc, ALUJmp, invA, invB, Oper, ALUSign, cin, BranchTaken, ALU_Out, PC_Next, MemWrt_ff,MemRead_ff, MemWrt_2ff, MemRead_2ff);
+module execute (clk,rst,NOP,RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc, nHaltSig_ff, nHaltSig_2ff,ImmSrc, ALUJmp, invA, invB, Oper, ALUSign, cin, BranchTaken, ALU_Out, PC_Next, MemWrt_ff,MemRead_ff, MemWrt_2ff, MemRead_2ff);
    input wire [15:0] RSData, RTData, PC;
    input wire [15:0] Imm5, Imm8, sImm8, sImm11;
    input wire [1:0] BSrc;
    input wire [3:0] Oper;
    input wire [3:0] BranchTaken;
-   input wire ImmSrc, ALUJmp, invA, invB, ALUSign, cin,nHaltSig;
+   input wire ImmSrc, ALUJmp, invA, invB, ALUSign, cin,nHaltSig_ff;
    output wire [15:0] ALU_Out, PC_Next;
 
    input wire clk, rst, NOP;
@@ -21,12 +21,14 @@ module execute (clk,rst,NOP,RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc,
    input wire MemRead_ff;
    output wire MemRead_2ff;
 
-   input RegSrc_ff;
-   output RegSrc_2ff;
+   output wire nHaltSig_2ff;
+ 
 
 
    dff MemWrt_2dff(.q(MemWrt_2ff), .d(1'b0 ? MemWrt_2ff : MemWrt_ff), .clk(clk), .rst(rst)); // X to DM
    dff MemRead_2dff(.q(MemRead_2ff), .d(1'b0 ? MemRead_2ff : MemRead_ff), .clk(clk), .rst(rst)); // X to DM
+   dff nHaltSig_2dff(.q(nHaltSig_2ff), .d(1'b0 ? nHaltSig_2ff : nHaltSig_ff), .clk(clk), .rst(rst)); // X to DM
+   
 
 
    wire [15:0] ALUIn;
@@ -40,7 +42,7 @@ module execute (clk,rst,NOP,RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc,
 
    
    //Branch & Jump Mux
-   assign PC_Branch = (nHaltSig ? BrchCnd : 1'b0) ? Branch : PC;
+   assign PC_Branch = (~nHaltSig_ff ? BrchCnd : 1'b0) ? Branch : PC;
    assign PC_Next = (ALUJmp) ? ALU_Out : PC_Branch;
 
    // Register Mux

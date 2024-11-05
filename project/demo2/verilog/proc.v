@@ -12,7 +12,7 @@ module proc (/*AUTOARG*/
    input wire clk;
    input wire rst;
 
-   output wire err;
+   output reg err;
 
    // None of the above lines can be modified
 
@@ -31,7 +31,7 @@ module proc (/*AUTOARG*/
    wire [15:0] Imm5, Imm8, sImm8, sImm11;
 
    // Control signals
-   wire nHaltSig, RegWrt, ZeroExt, ImmSrc, invA, invB;
+   wire nHaltSig, ZeroExt, ImmSrc, invA, invB;
    wire ALUSign, Cin, ALUJmp, MemWrt, MemRead;
    wire [1:0] RegSrc, BSrc, RegDst;
    wire [3:0] Oper, BranchTaken;
@@ -42,7 +42,7 @@ module proc (/*AUTOARG*/
    wire [15:0] PC_d_2flopped;
    wire [15:0] ALU_e_flopped, ALU_e_2flopped;
    wire [15:0] readData_m_flopped;
-   wire MemWrt_2flopped, MemRead_2flopped;
+   wire MemWrt_2flopped, MemRead_2flopped,nHaltSig_2ff,nHaltSig_comb;
 
    /* Fetch Stage */
    fetch fetch0 (
@@ -50,7 +50,7 @@ module proc (/*AUTOARG*/
        .rst(rst), 
        .PC_B(PC_Jump), 
        .PC_curr(PC),
-       .nHaltSig(nHaltSig),
+       .nHaltSig(nHaltSig_comb),
        .instr(instr), 
        .PC_Next(PC_f)
    );
@@ -63,9 +63,11 @@ module proc (/*AUTOARG*/
    decode decode0 (
        .clk(clk), 
        .rst(rst), 
+       .nHaltSig_comb(nHaltSig_comb),
        .instr(instr_f_flopped), 
        .invA(invA),
        .invB(invB),
+       .RegWrt(),
        .Cin(Cin),
        .RD(RD),
        .WB(WB), 
@@ -80,7 +82,7 @@ module proc (/*AUTOARG*/
        .BSrc(BSrc),
        .BranchTaken(BranchTaken),
        .Oper(Oper),
-       .err(err), 
+       .err(), 
        .RSData(RSData), 
        .RTData(RTData), 
        .Imm5(Imm5), 
@@ -100,7 +102,7 @@ module proc (/*AUTOARG*/
        .NOP(), // Placeholder if NOP signal is needed
        .RSData(RSData), 
        .RTData(RTData), 
-       .nHaltSig(nHaltSig),
+       .nHaltSig_ff(nHaltSig),
        .Oper(Oper), 
        .PC(PC_d), 
        .Imm5(Imm5), 
@@ -120,19 +122,23 @@ module proc (/*AUTOARG*/
        .MemRead_ff(MemRead), 
        .MemRead_2ff(MemRead_2flopped), 
        .MemWrt_ff(MemWrt), 
-       .MemWrt_2ff(MemWrt_2flopped) 
+       .MemWrt_2ff(MemWrt_2flopped),
+       .nHaltSig_2ff(nHaltSig_2ff)
    );
 
    // DFFs for execute stage signals
    register dff_e_ALU(.r(ALU_e_flopped), .w(ALU), .clk(clk), .rst(rst), .we(1'b1));
    register dff_e_ALU2(.r(ALU_e_2flopped), .w(ALU_e_flopped), .clk(clk), .rst(rst), .we(1'b1));
 
+    wire nHaltSig_3ff;
+    dff nHaltSig_2dff(.q(nHaltSig_3ff), .d(1'b0 ? nHaltSig_3ff : nHaltSig_2ff), .clk(clk), .rst(rst));
+
    /* Memory Stage */
    memory memory0 (
        .clk(clk),
        .rst(rst),
        .ALU(ALU_e_flopped), 
-       .nHaltSig(nHaltSig),
+       .nHaltSig(nHaltSig_2ff),
        .writeData(RTData), 
        .readEn(MemRead_2flopped), 
        .MemWrt(MemWrt_2flopped), 

@@ -41,26 +41,29 @@ module proc (/*AUTOARG*/
    wire [15:0] PC_f_flopped, instr_f_flopped;
    wire [15:0] PC_2ff, PC_3ff;
    wire [15:0] ALU_ff;
-   wire MemWrt_2flopped, MemRead_2flopped,nHaltSig_2ff,nHaltSig_comb;
+   wire MemWrt_2flopped, MemRead_2flopped,nHaltSig_2ff,nHaltSig_comb,NOP;
 
    /* Fetch Stage */
    fetch fetch0 (
        .clk(clk), 
        .rst(rst), 
+        .NOP(NOP),
        .PC_B(PC_Jump), 
        .PC_curr(PC),
+       .nHalt_ff(nHaltSig),
        .nHaltSig(nHaltSig_comb),
        .instr(instr), 
        .PC_Next(PC_f)
    );
 
    register dff_f_pc(.r(PC_f_flopped), .w(PC_f), .clk(clk), .rst(rst), .we(1'b1));
-   register dff_f_instr(.r(instr_f_flopped), .w(instr), .clk(clk), .rst(rst), .we(1'b1));
+   register dff_f_instr(.r(instr_f_flopped), .w(NOP ? instr_f_flopped : instr), .clk(clk), .rst(rst), .we(1'b1));
 
    /* Decode Stage */
    decode decode0 (
        .clk(clk), 
-       .rst(rst), 
+       .rst(rst),
+       .NOP(NOP),
        .nHaltSig_comb(nHaltSig_comb),
        .instr(instr_f_flopped), 
        .invA(invA),
@@ -94,7 +97,7 @@ module proc (/*AUTOARG*/
    execute execute0 (
        .clk(clk),
        .rst(rst),
-       .NOP(), // Placeholder if NOP signal is needed
+       .NOP(NOP), // Placeholder if NOP signal is needed
        .RSData(RSData), 
        .RTData(RTData), 
        .nHaltSig_ff(nHaltSig),
@@ -122,8 +125,9 @@ module proc (/*AUTOARG*/
        .nHaltSig_2ff(nHaltSig_2ff)
    );
 
-    wire nHaltSig_3ff;
-    dff nHaltSig_3dff(.q(nHaltSig_3ff), .d(1'b0 ? nHaltSig_3ff : nHaltSig_2ff), .clk(clk), .rst(rst));
+    wire nHaltSig_3ff,nHaltSig_4ff;
+    dff nHaltSig_3dff(.q(nHaltSig_3ff), .d(nHaltSig_2ff), .clk(clk), .rst(rst));
+    dff nHaltSig_4dff(.q(nHaltSig_4ff), .d(nHaltSig_3ff), .clk(clk), .rst(rst));
 
    /* Memory Stage */
    memory memory0 (

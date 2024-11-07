@@ -34,14 +34,14 @@ module proc (/*AUTOARG*/
    wire nHaltSig, ZeroExt, ImmSrc, invA, invB;
    wire ALUSign, Cin, ALUJmp, MemWrt, MemRead;
    wire [1:0] RegSrc, BSrc, RegDst;
-   wire [3:0] Oper, BranchTaken;
+   wire [3:0] Oper, BranchTaken, BranchTaken_ff;
    wire [2:0] RD;
 
    // Flopped signals between pipeline stages
    wire [15:0] PC_f_flopped, instr_f_flopped;
    wire [15:0] PC_2ff, PC_3ff;
    wire [15:0] ALU_ff;
-   wire MemWrt_2flopped, MemRead_2flopped,nHaltSig_2ff,nHaltSig_comb,NOP;
+   wire MemWrt_2flopped, MemRead_2flopped,nHaltSig_2ff,nHaltSig_comb,NOP,ALUJmp_nflopped;
 
    /* Fetch Stage */
    fetch fetch0 (
@@ -53,11 +53,16 @@ module proc (/*AUTOARG*/
        .nHalt_ff(nHaltSig),
        .nHaltSig(nHaltSig_comb),
        .instr(instr), 
-       .PC_Next(PC_f)
+       .PC_Next(PC_f),
+       .branch(BranchTaken[2]), 
+       .branch_ff(BranchTaken_ff[2]), 
+       .ALUJmp(ALUJmp_nflopped), 
+       .ALUJmp_ff(ALUJmp)
    );
 
-   register dff_f_pc(.r(PC_f_flopped), .w(PC_f), .clk(clk), .rst(rst), .we(1'b1));
-   register dff_f_instr(.r(instr_f_flopped), .w(NOP ? instr_f_flopped : instr), .clk(clk), .rst(rst), .we(1'b1));
+    register dff_f_pc(.r(PC_f_flopped), .w(PC_f), .clk(clk), .rst(rst), .we(1'b1));
+    register dff_f_instr(.r(instr_f_flopped), .w(NOP ? instr_f_flopped : instr), .clk(clk), .rst(rst), .we(1'b1));
+    dff dff_f_branch[3:0](.q(BranchTaken_ff), .d(BranchTaken), .clk(clk), .rst(rst));
 
    /* Decode Stage */
    decode decode0 (
@@ -78,6 +83,7 @@ module proc (/*AUTOARG*/
        .ImmSrc(ImmSrc),
        .ALUSign(ALUSign),
        .ALUJmp(ALUJmp),
+       .ALUJmp_nflopped(ALUJmp_nflopped),
        .MemWrt(MemWrt),
        .RegSrc(RegSrc),
        .BSrc(BSrc),
@@ -114,7 +120,7 @@ module proc (/*AUTOARG*/
        .invB(invB), 
        .ALUSign(ALUSign), 
        .cin(Cin), 
-       .BranchTaken(BranchTaken), 
+       .BranchTaken(BranchTaken_ff), 
        .ALU_Out(ALU), 
        .PC_Next(PC_Jump),
        .MemRead_ff(MemRead), 

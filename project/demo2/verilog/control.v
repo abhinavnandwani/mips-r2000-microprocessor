@@ -26,7 +26,8 @@ module control (
     output reg [1:0] RegSrc,
     output reg [1:0] BSrc,
     output reg [1:0] RegDst,
-    output reg [3:0] BranchTaken
+    output reg [3:0] BranchTaken,
+    output reg NOP
     );
     wire funct;
     assign funct = instr[1:0];
@@ -49,11 +50,13 @@ module control (
     BSrc = 2'b00;
     MemRead = 1'b0;
     BranchTaken = 4'b000;
+    NOP = 1'b0;
 
     casex(instr[15:11])
         5'b00000: nHaltSig = 1'b1;		// HALT 
         5'b00001:begin		// NOP
             // none
+            NOP = 1'b1;
             end
         /* I format 1 below: */
         5'b010xx: begin   //ADDI, SUBI, XORI, ANDNI

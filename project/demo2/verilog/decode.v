@@ -42,7 +42,8 @@ module decode (
     output wire invA,
     output wire invB,
     output wire Cin,
-    output wire [2:0] RD
+    output wire [2:0] RD,
+    output wire NOP
 );
 
     // Control Signals
@@ -70,6 +71,7 @@ module decode (
     wire ALUSign_nflopped;
     wire ALUJmp_nflopped;
     wire MemWrt_nflopped,nHaltSig_nflopped;
+    wire NOP_mech, NOP_comb;
 
     // Register File
     assign RD_nflopped = (RegDst == 2'b00) ? instr[7:5] :
@@ -80,7 +82,7 @@ module decode (
     // Triple-flopped RD
     dff dff_RD[8:0](.q({RD, RD_2_nflopped, RD_1_nflopped}), .d({RD_2_nflopped, RD_1_nflopped, RD_nflopped}), .clk({9{clk}}), .rst({9{rst}}));
 
-    regFile regFile0 (.read1Data(RSData_nflopped), .read2Data(RTData_nflopped), .err(), .clk(clk), .rst(rst), .read1RegSel(instr[10:8]), .read2RegSel(instr[7:5]), .writeRegSel(RD), .writeData(WB), .writeEn(RegWrt));
+    regFile_bypass regFile0 (.read1Data(RSData_nflopped), .read2Data(RTData_nflopped), .err(), .clk(clk), .rst(rst), .read1RegSel(instr[10:8]), .read2RegSel(instr[7:5]), .writeRegSel(RD), .writeData(WB), .writeEn(RegWrt));
 
     // Sign Extension
     assign Imm5_nflopped = (ZeroExt) ? {11'h000, instr[4:0]} : {{11{instr[4]}}, instr[4:0]};
@@ -99,7 +101,8 @@ module decode (
           //   {RegWrt,RegWrt_2_nflopped,RegWrt_1_nflopped} <=  {RegWrt_2_nflopped,RegWrt_1_nflopped,RegWrt_nflopped}; 
 
    dff dff_d_RegWrt[2:0](.q({RegWrt, RegWrt_2_nflopped, RegWrt_1_nflopped}), .d({RegWrt_2_nflopped, RegWrt_1_nflopped, RegWrt_nflopped}), .clk({clk,clk,clk}), .rst({rst,rst,rst}));
-    control control0 (.instr(instr), .err(), .nHaltSig(nHaltSig_nflopped), .MemRead(MemRead_nflopped), .RegDst(RegDst), .RegWrt(RegWrt_nflopped), .ZeroExt(ZeroExt), .BSrc(BSrc_nflopped), .ImmSrc(ImmSrc_nflopped), .ALUOpr(ALUOpr), .ALUSign(ALUSign_nflopped), .ALUJmp(ALUJmp_nflopped), .MemWrt(MemWrt_nflopped), .RegSrc(RegSrc_nflopped), .BranchTaken(BranchTaken));
+    control control0 (.instr(NOP_mech ? 16'h0Axx : instr), .err(), .NOP(NOP_comb), .nHaltSig(nHaltSig_nflopped), .MemRead(MemRead_nflopped), .RegDst(RegDst), .RegWrt(RegWrt_nflopped), .ZeroExt(ZeroExt), .BSrc(BSrc_nflopped), .ImmSrc(ImmSrc_nflopped), .ALUOpr(ALUOpr), .ALUSign(ALUSign_nflopped), .ALUJmp(ALUJmp_nflopped), .MemWrt(MemWrt_nflopped), .RegSrc(RegSrc_nflopped), .BranchTaken(BranchTaken));
+    assign NOP = NOP_comb;
 
     dff dff_RegSrc[5:0](.q({RegSrc, RegSrc_2_nflopped, RegSrc_1_nflopped}), .d({RegSrc_2_nflopped, RegSrc_1_nflopped, RegSrc_nflopped}), .clk({6{clk}}), .rst({6{rst}})); 
     dff dff_BSrc[1:0](.q(BSrc), .d(BSrc_nflopped), .clk({2{clk}}), .rst({2{rst}})); 
@@ -124,5 +127,7 @@ module decode (
     dff dff_d_invA(.q(invA), .d(invA_nflopped), .clk(clk), .rst(rst));
     dff dff_d_invB(.q(invB), .d(invB_nflopped), .clk(clk), .rst(rst));
     dff dff_d_Cin(.q(Cin), .d(Cin_nflopped), .clk(clk), .rst(rst));
+
+    stall_mech stall(.NOP_reg(NOP_mech), .RSData(instr[10:8]),.RTData(instr[7:5]),.RD_ff(RD_1_nflopped),.RD_2ff(RD_2_nflopped), .RegWrt_2ff(RegWrt_2_nflopped), .RegWrt_ff(RegWrt_1_nflopped));
 
 endmodule

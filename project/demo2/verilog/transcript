@@ -1,5 +1,5 @@
 # vsim -c proc_hier_pbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 20:49:28 on Nov 06,2024
+# Start time: 11:13:13 on Nov 07,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -48,32 +48,34 @@
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.ptrace for output
 # branch: x, branch_ff 0, alujmp x, alujmp_ff: 0, PC_B:     0, PC:     0, PC_Next:     X
-# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:     0, PC:     0, PC_Next:     0
 # branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:     0, PC:     0, PC_Next:     2
 # branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:     0, PC:     2, PC_Next:     4
-# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:     0, PC:     2, PC_Next:     2
-# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:     2, PC:     2, PC_Next:     2
-# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:     2, PC:     2, PC_Next:     4
 # branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:     2, PC:     4, PC_Next:     6
-# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:     2, PC:     4, PC_Next:     4
-# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:     4, PC:     4, PC_Next:     4
-# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:     4, PC:     4, PC_Next:     6
 # branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:     4, PC:     6, PC_Next:     8
+# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:     4, PC:     6, PC_Next:     6
+# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:     6, PC:     6, PC_Next:     6
+# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:     6, PC:     6, PC_Next:     8
 # branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:     6, PC:     8, PC_Next:    10
-# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:     6, PC:     8, PC_Next:     8
-# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:     8, PC:     8, PC_Next:     8
-# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:     8, PC:     8, PC_Next:    10
 # branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:     8, PC:    10, PC_Next:    12
+# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:     8, PC:    10, PC_Next:    10
+# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:    10, PC:    10, PC_Next:    10
+# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:    10, PC:    10, PC_Next:    12
 # branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:    10, PC:    12, PC_Next:    14
 # branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:    12, PC:    14, PC_Next:    16
-# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:    12, PC:    14, PC_Next:    14
-# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:    14, PC:    14, PC_Next:    14
-# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:    14, PC:    14, PC_Next:    16
 # branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:    14, PC:    16, PC_Next:    18
+# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:    14, PC:    16, PC_Next:    16
+# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:    16, PC:    16, PC_Next:    16
+# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:    16, PC:    16, PC_Next:    18
 # branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:    16, PC:    18, PC_Next:    20
-# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:    16, PC:    18, PC_Next:    18
-# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:    18, PC:    18, PC_Next:    18
+# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:    18, PC:    20, PC_Next:    22
+# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:    20, PC:    22, PC_Next:    24
+# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:    22, PC:    24, PC_Next:    26
+# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:    24, PC:    26, PC_Next:    28
+# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:    26, PC:    28, PC_Next:    30
+# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:    28, PC:    30, PC_Next:    32
+# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:    30, PC:    32, PC_Next:    34
+# branch: 0, branch_ff 0, alujmp 0, alujmp_ff: 0, PC_B:    32, PC:    34, PC_Next:    36
 # ** Note: $finish    : proc_hier_pbench.v(116)
-#    Time: 2605 ns  Iteration: 0  Instance: /proc_hier_pbench
-# End time: 20:49:28 on Nov 06,2024, Elapsed time: 0:00:00
+#    Time: 2305 ns  Iteration: 0  Instance: /proc_hier_pbench
+# End time: 11:13:14 on Nov 07,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0

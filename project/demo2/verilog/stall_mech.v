@@ -6,10 +6,8 @@ module stall_mech(
     input reg [2:0] RD_2ff,
     input wire RegWrt_2ff,
     input wire RegWrt_ff,
-    input wire branch_ff,
     input wire branch,
-    input wire ALUJmp, 
-    input wire ALUJmp_ff
+    input wire ALUJmp
 );
 
 wire x,y,z,a;
@@ -21,7 +19,7 @@ assign z = (RD_ff ==  RTData ) ? RegWrt_ff:1'b0;
 assign a = (RD_2ff ==  RTData ) ? RegWrt_2ff:1'b0;
 
 
-assign NOP_reg = x | y | z | a | branch | ALUJmp;
+assign NOP_reg = x | y | z | a ;
     
 
 

@@ -126,14 +126,12 @@ module decode (
         .NOP_reg(NOP_mech), 
         .RSData(instr[10:8]),
         .RTData(instr[7:5]),
-        .RD_ff(RD_1_nflopped)
+        .RD_ff(RD_1_nflopped),
         .RD_2ff(RD_2_nflopped), 
         .RegWrt_2ff(RegWrt_2_nflopped), 
         .RegWrt_ff(RegWrt_1_nflopped),
         .branch(BranchTaken[2]),
-        .branch_ff(BranchTaken_ff[2]),
-        .ALUJmp(ALUJmp_nflopped),
-        .ALUJmp_ff(ALUJmp)
+        .ALUJmp(ALUJmp_nflopped)
         );
 
 endmodule

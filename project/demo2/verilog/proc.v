@@ -61,7 +61,7 @@ module proc (/*AUTOARG*/
    );
 
     register dff_f_pc(.r(PC_f_flopped), .w(PC_f), .clk(clk), .rst(rst), .we(1'b1));
-    register dff_f_instr(.r(instr_f_flopped), .w(NOP ? instr_f_flopped : instr), .clk(clk), .rst(rst), .we(1'b1));
+    register dff_f_instr(.r(instr_f_flopped), .w(instr), .clk(clk), .rst(rst), .we(1'b1));
     dff dff_f_branch[3:0](.q(BranchTaken_ff), .d(BranchTaken), .clk(clk), .rst(rst));
 
    /* Decode Stage */

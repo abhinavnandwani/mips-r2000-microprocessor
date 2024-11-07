@@ -152,13 +152,13 @@ module proc_hier_pbench();
    assign NOP = DUT.p0.decode0.NOP;
    wire [2:0] RD, RD_ff, RD_2ff, RSData, RTData, RegWrt, RegWrt_2ff, RegWrt_ff;
    assign RD = DUT.p0.decode0.RD;
-   assign RD_2ff = DUT.p0.decode0.RD_2_nflopped;
-   assign RD_ff = DUT.p0.decode0.RD_1_nflopped;
-   assign RSData = DUT.p0.decode0.stall.RSData;
-   assign RTData = DUT.p0.decode0.stall.RTData;
-   assign RegWrt = DUT.p0.decode0.RegWrt;
-   assign RegWrt_2ff = DUT.p0.decode0.stall.RegWrt_2ff;
-   assign RegWrt_ff = DUT.p0.decode0.stall.RegWrt_ff;
+   // assign RD_2ff = DUT.p0.decode0.RD_2_nflopped;
+   // assign RD_ff = DUT.p0.decode0.RD_1_nflopped;
+   // assign RSData = DUT.p0.decode0.stall.RSData;
+   // assign RTData = DUT.p0.decode0.stall.RTData;
+   // assign RegWrt = DUT.p0.decode0.RegWrt;
+   // assign RegWrt_2ff = DUT.p0.decode0.stall.RegWrt_2ff;
+   // assign RegWrt_ff = DUT.p0.decode0.stall.RegWrt_ff;
 
    assign #400 Halt = DUT.p0.nHaltSig_4ff;
 

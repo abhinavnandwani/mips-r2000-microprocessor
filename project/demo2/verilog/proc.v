@@ -42,6 +42,8 @@ module proc (/*AUTOARG*/
    wire [15:0] PC_2ff, PC_3ff;
    wire [15:0] ALU_ff;
    wire MemWrt_2flopped, MemRead_2flopped,nHaltSig_2ff,nHaltSig_comb,NOP;
+   wire NOP_mech, RegWrt_1_nflopped, RegWrt_2_nflopped;
+   wire [2:0] RD_1_nflopped, RD_2_nflopped;
 
    /* Fetch Stage */
    fetch fetch0 (
@@ -58,11 +60,14 @@ module proc (/*AUTOARG*/
    register dff_f_pc(.r(PC_f_flopped), .w(PC_f), .clk(clk), .rst(rst), .we(1'b1));
    register dff_f_instr(.r(instr_f_flopped), .w(NOP ? instr_f_flopped : instr), .clk(clk), .rst(rst), .we(1'b1));
 
+   stall_mech stall(.NOP_reg(NOP_mech), .RSData(instr_f_flopped[10:8]),.RTData(instr_f_flopped[7:5]),.RD_ff(RD_1_nflopped),.RD_2ff(RD_2_nflopped), .RegWrt_2ff(RegWrt_2_nflopped), .RegWrt_ff(RegWrt_1_nflopped));
+
    /* Decode Stage */
    decode decode0 (
        .clk(clk), 
        .rst(rst), 
        .NOP(NOP),
+       .NOP_mech(NOP_mech),
        .nHaltSig_comb(nHaltSig_comb),
        .instr(instr_f_flopped), 
        .invA(invA),
@@ -89,7 +94,11 @@ module proc (/*AUTOARG*/
        .Imm8(Imm8), 
        .sImm8(sImm8), 
        .sImm11(sImm11), 
-       .PC_Next(PC_d)
+       .PC_Next(PC_d),
+       .RD_2_nflopped(RD_2_nflopped),
+       .RD_1_nflopped(RD_1_nflopped),
+       .RegWrt_1_nflopped(RegWrt_1_nflopped),
+       .RegWrt_2_nflopped(RegWrt_2_nflopped)
    );
 
    /* Execute Stage */

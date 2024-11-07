@@ -13,6 +13,7 @@ module decode (
     input wire [15:0] instr,
     input wire [15:0] WB,
     input wire [15:0] PC,
+    input wire NOP_mech,
     
     // Control Signals
     output wire nHaltSig,
@@ -43,13 +44,16 @@ module decode (
     output wire invB,
     output wire Cin,
     output wire [2:0] RD,
-    output wire NOP
+    output wire NOP,
+    output wire RegWrt_2_nflopped,
+    output wire RegWrt_1_nflopped,
+    output wire [2:0] RD_2_nflopped, 
+    output wire [2:0] RD_1_nflopped
 );
 
     // Control Signals
     wire ZeroExt;
     wire RegWrt_nflopped;
-    wire RegWrt_1_nflopped, RegWrt_2_nflopped;
     wire [5:0] ALUOpr;
     wire [1:0] RegDst;
 
@@ -65,13 +69,13 @@ module decode (
     wire invA_nflopped;
     wire invB_nflopped;
     wire Cin_nflopped;
-    wire [2:0] RD_nflopped, RD_1_nflopped, RD_2_nflopped;
+    wire [2:0] RD_nflopped;
     wire MemRead_nflopped;
     wire ImmSrc_nflopped;
     wire ALUSign_nflopped;
     wire ALUJmp_nflopped;
     wire MemWrt_nflopped,nHaltSig_nflopped;
-    wire NOP_mech, NOP_comb;
+    wire NOP_comb;
 
     // Register File
     assign RD_nflopped = (RegDst == 2'b00) ? instr[7:5] :
@@ -127,7 +131,4 @@ module decode (
     dff dff_d_invA(.q(invA), .d(invA_nflopped), .clk(clk), .rst(rst));
     dff dff_d_invB(.q(invB), .d(invB_nflopped), .clk(clk), .rst(rst));
     dff dff_d_Cin(.q(Cin), .d(Cin_nflopped), .clk(clk), .rst(rst));
-
-    stall_mech stall(.NOP_reg(NOP_mech), .RSData(instr[10:8]),.RTData(instr[7:5]),.RD_ff(RD_1_nflopped),.RD_2ff(RD_2_nflopped), .RegWrt_2ff(RegWrt_2_nflopped), .RegWrt_ff(RegWrt_1_nflopped));
-
 endmodule

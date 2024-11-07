@@ -1,5 +1,5 @@
 # vsim -c proc_hier_pbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 11:07:59 on Nov 07,2024
+# Start time: 11:34:14 on Nov 07,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -22,6 +22,7 @@
 # Loading __work.register
 # Loading __work.memory2c
 # Loading __work.cla_16b
+# Loading __work.stall_mech
 # Loading __work.decode
 # Loading __work.regFile_bypass
 # Loading __work.regFile
@@ -32,7 +33,6 @@
 # Loading __work.bit_8shift
 # Loading __work.alu_control
 # Loading __work.control
-# Loading __work.stall_mech
 # Loading __work.execute
 # Loading __work.alu
 # Loading __work.brchcnd
@@ -43,11 +43,10 @@
 # Loading __work.nand2
 # Loading __work.cla_1b
 # log -howmany -rec /* 
-# 4332
+# 4337
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.ptrace for output
-# ** Note: $finish    : proc_hier_pbench.v(116)
-#    Time: 2905 ns  Iteration: 0  Instance: /proc_hier_pbench
-# End time: 11:07:59 on Nov 07,2024, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
+# Break key hit
+# Simulation stop requested.
+# Stopped at control.v line 33

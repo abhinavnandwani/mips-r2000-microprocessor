@@ -1,5 +1,5 @@
 # vsim -c proc_hier_pbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 15:49:34 on Nov 08,2024
+# Start time: 16:06:44 on Nov 08,2024
 # //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-124-generic
 # //
 # //  Copyright 1991-2018 Mentor Graphics Corporation
@@ -42,14 +42,12 @@
 # Loading __work.xor2
 # Loading __work.nand2
 # Loading __work.cla_1b
-# ** Warning: (vsim-3015) [PCDPC] - Port size (3) does not match connection size (1) for port 'RD_ff'. The port definition is at: stall_mech.v(5).
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_pbench/DUT/p0/stall File: proc.v Line: 66
 # log -howmany -rec /* 
 # 4341
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.ptrace for output
 # ** Note: $finish    : proc_hier_pbench.v(116)
-#    Time: 1605 ns  Iteration: 0  Instance: /proc_hier_pbench
-# End time: 15:49:34 on Nov 08,2024, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 1
+#    Time: 2505 ns  Iteration: 0  Instance: /proc_hier_pbench
+# End time: 16:06:45 on Nov 08,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

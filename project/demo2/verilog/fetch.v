@@ -22,7 +22,7 @@ module fetch (clk, rst, NOP, PC_B,nHaltSig, instr, PC_Next,PC_curr);
 
    // PC Register
    assign PC_regs = (1'b0) ? PC_B:PC_Sum;
-   register pc_reg (.r(PC), .w(PC_regs), .clk(clk), .rst(rst), .we(~NOP));
+   register pc_reg (.r(PC), .w(PC_Next), .clk(clk), .rst(rst), .we(1'b1));
    assign PC_curr = PC;
    
    // Instruction Memory
@@ -33,5 +33,5 @@ module fetch (clk, rst, NOP, PC_B,nHaltSig, instr, PC_Next,PC_curr);
    cla_16b pc_add2 (.sum(PC_Sum), .c_out(c_out), .a(PC), .b(16'h0002), .c_in(1'b0));
    
    // Halt Mux
-   assign PC_Next =  PC;
+   assign PC_Next =  NOP ? PC : PC_Sum;
 endmodule

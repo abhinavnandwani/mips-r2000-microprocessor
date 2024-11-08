@@ -57,8 +57,11 @@ module proc (/*AUTOARG*/
        .PC_Next(PC_f)
    );
 
+
+
    register dff_f_pc(.r(PC_f_flopped), .w(PC_f), .clk(clk), .rst(rst), .we(1'b1));
-   register dff_f_instr(.r(instr_f_flopped), .w(NOP ? instr_f_flopped : instr), .clk(clk), .rst(rst), .we(1'b1));
+   register dff_f_instr(.r(instr_f_flopped), .w(~NOP  ? instr : 16'b0000_1000_xxxx_xxxx), .clk(clk), .rst(rst), .we(1'b1));
+
 
    stall_mech stall(.NOP_reg(NOP_mech), .RSData(instr_f_flopped[10:8]),.RTData(instr_f_flopped[7:5]),.RD_ff(RD_1_nflopped),.RD_2ff(RD_2_nflopped), .RegWrt_2ff(RegWrt_2_nflopped), .RegWrt_ff(RegWrt_1_nflopped));
 
@@ -70,6 +73,7 @@ module proc (/*AUTOARG*/
        .NOP_mech(NOP_mech),
        .nHaltSig_comb(nHaltSig_comb),
        .instr(instr_f_flopped), 
+       .instr_comb(instr),
        .invA(invA),
        .invB(invB),
        .RegWrt(),

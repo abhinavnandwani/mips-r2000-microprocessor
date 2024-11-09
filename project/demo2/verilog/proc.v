@@ -51,6 +51,7 @@ module proc (/*AUTOARG*/
     wire [15:0] IDEX_RSData, IDEX_RTData, IDEX_Imm5, IDEX_Imm8, IDEX_sImm8, IDEX_sImm11, IDEX_PC_Next;
     wire IDEX_invA, IDEX_invB, IDEX_Cin, IDEX_NOP, IDEX_RegWrt_2_nflopped, IDEX_RegWrt_1_nflopped;
     wire [2:0] IDEX_RD, IDEX_RD_2_nflopped, IDEX_RD_1_nflopped;
+    wire BrchCnd, NOP_Branch;
 
 
    /* Fetch Stage */
@@ -58,6 +59,7 @@ module proc (/*AUTOARG*/
        .clk(clk), 
        .rst(rst),
        .NOP(NOP),
+       .branch(BrchCnd),
        .PC_B(PC_Jump), 
        .PC_curr(PC),
        .nHaltSig(),
@@ -71,7 +73,7 @@ module proc (/*AUTOARG*/
         .clk(clk),
         .rst(rst),
         .NOP_mech(NOP_mech),
-        .IF_instr(instr),
+        .IF_instr(NOP_Branch ? instr_f_flopped : instr),
         .IF_PC_Next(PC_f),
         .IFID_instr(instr_f_flopped),
         .IFID_PC_Next(PC_f_flopped)
@@ -84,6 +86,7 @@ module proc (/*AUTOARG*/
    decode decode0 (
        .clk(clk), 
        .rst(rst), 
+       .NOP_Branch(NOP_Branch),
        .NOP(NOP),
        .NOP_mech(NOP_mech),
        .nHaltSig_comb(),
@@ -207,7 +210,7 @@ module proc (/*AUTOARG*/
        .RTData(IDEX_RTData), 
        .nHaltSig_ff(IDEX_nHaltSig),
        .Oper(IDEX_Oper), 
-       .PC(PC_d), 
+       .PC(IDEX_PC_Next), 
        .Imm5(IDEX_Imm5), 
        .Imm8(IDEX_Imm8), 
        .sImm8(IDEX_sImm8), 
@@ -219,7 +222,7 @@ module proc (/*AUTOARG*/
        .invB(IDEX_invB), 
        .ALUSign(IDEX_ALUSign), 
        .cin(IDEX_Cin), 
-       .BranchTaken(BranchTaken), 
+       .BranchTaken(IDEX_BranchTaken), 
        .ALU_Out(ALU), 
        .PC_Next(PC_Jump),
        .MemRead_ff(MemRead), 
@@ -227,7 +230,8 @@ module proc (/*AUTOARG*/
        .MemWrt_ff(MemWrt), 
        .MemWrt_2ff(MemWrt_2flopped),
        .PC_2ff(PC_2ff),
-       .nHaltSig_2ff(nHaltSig_2ff)
+       .nHaltSig_2ff(nHaltSig_2ff),
+       .BrchCnd(BrchCnd)
    );
 
     wire nHaltSig_3ff,nHaltSig_4ff;

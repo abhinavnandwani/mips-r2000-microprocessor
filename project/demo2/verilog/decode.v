@@ -50,7 +50,9 @@ module decode (
     output wire RegWrt_2_nflopped,
     output wire RegWrt_1_nflopped,
     output wire [2:0] RD_2_nflopped, 
-    output wire [2:0] RD_1_nflopped
+    output wire [2:0] RD_1_nflopped,
+    output wire NOP_Branch
+    
 );
 
     // Control Signals
@@ -67,6 +69,8 @@ module decode (
 
 
     assign valid = ((|(instr)) | (~|(instr_comb)));
+
+    assign NOP_Branch = valid ? BranchTaken[2] : 1'b0;
 
 
     // Register File

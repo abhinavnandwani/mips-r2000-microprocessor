@@ -5,7 +5,7 @@
 */
 
 `default_nettype none
-module execute (clk,rst,NOP,RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc, nHaltSig_ff, nHaltSig_2ff,ImmSrc, ALUJmp, invA, invB, Oper, ALUSign, cin, BranchTaken, ALU_Out, PC_Next, MemWrt_ff,MemRead_ff, MemWrt_2ff, MemRead_2ff, PC_2ff);
+module execute (clk,rst,NOP,RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc, nHaltSig_ff, nHaltSig_2ff,ImmSrc, ALUJmp, invA, invB, Oper, ALUSign, cin, BranchTaken, ALU_Out, PC_Next, MemWrt_ff,MemRead_ff, MemWrt_2ff, MemRead_2ff, PC_2ff, BrchCnd);
    input wire [15:0] RSData, RTData, PC;
    input wire [15:0] Imm5, Imm8, sImm8, sImm11;
    input wire [1:0] BSrc;
@@ -13,6 +13,7 @@ module execute (clk,rst,NOP,RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc,
    input wire [3:0] BranchTaken;
    input wire ImmSrc, ALUJmp, invA, invB, ALUSign, cin,nHaltSig_ff;
    output wire [15:0] ALU_Out, PC_Next;
+   output wire BrchCnd;
 
    input wire clk, rst, NOP;
    input wire MemWrt_ff;

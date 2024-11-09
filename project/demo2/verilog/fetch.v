@@ -4,10 +4,10 @@
     Description     : This is the overall module for the fetch state of the processor. 
 */
 
-module fetch (clk, rst, NOP, PC_B,nHaltSig, instr, PC_Next,PC_curr);
+module fetch (clk, rst, NOP, branch, PC_B,nHaltSig, instr, PC_Next,PC_curr);
    input clk, rst;
    input [15:0] PC_B; // The PC value "back" from the execute stage. 
-   input nHaltSig, NOP;
+   input nHaltSig, NOP, branch;
    output [15:0] instr;
    output [15:0] PC_Next,PC_curr;
 
@@ -21,17 +21,17 @@ module fetch (clk, rst, NOP, PC_B,nHaltSig, instr, PC_Next,PC_curr);
    dff dff_halt (.q(halt_q), .d(nHaltSig), .clk(clk), .rst(rst));
 
    // PC Register
-   assign PC_regs = (1'b0) ? PC_B:PC_Sum;
+   //assign PC_regs = () ? PC_B : PC;
    register pc_reg (.r(PC), .w(PC_Next), .clk(clk), .rst(rst), .we(1'b1));
    assign PC_curr = PC;
    
    // Instruction Memory
-   memory2c instr_mem(.data_out(instr), .data_in(16'h0000), .addr(PC), .enable(1'b1), .wr(1'b0), .createdump(nHaltSig), .clk(clk), .rst(rst));
+   memory2c instr_mem(.data_out(instr), .data_in(16'h0000), .addr(branch ? PC_B : PC), .enable(1'b1), .wr(1'b0), .createdump(nHaltSig), .clk(clk), .rst(rst));
 
    // Adder: PC + 2
 
-   cla_16b pc_add2 (.sum(PC_Sum), .c_out(c_out), .a(PC), .b(16'h0002), .c_in(1'b0));
+   cla_16b pc_add2 (.sum(PC_Sum), .c_out(c_out), .a(branch ? PC_B : PC), .b(16'h0002), .c_in(1'b0));
    
    // Halt Mux
-   assign PC_Next =  NOP ? PC : PC_Sum;
+   assign PC_Next = NOP ? PC : PC_Sum;
 endmodule

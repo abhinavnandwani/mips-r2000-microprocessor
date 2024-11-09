@@ -59,6 +59,7 @@ module proc (/*AUTOARG*/
        .clk(clk), 
        .rst(rst),
        .NOP(NOP_mech),
+       .NOP_Branch(NOP_Branch),
        .branch(BrchCnd),
        .PC_B(PC_Jump), 
        .PC_curr(PC),

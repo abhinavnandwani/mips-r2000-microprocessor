@@ -1,21 +1,17 @@
-          // Test provided by Karu, comments updated by Matt S.
-          // beqz test.
+          // Original test: ./ziliang/hw4/problem6/jal_1.asm
+          // Author: ziliang
+          // Test source code follows
           
-0000 c101 lbi r1, 1            //set r1 to a constant 1
-0002 c202 lbi r2, 2	         //set r2 to a constant 2
-0004 c401 lbi r4, 1            //set r4 to a constant 1, r4 will be used to indicate our program can be execate currectly or not
-0006 e94c slt r3, r1, r2       //set the r3 if r1 is less than r2, it will be set here
-0008 6302 beqz r3, .label1     //if r3 is zero, program will branch to label1, but since r3 == 1 from the previous line, the branch should not be taken
-000a 4481 addi r4, r4, 1       //if the beqz above didn't branch, r4 will be added 1
           
-000c      .label1:
-000c c102 lbi r1, 2            //set r1 to a constant 2
-000e c201 lbi r2, 1	         //set r2 to a constant 1
-0010 e94c slt r3, r1,r2        //set the r3 if r1 is less than r2, it won't be set here
-0012 6304 beqz r3, .label2     //if r3 is zero, program will branch to label2 -- since r3 == 0 from the previous line, the branch will be taken
-0014 4484 addi r4, r4, 4	     //if the beqz above didn't branch, r4 will be added 4
-0016 0000 halt
-          
-0018      .label2:
-0018 4482 addi r4, r4, 2       //if the beqz above brance, r4 will be added 2
-001a 0000 halt
+          //does three jumps
+0000 c101 lbi r1, 1
+0002 c201 lbi r2, 1
+0004 3004 jal .label2
+0006      .label1:
+0006 d944 add r1, r1, r2
+0008 3004 jal .label3
+000a      .label2:
+000a d945 sub r1, r1, r2
+000c 37f8 jal .label1
+000e      .label3:
+000e 0000 halt

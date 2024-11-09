@@ -59,9 +59,6 @@ module execute (clk,rst,NOP,RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc,
    //BrchCnd 
    brchcnd branch_ctrl(.SF(SF), .ZF(ZF), .brch_instr(NOP ? 4'b0000:BranchTaken), .BrchCnd(BrchCnd));
 
-   // always @(*) begin
-   //      $display("PC %d, A: %h, B: %h,  OUT: %h, ZF: %h, BrchCnd %d", PC_Next, RSData, ALUIn, ALU_nflopped, ZF, BrchCnd);
-   // end
 
 endmodule
 `default_nettype wire

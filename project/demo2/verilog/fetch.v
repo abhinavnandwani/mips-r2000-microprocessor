@@ -17,9 +17,6 @@ module fetch (clk, rst, NOP, branch, PC_B,nHaltSig, instr, PC_Next,PC_curr);
    wire [15:0] add2,PC_Sum;
    wire c_out;
 
-   wire halt_q;
-   dff dff_halt (.q(halt_q), .d(nHaltSig), .clk(clk), .rst(rst));
-
    // PC Register
    //assign PC_regs = () ? PC_B : PC;
    register pc_reg (.r(PC), .w(PC_Next), .clk(clk), .rst(rst), .we(1'b1));
@@ -34,4 +31,5 @@ module fetch (clk, rst, NOP, branch, PC_B,nHaltSig, instr, PC_Next,PC_curr);
    
    // Halt Mux
    assign PC_Next = NOP ? PC : PC_Sum;
+
 endmodule

@@ -35,7 +35,7 @@ module execute (clk,rst,NOP,RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc,
 
    wire [15:0] ALUIn, ALU_nflopped;
    wire [15:0] PC_I, PC_Branch, Branch;
-   wire BrchCnd;
+   //wire BrchCnd;
    wire SF, CF, OF, ZF;
 
    // PC Adder
@@ -57,7 +57,11 @@ module execute (clk,rst,NOP,RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc,
    register dff_e_ALU(.r(ALU_Out), .w(ALU_nflopped), .clk(clk), .rst(rst), .we(1'b1));
 
    //BrchCnd 
-   brchcnd branch_ctrl(.SF(SF), .ZF(ZF), .brch_instr(BranchTaken), .BrchCnd(BrchCnd));
+   brchcnd branch_ctrl(.SF(SF), .ZF(ZF), .brch_instr(NOP ? 4'b0000:BranchTaken), .BrchCnd(BrchCnd));
+
+   // always @(*) begin
+   //      $display("PC %d, A: %h, B: %h,  OUT: %h, ZF: %h, BrchCnd %d", PC_Next, RSData, ALUIn, ALU_nflopped, ZF, BrchCnd);
+   // end
 
 endmodule
 `default_nettype wire

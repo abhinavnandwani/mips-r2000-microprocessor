@@ -58,7 +58,7 @@ module proc (/*AUTOARG*/
    fetch fetch0 (
        .clk(clk), 
        .rst(rst),
-       .NOP(NOP),
+       .NOP(NOP_mech),
        .branch(BrchCnd),
        .PC_B(PC_Jump), 
        .PC_curr(PC),
@@ -69,13 +69,16 @@ module proc (/*AUTOARG*/
 
 
     //// IFID latch ////
+    wire [15:0] IFID_instr_comb;
     IFID_latch IFID(
         .clk(clk),
         .rst(rst),
         .NOP_mech(NOP_mech),
-        .IF_instr(NOP_Branch ? instr_f_flopped : instr),
+        .NOP_Branch(NOP_Branch),
+        .IF_instr(instr),
         .IF_PC_Next(PC_f),
         .IFID_instr(instr_f_flopped),
+        .IFID_instr_comb(IFID_instr_comb),
         .IFID_PC_Next(PC_f_flopped)
     );
     
@@ -91,7 +94,7 @@ module proc (/*AUTOARG*/
        .NOP_mech(NOP_mech),
        .nHaltSig_comb(),
        .instr(instr_f_flopped), 
-       .instr_comb(instr),
+       .instr_comb(IFID_instr_comb),
        .invA(invA),
        .invB(invB),
        .RegWrt(),
@@ -155,12 +158,12 @@ module proc (/*AUTOARG*/
         .ID_Imm8(Imm8),
         .ID_sImm8(sImm8),
         .ID_sImm11(sImm11),
-        .ID_PC_Next(),
+        .ID_PC_Next(PC_f_flopped),
         .ID_invA(invA),
         .ID_invB(invB),
         .ID_Cin(Cin),
         .ID_RD(RD),
-        .ID_NOP(NOP),
+        .ID_NOP(NOP_mech),
         .ID_RegWrt_2_nflopped(RegWrt_2_nflopped),
         .ID_RegWrt_1_nflopped(RegWrt_1_nflopped),
         .ID_RD_2_nflopped(RD_2_nflopped),
@@ -205,7 +208,7 @@ module proc (/*AUTOARG*/
    execute execute0 (
        .clk(clk),
        .rst(rst),
-       .NOP(), // Placeholder if NOP signal is needed
+       .NOP(IDEX_NOP), // Placeholder if NOP signal is needed
        .RSData(IDEX_RSData), 
        .RTData(IDEX_RTData), 
        .nHaltSig_ff(IDEX_nHaltSig),

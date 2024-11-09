@@ -93,5 +93,7 @@ module IDEX_latch (
     dff dff_IDEX_d_invA (.q(IDEX_invA), .d(ID_invA), .clk(clk), .rst(rst));
     dff dff_IDEX_d_invB (.q(IDEX_invB), .d(ID_invB), .clk(clk), .rst(rst));
     dff dff_IDEX_d_Cin (.q(IDEX_Cin), .d(ID_Cin), .clk(clk), .rst(rst));
+    dff dff_IDEX_d_BranchTaken [3:0] (.q(IDEX_BranchTaken), .d(ID_BranchTaken), .clk({4{clk}}), .rst({4{rst}}));
+    dff dff_IDEX_NOP (.q(IDEX_NOP), .d(ID_NOP), .clk(clk), .rst(rst)); 
 
 endmodule

@@ -70,8 +70,9 @@ module decode (
 
     assign valid = ((|(instr)) | (~|(instr_comb)));
 
-    assign NOP_Branch = valid ? BranchTaken[2] : 1'b0;
-
+    assign NOP_Branch =  BranchTaken[2];
+    wire x;
+    assign #100 x = NOP_Branch;
 
     // Register File
     assign RD_nflopped = (RegDst == 2'b00) ? instr[7:5] :
@@ -94,7 +95,9 @@ module decode (
     alu_control aluc (.aluoper(ALUOpr), .instr(instr[1:0]), .op(Oper), .invA(invA), .invB(invB), .Cin(Cin));
     
    dff dff_d_RegWrt[2:0](.q({RegWrt, RegWrt_2_nflopped, RegWrt_1_nflopped}), .d({RegWrt_2_nflopped, RegWrt_1_nflopped, RegWrt_nflopped}), .clk({clk,clk,clk}), .rst({rst,rst,rst}));
-   control control0 (.instr(NOP_mech ? 16'b0000_1xxx_xxxx_xxxx : instr), .err(), .NOP(NOP), .nHaltSig(nHaltSig), .MemRead(MemRead), .RegDst(RegDst), .RegWrt(RegWrt_nflopped), .ZeroExt(ZeroExt), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUOpr(ALUOpr), .ALUSign(ALUSign), .ALUJmp(ALUJmp), .MemWrt(MemWrt), .RegSrc(RegSrc), .BranchTaken(BranchTaken));
+   control control0 (.instr((NOP_mech | (1'b0)) ? 16'b0000_1xxx_xxxx_xxxx : instr), .err(), .NOP(NOP), .nHaltSig(nHaltSig), .MemRead(MemRead), .RegDst(RegDst), .RegWrt(RegWrt_nflopped), .ZeroExt(ZeroExt), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUOpr(ALUOpr), .ALUSign(ALUSign), .ALUJmp(ALUJmp), .MemWrt(MemWrt), .RegSrc(RegSrc), .BranchTaken(BranchTaken));
 
-
+always @(*) begin
+$display("PC:%d NOP_Branch %d", PC, NOP_Branch^x);
+end
 endmodule

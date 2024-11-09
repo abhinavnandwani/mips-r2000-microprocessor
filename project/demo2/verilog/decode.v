@@ -26,6 +26,7 @@ module decode (
     output wire MemWrt,
     output reg err,
     output wire RegWrt,
+    outpur wire valid,
 
     // Register and Branch Controls
     output wire [1:0] RegSrc,
@@ -57,27 +58,13 @@ module decode (
     wire RegWrt_nflopped;
     wire [5:0] ALUOpr;
     wire [1:0] RegDst;
-
-    wire [1:0] RegSrc_nflopped, RegSrc_1_nflopped, RegSrc_2_nflopped;
-    wire [1:0] BSrc_nflopped;
-    wire [3:0] Oper_nflopped;
-    wire [15:0] RSData_nflopped;
-    wire [15:0] RTData_nflopped;
-    wire [15:0] Imm5_nflopped;
-    wire [15:0] Imm8_nflopped;
-    wire [15:0] sImm8_nflopped;
-    wire [15:0] sImm11_nflopped;
-    wire invA_nflopped;
-    wire invB_nflopped;
-    wire Cin_nflopped;
     wire [2:0] RD_nflopped;
     wire MemRead_nflopped;
     wire ImmSrc_nflopped;
     wire ALUSign_nflopped;
     wire ALUJmp_nflopped;
     wire MemWrt_nflopped,nHaltSig_nflopped;
-    wire NOP_comb;
-    wire valid;
+
 
     assign valid = ((|(instr)) | (~|(instr_comb)));
 
@@ -91,49 +78,19 @@ module decode (
     // Triple-flopped RD
     dff dff_RD[8:0](.q({RD, RD_2_nflopped, RD_1_nflopped}), .d({RD_2_nflopped, RD_1_nflopped, RD_nflopped}), .clk({9{clk}}), .rst({9{rst}}));
 
-    regFile_bypass regFile0 (.read1Data(RSData_nflopped), .read2Data(RTData_nflopped), .err(), .clk(clk), .rst(rst), .read1RegSel(instr[10:8]), .read2RegSel(instr[7:5]), .writeRegSel(RD), .writeData(WB), .writeEn(RegWrt));
+    regFile_bypass regFile0 (.read1Data(RSData), .read2Data(RTData), .err(), .clk(clk), .rst(rst), .read1RegSel(instr[10:8]), .read2RegSel(instr[7:5]), .writeRegSel(RD), .writeData(WB), .writeEn(RegWrt));
 
     // Sign Extension
-    assign Imm5_nflopped = (ZeroExt) ? {11'h000, instr[4:0]} : {{11{instr[4]}}, instr[4:0]};
-    assign sImm8_nflopped = {{8{instr[7]}}, instr[7:0]};
-    assign Imm8_nflopped = (ZeroExt) ? {8'h00, instr[7:0]} : sImm8_nflopped;
-    assign sImm11_nflopped = {{5{instr[10]}}, instr[10:0]};
+    assign Imm5 = (ZeroExt) ? {11'h000, instr[4:0]} : {{11{instr[4]}}, instr[4:0]};
+    assign sImm8 = {{8{instr[7]}}, instr[7:0]};
+    assign Imm8 = (ZeroExt) ? {8'h00, instr[7:0]} : sImm8;
+    assign sImm11 = {{5{instr[10]}}, instr[10:0]};
     assign nHaltSig_comb = nHaltSig_nflopped;
     
-    alu_control aluc (.aluoper(ALUOpr), .instr(instr[1:0]), .op(Oper_nflopped), .invA(invA_nflopped), .invB(invB_nflopped), .Cin(Cin_nflopped));
+    alu_control aluc (.aluoper(ALUOpr), .instr(instr[1:0]), .op(Oper), .invA(invA), .invB(invB), .Cin(Cin));
     
-
-   // always@(posedge clk, posedge rst)
-     //   if (rst)
-       //     {RegWrt,RegWrt_2_nflopped,RegWrt_1_nflopped} <= 3'b0;
-        //else
-          //   {RegWrt,RegWrt_2_nflopped,RegWrt_1_nflopped} <=  {RegWrt_2_nflopped,RegWrt_1_nflopped,RegWrt_nflopped}; 
-
    dff dff_d_RegWrt[2:0](.q({RegWrt, RegWrt_2_nflopped, RegWrt_1_nflopped}), .d({RegWrt_2_nflopped, RegWrt_1_nflopped, RegWrt_nflopped}), .clk({clk,clk,clk}), .rst({rst,rst,rst}));
-    control control0 (.instr(NOP_mech ? 16'b0000_1xxx_xxxx_xxxx : instr), .err(), .NOP(NOP_comb), .nHaltSig(nHaltSig_nflopped), .MemRead(MemRead_nflopped), .RegDst(RegDst), .RegWrt(RegWrt_nflopped), .ZeroExt(ZeroExt), .BSrc(BSrc_nflopped), .ImmSrc(ImmSrc_nflopped), .ALUOpr(ALUOpr), .ALUSign(ALUSign_nflopped), .ALUJmp(ALUJmp_nflopped), .MemWrt(MemWrt_nflopped), .RegSrc(RegSrc_nflopped), .BranchTaken(BranchTaken));
-    assign NOP = NOP_comb;
+   control control0 (.instr(NOP_mech ? 16'b0000_1xxx_xxxx_xxxx : instr), .err(), .NOP(NOP), .nHaltSig(nHaltSig), .MemRead(MemRead), .RegDst(RegDst), .RegWrt(RegWrt_nflopped), .ZeroExt(ZeroExt), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUOpr(ALUOpr), .ALUSign(ALUSign), .ALUJmp(ALUJmp), .MemWrt(MemWrt), .RegSrc(RegSrc), .BranchTaken(BranchTaken));
 
-    dff dff_RegSrc[5:0](.q({RegSrc, RegSrc_2_nflopped, RegSrc_1_nflopped}), .d({RegSrc_2_nflopped, RegSrc_1_nflopped, RegSrc_nflopped}), .clk({6{clk}}), .rst({6{rst}})); 
-    dff dff_BSrc[1:0](.q(BSrc), .d(BSrc_nflopped), .clk({2{clk}}), .rst({2{rst}})); 
-    dff dff_ImmSrc(.q(ImmSrc), .d(ImmSrc_nflopped), .clk(clk), .rst(rst)); 
-    dff dff_ALUSign(.q(ALUSign), .d(ALUSign_nflopped), .clk(clk), .rst(rst)); 
-    dff dff_ALUJmp(.q(ALUJmp), .d(ALUJmp_nflopped), .clk(clk), .rst(rst)); 
-    dff dff_MemRead(.q(MemRead), .d(MemRead_nflopped), .clk(clk), .rst(rst)); 
-    dff dff_MemWrt(.q(MemWrt), .d(MemWrt_nflopped), .clk(clk), .rst(rst)); 
 
-    dff dff_nHaltSig(.q(nHaltSig), .d(valid ? nHaltSig_nflopped :1'b0), .clk(clk), .rst(rst)); 
-
-    dff dff_d_oper[3:0](.q(Oper), .d(Oper_nflopped), .clk({4{clk}}), .rst({4{rst}}));
-
-    register dff_d_RSData(.r(RSData), .w(RSData_nflopped), .clk(clk), .rst(rst), .we(1'b1));
-    register dff_d_RTData(.r(RTData), .w(RTData_nflopped), .clk(clk), .rst(rst), .we(1'b1));
-    register dff_d_Imm5(.r(Imm5), .w(Imm5_nflopped), .clk(clk), .rst(rst), .we(1'b1));
-    register dff_d_Imm8(.r(Imm8), .w(Imm8_nflopped), .clk(clk), .rst(rst), .we(1'b1));
-    register dff_d_sImm8(.r(sImm8), .w(sImm8_nflopped), .clk(clk), .rst(rst), .we(1'b1));
-    register dff_d_sImm11(.r(sImm11), .w(sImm11_nflopped), .clk(clk), .rst(rst), .we(1'b1));
-    register dff_d_PC(.r(PC_Next), .w(PC), .clk(clk), .rst(rst), .we(1'b1));
-
-    dff dff_d_invA(.q(invA), .d(invA_nflopped), .clk(clk), .rst(rst));
-    dff dff_d_invB(.q(invB), .d(invB_nflopped), .clk(clk), .rst(rst));
-    dff dff_d_Cin(.q(Cin), .d(Cin_nflopped), .clk(clk), .rst(rst));
 endmodule

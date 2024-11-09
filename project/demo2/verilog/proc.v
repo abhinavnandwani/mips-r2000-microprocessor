@@ -45,6 +45,14 @@ module proc (/*AUTOARG*/
    wire NOP_mech, RegWrt_1_nflopped, RegWrt_2_nflopped;
    wire [2:0] RD_1_nflopped, RD_2_nflopped;
 
+    wire IDEX_nHaltSig, IDEX_MemRead, IDEX_ImmSrc, IDEX_nHaltSig_comb, IDEX_ALUSign, IDEX_ALUJmp, IDEX_MemWrt, IDEX_err, IDEX_RegWrt;
+    wire [1:0] IDEX_RegSrc, IDEX_BSrc;
+    wire [3:0] IDEX_BranchTaken, IDEX_Oper;
+    wire [15:0] IDEX_RSData, IDEX_RTData, IDEX_Imm5, IDEX_Imm8, IDEX_sImm8, IDEX_sImm11, IDEX_PC_Next;
+    wire IDEX_invA, IDEX_invB, IDEX_Cin, IDEX_NOP, IDEX_RegWrt_2_nflopped, IDEX_RegWrt_1_nflopped;
+    wire [2:0] IDEX_RD, IDEX_RD_2_nflopped, IDEX_RD_1_nflopped;
+
+
    /* Fetch Stage */
    fetch fetch0 (
        .clk(clk), 
@@ -52,16 +60,23 @@ module proc (/*AUTOARG*/
        .NOP(NOP),
        .PC_B(PC_Jump), 
        .PC_curr(PC),
-       .nHaltSig(nHaltSig_comb),
+       .nHaltSig(),
        .instr(instr), 
        .PC_Next(PC_f)
    );
 
 
-
-   register dff_f_pc(.r(PC_f_flopped), .w(PC_f), .clk(clk), .rst(rst), .we(1'b1));
-   register dff_f_instr(.r(instr_f_flopped), .w(NOP_mech ? instr_f_flopped : instr), .clk(clk), .rst(rst), .we(1'b1));
-
+    //// IFID latch ////
+    IFID_latch IFID(
+        .clk(clk),
+        .rst(rst),
+        .NOP_mech(NOP_mech),
+        .IF_instr(instr),
+        .IF_PC_Next(PC_f),
+        .IFID_instr(instr_f_flopped),
+        .IFID_PC_Next(PC_f_flopped)
+    );
+    
 
    stall_mech stall(.NOP_reg(NOP_mech), .RSData(instr_f_flopped[10:8]),.RTData(instr_f_flopped[7:5]),.RD_ff(RD_1_nflopped),.RD_2ff(RD_2_nflopped), .RegWrt_2ff(RegWrt_2_nflopped), .RegWrt_ff(RegWrt_1_nflopped));
 
@@ -71,7 +86,7 @@ module proc (/*AUTOARG*/
        .rst(rst), 
        .NOP(NOP),
        .NOP_mech(NOP_mech),
-       .nHaltSig_comb(nHaltSig_comb),
+       .nHaltSig_comb(),
        .instr(instr_f_flopped), 
        .instr_comb(instr),
        .invA(invA),
@@ -105,27 +120,104 @@ module proc (/*AUTOARG*/
        .RegWrt_2_nflopped(RegWrt_2_nflopped)
    );
 
+
+
+
+    IDEX_latch IDEX (
+        .clk(clk),
+        .rst(rst),
+
+        // Control Signals
+        .ID_nHaltSig(nHaltSig),
+        .ID_MemRead(MemRead),
+        .ID_ImmSrc(ImmSrc),
+        .ID_nHaltSig_comb(),
+        .ID_ALUSign(ALUSign),
+        .ID_ALUJmp(ALUJmp),
+        .ID_MemWrt(MemWrt),
+        .ID_err(err),
+        .ID_RegWrt(RegWrt),
+
+        // Register and Branch Controls
+        .ID_RegSrc(RegSrc),
+        .ID_BSrc(BSrc),
+        .ID_BranchTaken(BranchTaken),
+
+        // Inputs
+        .ID_Oper(Oper),
+        .ID_RSData(RSData),
+        .ID_RTData(RTData),
+        .ID_Imm5(Imm5),
+        .ID_Imm8(Imm8),
+        .ID_sImm8(sImm8),
+        .ID_sImm11(sImm11),
+        .ID_PC_Next(PC_Next),
+        .ID_invA(invA),
+        .ID_invB(invB),
+        .ID_Cin(Cin),
+        .ID_RD(RD),
+        .ID_NOP(NOP),
+        .ID_RegWrt_2_nflopped(RegWrt_2_nflopped),
+        .ID_RegWrt_1_nflopped(RegWrt_1_nflopped),
+        .ID_RD_2_nflopped(RD_2_nflopped),
+        .ID_RD_1_nflopped(RD_1_nflopped),
+
+        // Outputs
+        .IDEX_nHaltSig(IDEX_nHaltSig),
+        .IDEX_MemRead(IDEX_MemRead),
+        .IDEX_ImmSrc(IDEX_ImmSrc),
+        .IDEX_nHaltSig_comb(),
+        .IDEX_ALUSign(IDEX_ALUSign),
+        .IDEX_ALUJmp(IDEX_ALUJmp),
+        .IDEX_MemWrt(IDEX_MemWrt),
+        .IDEX_err(IDEX_err),
+        .IDEX_RegWrt(IDEX_RegWrt),
+
+        // Register and Branch Controls
+        .IDEX_RegSrc(IDEX_RegSrc),
+        .IDEX_BSrc(IDEX_BSrc),
+        .IDEX_BranchTaken(IDEX_BranchTaken),
+
+        // Outputs
+        .IDEX_Oper(IDEX_Oper),
+        .IDEX_RSData(IDEX_RSData),
+        .IDEX_RTData(IDEX_RTData),
+        .IDEX_Imm5(IDEX_Imm5),
+        .IDEX_Imm8(IDEX_Imm8),
+        .IDEX_sImm8(IDEX_sImm8),
+        .IDEX_sImm11(IDEX_sImm11),
+        .IDEX_PC_Next(IDEX_PC_Next),
+        .IDEX_invA(IDEX_invA),
+        .IDEX_invB(IDEX_invB),
+        .IDEX_Cin(IDEX_Cin),
+        .IDEX_RD(IDEX_RD),
+        .IDEX_NOP(IDEX_NOP),
+        .IDEX_RegWrt_2_nflopped(IDEX_RegWrt_2_nflopped),
+        .IDEX_RegWrt_1_nflopped(IDEX_RegWrt_1_nflopped),
+        .IDEX_RD_2_nflopped(IDEX_RD_2_nflopped),
+        .IDEX_RD_1_nflopped(IDEX_RD_1_nflopped)
+    );
    /* Execute Stage */
    execute execute0 (
        .clk(clk),
        .rst(rst),
        .NOP(), // Placeholder if NOP signal is needed
-       .RSData(RSData), 
-       .RTData(RTData), 
-       .nHaltSig_ff(nHaltSig),
-       .Oper(Oper), 
+       .RSData(IDEX_RSData), 
+       .RTData(IDEX_RTData), 
+       .nHaltSig_ff(IDEX_nHaltSig),
+       .Oper(IDEX_Oper), 
        .PC(PC_d), 
-       .Imm5(Imm5), 
-       .Imm8(Imm8), 
-       .sImm8(sImm8), 
-       .sImm11(sImm11), 
-       .BSrc(BSrc), 
-       .ImmSrc(ImmSrc), 
-       .ALUJmp(ALUJmp), 
-       .invA(invA), 
-       .invB(invB), 
-       .ALUSign(ALUSign), 
-       .cin(Cin), 
+       .Imm5(IDEX_Imm5), 
+       .Imm8(IDEX_Imm8), 
+       .sImm8(IDEX_sImm8), 
+       .sImm11(IDEX_sImm11), 
+       .BSrc(IDEX_BSrc), 
+       .ImmSrc(IDEX_ImmSrc), 
+       .ALUJmp(IDEX_ALUJmp), 
+       .invA(IDEX_invA), 
+       .invB(IDEX_invB), 
+       .ALUSign(IDEX_ALUSign), 
+       .cin(IDEX_Cin), 
        .BranchTaken(BranchTaken), 
        .ALU_Out(ALU), 
        .PC_Next(PC_Jump),

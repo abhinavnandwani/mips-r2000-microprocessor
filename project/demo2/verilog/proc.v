@@ -79,7 +79,7 @@ module proc (/*AUTOARG*/
     
 
    stall_mech stall(.NOP_reg(NOP_mech), .RSData(instr_f_flopped[10:8]),.RTData(instr_f_flopped[7:5]),.RD_ff(RD_1_nflopped),.RD_2ff(RD_2_nflopped), .RegWrt_2ff(RegWrt_2_nflopped), .RegWrt_ff(RegWrt_1_nflopped));
-
+    wire valid;
    /* Decode Stage */
    decode decode0 (
        .clk(clk), 
@@ -96,6 +96,7 @@ module proc (/*AUTOARG*/
        .RD(RD),
        .WB(WB), 
        .PC(PC_f_flopped), 
+       .valid(valid),
        .nHaltSig(nHaltSig),
        .MemRead(MemRead),
        .ImmSrc(ImmSrc),
@@ -126,7 +127,7 @@ module proc (/*AUTOARG*/
     IDEX_latch IDEX (
         .clk(clk),
         .rst(rst),
-
+        .valid(valid),
         // Control Signals
         .ID_nHaltSig(nHaltSig),
         .ID_MemRead(MemRead),
@@ -136,7 +137,7 @@ module proc (/*AUTOARG*/
         .ID_ALUJmp(ALUJmp),
         .ID_MemWrt(MemWrt),
         .ID_err(err),
-        .ID_RegWrt(RegWrt),
+        .ID_RegWrt(),
 
         // Register and Branch Controls
         .ID_RegSrc(RegSrc),
@@ -151,7 +152,7 @@ module proc (/*AUTOARG*/
         .ID_Imm8(Imm8),
         .ID_sImm8(sImm8),
         .ID_sImm11(sImm11),
-        .ID_PC_Next(PC_Next),
+        .ID_PC_Next(),
         .ID_invA(invA),
         .ID_invB(invB),
         .ID_Cin(Cin),

@@ -73,8 +73,8 @@ module IDEX_latch (
     output wire [2:0] IDEX_RD_2_nflopped,
     output wire [2:0] IDEX_RD_1_nflopped
 );
-
-    dff dff_IDEX_RegSrc[5:0] (.q({IDEX_RegSrc, IDEX_RegSrc_2_nflopped, IDEX_RegSrc_1_nflopped}), .d({ID_RegSrc, ID_RegSrc_2_nflopped, ID_RegSrc_1_nflopped}), .clk({6{clk}}), .rst({6{rst}})); 
+    wire [1:0] IDEX_RegSrc_2_nflopped,IDEX_RegSrc_1_nflopped;
+    dff dff_IDEX_RegSrc[5:0] (.q({IDEX_RegSrc, IDEX_RegSrc_2_nflopped, IDEX_RegSrc_1_nflopped}), .d({IDEX_RegSrc_2_nflopped, IDEX_RegSrc_1_nflopped, ID_RegSrc}), .clk({6{clk}}), .rst({6{rst}})); 
     dff dff_IDEX_BSrc[1:0] (.q(IDEX_BSrc), .d(ID_BSrc), .clk({2{clk}}), .rst({2{rst}})); 
     dff dff_IDEX_ImmSrc (.q(IDEX_ImmSrc), .d(ID_ImmSrc), .clk(clk), .rst(rst)); 
     dff dff_IDEX_ALUSign (.q(IDEX_ALUSign), .d(ID_ALUSign), .clk(clk), .rst(rst)); 
@@ -89,7 +89,7 @@ module IDEX_latch (
     register dff_IDEX_d_Imm8 (.r(IDEX_Imm8), .w(ID_Imm8), .clk(clk), .rst(rst), .we(1'b1));
     register dff_IDEX_d_sImm8 (.r(IDEX_sImm8), .w(ID_sImm8), .clk(clk), .rst(rst), .we(1'b1));
     register dff_IDEX_d_sImm11 (.r(IDEX_sImm11), .w(ID_sImm11), .clk(clk), .rst(rst), .we(1'b1));
-    register dff_IDEX_d_PC (.r(IDEX_PC_Next), .w(ID_PC), .clk(clk), .rst(rst), .we(1'b1));
+    register dff_IDEX_d_PC (.r(IDEX_PC_Next), .w(ID_PC_Next), .clk(clk), .rst(rst), .we(1'b1));
     dff dff_IDEX_d_invA (.q(IDEX_invA), .d(ID_invA), .clk(clk), .rst(rst));
     dff dff_IDEX_d_invB (.q(IDEX_invB), .d(ID_invB), .clk(clk), .rst(rst));
     dff dff_IDEX_d_Cin (.q(IDEX_Cin), .d(ID_Cin), .clk(clk), .rst(rst));

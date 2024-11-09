@@ -26,7 +26,7 @@ module decode (
     output wire MemWrt,
     output reg err,
     output wire RegWrt,
-    outpur wire valid,
+    output wire valid,
 
     // Register and Branch Controls
     output wire [1:0] RegSrc,

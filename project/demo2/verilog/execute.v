@@ -5,58 +5,52 @@
 */
 
 `default_nettype none
-module execute (clk,rst,NOP,RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc, nHaltSig_ff, nHaltSig_2ff,ImmSrc, ALUJmp, invA, invB, Oper, ALUSign, cin, BranchTaken, ALU_Out, PC_Next, MemWrt_ff,MemRead_ff, MemWrt_2ff, MemRead_2ff, PC_2ff, BrchCnd);
-   input wire [15:0] RSData, RTData, PC;
-   input wire [15:0] Imm5, Imm8, sImm8, sImm11;
-   input wire [1:0] BSrc;
-   input wire [3:0] Oper;
-   input wire [3:0] BranchTaken;
-   input wire ImmSrc, ALUJmp, invA, invB, ALUSign, cin,nHaltSig_ff;
-   output wire [15:0] ALU_Out, PC_Next;
-   output wire BrchCnd;
+module execute (
+    input wire clk, 
+    input wire rst, 
+    input wire NOP,
+    input wire [15:0] RSData, 
+    input wire [15:0] RTData, 
+    input wire [15:0] PC,
+    input wire [15:0] Imm5, 
+    input wire [15:0] Imm8, 
+    input wire [15:0] sImm8, 
+    input wire [15:0] sImm11,
+    input wire [1:0] BSrc,
+    input wire [3:0] Oper,
+    input wire [3:0] BranchTaken,
+    input wire ImmSrc, 
+    input wire ALUJmp, 
+    input wire invA, 
+    input wire invB, 
+    input wire ALUSign, 
+    input wire cin, 
+    input wire HaltSig,
+    output wire [15:0] PC_Next,
+    output wire [15:0] ALU_Out,
+    output wire BrchCnd
+);
 
-   input wire clk, rst, NOP;
-   input wire MemWrt_ff;
-   output wire MemWrt_2ff;
-
-   input wire MemRead_ff;
-   output wire MemRead_2ff;
-
-   output wire [15:0] PC_2ff;
-   output wire nHaltSig_2ff;
-
-
-   wire [15:0] ALUIn, ALU_nflopped;
+   wire [15:0] ALUIn;
    wire [15:0] PC_I, PC_Branch, Branch;
-   //wire BrchCnd;
    wire SF, CF, OF, ZF;
 
    // PC Adder
    assign PC_I = (ImmSrc) ? sImm8 : sImm11;
    cla_16b pc_adder(.sum(Branch), .c_out(), .a(PC), .b(PC_I), .c_in(1'b0));
-
    
    //Branch & Jump Mux
-   assign PC_Branch = (~nHaltSig_ff ? BrchCnd : 1'b0) ? Branch : PC;
-   assign PC_Next = (ALUJmp) ? ALU_nflopped : PC_Branch;
+   assign PC_Branch = (~HaltSig ? BrchCnd : 1'b0) ? Branch : PC;
+   assign PC_Next = (ALUJmp) ? ALU_Out : PC_Branch;
 
    // Register Mux
    assign ALUIn = (BSrc == 2'b00) ? RTData : (BSrc == 2'b01) ? Imm5 : (BSrc == 2'b10) ? Imm8 : 16'h0000;
    
    // Register Adder 
-   alu alu1(.InA(RSData), .InB(ALUIn), .Cin(cin), .Oper(Oper), .invA(invA), .invB(invB), .sign(ALUSign), .Out(ALU_nflopped), .ZF(ZF), .SF(SF), .OF(OF), .CF(CF));
-   
-   // DFFs for execute stage signals
-   register dff_e_ALU(.r(ALU_Out), .w(ALU_nflopped), .clk(clk), .rst(rst), .we(1'b1));
+   alu alu1(.InA(RSData), .InB(ALUIn), .Cin(cin), .Oper(Oper), .invA(invA), .invB(invB), .sign(ALUSign), .Out(ALU_Out), .ZF(ZF), .SF(SF), .OF(OF), .CF(CF));
 
    //BrchCnd 
    brchcnd branch_ctrl(.SF(SF), .ZF(ZF), .brch_instr(NOP ? 4'b0000:BranchTaken), .BrchCnd(BrchCnd));
-
-   // always @(posedge clk) begin
-   //      $display("PC %h PC_Next %h, A: %h, B: %h,  OUT: %h, BrchCnd: %h, ALUJmp %h", PC, PC_Next, RSData, ALUIn, ALU_nflopped, BrchCnd, ALUJmp);
-   // end
-
-
 
 endmodule
 `default_nettype wire

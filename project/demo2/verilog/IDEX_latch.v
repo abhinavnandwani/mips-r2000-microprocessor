@@ -67,11 +67,7 @@ module IDEX_latch (
     output wire IDEX_invB,
     output wire IDEX_Cin,
     output wire [2:0] IDEX_RD,
-    output wire IDEX_NOP,
-    output wire IDEX_RegWrt_2_nflopped,
-    output wire IDEX_RegWrt_1_nflopped,
-    output wire [2:0] IDEX_RD_2_nflopped,
-    output wire [2:0] IDEX_RD_1_nflopped
+    output wire IDEX_NOP
 );
     wire [1:0] IDEX_RegSrc_2_nflopped,IDEX_RegSrc_1_nflopped;
     dff dff_IDEX_RegSrc[5:0] (.q({IDEX_RegSrc, IDEX_RegSrc_2_nflopped, IDEX_RegSrc_1_nflopped}), .d({IDEX_RegSrc_2_nflopped, IDEX_RegSrc_1_nflopped, ID_RegSrc}), .clk({6{clk}}), .rst({6{rst}})); 

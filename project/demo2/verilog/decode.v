@@ -69,18 +69,18 @@ module decode (
 
 
     wire rst_ff;
-    assign #100 rst_ff = rst;
+    dff dff_rst(.q(rst_ff), .d(rst), .clk(clk), .rst(1'b0));
+   
     assign valid = rst_ff ? 1'b0 : 1'b1;
-  //  assign valid = ((|(instr)) | (~|(instr_comb)));
 
     assign NOP_Branch =  BranchTaken[3] | BranchTaken[2];
 
 
     // Register File
     assign RD_nflopped = (RegDst == 2'b00) ? instr[7:5] :
-                         (RegDst == 2'b01) ? instr[10:8] :
-                         (RegDst == 2'b10) ? instr[4:2] :
-                         3'b111;
+                            (RegDst == 2'b01) ? instr[10:8] :
+                            (RegDst == 2'b10) ? instr[4:2] :
+                            3'b111;
 
     // Triple-flopped RD
     dff dff_RD[8:0](.q({RD, RD_2_nflopped, RD_1_nflopped}), .d({RD_2_nflopped, RD_1_nflopped, RD_nflopped}), .clk({9{clk}}), .rst({9{rst}}));
@@ -93,10 +93,10 @@ module decode (
     assign Imm8 = (ZeroExt) ? {8'h00, instr[7:0]} : sImm8;
     assign sImm11 = {{5{instr[10]}}, instr[10:0]};
     assign nHaltSig_comb = nHaltSig_nflopped;
-    
+
     alu_control aluc (.aluoper(ALUOpr), .instr(instr[1:0]), .op(Oper), .invA(invA), .invB(invB), .Cin(Cin));
-    
-   dff dff_d_RegWrt[2:0](.q({RegWrt, RegWrt_2_nflopped, RegWrt_1_nflopped}), .d({RegWrt_2_nflopped, RegWrt_1_nflopped, RegWrt_nflopped}), .clk({clk,clk,clk}), .rst({rst,rst,rst}));
-   control control0 (.instr((NOP_mech) ? 16'b0000_1xxx_xxxx_xxxx : instr), .err(), .NOP(NOP), .nHaltSig(nHaltSig), .MemRead(MemRead), .RegDst(RegDst), .RegWrt(RegWrt_nflopped), .ZeroExt(ZeroExt), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUOpr(ALUOpr), .ALUSign(ALUSign), .ALUJmp(ALUJmp), .MemWrt(MemWrt), .RegSrc(RegSrc), .BranchTaken(BranchTaken));
+
+    dff dff_d_RegWrt[2:0](.q({RegWrt, RegWrt_2_nflopped, RegWrt_1_nflopped}), .d({RegWrt_2_nflopped, RegWrt_1_nflopped, RegWrt_nflopped}), .clk({clk,clk,clk}), .rst({rst,rst,rst}));
+    control control0 (.instr((NOP_mech) ? 16'b0000_1xxx_xxxx_xxxx : instr), .err(), .NOP(NOP), .nHaltSig(nHaltSig), .MemRead(MemRead), .RegDst(RegDst), .RegWrt(RegWrt_nflopped), .ZeroExt(ZeroExt), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUOpr(ALUOpr), .ALUSign(ALUSign), .ALUJmp(ALUJmp), .MemWrt(MemWrt), .RegSrc(RegSrc), .BranchTaken(BranchTaken));
 
 endmodule

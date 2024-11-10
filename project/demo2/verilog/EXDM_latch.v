@@ -3,11 +3,13 @@ module EXDM_latch(
     input wire rst,
     input wire[15:0] EX_RTData,
     input wire[15:0] EX_PC,
+    input wire[15:0] EX_ALU,
     input wire EX_MemWrt,
     input wire EX_MemRead,
     input wire EX_nHaltSig,
     output wire [15:0] EXDM_RTData,
     output wire [15:0] EXDM_PC,
+    output wire [15:0] EXDM_ALU,
     output wire EXDM_MemWrt,
     output wire EXDM_MemRead,
     output wire EXDM_HaltSig
@@ -21,5 +23,8 @@ module EXDM_latch(
     dff MemWrt_2dff(.q(EXDM_MemWrt), .d(EX_MemWrt), .clk(clk), .rst(rst)); // X to DM
     dff MemRead_2dff(.q(EXDM_MemRead), .d(EX_MemRead), .clk(clk), .rst(rst)); // X to DM
     dff nHaltSig_2dff(.q(EXDM_HaltSig), .d(EX_nHaltSig), .clk(clk), .rst(rst)); // X to DM
+
+    // DFFs for execute stage signals
+    register dff_e_ALU(.r(EXDM_ALU), .w(EX_ALU), .clk(clk), .rst(rst), .we(1'b1));
 
 endmodule

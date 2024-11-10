@@ -12,9 +12,6 @@ module IFID_latch(
 );
     wire [15:0] IFID_instr_branch;
 
-    wire x;
-    assign #100 x = NOP_Branch;
-
     assign IFID_instr_branch = (NOP_Branch) ? 16'b0000_1000_0000_0000 : ((nHaltSig) ? 16'b0000_0000_0000_0000 : IF_instr);
     assign IFID_instr_comb = (NOP_mech) ? IFID_instr : IFID_instr_branch;
     register dff_f_pc(.r(IFID_PC_Next), .w(IF_PC_Next), .clk(clk), .rst(rst), .we(1'b1));

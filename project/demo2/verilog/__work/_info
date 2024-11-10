@@ -9,7 +9,7 @@ z2
 cModel Technology
 Z0 d/home/ahuang62/private/ECE552/mips-r2000-microprocessor/project/demo2/verilog
 valu
-Z1 !s110 1731273817
+Z1 !s110 1731279035
 !i10b 1
 !s100 ^74Gi==[9V9RRIX;SgB;`2
 I2]9d8iiWXIA5nhYfOX_A[3
@@ -23,9 +23,9 @@ Z4 OP;L;10.7c;67
 r1
 !s85 0
 31
-Z5 !s108 1731273817.000000
-!s107 xor3.v|xor2.v|wb.v|stall_mech.v|shifter.v|register.v|regFile_hier.v|regFile_bypass.v|regFile.v|proc_hier_pbench.v|proc_hier_bench.v|proc_hier.v|proc.v|not1.v|nor3.v|nor2.v|nand3.v|nand2.v|memory2c.v|memory.v|fetch.v|execute.v|dff.v|decode.v|control.v|clkrst.v|cla_4b.v|cla_1b.v|cla_16b.v|brchcnd.v|bit_shift.v|bit_8shift.v|bit_4shift.v|bit_2shift.v|alu_control.v|alu.v|IFID_latch.v|IDEX_latch.v|EXDM_latch.v|DMWB_latch.v|
-Z6 !s90 +define+RANDSEED=3|-work|__work|DMWB_latch.v|EXDM_latch.v|IDEX_latch.v|IFID_latch.v|alu.v|alu_control.v|bit_2shift.v|bit_4shift.v|bit_8shift.v|bit_shift.v|brchcnd.v|cla_16b.v|cla_1b.v|cla_4b.v|clkrst.v|control.v|decode.v|dff.v|execute.v|fetch.v|memory.v|memory2c.v|nand2.v|nand3.v|nor2.v|nor3.v|not1.v|proc.v|proc_hier.v|proc_hier_bench.v|proc_hier_pbench.v|regFile.v|regFile_bypass.v|regFile_hier.v|register.v|shifter.v|stall_mech.v|wb.v|xor2.v|xor3.v|
+Z5 !s108 1731279035.000000
+!s107 xor3.v|xor2.v|wb.v|stall_mech.v|shifter.v|register.v|regFile.v|regFile_hier.v|regFile_bypass.v|proc.v|proc_hier.v|proc_hier_pbench.v|proc_hier_bench.v|not1.v|nor3.v|nor2.v|nand3.v|nand2.v|memory.v|memory2c.v|IFID_latch.v|IDEX_latch.v|fetch.v|execute.v|EXDM_latch.v|DMWB_latch.v|dff.v|decode.v|control.v|clkrst.v|cla_4b.v|cla_1b.v|cla_16b.v|brchcnd.v|bit_shift.v|bit_8shift.v|bit_4shift.v|bit_2shift.v|alu.v|alu_control.v|
+Z6 !s90 +define+RANDSEED=3|-work|__work|alu_control.v|alu.v|bit_2shift.v|bit_4shift.v|bit_8shift.v|bit_shift.v|brchcnd.v|cla_16b.v|cla_1b.v|cla_4b.v|clkrst.v|control.v|decode.v|dff.v|DMWB_latch.v|EXDM_latch.v|execute.v|fetch.v|IDEX_latch.v|IFID_latch.v|memory2c.v|memory.v|nand2.v|nand3.v|nor2.v|nor3.v|not1.v|proc_hier_bench.v|proc_hier_pbench.v|proc_hier.v|proc.v|regFile_bypass.v|regFile_hier.v|regFile.v|register.v|shifter.v|stall_mech.v|wb.v|xor2.v|xor3.v|
 !i113 1
 Z7 o-work __work
 Z8 !s92 +define+RANDSEED=3 -work __work
@@ -46,7 +46,7 @@ r1
 !s85 0
 31
 R5
-Z10 !s107 xor3.v|xor2.v|wb.v|stall_mech.v|shifter.v|register.v|regFile_hier.v|regFile_bypass.v|regFile.v|proc_hier_pbench.v|proc_hier_bench.v|proc_hier.v|proc.v|not1.v|nor3.v|nor2.v|nand3.v|nand2.v|memory2c.v|memory.v|fetch.v|execute.v|dff.v|decode.v|control.v|clkrst.v|cla_4b.v|cla_1b.v|cla_16b.v|brchcnd.v|bit_shift.v|bit_8shift.v|bit_4shift.v|bit_2shift.v|alu_control.v|alu.v|IFID_latch.v|IDEX_latch.v|EXDM_latch.v|DMWB_latch.v|
+Z10 !s107 xor3.v|xor2.v|wb.v|stall_mech.v|shifter.v|register.v|regFile.v|regFile_hier.v|regFile_bypass.v|proc.v|proc_hier.v|proc_hier_pbench.v|proc_hier_bench.v|not1.v|nor3.v|nor2.v|nand3.v|nand2.v|memory.v|memory2c.v|IFID_latch.v|IDEX_latch.v|fetch.v|execute.v|EXDM_latch.v|DMWB_latch.v|dff.v|decode.v|control.v|clkrst.v|cla_4b.v|cla_1b.v|cla_16b.v|brchcnd.v|bit_shift.v|bit_8shift.v|bit_4shift.v|bit_2shift.v|alu.v|alu_control.v|
 R6
 !i113 1
 R7
@@ -275,11 +275,11 @@ R9
 vdecode
 R1
 !i10b 1
-!s100 VBABW8ajaebJMOo0Fm<T`2
-IkJ7XHo0gKK517^?CcfeFl2
+!s100 bFnLc4aoh=d]4O45z8cdg2
+IaWlXm=WdbO363^G=OcmWU3
 R2
 R0
-w1731266270
+w1731278336
 8decode.v
 Fdecode.v
 L0 7
@@ -323,7 +323,7 @@ R1
 IVG^?>EM2`9nfl]CP_7<Ja1
 R2
 R0
-w1731272976
+w1731276831
 8DMWB_latch.v
 FDMWB_latch.v
 L0 1
@@ -342,11 +342,11 @@ n@d@m@w@b_latch
 vEXDM_latch
 R1
 !i10b 1
-!s100 VOSO6F4lK^6aEl;gjF>j43
-I2f;@Y2aA?JBO4SzcRj0IS2
+!s100 VgKJ5H4Q6aZJS8d4m?akZ3
+I;@>1;Lo50>9mjhF[CYbX53
 R2
 R0
-w1731269000
+w1731277639
 8EXDM_latch.v
 FEXDM_latch.v
 L0 1
@@ -365,11 +365,11 @@ n@e@x@d@m_latch
 vexecute
 R1
 !i10b 1
-!s100 Vz33[d8KS3[8gA:6;dZT60
-IZVZ150CjMGdna[j_eFVR81
+!s100 gc6S9_?fdh4gBLhMaF8O_0
+IfCDQ4<4QDAHHGbKWHZLf92
 R2
 R0
-w1731268168
+w1731277394
 8execute.v
 Fexecute.v
 L0 8
@@ -387,11 +387,11 @@ R9
 vfetch
 R1
 !i10b 1
-!s100 j3SWngET`Y^K;ZlI2?;m<0
-IQHeEjGZKWDhOBKVmjPZ5F0
+!s100 :d1dBH>>CHf5X:XCTa0EA1
+I7o`DFkYGZAbf_zF>Y;TZ62
 R2
 R0
-w1731264711
+w1731279015
 8fetch.v
 Ffetch.v
 L0 7
@@ -409,11 +409,11 @@ R9
 vIDEX_latch
 R1
 !i10b 1
-!s100 G_8zJN2J`73RLhenKQV?e1
-I>ak]>3Y[ER2^kZdV<i59<0
+!s100 QW<8:Ynfg_ZOBUK[d2KK=2
+I<J0_V?`0PJVHcMG2[@Q:o3
 R2
 R0
-w1731188372
+w1731278787
 8IDEX_latch.v
 FIDEX_latch.v
 L0 1
@@ -432,11 +432,11 @@ n@i@d@e@x_latch
 vIFID_latch
 R1
 !i10b 1
-!s100 h]n5:1GAA2eQPgLeCXn1[2
-I;S]Bhd0klTkS:ZzFL?VG42
+!s100 0R3??W<ZYhHc@;]3E[i0h1
+I<m=W:zN2RIJI89F8=cJK61
 R2
 R0
-w1731268932
+w1731278390
 8IFID_latch.v
 FIFID_latch.v
 L0 1
@@ -455,11 +455,11 @@ n@i@f@i@d_latch
 vmemory
 R1
 !i10b 1
-!s100 =YHf`=7;mI^jo]MPeCnM^1
-I`^@9<DHo?O@zNTZB5L[]:2
+!s100 =`bn6Om;_;UH<?Y_WjZIU1
+I<6=8TkEBNcnX0z9XPNfAj3
 R2
 R0
-w1731272879
+w1731278941
 8memory.v
 Fmemory.v
 L0 7
@@ -609,11 +609,11 @@ R9
 vproc
 R1
 !i10b 1
-!s100 f;4WUoi7ZiX]D`IAkBZAC1
-I9n46I=;;NbK?=L:D]G1NB3
+!s100 bL=]F<f49d@BY<@TDQAW21
+I?ljz[fDP[bC5Y3`mKbD9g0
 R2
 R0
-w1731272768
+w1731279027
 8proc.v
 Fproc.v
 L0 5
@@ -675,11 +675,11 @@ R9
 vproc_hier_pbench
 R1
 !i10b 1
-!s100 2Nz0dQiMN^fzHOVIQB66n2
-IeZN5DCL`73Ne6RiXTfiC_1
+!s100 NK;1HXe]8_]jI0AZ_dnkd0
+I^V@R0nFj[T2K?k=mF5_X72
 R2
 R0
-w1731273075
+w1731278673
 8proc_hier_pbench.v
 Fproc_hier_pbench.v
 L0 5

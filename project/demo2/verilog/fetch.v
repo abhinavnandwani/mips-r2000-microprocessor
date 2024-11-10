@@ -38,7 +38,7 @@ module fetch (clk, rst, NOP, NOP_Branch, branch, PC_B,nHaltSig, instr, PC_Next,P
    assign PC_Next = (NOP | NOP_Branch) ? PC : PC_Sum;
 
       always @(*) begin
-        $display("PC %h, PC_Next %h, Inst: %h, NOP_Branch %d, BrchCnd %d", PC, PC_B, instr, NOP_Branch, branch);
+        $display("PC %h, PC_Next %h, Inst: %h, NOP_Branch %d, BrchCnd %d", PC, PC_Next, instr, NOP_Branch, branch);
    end
 
 endmodule

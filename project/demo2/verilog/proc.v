@@ -262,7 +262,7 @@ module proc (/*AUTOARG*/
        .MemIn(readData), 
        .PcIn(PC_3ff), 
        .ALUIn(ALU_ff), 
-       .RegSrc(RegSrc), 
+       .RegSrc(IDEX_RegSrc), 
        .WB(WB)
    );
 

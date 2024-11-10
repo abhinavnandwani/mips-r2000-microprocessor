@@ -12,7 +12,7 @@ module proc_hier_pbench();
    
 
    wire [15:0] PC;
-   wire [15:0] Inst,Inst_Comb;           /* This should be the 16 bits of the FF that
+   wire [15:0] Inst;           /* This should be the 16 bits of the FF that
                                   stores instructions fetched from instruction memory
                                */
    wire        RegWrite;       /* Whether register file is being written to */
@@ -29,7 +29,7 @@ module proc_hier_pbench();
    wire        ICacheReq;
    
 
-   wire        Halt,Halt_comb;         /* Halt executed and in Memory or writeback stage */
+   wire        Halt;         /* Halt executed and in Memory or writeback stage */
         
    integer     inst_count;
    integer     trace_file;
@@ -133,16 +133,16 @@ module proc_hier_pbench();
    // Fetch stage signals
    assign PC = DUT.p0.fetch0.PC_curr;       // Current PC from fetch stage
    assign Inst = DUT.p0.instr_f_flopped;       // Instruction fetched
-   assign Inst_Comb = DUT.p0.instr;
+ 
 
    // Decode stage signals
    assign RegWrite = DUT.p0.decode0.RegWrt;     // Register write enable
    assign WriteRegister = DUT.p0.decode0.RD;    // Register destination address
-   assign WriteData = DUT.p0.decode0.WB;        // Data to write to register
+   assign WriteData = DUT.p0.wb0.WB;        // Data to write to register
 
    // Memory stage signals
    assign MemRead = DUT.p0.memory0.readEn;      // Memory read enable
-   assign MemWrite = DUT.p0.MemWrt_2flopped;     // Memory write enable
+   assign MemWrite = DUT.p0.memory0.MemWrt;     // Memory write enable
    assign MemAddress = DUT.p0.memory0.ALU;      // Address for memory read/write
    assign MemDataIn = DUT.p0.memory0.writeData; // Data to write to memory
    assign MemDataOut = DUT.p0.memory0.readData; // Data read from memory
@@ -162,7 +162,7 @@ module proc_hier_pbench();
    // assign RegWrt_ff = DUT.p0.decode0.stall.RegWrt_ff;
 
    assign Halt = DUT.p0.nHaltSig_4ff;
-   assign Halt_comb =  DUT.p0.nHaltSig_comb;
+
 
    // new added 05/03
    assign ICacheReq = DUT.p0.readData;

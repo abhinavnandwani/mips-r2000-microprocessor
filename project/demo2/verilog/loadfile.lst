@@ -1,0 +1,9 @@
+          // Original test: ./lena/hw4/problem6/jal_0.asm
+          // Author: lena
+          // Test source code follows
+          
+          
+          //simple test with 0 
+0000 3000 jal 0
+0002 0000 halt
+          

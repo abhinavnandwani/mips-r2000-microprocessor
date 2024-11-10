@@ -273,22 +273,35 @@ EXDM_latch EXDM (
    memory memory0 (
        .clk(clk),
        .rst(rst),
-       .PC(EXDM_PC),
        .ALU(ALU), 
        .nHaltSig(EXDM_HaltSig),
        .writeData(EXDM_RTData), 
-       .readEn(IDEX_MemRead), 
-       .MemWrt(IDEX_MemWrt), 
-       .readData(readData), 
-       .ALU_ff(ALU_ff),
-       .PC_Next(PC_3ff)
+       .readEn(EXDM_MemRead), 
+       .MemWrt(EXDM_MemWrt), 
+       .readData(readData)
    );
+
+    wire [15:0] DMWB_ALU;
+    wire [15:0] DMWB_PC;
+    wire [15:0] DMWB_readData;
+
+    // Instantiate DMWB_latch and connect the signals
+    DMWB_latch DMWB (
+        .clk(clk),
+        .rst(rst),
+        .MEM_ALU(ALU),
+        .MEM_PC(EXDM_PC),
+        .MEM_readData(readData),
+        .DMWB_ALU(DMWB_ALU),
+        .DMWB_PC(DMWB_PC),
+        .DMWB_readData(DMWB_readData)
+    );
 
    /* Write-Back (WB) Stage */
    wb wb0 (
-       .MemIn(readData), 
-       .PcIn(PC_3ff), 
-       .ALUIn(ALU_ff), 
+       .MemIn(DMWB_readData), 
+       .PcIn(DMWB_PC), 
+       .ALUIn(DMWB_ALU), 
        .RegSrc(IDEX_RegSrc), 
        .WB(WB)
    );

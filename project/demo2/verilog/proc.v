@@ -63,9 +63,10 @@ module proc (/*AUTOARG*/
        .branch(BrchCnd),
        .PC_B(PC_Jump), 
        .PC_curr(PC),
-       .nHaltSig(),
+       .nHaltSig(nHaltSig),
        .instr(instr), 
-       .PC_Next(PC_f)
+       .PC_Next(PC_f),
+       .IFID_instr(instr_f_flopped)
    );
 
 

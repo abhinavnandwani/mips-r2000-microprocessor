@@ -151,7 +151,7 @@ module control (
             ALUSign = 1'b1;
             BSrc = 2'b11;
             ALUOpr = 6'b000001; //SUBI
-            BranchTaken = {1'b1, instr[12:11]};
+            BranchTaken = {2'b01, instr[12:11]};
         end
        5'b11000: begin		// LBI FIX
             RegWrt = 1'b1;

@@ -68,7 +68,10 @@ module decode (
     wire MemWrt_nflopped,nHaltSig_nflopped;
 
 
-    assign valid = ((|(instr)) | (~|(instr_comb)));
+    wire rst_ff;
+    assign #100 rst_ff = rst;
+    assign valid = rst_ff ? 1'b0 : 1'b1;
+  //  assign valid = ((|(instr)) | (~|(instr_comb)));
 
     assign NOP_Branch =  BranchTaken[3] | BranchTaken[2];
 

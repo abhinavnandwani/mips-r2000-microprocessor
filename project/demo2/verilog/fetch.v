@@ -4,9 +4,10 @@
     Description     : This is the overall module for the fetch state of the processor. 
 */
 
-module fetch (clk, rst, NOP, NOP_Branch, branch, PC_B,nHaltSig, instr, PC_Next,PC_curr);
+module fetch (clk, rst, NOP, NOP_Branch, branch, PC_B,nHaltSig, instr, PC_Next,PC_curr,IFID_instr);
    input clk, rst;
    input [15:0] PC_B; // The PC value "back" from the execute stage. 
+   input [15:0] IFID_instr;
    input nHaltSig, NOP, branch, NOP_Branch;
    output [15:0] instr;
    output [15:0] PC_Next,PC_curr;
@@ -37,8 +38,8 @@ module fetch (clk, rst, NOP, NOP_Branch, branch, PC_B,nHaltSig, instr, PC_Next,P
    // Halt Mux
    assign PC_Next = (NOP | NOP_Branch) ? PC_curr : PC_Sum;
 
-      always @(*) begin
-        $display("PC %h, PC_Next %h, Inst: %h, NOP_Branch %d, BrchCnd %d", PC, PC_Next, instr, NOP_Branch, branch);
+      always @(posedge clk) begin
+        $display("PC %h, PC_Next %h, Inst: %h, NOP_Branch %d, BrchCnd %d", PC_curr, PC_Next, IFID_instr, NOP_Branch, branch);
    end
 
 endmodule

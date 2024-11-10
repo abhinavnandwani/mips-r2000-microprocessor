@@ -207,6 +207,7 @@ module proc (/*AUTOARG*/
         .IDEX_RD_2_nflopped(IDEX_RD_2_nflopped),
         .IDEX_RD_1_nflopped(IDEX_RD_1_nflopped)
     );
+
    /* Execute Stage */
    execute execute0 (
        .clk(clk),
@@ -236,24 +237,48 @@ module proc (/*AUTOARG*/
        .MemWrt_ff(MemWrt), 
        .MemWrt_2ff(MemWrt_2flopped),
        .PC_2ff(PC_2ff),
-       .nHaltSig_2ff(nHaltSig_2ff),
+       .nHaltSig_2ff(),
        .BrchCnd(BrchCnd)
    );
 
-    wire nHaltSig_3ff,nHaltSig_4ff;
-    dff nHaltSig_3dff(.q(nHaltSig_3ff), .d(nHaltSig_2ff), .clk(clk), .rst(rst));
-    dff nHaltSig_4dff(.q(nHaltSig_4ff), .d(nHaltSig_3ff), .clk(clk), .rst(rst));
-    
+    wire nHaltSig_4ff, mem_rt_data;
+   // dff nHaltSig_3dff(.q(nHaltSig_3ff), .d(nHaltSig_2ff), .clk(clk), .rst(rst));
+ 
+
+
+wire [15:0] EXDM_RTData;
+wire [15:0] EXDM_PC;
+wire EXDM_MemWrt;
+wire EXDM_MemRead;
+wire EXDM_HaltSig;
+
+   dff nHaltSig_4dff(.q(nHaltSig_4ff), .d(EXDM_HaltSig), .clk(clk), .rst(rst));
+   
+EXDM_latch EXDM (
+    .clk(clk),
+    .rst(rst),
+    .EX_RTData(IDEX_RTData),
+    .EX_PC(IDEX_PC_Next),
+    .EX_MemWrt(IDEX_MemWrt),
+    .EX_MemRead(IDEX_MemRead),
+    .EX_nHaltSig(IDEX_nHaltSig),
+    .EXDM_RTData(EXDM_RTData),
+    .EXDM_PC(EXDM_PC),
+    .EXDM_MemWrt(EXDM_MemWrt),
+    .EXDM_MemRead(EXDM_MemRead),
+    .EXDM_HaltSig(EXDM_HaltSig)
+);
+
    /* Memory Stage */
    memory memory0 (
        .clk(clk),
        .rst(rst),
-       .PC(PC_2ff),
+       .PC(EXDM_PC),
        .ALU(ALU), 
-       .nHaltSig(nHaltSig_2ff),
-       .writeData(RTData), 
-       .readEn(MemRead_2flopped), 
-       .MemWrt(MemWrt_2flopped), 
+       .nHaltSig(EXDM_HaltSig),
+       .writeData(EXDM_RTData), 
+       .readEn(IDEX_MemRead), 
+       .MemWrt(IDEX_MemWrt), 
        .readData(readData), 
        .ALU_ff(ALU_ff),
        .PC_Next(PC_3ff)

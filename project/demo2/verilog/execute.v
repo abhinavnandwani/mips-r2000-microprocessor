@@ -25,13 +25,6 @@ module execute (clk,rst,NOP,RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc,
    output wire [15:0] PC_2ff;
    output wire nHaltSig_2ff;
 
-   // DFF for decode stage PC signal
-   register dff_d_PC2(.r(PC_2ff), .w(PC), .clk(clk), .rst(rst), .we(1'b1));
-
-   dff MemWrt_2dff(.q(MemWrt_2ff), .d(1'b0 ? MemWrt_2ff : MemWrt_ff), .clk(clk), .rst(rst)); // X to DM
-   dff MemRead_2dff(.q(MemRead_2ff), .d(1'b0 ? MemRead_2ff : MemRead_ff), .clk(clk), .rst(rst)); // X to DM
-   dff nHaltSig_2dff(.q(nHaltSig_2ff), .d(1'b0 ? nHaltSig_2ff : nHaltSig_ff), .clk(clk), .rst(rst)); // X to DM
-   
 
    wire [15:0] ALUIn, ALU_nflopped;
    wire [15:0] PC_I, PC_Branch, Branch;
@@ -59,9 +52,9 @@ module execute (clk,rst,NOP,RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc,
    //BrchCnd 
    brchcnd branch_ctrl(.SF(SF), .ZF(ZF), .brch_instr(NOP ? 4'b0000:BranchTaken), .BrchCnd(BrchCnd));
 
-   always @(posedge clk) begin
-        $display("PC %h PC_Next %h, A: %h, B: %h,  OUT: %h, BrchCnd: %h, ALUJmp %h", PC, PC_Next, RSData, ALUIn, ALU_nflopped, BrchCnd, ALUJmp);
-   end
+   // always @(posedge clk) begin
+   //      $display("PC %h PC_Next %h, A: %h, B: %h,  OUT: %h, BrchCnd: %h, ALUJmp %h", PC, PC_Next, RSData, ALUIn, ALU_nflopped, BrchCnd, ALUJmp);
+   // end
 
 
 

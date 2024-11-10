@@ -21,6 +21,6 @@ module brchcnd (SF, ZF, brch_instr, BrchCnd);
    end
 
    assign BrchCnd = (brch_instr[3]) ? 1'b1:
-                     (brch_instr[2]) ? brch_sig : 1'b0;
+                    (brch_instr[2]) ? brch_sig : 1'b0;
 
 endmodule

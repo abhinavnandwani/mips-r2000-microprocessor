@@ -71,8 +71,7 @@ module decode (
     assign valid = ((|(instr)) | (~|(instr_comb)));
 
     assign NOP_Branch =  BranchTaken[3] | BranchTaken[2];
-    wire x;
-    assign #100 x = NOP_Branch;
+
 
     // Register File
     assign RD_nflopped = (RegDst == 2'b00) ? instr[7:5] :

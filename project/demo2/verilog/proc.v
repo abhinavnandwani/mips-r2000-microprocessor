@@ -69,7 +69,7 @@ module proc (/*AUTOARG*/
        .IFID_instr(instr_f_flopped)
    );
 
-
+    wire valid;
     //// IFID latch ////
     wire [15:0] IFID_instr_comb;
     IFID_latch IFID(
@@ -81,12 +81,13 @@ module proc (/*AUTOARG*/
         .IF_PC_Next(PC_f),
         .IFID_instr(instr_f_flopped),
         .IFID_instr_comb(IFID_instr_comb),
-        .IFID_PC_Next(PC_f_flopped)
+        .IFID_PC_Next(PC_f_flopped),
+        .nHaltSig(valid ? nHaltSig : 1'b0)
     );
     
 
    stall_mech stall(.NOP_reg(NOP_mech), .RSData(instr_f_flopped[10:8]),.RTData(instr_f_flopped[7:5]),.RD_ff(RD_1_nflopped),.RD_2ff(RD_2_nflopped), .RegWrt_2ff(RegWrt_2_nflopped), .RegWrt_ff(RegWrt_1_nflopped));
-    wire valid;
+
    /* Decode Stage */
    decode decode0 (
        .clk(clk), 

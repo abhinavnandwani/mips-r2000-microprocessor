@@ -45,7 +45,7 @@ module execute (clk,rst,NOP,RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc,
    
    //Branch & Jump Mux
    assign PC_Branch = (~nHaltSig_ff ? BrchCnd : 1'b0) ? Branch : PC;
-   assign PC_Next = (ALUJmp) ? ALU_Out : PC_Branch;
+   assign PC_Next = (ALUJmp) ? ALU_nflopped : PC_Branch;
 
    // Register Mux
    assign ALUIn = (BSrc == 2'b00) ? RTData : (BSrc == 2'b01) ? Imm5 : (BSrc == 2'b10) ? Imm8 : 16'h0000;
@@ -58,6 +58,11 @@ module execute (clk,rst,NOP,RSData, RTData, PC, Imm5, Imm8, sImm8, sImm11, BSrc,
 
    //BrchCnd 
    brchcnd branch_ctrl(.SF(SF), .ZF(ZF), .brch_instr(NOP ? 4'b0000:BranchTaken), .BrchCnd(BrchCnd));
+
+   always @(posedge clk) begin
+        $display("PC %h PC_Next %h, A: %h, B: %h,  OUT: %h, BrchCnd: %h, ALUJmp %h", PC, PC_Next, RSData, ALUIn, ALU_nflopped, BrchCnd, ALUJmp);
+   end
+
 
 
 endmodule

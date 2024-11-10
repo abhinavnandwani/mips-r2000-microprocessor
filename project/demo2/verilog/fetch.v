@@ -38,8 +38,8 @@ module fetch (clk, rst, NOP, NOP_Branch, branch, PC_B,nHaltSig, instr, PC_Next,P
    // Halt Mux
    assign PC_Next = (NOP | NOP_Branch) ? PC_curr : PC_Sum;
 
-      always @(posedge clk) begin
-        $display("PC %h, PC_Next %h, Inst: %h, NOP_Branch %d, BrchCnd %d", PC_curr, PC_Next, IFID_instr, NOP_Branch, branch);
-   end
+   //    always @(posedge clk) begin
+   //      $display("PC %h, PC_Next %h, Inst: %h, NOP_Branch %d, BrchCnd %d", PC_curr, PC_Next, IFID_instr, NOP_Branch, branch);
+   // end
 
 endmodule

@@ -60,7 +60,7 @@ module proc (/*AUTOARG*/
        .rst(rst),
        .NOP(NOP_mech),
        .NOP_Branch(NOP_Branch),
-       .branch(BrchCnd),
+       .branch(|{BrchCnd,IDEX_ALUJmp}),
        .PC_B(PC_Jump), 
        .PC_curr(PC),
        .nHaltSig(nHaltSig),

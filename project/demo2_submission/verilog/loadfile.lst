@@ -1,0 +1,6 @@
+0000 c164 lbi r1,100     // Load an immediate value into r1
+0002 2006 j 6            // Jump forward to avoid looping back
+0004 c232 lbi r2,50      // Load an immediate value into r2
+0006 0000 halt           // Stop the program
+0008 c228 lbi r2,40      // Load an immediate value into r2 (reachable only if needed)
+000a 0000 halt           // Stop the program

@@ -1,0 +1,2 @@
+../verification/mytests/test1.asm SUCCESS CPI:5.0 CYCLES:10 ICOUNT:2 IHITRATE: 0 DHITRATE: 0
+../verification/mytests/test2.asm SUCCESS CPI:1.7 CYCLES:29 ICOUNT:17 IHITRATE: 100.0 DHITRATE: 100.0

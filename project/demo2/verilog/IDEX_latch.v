@@ -10,7 +10,6 @@ module IDEX_latch (
     input wire ID_ALUSign,
     input wire ID_ALUJmp,
     input wire ID_MemWrt,
-    input reg ID_err,
     input wire ID_RegWrt,
     input wire valid,
 

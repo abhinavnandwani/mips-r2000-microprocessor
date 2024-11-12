@@ -12,7 +12,7 @@ module proc (/*AUTOARG*/
    input wire clk;
    input wire rst;
 
-   output reg err;
+   output wire err;
 
    // None of the above lines can be modified
 
@@ -122,7 +122,7 @@ module proc (/*AUTOARG*/
         .BSrc(BSrc),
         .BranchTaken(BranchTaken),
         .Oper(Oper),
-        .err(), 
+        .err(err), 
         .RSData(RSData), 
         .RTData(RTData), 
         .Imm5(Imm5), 
@@ -149,7 +149,6 @@ module proc (/*AUTOARG*/
         .ID_ALUSign(ALUSign),
         .ID_ALUJmp(ALUJmp),
         .ID_MemWrt(MemWrt),
-        .ID_err(err),
         .ID_RegWrt(),
 
         // Register and Branch Controls
@@ -184,7 +183,7 @@ module proc (/*AUTOARG*/
         .IDEX_ALUSign(IDEX_ALUSign),
         .IDEX_ALUJmp(IDEX_ALUJmp),
         .IDEX_MemWrt(IDEX_MemWrt),
-        .IDEX_err(IDEX_err),
+        .IDEX_err(),
         .IDEX_RegWrt(IDEX_RegWrt),
 
         // Register and Branch Controls
@@ -278,9 +277,6 @@ module proc (/*AUTOARG*/
     );
 
     /* Write-Back (WB) Stage */
-
-
-
     wb wb0 (
         .MemIn(DMWB_readData), 
         .PcIn(DMWB_PC), 

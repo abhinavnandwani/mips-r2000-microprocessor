@@ -24,7 +24,7 @@ module decode (
     output wire ALUSign,
     output wire ALUJmp,
     output wire MemWrt,
-    output reg err,
+    output wire err,
     output wire RegWrt,
     output wire valid,
 
@@ -66,6 +66,7 @@ module decode (
     wire ALUSign_nflopped;
     wire ALUJmp_nflopped;
     wire MemWrt_nflopped,nHaltSig_nflopped;
+    wire reg_err, control_err;
 
 
     wire rst_ff;
@@ -85,7 +86,7 @@ module decode (
     // Triple-flopped RD
     dff dff_RD[8:0](.q({RD, RD_2_nflopped, RD_1_nflopped}), .d({RD_2_nflopped, RD_1_nflopped, RD_nflopped}), .clk({9{clk}}), .rst({9{rst}}));
 
-    regFile_bypass regFile0 (.read1Data(RSData), .read2Data(RTData), .err(), .clk(clk), .rst(rst), .read1RegSel(instr[10:8]), .read2RegSel(instr[7:5]), .writeRegSel(RD), .writeData(WB), .writeEn(RegWrt));
+    regFile_bypass regFile0 (.read1Data(RSData), .read2Data(RTData), .err(reg_err), .clk(clk), .rst(rst), .read1RegSel(instr[10:8]), .read2RegSel(instr[7:5]), .writeRegSel(RD), .writeData(WB), .writeEn(RegWrt));
 
     // Sign Extension
     assign Imm5 = (ZeroExt) ? {11'h000, instr[4:0]} : {{11{instr[4]}}, instr[4:0]};
@@ -97,6 +98,7 @@ module decode (
     alu_control aluc (.aluoper(ALUOpr), .instr(instr[1:0]), .op(Oper), .invA(invA), .invB(invB), .Cin(Cin));
 
     dff dff_d_RegWrt[2:0](.q({RegWrt, RegWrt_2_nflopped, RegWrt_1_nflopped}), .d({RegWrt_2_nflopped, RegWrt_1_nflopped, RegWrt_nflopped}), .clk({clk,clk,clk}), .rst({rst,rst,rst}));
-    control control0 (.instr((NOP_mech) ? 16'b0000_1xxx_xxxx_xxxx : instr), .err(), .NOP(NOP), .nHaltSig(nHaltSig), .MemRead(MemRead), .RegDst(RegDst), .RegWrt(RegWrt_nflopped), .ZeroExt(ZeroExt), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUOpr(ALUOpr), .ALUSign(ALUSign), .ALUJmp(ALUJmp), .MemWrt(MemWrt), .RegSrc(RegSrc), .BranchTaken(BranchTaken));
+    control control0 (.instr((NOP_mech) ? 16'b0000_1xxx_xxxx_xxxx : instr), .err(control_err), .NOP(NOP), .nHaltSig(nHaltSig), .MemRead(MemRead), .RegDst(RegDst), .RegWrt(RegWrt_nflopped), .ZeroExt(ZeroExt), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUOpr(ALUOpr), .ALUSign(ALUSign), .ALUJmp(ALUJmp), .MemWrt(MemWrt), .RegSrc(RegSrc), .BranchTaken(BranchTaken));
 
+    assign err = control_err | reg_err;
 endmodule

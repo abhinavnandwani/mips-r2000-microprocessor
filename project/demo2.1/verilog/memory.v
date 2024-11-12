@@ -12,9 +12,11 @@ module memory (
     input wire readEn,
     input wire MemWrt,
     input wire HaltSig,
+    output wire err,
     output wire [15:0] readData
 );
 
     // Data Memory
-    memory2c data_mem(.data_out(readData), .data_in(writeData), .addr(ALU), .enable(MemWrt | readEn), .wr(MemWrt), .createdump(HaltSig), .clk(clk), .rst(rst));
+    memory2c_align data_mem(.data_out(readData), .data_in(writeData), .addr(ALU), .enable(MemWrt | readEn), .wr(MemWrt), .createdump(HaltSig), .clk(clk), .rst(rst), .err(err));
+
 endmodule

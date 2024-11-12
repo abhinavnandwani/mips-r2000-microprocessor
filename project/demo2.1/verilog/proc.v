@@ -61,6 +61,7 @@ module proc (/*AUTOARG*/
     wire [15:0] EXDM_PC;
     wire EXDM_MemWrt, EXDM_MemRead, EXDM_HaltSig;
     wire [15:0] DMWB_ALU, DMWB_PC, DMWB_readData;
+    wire IF_err, DM_err;
 
     /* Fetch Stage */
     fetch fetch0 (
@@ -74,7 +75,8 @@ module proc (/*AUTOARG*/
         .HaltSig(HaltSig),
         .instr(instr), 
         .PC_Next(PC_f),
-        .IFID_instr(ID_instr)
+        .IFID_instr(ID_instr),
+        .err(IF_err)
     );
 
     /* IFID latch */
@@ -122,7 +124,7 @@ module proc (/*AUTOARG*/
         .BSrc(BSrc),
         .BranchTaken(BranchTaken),
         .Oper(Oper),
-        .err(err), 
+        .err(ID_err), 
         .RSData(RSData), 
         .RTData(RTData), 
         .Imm5(Imm5), 
@@ -261,7 +263,8 @@ module proc (/*AUTOARG*/
         .writeData(EXDM_RTData), 
         .readEn(EXDM_MemRead), 
         .MemWrt(EXDM_MemWrt), 
-        .readData(readData)
+        .readData(readData),
+        .err(DM_err)
     );
 
     /* DMWB latch */
@@ -284,6 +287,8 @@ module proc (/*AUTOARG*/
         .RegSrc(IDEX_RegSrc), 
         .WB(WB)
     );
+
+    assign err = IF_err | ID_err | DM_err;
 
 endmodule // proc
 `default_nettype wire

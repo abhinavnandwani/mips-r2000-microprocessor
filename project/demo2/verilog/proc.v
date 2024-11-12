@@ -278,6 +278,9 @@ module proc (/*AUTOARG*/
     );
 
     /* Write-Back (WB) Stage */
+
+
+
     wb wb0 (
         .MemIn(DMWB_readData), 
         .PcIn(DMWB_PC), 

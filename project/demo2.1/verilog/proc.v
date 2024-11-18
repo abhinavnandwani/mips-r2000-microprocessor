@@ -298,10 +298,10 @@ module proc (/*AUTOARG*/
         .DMWB_err(DMWB_err),
         .RegSrc(IDEX_RegSrc), 
         .WB(WB),
-        .WB_err(WB_err)
+        .WB_err(err)
     );
 
-    assign err = ID_reg_err | WB_err;
+    // assign err = ID_reg_err | WB_err;
 
 endmodule // proc
 `default_nettype wire

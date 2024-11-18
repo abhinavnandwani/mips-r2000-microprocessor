@@ -92,7 +92,7 @@ module proc (/*AUTOARG*/
         .IFID_PC_Next(ID_PC),
         .nHaltSig(valid ? HaltSig : 1'b0),
         .IF_err(IF_err),
-        .IFID_err(IDF_err),
+        .IFID_err(IDF_err)
     );
 
 
@@ -257,8 +257,7 @@ module proc (/*AUTOARG*/
         .EXDM_MemWrt(EXDM_MemWrt),
         .EXDM_MemRead(EXDM_MemRead),
         .EXDM_ALU(EXDM_ALU),
-        .EXDM_HaltSig(EXDM_HaltSig),
-
+        .EXDM_HaltSig(EXDM_HaltSig)
     );
 
     /* Memory Stage */

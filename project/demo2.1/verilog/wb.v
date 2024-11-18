@@ -5,7 +5,7 @@
    Description     : This is the module for the overall Write Back stage of the processor.
 */
 
-module wb (MemIn, PcIn, ALUIn, RegSrc, WB, WB_err);
+module wb (MemIn, PcIn, ALUIn, RegSrc, WB, FWB_err, DMWB_err, WB_err);
    input [15:0] MemIn, PcIn, ALUIn;
    input [1:0] RegSrc;
    input FWB_err;

@@ -8,6 +8,8 @@ module IFID_latch(
     output wire[15:0] IFID_PC_Next,
     input wire NOP_Branch,
     input wire nHaltSig,
+    input wire IF_err,
+    output wire IFID_err,
     output wire [15:0] IFID_instr_comb
 );
     wire [15:0] IFID_instr_branch;
@@ -16,5 +18,6 @@ module IFID_latch(
     assign IFID_instr_comb = (NOP_mech) ? IFID_instr : IFID_instr_branch;
     register dff_f_pc(.r(IFID_PC_Next), .w(IF_PC_Next), .clk(clk), .rst(rst), .we(1'b1));
     register dff_f_instr(.r(IFID_instr), .w(IFID_instr_comb), .clk(clk), .rst(rst), .we(1'b1));
+    dff dff_IFID_err (.q(IFID_err), .d(IF_err), .clk(clk), .rst(rst)); 
 
 endmodule

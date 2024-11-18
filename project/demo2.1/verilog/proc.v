@@ -61,7 +61,7 @@ module proc (/*AUTOARG*/
     wire [15:0] EXDM_PC;
     wire EXDM_MemWrt, EXDM_MemRead, EXDM_HaltSig;
     wire [15:0] DMWB_ALU, DMWB_PC, DMWB_readData;
-    wire IF_err, DM_err;
+    wire IF_err, ID_err, IDF_err, EX_err, ID_reg_err, DM_err, FDM_err, FWB_err, DMWB_err, WB_err ;
 
     /* Fetch Stage */
     fetch fetch0 (
@@ -90,7 +90,9 @@ module proc (/*AUTOARG*/
         .IFID_instr(ID_instr),
         .IFID_instr_comb(IFID_instr_comb),
         .IFID_PC_Next(ID_PC),
-        .nHaltSig(valid ? HaltSig : 1'b0)
+        .nHaltSig(valid ? HaltSig : 1'b0),
+        .IF_err(IF_err),
+        .IFID_err(IDF_err)
     );
 
 
@@ -109,6 +111,7 @@ module proc (/*AUTOARG*/
         .invA(invA),
         .invB(invB),
         .RegWrt(),
+        .IDF_err(IDF_err),
         .Cin(Cin),
         .RD(RD),
         .WB(WB), 
@@ -151,6 +154,7 @@ module proc (/*AUTOARG*/
         .ID_ALUSign(ALUSign),
         .ID_ALUJmp(ALUJmp),
         .ID_MemWrt(MemWrt),
+        .ID_err(ID_err),
         .ID_RegWrt(),
 
         // Register and Branch Controls
@@ -185,7 +189,7 @@ module proc (/*AUTOARG*/
         .IDEX_ALUSign(IDEX_ALUSign),
         .IDEX_ALUJmp(IDEX_ALUJmp),
         .IDEX_MemWrt(IDEX_MemWrt),
-        .IDEX_err(),
+        .IDEX_err(EX_err),
         .IDEX_RegWrt(IDEX_RegWrt),
 
         // Register and Branch Controls
@@ -246,6 +250,8 @@ module proc (/*AUTOARG*/
         .EX_MemWrt(IDEX_MemWrt),
         .EX_MemRead(IDEX_MemRead),
         .EX_nHaltSig(IDEX_HaltSig),
+        .EX_err(EX_err),
+        .EXDM_err(FDM_err),
         .EXDM_RTData(EXDM_RTData),
         .EXDM_PC(EXDM_PC),
         .EXDM_MemWrt(EXDM_MemWrt),
@@ -274,6 +280,10 @@ module proc (/*AUTOARG*/
         .MEM_ALU(EXDM_ALU),
         .MEM_PC(EXDM_PC),
         .MEM_readData(readData),
+        .FMEM_err(FDM_err),
+        .MMEM_err(DM_err),
+        .FWB_err(FWB_err),
+        .DMWB_err(DMWB_err),
         .DMWB_ALU(DMWB_ALU),
         .DMWB_PC(DMWB_PC),
         .DMWB_readData(DMWB_readData)
@@ -284,11 +294,14 @@ module proc (/*AUTOARG*/
         .MemIn(DMWB_readData), 
         .PcIn(DMWB_PC), 
         .ALUIn(DMWB_ALU), 
+        .FWB_err(FWB_err),
+        .DMWB_err(DMWB_err),
         .RegSrc(IDEX_RegSrc), 
-        .WB(WB)
+        .WB(WB),
+        .WB_err(err)
     );
 
-    assign err = IF_err | ID_err | DM_err;
+    // assign err = ID_reg_err | WB_err;
 
 endmodule // proc
 `default_nettype wire

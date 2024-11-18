@@ -10,6 +10,7 @@ module IDEX_latch (
     input wire ID_ALUSign,
     input wire ID_ALUJmp,
     input wire ID_MemWrt,
+    input wire ID_err,
     input wire ID_RegWrt,
     input wire valid,
 
@@ -45,7 +46,7 @@ module IDEX_latch (
     output wire IDEX_ALUSign,
     output wire IDEX_ALUJmp,
     output wire IDEX_MemWrt,
-    output reg IDEX_err,
+    output wire IDEX_err,
     output wire IDEX_RegWrt,
 
     // Register and Branch Controls
@@ -90,5 +91,6 @@ module IDEX_latch (
     dff dff_IDEX_d_Cin (.q(IDEX_Cin), .d(ID_Cin), .clk(clk), .rst(rst));
     dff dff_IDEX_d_BranchTaken [3:0] (.q(IDEX_BranchTaken), .d(ID_BranchTaken), .clk({4{clk}}), .rst({4{rst}}));
     dff dff_IDEX_NOP (.q(IDEX_NOP), .d(ID_NOP), .clk(clk), .rst(rst)); 
+    dff dff_IDEX_err (.q(IDEX_err), .d(ID_err), .clk(clk), .rst(rst)); 
 
 endmodule

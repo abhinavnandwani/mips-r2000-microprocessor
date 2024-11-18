@@ -111,7 +111,7 @@ module proc (/*AUTOARG*/
         .invA(invA),
         .invB(invB),
         .RegWrt(),
-        .ID_err(IDF_err),
+        .IDF_err(IDF_err),
         .Cin(Cin),
         .RD(RD),
         .WB(WB), 

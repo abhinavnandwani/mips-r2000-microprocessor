@@ -17,6 +17,6 @@ module memory (
 );
 
     // Data Memory
-    memory2c_align data_mem(.data_out(readData), .data_in(writeData), .addr(ALU), .enable(MemWrt | readEn), .wr(MemWrt), .createdump(HaltSig), .clk(clk), .rst(rst), .err(err));
+    stallmem data_mem(.DataOut(readData), .Done(), .Stall(), .CacheHit(), .DataIn(writeData), .Addr(ALU), .Rd(readEn), .Wr(MemWrt), .createdump(HaltSig), .clk(clk), .rst(rst), .err(err));
 
 endmodule

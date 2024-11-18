@@ -147,7 +147,7 @@ module proc_hier_pbench();
    assign MemDataIn = DUT.p0.memory0.writeData; // Data to write to memory
    assign MemDataOut = DUT.p0.memory0.readData; // Data read from memory
 
-   assign Halt = DUT.p0.EXDM_HaltSig;
+   assign Halt = {DUT.p0.EXDM_HaltSig };
 
 
    // new added 05/03

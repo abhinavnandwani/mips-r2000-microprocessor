@@ -68,6 +68,7 @@ module decode (
     wire ALUJmp_nflopped;
     wire MemWrt_nflopped,nHaltSig_nflopped;
     wire reg_err, control_err;
+    wire nHaltSig_control;
 
 
     wire rst_ff;
@@ -102,4 +103,5 @@ module decode (
     control control0 (.instr((NOP_mech) ? 16'b0000_1xxx_xxxx_xxxx : instr), .err(control_err), .NOP(NOP), .nHaltSig(nHaltSig), .MemRead(MemRead), .RegDst(RegDst), .RegWrt(RegWrt_nflopped), .ZeroExt(ZeroExt), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUOpr(ALUOpr), .ALUSign(ALUSign), .ALUJmp(ALUJmp), .MemWrt(MemWrt), .RegSrc(RegSrc), .BranchTaken(BranchTaken));
 
     assign err = control_err | reg_err | IDF_err;
+    // assign nHaltSig = nHaltSig_control | err;
 endmodule

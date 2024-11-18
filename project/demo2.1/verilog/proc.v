@@ -249,7 +249,7 @@ module proc (/*AUTOARG*/
         .EX_ALU(EX_ALU),
         .EX_MemWrt(IDEX_MemWrt),
         .EX_MemRead(IDEX_MemRead),
-        .EX_nHaltSig(IDEX_HaltSig),
+        .EX_nHaltSig({IDEX_HaltSig}),
         .EX_err(EX_err),
         .EXDM_err(FDM_err),
         .EXDM_RTData(EXDM_RTData),
@@ -298,10 +298,10 @@ module proc (/*AUTOARG*/
         .DMWB_err(DMWB_err),
         .RegSrc(IDEX_RegSrc), 
         .WB(WB),
-        .WB_err(err)
+        .WB_err(WB_err)
     );
 
-    // assign err = ID_reg_err | WB_err;
+     assign err = DM_err | WB_err;
 
 endmodule // proc
 `default_nettype wire

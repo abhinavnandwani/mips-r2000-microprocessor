@@ -13,10 +13,18 @@ module memory (
     input wire MemWrt,
     input wire HaltSig,
     output wire err,
-    output wire [15:0] readData
+    output wire [15:0] readData,
+    output wire Done_DM, 
+    output wire Stall_DM
 );
 
-    // Data Memory
-    stallmem data_mem(.DataOut(readData), .Done(), .Stall(), .CacheHit(), .DataIn(writeData), .Addr(ALU), .Rd(readEn), .Wr(MemWrt), .createdump(HaltSig), .clk(clk), .rst(rst), .err(err));
 
+    wire done_mem;
+
+
+    // Data Memory
+    //memory2c_align data_mem(.data_out(readData), .data_in(writeData), .addr(ALU), .enable(MemWrt | readEn), .wr(MemWrt), .createdump(HaltSig), .clk(clk), .rst(rst), .err(err));
+    stallmem data_mem(.DataOut(readData), .Done(done_mem), .Stall(Stall_DM), .CacheHit(), .DataIn(writeData), .Addr(ALU), .Rd(readEn), .Wr(MemWrt), .createdump(HaltSig), .clk(clk), .rst(rst), .err(err));
+
+    assign Done_DM = done_mem | ~(readEn|MemWrt);
 endmodule

@@ -62,6 +62,7 @@ module proc (/*AUTOARG*/
     wire EXDM_MemWrt, EXDM_MemRead, EXDM_HaltSig;
     wire [15:0] DMWB_ALU, DMWB_PC, DMWB_readData;
     wire IF_err, ID_err, IDF_err, EX_err, ID_reg_err, DM_err, FDM_err, FWB_err, DMWB_err, WB_err ;
+    wire Stall_DM, Done_DM;
 
     /* Fetch Stage */
     fetch fetch0 (
@@ -94,9 +95,10 @@ module proc (/*AUTOARG*/
         .IF_err(IF_err),
         .IFID_err(IDF_err)
     );
+    wire Done_DM_ff;
+    assign #100 Done_DM_ff = Done_DM;
 
-
-    stall_mech stall(.NOP_reg(NOP_mech), .RSData(ID_instr[10:8]),.RTData(ID_instr[7:5]),.RD_ff(RD_1_nflopped),.RD_2ff(RD_2_nflopped), .RegWrt_2ff(RegWrt_2_nflopped), .RegWrt_ff(RegWrt_1_nflopped));
+    stall_mech stall(.NOP_reg(NOP_mech), .RSData(ID_instr[10:8]),.RTData(ID_instr[7:5]),.RD_ff(RD_1_nflopped),.RD_2ff(RD_2_nflopped), .RegWrt_2ff(RegWrt_2_nflopped), .RegWrt_ff(RegWrt_1_nflopped), .Done_DM(Done_DM));
 
     /* Decode Stage */
     decode decode0 (
@@ -138,7 +140,9 @@ module proc (/*AUTOARG*/
         .RD_2_nflopped(RD_2_nflopped),
         .RD_1_nflopped(RD_1_nflopped),
         .RegWrt_1_nflopped(RegWrt_1_nflopped),
-        .RegWrt_2_nflopped(RegWrt_2_nflopped)
+        .RegWrt_2_nflopped(RegWrt_2_nflopped),
+        .Done_DM(Done_DM),
+        .Done_DM_ff(Done_DM_ff)
     );
 
     /* IDEX latch */
@@ -249,7 +253,7 @@ module proc (/*AUTOARG*/
         .EX_ALU(EX_ALU),
         .EX_MemWrt(IDEX_MemWrt),
         .EX_MemRead(IDEX_MemRead),
-        .EX_nHaltSig({IDEX_HaltSig}),
+        .EX_nHaltSig(IDEX_HaltSig),
         .EX_err(EX_err),
         .EXDM_err(FDM_err),
         .EXDM_RTData(EXDM_RTData),
@@ -257,7 +261,8 @@ module proc (/*AUTOARG*/
         .EXDM_MemWrt(EXDM_MemWrt),
         .EXDM_MemRead(EXDM_MemRead),
         .EXDM_ALU(EXDM_ALU),
-        .EXDM_HaltSig(EXDM_HaltSig)
+        .EXDM_HaltSig(EXDM_HaltSig),
+        .Done_DM(Done_DM)
     );
 
     /* Memory Stage */
@@ -270,7 +275,9 @@ module proc (/*AUTOARG*/
         .readEn(EXDM_MemRead), 
         .MemWrt(EXDM_MemWrt), 
         .readData(readData),
-        .err(DM_err)
+        .err(DM_err),
+        .Done_DM(Done_DM),
+        .Stall_DM(Stall_DM)
     );
 
     /* DMWB latch */

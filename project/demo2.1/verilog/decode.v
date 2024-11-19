@@ -16,6 +16,8 @@ module decode (
     input wire [15:0] PC,
     input wire NOP_mech,
     input wire IDF_err,
+    input wire Done_DM,
+    input wire Done_DM_ff,
     
     // Control Signals
     output wire nHaltSig,
@@ -86,7 +88,7 @@ module decode (
                             3'b111;
 
     // Triple-flopped RD
-    dff dff_RD[8:0](.q({RD, RD_2_nflopped, RD_1_nflopped}), .d({RD_2_nflopped, RD_1_nflopped, RD_nflopped}), .clk({9{clk}}), .rst({9{rst}}));
+    dff dff_RD[8:0](.q({RD, RD_2_nflopped, RD_1_nflopped}), .d({~Done_DM_ff ? 3'b000:RD_2_nflopped, ~Done_DM ? RD_2_nflopped:RD_1_nflopped, RD_nflopped}), .clk({9{clk}}), .rst({9{rst}}));
 
     regFile_bypass regFile0 (.read1Data(RSData), .read2Data(RTData), .err(reg_err), .clk(clk), .rst(rst), .read1RegSel(instr[10:8]), .read2RegSel(instr[7:5]), .writeRegSel(RD), .writeData(WB), .writeEn(RegWrt));
 
@@ -99,9 +101,13 @@ module decode (
 
     alu_control aluc (.aluoper(ALUOpr), .instr(instr[1:0]), .op(Oper), .invA(invA), .invB(invB), .Cin(Cin));
 
-    dff dff_d_RegWrt[2:0](.q({RegWrt, RegWrt_2_nflopped, RegWrt_1_nflopped}), .d({RegWrt_2_nflopped, RegWrt_1_nflopped, RegWrt_nflopped}), .clk({clk,clk,clk}), .rst({rst,rst,rst}));
+    dff dff_d_RegWrt[2:0](.q({RegWrt, RegWrt_2_nflopped, RegWrt_1_nflopped}), .d({Done_DM_ff ? RegWrt_2_nflopped:1'b0,  Done_DM ? RegWrt_1_nflopped:RegWrt_2_nflopped, RegWrt_nflopped}), .clk({clk,clk,clk}), .rst({rst,rst,rst}));
     control control0 (.instr((NOP_mech) ? 16'b0000_1xxx_xxxx_xxxx : instr), .err(control_err), .NOP(NOP), .nHaltSig(nHaltSig), .MemRead(MemRead), .RegDst(RegDst), .RegWrt(RegWrt_nflopped), .ZeroExt(ZeroExt), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUOpr(ALUOpr), .ALUSign(ALUSign), .ALUJmp(ALUJmp), .MemWrt(MemWrt), .RegSrc(RegSrc), .BranchTaken(BranchTaken));
 
     assign err = control_err | reg_err | IDF_err;
     // assign nHaltSig = nHaltSig_control | err;
+
+    always @(posedge clk) begin
+        $display("RegWrt: %d, Done_Dm: %d", RegWrt, Done_DM);
+    end
 endmodule

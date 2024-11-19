@@ -62,8 +62,9 @@ module proc (/*AUTOARG*/
     wire EXDM_MemWrt, EXDM_MemRead, EXDM_HaltSig;
     wire [15:0] DMWB_ALU, DMWB_PC, DMWB_readData;
     wire IF_err, ID_err, IDF_err, EX_err, ID_reg_err, DM_err, FDM_err, FWB_err, DMWB_err, WB_err ;
-    wire Stall_DM, Done_DM;
-
+    wire Stall_DM, Done_DM,EX_RegWrt,ID_RegWrt,EXDM_RegWrt,DMWB_RegWrt;
+    wire [2:0] EXDM_RD, DMWB_RD;
+    wire [1:0] EXDM_RegSrc, DMWB_RegSrc;
     /* Fetch Stage */
     fetch fetch0 (
         .clk(clk), 
@@ -96,9 +97,10 @@ module proc (/*AUTOARG*/
         .IFID_err(IDF_err)
     );
     wire Done_DM_ff;
-    assign #100 Done_DM_ff = Done_DM;
+ 
+      dff dmfanum(.q(Done_DM_ff), .d(Done_DM), .clk(clk), .rst(rst));
 
-    stall_mech stall(.NOP_reg(NOP_mech), .RSData(ID_instr[10:8]),.RTData(ID_instr[7:5]),.RD_ff(RD_1_nflopped),.RD_2ff(RD_2_nflopped), .RegWrt_2ff(RegWrt_2_nflopped), .RegWrt_ff(RegWrt_1_nflopped), .Done_DM(Done_DM));
+    stall_mech stall(.NOP_reg(NOP_mech), .RSData(ID_instr[10:8]),.RTData(ID_instr[7:5]),.RD_ff(IDEX_RD),.RD_2ff(EXDM_RD), .RegWrt_2ff(EXDM_RegWrt), .RegWrt_ff(IDEX_RegWrt), .Done_DM(Done_DM));
 
     /* Decode Stage */
     decode decode0 (
@@ -112,8 +114,9 @@ module proc (/*AUTOARG*/
         .instr_comb(IFID_instr_comb),
         .invA(invA),
         .invB(invB),
-        .RegWrt(),
+        .RegWrt(ID_RegWrt),
         .IDF_err(IDF_err),
+        .DMWB_RD(DMWB_RD),
         .Cin(Cin),
         .RD(RD),
         .WB(WB), 
@@ -141,6 +144,7 @@ module proc (/*AUTOARG*/
         .RD_1_nflopped(RD_1_nflopped),
         .RegWrt_1_nflopped(RegWrt_1_nflopped),
         .RegWrt_2_nflopped(RegWrt_2_nflopped),
+        .DMWB_RegWrt(DMWB_RegWrt),
         .Done_DM(Done_DM),
         .Done_DM_ff(Done_DM_ff)
     );
@@ -159,7 +163,7 @@ module proc (/*AUTOARG*/
         .ID_ALUJmp(ALUJmp),
         .ID_MemWrt(MemWrt),
         .ID_err(ID_err),
-        .ID_RegWrt(),
+        .ID_RegWrt(ID_RegWrt),
 
         // Register and Branch Controls
         .ID_RegSrc(RegSrc),
@@ -194,6 +198,7 @@ module proc (/*AUTOARG*/
         .IDEX_ALUJmp(IDEX_ALUJmp),
         .IDEX_MemWrt(IDEX_MemWrt),
         .IDEX_err(EX_err),
+        .IDEX_RD(IDEX_RD),
         .IDEX_RegWrt(IDEX_RegWrt),
 
         // Register and Branch Controls
@@ -213,7 +218,6 @@ module proc (/*AUTOARG*/
         .IDEX_invA(IDEX_invA),
         .IDEX_invB(IDEX_invB),
         .IDEX_Cin(IDEX_Cin),
-        .IDEX_RD(IDEX_RD),
         .IDEX_NOP(IDEX_NOP)
     );
 
@@ -239,7 +243,7 @@ module proc (/*AUTOARG*/
         .ALUSign(IDEX_ALUSign), 
         .cin(IDEX_Cin), 
         .BranchTaken(IDEX_BranchTaken), 
-        .ALU_Out(EX_ALU), 
+        .ALU_Out(EX_ALU),
         .PC_Next(PC_Jump),
         .BrchCnd(BrchCnd)
     );
@@ -254,6 +258,9 @@ module proc (/*AUTOARG*/
         .EX_MemWrt(IDEX_MemWrt),
         .EX_MemRead(IDEX_MemRead),
         .EX_nHaltSig(IDEX_HaltSig),
+        .EX_RegWrt(IDEX_RegWrt),
+        .EX_RD(IDEX_RD),
+        .EX_RegSrc(IDEX_RegSrc),
         .EX_err(EX_err),
         .EXDM_err(FDM_err),
         .EXDM_RTData(EXDM_RTData),
@@ -262,6 +269,9 @@ module proc (/*AUTOARG*/
         .EXDM_MemRead(EXDM_MemRead),
         .EXDM_ALU(EXDM_ALU),
         .EXDM_HaltSig(EXDM_HaltSig),
+        .EXDM_RD(EXDM_RD),
+        .EXDM_RegWrt(EXDM_RegWrt),
+        .EXDM_RegSrc(EXDM_RegSrc),
         .Done_DM(Done_DM)
     );
 
@@ -286,14 +296,21 @@ module proc (/*AUTOARG*/
         .rst(rst),
         .MEM_ALU(EXDM_ALU),
         .MEM_PC(EXDM_PC),
+        .MEM_RegWrt(EXDM_RegWrt),
+        .MEM_RD(EXDM_RD),
+        .MEM_RegSrc(EXDM_RegSrc),
         .MEM_readData(readData),
         .FMEM_err(FDM_err),
         .MMEM_err(DM_err),
         .FWB_err(FWB_err),
         .DMWB_err(DMWB_err),
         .DMWB_ALU(DMWB_ALU),
+        .DMWB_RegWrt(DMWB_RegWrt),
+        .DMWB_RD(DMWB_RD),
         .DMWB_PC(DMWB_PC),
-        .DMWB_readData(DMWB_readData)
+        .DMWB_readData(DMWB_readData),
+        .DMWB_RegSrc(DMWB_RegSrc),
+        .Done_DM(Done_DM)
     );
 
     /* Write-Back (WB) Stage */
@@ -303,7 +320,7 @@ module proc (/*AUTOARG*/
         .ALUIn(DMWB_ALU), 
         .FWB_err(FWB_err),
         .DMWB_err(DMWB_err),
-        .RegSrc(IDEX_RegSrc), 
+        .RegSrc(DMWB_RegSrc), 
         .WB(WB),
         .WB_err(WB_err)
     );

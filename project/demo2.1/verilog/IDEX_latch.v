@@ -28,10 +28,10 @@ module IDEX_latch (
     input wire [15:0] ID_sImm8,
     input wire [15:0] ID_sImm11,
     input wire [15:0] ID_PC_Next,
+    input wire [2:0] ID_RD,
     input wire ID_invA,
     input wire ID_invB,
     input wire ID_Cin,
-    input wire [2:0] ID_RD,
     input wire ID_NOP,
     input wire ID_RegWrt_2_nflopped,
     input wire ID_RegWrt_1_nflopped,
@@ -46,6 +46,7 @@ module IDEX_latch (
     output wire IDEX_ALUSign,
     output wire IDEX_ALUJmp,
     output wire IDEX_MemWrt,
+    output wire [2:0] IDEX_RD,
     output wire IDEX_err,
     output wire IDEX_RegWrt,
 
@@ -66,17 +67,18 @@ module IDEX_latch (
     output wire IDEX_invA,
     output wire IDEX_invB,
     output wire IDEX_Cin,
-    output wire [2:0] IDEX_RD,
     output wire IDEX_NOP
 );
-    wire [1:0] IDEX_RegSrc_2_nflopped,IDEX_RegSrc_1_nflopped;
-    dff dff_IDEX_RegSrc[5:0] (.q({IDEX_RegSrc, IDEX_RegSrc_2_nflopped, IDEX_RegSrc_1_nflopped}), .d({IDEX_RegSrc_2_nflopped, IDEX_RegSrc_1_nflopped, ID_RegSrc}), .clk({6{clk}}), .rst({6{rst}})); 
+    //wire [1:0] IDEX_RegSrc_2_nflopped,IDEX_RegSrc_1_nflopped;
+    dff dff_IDEX_RegSrc[1:0] (.q(IDEX_RegSrc), .d(ID_RegSrc), .clk({2{clk}}), .rst({2{rst}})); 
+    //dff dff_IDEX_RegSrc[5:0] (.q({IDEX_RegSrc, IDEX_RegSrc_2_nflopped, IDEX_RegSrc_1_nflopped}), .d({IDEX_RegSrc_2_nflopped, IDEX_RegSrc_1_nflopped, ID_RegSrc}), .clk({6{clk}}), .rst({6{rst}})); 
     dff dff_IDEX_BSrc[1:0] (.q(IDEX_BSrc), .d(ID_BSrc), .clk({2{clk}}), .rst({2{rst}})); 
     dff dff_IDEX_ImmSrc (.q(IDEX_ImmSrc), .d(ID_ImmSrc), .clk(clk), .rst(rst)); 
     dff dff_IDEX_ALUSign (.q(IDEX_ALUSign), .d(ID_ALUSign), .clk(clk), .rst(rst)); 
     dff dff_IDEX_ALUJmp (.q(IDEX_ALUJmp), .d(ID_ALUJmp), .clk(clk), .rst(rst)); 
     dff dff_IDEX_MemRead (.q(IDEX_MemRead), .d(ID_MemRead), .clk(clk), .rst(rst)); 
     dff dff_IDEX_MemWrt (.q(IDEX_MemWrt), .d(ID_MemWrt), .clk(clk), .rst(rst)); 
+    dff dff_IDEX_rd [2:0] (.q(IDEX_RD), .d(ID_RD), .clk({3{clk}}), .rst({3{rst}})); 
     dff dff_IDEX_nHaltSig (.q(IDEX_nHaltSig), .d(valid ? ID_nHaltSig : 1'b0), .clk(clk), .rst(rst)); 
     dff dff_IDEX_d_oper[3:0] (.q(IDEX_Oper), .d(ID_Oper), .clk({4{clk}}), .rst({4{rst}}));
     register dff_IDEX_d_RSData (.r(IDEX_RSData), .w(ID_RSData), .clk(clk), .rst(rst), .we(1'b1));
@@ -92,5 +94,6 @@ module IDEX_latch (
     dff dff_IDEX_d_BranchTaken [3:0] (.q(IDEX_BranchTaken), .d(ID_BranchTaken), .clk({4{clk}}), .rst({4{rst}}));
     dff dff_IDEX_NOP (.q(IDEX_NOP), .d(ID_NOP), .clk(clk), .rst(rst)); 
     dff dff_IDEX_err (.q(IDEX_err), .d(ID_err), .clk(clk), .rst(rst)); 
+    dff dff_IDEX_RegWrt (.q(IDEX_RegWrt), .d(ID_RegWrt), .clk(clk), .rst(rst)); 
 
 endmodule

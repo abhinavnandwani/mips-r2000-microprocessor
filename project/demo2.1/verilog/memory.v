@@ -27,4 +27,13 @@ module memory (
     stallmem data_mem(.DataOut(readData), .Done(done_mem), .Stall(Stall_DM), .CacheHit(), .DataIn(writeData), .Addr(ALU), .Rd(readEn), .Wr(MemWrt), .createdump(HaltSig), .clk(clk), .rst(rst), .err(err));
 
     assign Done_DM = done_mem | ~(readEn|MemWrt);
+
+    // always@(posedge clk)
+
+    //     $display("Fanum tax : %h",readData);
+
+
+
+
+
 endmodule

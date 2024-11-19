@@ -136,18 +136,23 @@ module proc_hier_pbench();
  
 
    // Decode stage signals
-   assign RegWrite = DUT.p0.decode0.RegWrt;     // Register write enable
-   assign WriteRegister = DUT.p0.decode0.RD;    // Register destination address
+   assign RegWrite = DUT.p0.DMWB_RegWrt;     // Register write enable
+   assign WriteRegister = DUT.p0.DMWB_RD;    // Register destination address
    assign WriteData = DUT.p0.wb0.WB;        // Data to write to register
 
    // Memory stage signals
    assign MemRead =  DUT.p0.memory0.readEn;      // Memory read enable
-   assign MemWrite =  DUT.p0.memory0.MemWrt;     // Memory write enable
+   assign MemWrite =  DUT.p0.EXDM_MemWrt;     // Memory write enable
    assign MemAddress = DUT.p0.memory0.ALU;      // Address for memory read/write
    assign MemDataIn = DUT.p0.memory0.writeData; // Data to write to memory
    assign MemDataOut = DUT.p0.memory0.readData; // Data read from memory
 
    assign Halt = {DUT.p0.EXDM_HaltSig };
+
+   wire Done_DM, Done_DM_ff;
+   assign Done_DM = DUT.p0.Done_DM;
+   assign Done_DM_ff = DUT.p0.Done_DM_ff;
+   
 
 
    // new added 05/03

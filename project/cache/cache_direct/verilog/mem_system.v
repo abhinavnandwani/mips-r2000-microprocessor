@@ -24,38 +24,42 @@ module mem_system(/*AUTOARG*/
    output reg        CacheHit;
    output reg        err;
 
+   wire [4:0] tag_out;
+   wire [15:0] data_out;
+   wire hit, dirty, valid;
+
    /* data_mem = 1, inst_mem = 0 *
     * needed for cache parameter */
    parameter memtype = 0;
    cache #(0 + memtype) c0(// Outputs
-                          .tag_out              (),
-                          .data_out             (),
-                          .hit                  (),
-                          .dirty                (),
-                          .valid                (),
+                          .tag_out              (tag_out),
+                          .data_out             (data_out),
+                          .hit                  (hit),
+                          .dirty                (dirty),
+                          .valid                (valid),
                           .err                  (),
                           // Inputs
                           .enable               (),
-                          .clk                  (),
-                          .rst                  (),
-                          .createdump           (),
-                          .tag_in               (),
-                          .index                (),
-                          .offset               (),
+                          .clk                  (clk),
+                          .rst                  (rst),
+                          .createdump           (createdump),
+                          .tag_in               (Addr[15:11]),
+                          .index                (Addr[10:3]),
+                          .offset               (Addr[2:0]),
                           .data_in              (),
                           .comp                 (),
                           .write                (),
                           .valid_in             ());
 
    four_bank_mem mem(// Outputs
-                     .data_out          (),
-                     .stall             (),
+                     .data_out          (DataOut),
+                     .stall             (Stall),
                      .busy              (),
                      .err               (),
                      // Inputs
-                     .clk               (),
-                     .rst               (),
-                     .createdump        (),
+                     .clk               (clk),
+                     .rst               (rst),
+                     .createdump        (createdump),
                      .addr              (),
                      .data_in           (),
                      .wr                (),

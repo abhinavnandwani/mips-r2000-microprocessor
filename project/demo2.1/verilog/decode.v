@@ -109,8 +109,8 @@ module decode (
     assign err = control_err | reg_err | IDF_err;
     // assign nHaltSig = nHaltSig_control | err;
 
-    always @(posedge clk) begin
-        $display("Write Data: %h, Done_Dm: %d", WB, Done_DM_ff);
-    end
+    // always @(posedge clk) begin
+    //     $display("Write Data: %h, Done_Dm: %d", WB, Done_DM_ff);
+    // end
 endmodule
 `default_nettype wire

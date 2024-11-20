@@ -129,7 +129,7 @@ module proc_hier_pbench();
    // names on the right hand side
     
   // Connect DUT signals to testbench wires
-
+     wire Done_DM, Done_DM_ff;
    // Fetch stage signals
    assign PC = DUT.p0.fetch0.PC_curr;       // Current PC from fetch stage
    assign Inst = DUT.p0.ID_instr;       // Instruction fetched
@@ -141,17 +141,21 @@ module proc_hier_pbench();
    assign WriteData = DUT.p0.wb0.WB;        // Data to write to register
 
    // Memory stage signals
-   assign MemRead =  DUT.p0.memory0.readEn;      // Memory read enable
-   assign MemWrite =  DUT.p0.EXDM_MemWrt;     // Memory write enable
+   assign MemRead =  (DUT.p0.EXDM_MemRead&Done_DM);      // Memory read enable
+   assign MemWrite =  (DUT.p0.EXDM_MemWrt&Done_DM);   // Memory write enable
    assign MemAddress = DUT.p0.memory0.ALU;      // Address for memory read/write
    assign MemDataIn = DUT.p0.memory0.writeData; // Data to write to memory
    assign MemDataOut = DUT.p0.memory0.readData; // Data read from memory
 
    assign Halt = {DUT.p0.EXDM_HaltSig };
 
-   wire Done_DM, Done_DM_ff;
+ 
    assign Done_DM = DUT.p0.Done_DM;
    assign Done_DM_ff = DUT.p0.Done_DM_ff;
+
+
+   always@(posedge DUT.c0.clk)
+      $display("Reg_Wrt:%h Halt : %h MemWrt : %h MemRead : %h",RegWrite,Halt,MemWrite,MemRead);
    
 
 

@@ -52,5 +52,9 @@ module execute (
    //BrchCnd 
    brchcnd branch_ctrl(.SF(SF), .ZF(ZF), .brch_instr(NOP ? 4'b0000:BranchTaken), .BrchCnd(BrchCnd));
 
+   //  always @(posedge clk) begin
+   //      $display("RSData : %h ALUIn: %h NOP %h",RSData, ALUIn, NOP);
+   //  end
+
 endmodule
 `default_nettype wire

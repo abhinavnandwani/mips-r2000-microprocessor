@@ -1,50 +1,14 @@
-          // seed 2
-0000 c09a lbi r0, 154 // icount 0
-0002 9063 slbi r0, 99 // icount 1
-0004 c1c5 lbi r1, 197 // icount 2
-0006 916c slbi r1, 108 // icount 3
-0008 c279 lbi r2, 121 // icount 4
-000a 9283 slbi r2, 131 // icount 5
-000c c326 lbi r3, 38 // icount 6
-000e 93ce slbi r3, 206 // icount 7
-0010 c4c3 lbi r4, 195 // icount 8
-0012 9451 slbi r4, 81 // icount 9
-0014 c5e4 lbi r5, 228 // icount 10
-0016 953f slbi r5, 63 // icount 11
-0018 c6fb lbi r6, 251 // icount 12
-001a 96f9 slbi r6, 249 // icount 13
-001c c76c lbi r7, 108 // icount 14
-001e 972e slbi r7, 46 // icount 15
-0020 5ec1 andni r6, r6, 1 // icount 16
-0022 86e4 st r7, r6, 4 // icount 17
-0024 5921 andni r1, r1, 1 // icount 18
-0026 81a2 st r5, r1, 2 // icount 19
-0028 5801 andni r0, r0, 1 // icount 20
-002a 80c8 st r6, r0, 8 // icount 21
-002c 5ec1 andni r6, r6, 1 // icount 22
-002e 86a2 st r5, r6, 2 // icount 23
-0030 5b61 andni r3, r3, 1 // icount 24
-0032 8304 st r0, r3, 4 // icount 25
-0034 5801 andni r0, r0, 1 // icount 26
-0036 80aa st r5, r0, 10 // icount 27
-0038 5c81 andni r4, r4, 1 // icount 28
-003a 8400 st r0, r4, 0 // icount 29
-003c 5a41 andni r2, r2, 1 // icount 30
-003e 828c st r4, r2, 12 // icount 31
-0040 5c81 andni r4, r4, 1 // icount 32
-0042 8484 st r4, r4, 4 // icount 33
-0044 5b61 andni r3, r3, 1 // icount 34
-0046 832c st r1, r3, 12 // icount 35
-0048 5ec1 andni r6, r6, 1 // icount 36
-004a 864e st r2, r6, 14 // icount 37
-004c 5da1 andni r5, r5, 1 // icount 38
-004e 85cc st r6, r5, 12 // icount 39
-0050 5ec1 andni r6, r6, 1 // icount 40
-0052 86ec st r7, r6, 12 // icount 41
-0054 5c81 andni r4, r4, 1 // icount 42
-0056 8406 st r0, r4, 6 // icount 43
-0058 5b61 andni r3, r3, 1 // icount 44
-005a 83a4 st r5, r3, 4 // icount 45
-005c 5fe1 andni r7, r7, 1 // icount 46
-005e 87ec st r7, r7, 12 // icount 47
-0060 0000 halt // icount 48
+          // Original test: ./tschaefe/hw4/problem6/jalr_2.asm
+          // Author: tschaefe
+          // Test source code follows
+          
+          
+          // jalr test 2
+          // This test has jalr jumping to an ealier part of the program and sets r7 to 0xa
+0000 c000 lbi r0, 0x0			// r0 used for jump address calculation
+0002 c1fd lbi r1, 0xfd		// r1 acts as a loop counter
+0004 4121 addi r1, r1, 0x01
+0006 7902 bgez r1, .done		//after 3 total executions of add, go to halt
+0008 3804 jalr r0, 0x4
+000a      .done:
+000a 0000 halt

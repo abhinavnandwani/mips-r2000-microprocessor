@@ -64,6 +64,7 @@ module proc (/*AUTOARG*/
     wire IF_err, ID_err, IDF_err, EX_err, ID_reg_err, DM_err, FDM_err, FWB_err, DMWB_err, WB_err ;
     wire Stall_DM, Done_DM,EX_RegWrt,ID_RegWrt,EXDM_RegWrt,DMWB_RegWrt;
     wire [2:0] EXDM_RD, DMWB_RD;
+    wire fetch_stall;
     wire [1:0] EXDM_RegSrc, DMWB_RegSrc;
     /* Fetch Stage */
     fetch fetch0 (
@@ -74,6 +75,7 @@ module proc (/*AUTOARG*/
         .branch(|{BrchCnd,IDEX_ALUJmp}),
         .PC_B(PC_Jump), 
         .PC_curr(PC),
+        .fetch_stall(fetch_stall),
         .HaltSig(HaltSig),
         .instr(instr), 
         .PC_Next(PC_f),
@@ -87,12 +89,13 @@ module proc (/*AUTOARG*/
         .rst(rst),
         .NOP_mech(NOP_mech),
         .NOP_Branch(NOP_Branch),
+        .fetch_stall(fetch_stall),
         .IF_instr(instr),
         .IF_PC_Next(PC_f),
         .IFID_instr(ID_instr),
         .IFID_instr_comb(IFID_instr_comb),
         .IFID_PC_Next(ID_PC),
-        .nHaltSig(valid ? HaltSig : 1'b0),
+        .nHaltSig(1'b1 ? HaltSig : 1'b0),
         .IF_err(IF_err),
         .IFID_err(IDF_err)
     );
@@ -100,7 +103,7 @@ module proc (/*AUTOARG*/
  
       dff dmfanum(.q(Done_DM_ff), .d(Done_DM), .clk(clk), .rst(rst));
 
-    stall_mech stall(.NOP_reg(NOP_mech), .RSData(ID_instr[10:8]),.RTData(ID_instr[7:5]),.RD_ff(IDEX_RD),.RD_2ff(EXDM_RD), .RegWrt_2ff(EXDM_RegWrt), .RegWrt_ff(IDEX_RegWrt), .Done_DM(Done_DM));
+    stall_mech stall(.NOP_reg(NOP_mech), .RSData(ID_instr[10:8]),.RTData(ID_instr[7:5]),.RD_ff(IDEX_RD),.RD_2ff(EXDM_RD), .RegWrt_2ff(EXDM_RegWrt), .RegWrt_ff(IDEX_RegWrt), .Done_DM(Done_DM), .fetch_stall(fetch_stall));
 
     /* Decode Stage */
     decode decode0 (
@@ -184,10 +187,7 @@ module proc (/*AUTOARG*/
         .ID_Cin(Cin),
         .ID_RD(RD),
         .ID_NOP(NOP_mech),
-        .ID_RegWrt_2_nflopped(RegWrt_2_nflopped),
-        .ID_RegWrt_1_nflopped(RegWrt_1_nflopped),
-        .ID_RD_2_nflopped(RD_2_nflopped),
-        .ID_RD_1_nflopped(RD_1_nflopped),
+        .Done_DM(~Done_DM),
 
         // Outputs
         .IDEX_nHaltSig(IDEX_HaltSig),

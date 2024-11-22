@@ -5,6 +5,7 @@ module stall_mech(
     input reg [2:0] RD_ff,
     input reg [2:0] RD_2ff,
     input wire RegWrt_2ff,
+    input wire fetch_stall,
     input wire RegWrt_ff,
     input wire Done_DM
 );
@@ -18,7 +19,7 @@ assign z = (RD_ff ==  RTData ) ? RegWrt_ff:1'b0;
 assign a = (RD_2ff ==  RTData ) ? RegWrt_2ff:1'b0;
 
 
-assign NOP_reg = ~Done_DM | x | y | z | a ;
+assign NOP_reg = ~Done_DM | x | y | z | a;
     
 
 

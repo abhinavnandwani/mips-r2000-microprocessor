@@ -1,18 +1,6 @@
 # vsim -c proc_hier_pbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 19:58:36 on Nov 19,2024
-# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-125-generic
-# //
-# //  Copyright 1991-2018 Mentor Graphics Corporation
-# //  All Rights Reserved.
-# //
-# //  ModelSim DE and its associated documentation contain trade
-# //  secrets and commercial or financial information that are the property of
-# //  Mentor Graphics Corporation and are privileged, confidential,
-# //  and exempt from disclosure under the Freedom of Information Act,
-# //  5 U.S.C. Section 552. Furthermore, this information
-# //  is prohibited from disclosure under the Trade Secrets Act,
-# //  18 U.S.C. Section 1905.
-# //
+# Start time: 14:45:58 on Nov 22,2024
+# ** Warning: License feature 'msimpevsimvlog' will expire in 13 days.
 # Loading __work.proc_hier_pbench
 # Loading __work.proc_hier
 # Loading __work.clkrst
@@ -50,8 +38,14 @@
 #    Time: 0 ns  Iteration: 0  Instance: /proc_hier_pbench/DUT/p0/fetch0/instr_mem File: stallmem.v Line: 87
 # ** Warning: (vsim-PLI-3691) Expected a system task, not a system function '$value$plusargs'.
 #    Time: 0 ns  Iteration: 0  Instance: /proc_hier_pbench/DUT/p0/memory0/data_mem File: stallmem.v Line: 87
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'IDEX'.  Expected 58, found 54.
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_pbench/DUT/p0/IDEX File: proc.v Line: 156
+# ** Warning: (vsim-3722) proc.v(156): [TFMPC] - Missing connection for port 'ID_RegWrt_2_nflopped'.
+# ** Warning: (vsim-3722) proc.v(156): [TFMPC] - Missing connection for port 'ID_RegWrt_1_nflopped'.
+# ** Warning: (vsim-3722) proc.v(156): [TFMPC] - Missing connection for port 'ID_RD_2_nflopped'.
+# ** Warning: (vsim-3722) proc.v(156): [TFMPC] - Missing connection for port 'ID_RD_1_nflopped'.
 # log -howmany -rec /* 
-# 4640
+# 4647
 #  run -all
 # Using seed           0
 # rand_pat=12153524 00010010000101010011010100100100
@@ -59,170 +53,24 @@
 # rand_pat=12153524 00010010000101010011010100100100
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.ptrace for output
-# Reg_Wrt:x Halt : x MemWrt : x MemRead : x
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 1 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 1 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 1 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 1 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 1 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 1 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 1 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 1 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 1 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 1 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 1 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 1 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 1 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 1 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:1 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 1 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 1 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 0 MemWrt : 0 MemRead : 0
-# Reg_Wrt:0 Halt : 1 MemWrt : 0 MemRead : 0
+# iNSTR : xxxx
+# iNSTR : 0800
+# iNSTR : 0800
+# iNSTR : 0800
+# iNSTR : 0800
+# iNSTR : 0800
+# iNSTR : c004
+# iNSTR : 0800
+# iNSTR : 0800
+# iNSTR : 0800
+# iNSTR : 0800
+# iNSTR : 0800
+# iNSTR : 3804
+# iNSTR : 0800
+# iNSTR : 0000
+# iNSTR : 0800
+# iNSTR : 0000
 # ** Note: $finish    : proc_hier_pbench.v(116)
-#    Time: 16205 ns  Iteration: 0  Instance: /proc_hier_pbench
-# End time: 19:58:38 on Nov 19,2024, Elapsed time: 0:00:02
-# Errors: 0, Warnings: 2
+#    Time: 1605 ns  Iteration: 0  Instance: /proc_hier_pbench
+# End time: 14:46:00 on Nov 22,2024, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 7

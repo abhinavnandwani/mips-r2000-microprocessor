@@ -40,5 +40,8 @@ module EXDM_latch(
     // DFFs for execute stage signals
     register dff_e_ALU(.r(EXDM_ALU), .w(EX_ALU), .clk(clk), .rst(rst), .we(Done_DM));
     dff dff_EXDM_err (.q(EXDM_err), .d(EX_err), .clk(clk), .rst(rst)); 
-    dff dff_EXDM_RegWrt (.q(EXDM_RegWrt), .d(Done_DM ? EX_RegWrt : EXDM_RegWrt), .clk(clk), .rst(rst)); 
+    dff dff_EXDM_RegWrt (.q(EXDM_RegWrt), .d(Done_DM ? EX_RegWrt : EXDM_RegWrt), .clk(clk), .rst(rst));
+    
+
+
 endmodule

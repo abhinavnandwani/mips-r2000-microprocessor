@@ -154,8 +154,8 @@ module proc_hier_pbench();
    assign Done_DM_ff = DUT.p0.Done_DM_ff;
 
 
-   always@(posedge DUT.c0.clk)
-      $display("Reg_Wrt:%h Halt : %h MemWrt : %h MemRead : %h",RegWrite,Halt,MemWrite,MemRead);
+   // always@(posedge DUT.c0.clk)
+   //    $display("Reg_Wrt:%h Halt : %h MemWrt : %h MemRead : %h",RegWrite,Halt,MemWrite,MemRead);
    
 
 

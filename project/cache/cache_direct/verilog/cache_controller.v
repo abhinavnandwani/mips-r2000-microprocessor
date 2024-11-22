@@ -6,12 +6,13 @@ module cache_controller (
    input wire createdump,
    input wire Rd,
    input wire Wr,
+   input wire busy,
    input wire valid,
    input wire dirty,
    input wire hit,
-   output wire valid_in,
-   output wire comp,
-   output wire write
+   output reg valid_in,
+   output reg comp,
+   output reg write
    );
 
    // Define the states using parameters
@@ -22,7 +23,8 @@ module cache_controller (
    parameter ACCESS_READ           = 4'b0100;
    parameter ACCESS_WRITE          = 4'b0110;
 
-   reg [1:0] next_state;
+   wire [2:0] state;
+   reg [2:0] next_state;
 
    //  // State transition logic
    //  always @(posedge clk or posedge rst) begin
@@ -33,7 +35,7 @@ module cache_controller (
    //          state <= next_state;
    //      end
    //  end
-   dff state(.q(state), .d(next_state), .clk(clk), .rst(rst));
+   dff state_1 [2:0](.q(state), .d(next_state), .clk(clk), .rst(rst));
 
    // Next state and output logic
    always @(*) begin

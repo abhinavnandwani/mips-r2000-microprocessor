@@ -18,21 +18,22 @@ module mem_system(/*AUTOARG*/
    input wire        clk;
    input wire        rst;
    
-   output reg [15:0] DataOut;
+   output wire [15:0] DataOut;
    output reg        Done;
-   output reg        Stall;
+   output wire       Stall;
    output reg        CacheHit;
-   output reg        err;
+   output wire       err;
 
    wire comp, write;
-   wire hit, dirty, valid;
+   wire hit, dirty, valid, valid_in, busy;
    wire err_mem, err_cache;
+   wire [15:0] data_out;
 
    /* data_mem = 1, inst_mem = 0 *
     * needed for cache parameter */
    parameter memtype = 0;
    cache #(0 + memtype) c0(// Outputs
-                          .tag_out              (tag_out),
+                          .tag_out              (),
                           .data_out             (data_out),
                           .hit                  (hit),
                           .dirty                (dirty),
@@ -72,6 +73,7 @@ module mem_system(/*AUTOARG*/
       .createdump(createdump),
       .Rd(Rd),
       .Wr(Wr),
+      .busy(busy),
       .valid(valid),
       .dirty(dirty),
       .hit(hit),

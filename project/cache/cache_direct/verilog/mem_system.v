@@ -24,9 +24,9 @@ module mem_system(/*AUTOARG*/
    output reg        CacheHit;
    output reg        err;
 
-   wire [4:0] tag_out;
-   wire [15:0] data_out;
+   wire comp, write;
    wire hit, dirty, valid;
+   wire err_mem, err_cache;
 
    /* data_mem = 1, inst_mem = 0 *
     * needed for cache parameter */
@@ -37,37 +37,51 @@ module mem_system(/*AUTOARG*/
                           .hit                  (hit),
                           .dirty                (dirty),
                           .valid                (valid),
-                          .err                  (),
+                          .err                  (err_cache),
                           // Inputs
-                          .enable               (),
+                          .enable               (1'b1),
                           .clk                  (clk),
                           .rst                  (rst),
                           .createdump           (createdump),
                           .tag_in               (Addr[15:11]),
                           .index                (Addr[10:3]),
                           .offset               (Addr[2:0]),
-                          .data_in              (),
-                          .comp                 (),
-                          .write                (),
-                          .valid_in             ());
+                          .data_in              (DataOut),
+                          .comp                 (comp),
+                          .write                (write),
+                          .valid_in             (valid_in));
 
    four_bank_mem mem(// Outputs
                      .data_out          (DataOut),
                      .stall             (Stall),
-                     .busy              (),
-                     .err               (),
+                     .busy              (busy),
+                     .err               (err_mem),
                      // Inputs
                      .clk               (clk),
                      .rst               (rst),
                      .createdump        (createdump),
-                     .addr              (),
-                     .data_in           (),
-                     .wr                (),
-                     .rd                ());
+                     .addr              (Addr),
+                     .data_in           (data_out),
+                     .wr                (Wr),
+                     .rd                (Rd));
    
    // your code here
+   cache_controller ctrl(
+      .clk(clk),
+      .rst(rst),
+      .createdump(createdump),
+      .Rd(Rd),
+      .Wr(Wr),
+      .valid(valid),
+      .dirty(dirty),
+      .hit(hit),
+      .valid_in(valid_in),
+      .comp(comp),
+      .write(write)
+   ); 
 
-   
+   assign err = err_mem | err_cache;
+
 endmodule // mem_system
 `default_nettype wire
 // DUMMY LINE FOR REV CONTROL :9:

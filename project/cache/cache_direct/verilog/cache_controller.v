@@ -5,39 +5,22 @@ module cache_controller (
    input wire rst,
    input wire createdump,
    input wire Rd,
-   input wire comp,
-   input wire write,
+   input wire Wr,
    input wire valid,
    input wire dirty,
    input wire hit,
-   // input wire [4:0] tag_in,
-   // input wire [7:0] index,
-   // input wire [2:0] offset,
-   // input wire [15:0] data_in,
-   // input wire valid_in,
-
-   // output wire [4:0] tag_out,
-   // output wire [15:0] data_out,
-   output wire err
-
-   //  input wire clk,
-   //  input wire rst,
-   //  input wire enable,
-
-   //  output reg read_mem,
-   //  output reg write_mem,
-   //  output reg done
+   output wire valid_in,
+   output wire comp,
+   output wire write
    );
 
    // Define the states using parameters
    parameter IDLE                  = 4'b0000;
    parameter COMPARE_READ          = 4'b0001;
    parameter COMPARE_WRITE         = 4'b0010;
-   parameter ACCESS_READ           = 4'b0011;
-   parameter ACCESS_WRITE          = 4'b0100;
-   parameter COMPARE               = 4'b0101;
-   parameter WRITE_BACK            = 4'b0110;
-   parameter FETCH_BLOCK           = 4'b0111;
+   parameter MEMORY_READ           = 4'b0011;
+   parameter ACCESS_READ           = 4'b0100;
+   parameter ACCESS_WRITE          = 4'b0110;
 
    reg [1:0] next_state;
 
@@ -55,54 +38,83 @@ module cache_controller (
    // Next state and output logic
    always @(*) begin
       // Default output values
-      // read_mem = 1'b0;
-      // write_mem = 1'b0;
-      // done = 1'b0;
+      comp = 1'b1;
+      write = 1'b0;
+      valid_in = 1'b0;
       next_state = state;
 
       case (state)
          IDLE: begin
-               if (comp) begin
-                  next_state = COMPARE;
+               if (Rd) begin
+                  next_state = COMPARE_READ;
+               end else if (Wr) begin 
+                  next_state = COMPARE_WRITE;
                end
          end
 
-         COMPARE: begin
-               if (hit && valid) begin
-                  if (write) begin
-                     // Write hit
-                     next_state = IDLE;
-                     done = 1'b1;
-                  end else begin
-                     // Read hit
-                     next_state = IDLE;
-                     done = 1'b1;
-                  end
+         COMPARE_READ: begin
+            /*
+            This case is used when the processor executes a load instruction. 
+            The "tag_in", "index", and "offset" signals need to be valid. 
+            Either a hit or a miss will occur, as indicated by the "hit" output during the same cycle. 
+            If a hit occurs, "data_out" will contain the data and "valid" will indicate if the data is valid. 
+            If a miss occurs, the "valid" output will indicate whether the block occupying that line of the cache is valid. 
+            The "dirty" output indicates the state of the dirty bit in the cache line.
+            */
+            comp = 1'b1;
+            write = 1'b0;
+            if (hit && valid) begin
+                  next_state = IDLE;
+            end else begin
+               // Cache miss
+               next_state = MEMORY_READ;
+            end
+         end
+
+         COMPARE_WRITE: begin
+            comp = 1'b1;
+            write = 1'b1;
+            if (hit && valid) begin
+               if (busy) begin
+                  next_state = COMPARE_WRITE;
                end else begin
-                  // Cache miss
+                  next_state = ACCESS_WRITE;
+               end
+            end else begin
+               next_state = IDLE;
+            end
+         end
+
+         MEMORY_READ: begin
+            comp = 1'b0;
+            valid_in = 1'b1;
+            if (~busy) begin
+               if (~valid) begin
+                  next_state = ACCESS_WRITE;
+               end else begin
                   if (dirty) begin
-                     next_state = WRITE_BACK;
-                  end else begin
-                     next_state = FETCH_BLOCK;
+                     next_state = ACCESS_READ;
                   end
                end
+            end
          end
 
-         WRITE_BACK: begin
-               // Simulate write-back operation to main memory
-               write_mem = 1'b1;
-               next_state = FETCH_BLOCK;
+         ACCESS_READ: begin
+            comp = 1'b0;
+            write = 1'b0;
+            if (~busy) begin
+               next_state = ACCESS_WRITE;
+            end
          end
 
-         FETCH_BLOCK: begin
-               // Simulate fetching a block from main memory
-               read_mem = 1'b1;
-               next_state = COMPARE;
-               done = 1'b1;  // Indicate operation completion
+         ACCESS_WRITE: begin
+            comp = 1'b0;
+            write = 1'b1;
+            next_state = IDLE;
          end
 
          default: begin
-               next_state = IDLE; // Default case to reset to IDLE
+            next_state = IDLE; // Default case to reset to IDLE
          end
       endcase
    end

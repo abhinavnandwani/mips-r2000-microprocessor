@@ -34,10 +34,6 @@ module IDEX_latch (
     input wire ID_invB,
     input wire ID_Cin,
     input wire ID_NOP,
-    input wire ID_RegWrt_2_nflopped,
-    input wire ID_RegWrt_1_nflopped,
-    input wire [2:0] ID_RD_2_nflopped,
-    input wire [2:0] ID_RD_1_nflopped,
 
     // Outputs
     output wire IDEX_nHaltSig,

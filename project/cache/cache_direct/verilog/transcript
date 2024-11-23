@@ -1,6 +1,6 @@
 # vsim -c proc_hier_pbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 15:06:24 on Nov 22,2024
-# ** Warning: License feature 'msimpevsimvlog' will expire in 13 days.
+# Start time: 13:28:53 on Nov 23,2024
+# ** Warning: License feature 'msimpevsimvlog' will expire in 12 days.
 # Loading __work.proc_hier_pbench
 # Loading __work.proc_hier
 # Loading __work.clkrst
@@ -44,13 +44,7 @@
 # ** Warning: (vsim-PLI-3691) Expected a system task, not a system function '$value$plusargs'.
 #    Time: 0 ns  Iteration: 0  Instance: /proc_hier_pbench/DUT/p0/memory0/data_mem File: stallmem.v Line: 87
 # ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (1) for port 'busy'. The port definition is at: four_bank_mem.v(79).
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_pbench/DUT/p0/fetch0/data_mem/mem File: mem_system.v Line: 55
-# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'IDEX'.  Expected 58, found 54.
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_pbench/DUT/p0/IDEX File: proc.v Line: 157
-# ** Warning: (vsim-3722) proc.v(157): [TFMPC] - Missing connection for port 'ID_RegWrt_2_nflopped'.
-# ** Warning: (vsim-3722) proc.v(157): [TFMPC] - Missing connection for port 'ID_RegWrt_1_nflopped'.
-# ** Warning: (vsim-3722) proc.v(157): [TFMPC] - Missing connection for port 'ID_RD_2_nflopped'.
-# ** Warning: (vsim-3722) proc.v(157): [TFMPC] - Missing connection for port 'ID_RD_1_nflopped'.
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_pbench/DUT/p0/fetch0/data_mem/mem File: mem_system.v Line: 56
 # log -howmany -rec /* 
 # 6010
 #  run -all
@@ -67,5 +61,5 @@
 # iNSTR : 0X00
 # ** Note: $finish    : proc_hier_pbench.v(116)
 #    Time: 605 ns  Iteration: 0  Instance: /proc_hier_pbench
-# End time: 15:06:25 on Nov 22,2024, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 7
+# End time: 13:28:53 on Nov 23,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 2

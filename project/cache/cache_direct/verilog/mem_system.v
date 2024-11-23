@@ -28,6 +28,7 @@ module mem_system(/*AUTOARG*/
    wire hit, dirty, valid, valid_in, busy;
    wire err_mem, err_cache;
    wire [15:0] data_out;
+   wire write_mem, read_mem;
 
    /* data_mem = 1, inst_mem = 0 *
     * needed for cache parameter */
@@ -79,10 +80,13 @@ module mem_system(/*AUTOARG*/
       .hit(hit),
       .valid_in(valid_in),
       .comp(comp),
-      .write(write)
+      .write(write),
+      .write_mem(write_mem),
+      .read_mem(read_mem)
    ); 
 
    assign err = err_mem | err_cache;
+   assign CacheHit = hit;
 
 endmodule // mem_system
 `default_nettype wire

@@ -12,7 +12,9 @@ module cache_controller (
    input wire hit,
    output reg valid_in,
    output reg comp,
-   output reg write
+   output reg write,
+   output reg write_mem,
+   output reg read_mem
    );
 
    // Define the states using parameters
@@ -42,16 +44,18 @@ module cache_controller (
       // Default output values
       comp = 1'b1;
       write = 1'b0;
+      write_mem = 1'b0;
+      read_mem = 1'b0;
       valid_in = 1'b0;
       next_state = state;
 
       case (state)
          IDLE: begin
-               if (Rd) begin
-                  next_state = COMPARE_READ;
-               end else if (Wr) begin 
-                  next_state = COMPARE_WRITE;
-               end
+            if (Rd) begin
+               next_state = COMPARE_READ;
+            end else if (Wr) begin 
+               next_state = COMPARE_WRITE;
+            end
          end
 
          COMPARE_READ: begin
@@ -65,13 +69,31 @@ module cache_controller (
             */
             comp = 1'b1;
             write = 1'b0;
-            if (hit && valid) begin
-                  next_state = IDLE;
-            end else begin
-               // Cache miss
-               next_state = MEMORY_READ;
+            if (~valid) next_state = MEMORY_READ_MISS;
+            else begin
+               if (hit)
+                  next_state = IDLE; //data ready
+               else next_state = MEMORY_READ_NOTVALID;
+            end
+
+         end
+
+         MEMORY_READ_MISS : begin // understand 4 banked
+            //when memory ready
+                           comp = 1'b0;
+            valid_in = 1'b1;
+            read_mem = 1'b1;
+            if (~busy) begin
+               if (~valid) begin
+                  next_state = ACCESS_WRITE;
+               end else begin
+                  if (dirty) begin
+                     next_state = ACCESS_READ;
+                  end
+               end
             end
          end
+
 
          COMPARE_WRITE: begin
             comp = 1'b1;
@@ -90,6 +112,7 @@ module cache_controller (
          MEMORY_READ: begin
             comp = 1'b0;
             valid_in = 1'b1;
+            read_mem = 1'b1;
             if (~busy) begin
                if (~valid) begin
                   next_state = ACCESS_WRITE;
@@ -104,6 +127,7 @@ module cache_controller (
          ACCESS_READ: begin
             comp = 1'b0;
             write = 1'b0;
+            write_mem = 1'b1;
             if (~busy) begin
                next_state = ACCESS_WRITE;
             end

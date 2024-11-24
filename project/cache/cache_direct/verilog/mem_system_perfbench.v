@@ -101,6 +101,7 @@ module mem_system_perfbench(/*AUTOARG*/);
    
    
    always @ (posedge clk) begin
+      
 
       #2;
       // simulation delay

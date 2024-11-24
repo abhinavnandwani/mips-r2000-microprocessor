@@ -34,10 +34,11 @@ module mem_system(/*AUTOARG*/
    wire cache_in, mem_in, mem_stall;
 
    wire [1:0]counter_ff;
-   wire done;
+   wire done,stall;
   // assign counter_ff = counter;
    dff counter_fffx [1:0](.q(counter_ff), .d(counter), .clk({2{clk}}), .rst({2{rst}}));
    assign #100 Done =  done;
+   assign #100 Stall =  stall;
 
    /* data_mem = 1, inst_mem = 0 *
     * needed for cache parameter */
@@ -91,7 +92,10 @@ module mem_system(/*AUTOARG*/
       .valid_in(valid_in),
       .comp(comp),
       .write(write),
-      .write_mem(write_mem),
+      .Stall(stall),
+      .write_mem(write_mem),  // always@(posedge clk)
+   //    $display("Addr : %h state : %b, counter; %h, inc: %h, clr: %h data_out_cache %h done %h",Addr,ctrl.state, {counter_ff,1'b0}, ctrl.inc_counter, ctrl.clr_counter, data_out_cache, Done);
+
       .read_mem(read_mem),
       .cache_in(cache_in),
       .counter(counter),
@@ -101,15 +105,10 @@ module mem_system(/*AUTOARG*/
 
    assign err = err_mem | err_cache;
    assign CacheHit = hit;
-   assign Stall = ~Done;
    assign DataOut = data_out_cache;
 
-   //  always@(posedge clk)
-   //    $display("w0 : %h w1 : %h w2 : %h w3 : %h counter:%d", c0.w0,c0.w1,c0.w2,c0.w3,counter);
-
    always@(posedge clk)
-      $display("Addr : %h state : %b, counter; %h, inc: %h, clr: %h",Addr,ctrl.state, {counter_ff,1'b0}, ctrl.inc_counter, ctrl.clr_counter);
-
+      $display("State : %h",ctrl.state);
 
 endmodule // mem_system
 `default_nettype wire

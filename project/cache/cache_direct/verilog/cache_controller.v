@@ -11,6 +11,7 @@ module cache_controller (
    input wire dirty,
    input wire hit,
    input wire mem_stall,
+   output reg Stall,
    output reg valid_in,
    output reg comp,
    output reg write,
@@ -61,12 +62,15 @@ module cache_controller (
       cache_in = 1'b1;
       mem_in = 1'b0;
       done = 1'b0;
+      Stall = 1'b1;
       clr_counter = 1'b0;
       inc_counter = 1'b0;
       next_state = state;
+      
 
       case (state)
          IDLE: begin
+            Stall = 1'b0;
             if (Rd) begin
                comp = 1'b1;
                next_state = COMPARE_READ;
@@ -80,7 +84,6 @@ module cache_controller (
             if (~hit) begin
                comp = 1'b0;
                write = 1'b1;
-             //  read_mem = 1'b1;
                next_state = MEMORY_READ_MISS;
             end else begin
                if (hit&valid) begin
@@ -88,7 +91,6 @@ module cache_controller (
                end else begin
                   comp = 1'b0;
                   write = 1'b0;
-       
                   next_state = MEMORY_READ_MISS;
                end
             end
@@ -119,15 +121,7 @@ module cache_controller (
             if (&counter) next_state = ACCESS_WRITE;
             else begin inc_counter = 1'b1; next_state = MEMORY_READ_MISS; end
          end
-         // MEMORY_READ_NOTVALID: begin
-         //    if (~mem_stall) begin
-         //       comp = 1'b0;
-         //       write = 1'b1;
-         //       valid_in = 1'b1;  // set valid bit
-         //       cache_in = 1'b1;
-         //       next_state = ACCESS_WRITE; // write to cache
-         //    end
-         // end
+
 
          COMPARE_WRITE: begin
             if (~valid) 
@@ -174,8 +168,7 @@ module cache_controller (
 
          DONE : begin
            done = 1'b1;
-          // clr_counter = 1'b1;
-           // write = 1'b1;
+           Stall = 1'b1;
            next_state = IDLE;
          end
 

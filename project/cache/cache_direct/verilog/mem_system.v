@@ -37,8 +37,8 @@ module mem_system(/*AUTOARG*/
    wire done,stall;
   // assign counter_ff = counter;
    dff counter_fffx [1:0](.q(counter_ff), .d(counter), .clk({2{clk}}), .rst({2{rst}}));
-   assign #100 Done =  done;
-   assign #100 Stall =  stall;
+   assign Done =  done;
+   assign Stall =  stall;
 
    /* data_mem = 1, inst_mem = 0 *
     * needed for cache parameter */
@@ -85,6 +85,7 @@ module mem_system(/*AUTOARG*/
       .Rd(Rd),
       .Wr(Wr),
       .busy(busy),
+      .CacheHit(CacheHit),
       .mem_stall(mem_stall),
       .valid(valid),
       .dirty(dirty),
@@ -104,11 +105,9 @@ module mem_system(/*AUTOARG*/
    ); 
 
    assign err = err_mem | err_cache;
-   assign CacheHit = hit;
-   assign DataOut = data_out_cache;
+   assign DataOut = CacheHit ? data_out_cache : data_out_mem;
 
-   always@(posedge clk)
-      $display("State : %h",ctrl.state);
+
 
 endmodule // mem_system
 `default_nettype wire

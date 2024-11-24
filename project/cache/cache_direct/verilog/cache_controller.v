@@ -14,6 +14,7 @@ module cache_controller (
    output reg Stall,
    output reg valid_in,
    output reg comp,
+   output reg CacheHit,
    output reg write,
    output reg write_mem,
    output reg read_mem,
@@ -26,7 +27,7 @@ module cache_controller (
    // Define the states using parameters
    parameter IDLE                  = 3'b000;
    parameter COMPARE_READ          = 3'b001;
-   parameter COMPARE_WRITE         = 3'b010;
+   parameter WRITE_MISS         = 3'b010;
    parameter MEMORY_READ_MISS      = 3'b011;
    parameter WAIT                  = 3'b100;
    parameter ACCESS_READ           = 3'b101;
@@ -51,132 +52,117 @@ module cache_controller (
    //    else if (inc_counter)
    //       counter <= counter + 1'b1;
 
-   // Next state and output logic
    always @(*) begin
       // Default output values
       comp = 1'b0;
       write = 1'b0;
       write_mem = 1'b0;
       read_mem = 1'b0;
+      CacheHit = 1'b0;
       valid_in = 1'b0;
-      cache_in = 1'b1;
+      cache_in = 1'b0;
       mem_in = 1'b0;
       done = 1'b0;
-      Stall = 1'b1;
+      Stall = 1'b1; // Default: stall until explicitly cleared
       clr_counter = 1'b0;
       inc_counter = 1'b0;
       next_state = state;
       
-
       case (state)
          IDLE: begin
-            Stall = 1'b0;
+            Stall = 1'b0; // No stall in IDLE
             if (Rd) begin
                comp = 1'b1;
-               next_state = COMPARE_READ;
-            end else if (Wr) begin 
-               comp = 1'b1;
-               next_state = COMPARE_WRITE;
-            end
-         end
-
-         COMPARE_READ: begin
-            if (~hit) begin
-               comp = 1'b0;
-               write = 1'b1;
-               next_state = MEMORY_READ_MISS;
-            end else begin
                if (hit&valid) begin
-                  next_state = DONE; //data ready
+                  CacheHit = 1'b1;
+                  done = 1'b1;
+                  next_state = IDLE;
                end else begin
-                  comp = 1'b0;
-                  write = 1'b0;
                   next_state = MEMORY_READ_MISS;
-               end
-            end
-         end
-
-         MEMORY_READ_MISS : begin // understand 4 banked (evict)
-            if (~mem_stall) begin
-               if (dirty) begin             // evict, check dirty bit
-                  comp = 1'b0;
-                  write = 1'b0;
+                  if (~hit&valid&dirty)begin
                   mem_in = 1'b1;
                   write_mem = 1'b1;
-                  next_state = ACCESS_READ;
-               end else begin
-                  comp = 1'b0;
+                  end 
+               end
+            
+            end else if (Wr) begin 
+               comp = 1'b1;
+               if (hit&valid&~dirty) begin
+                 CacheHit = 1'b1;
+                 write = 1'b1;
+               //  done = 1'b1;
+                 valid_in = 1'b1;
+                 next_state = DONE;
+               end else next_state = WRITE_MISS;
+            end
+         end
+
+         MEMORY_READ_MISS: begin
+            Stall = 1'b1;
+               if (~mem_stall) begin
+                  write = 1'b1;
                   valid_in = 1'b1;
                   cache_in = 1'b1;
                   read_mem = 1'b1;
-                  write = 1'b1;
-                  //clr_counter = 1'b1;
                   next_state = WAIT;
-               end
+               end else next_state = MEMORY_READ_MISS; //retry if mem busy
+         end
+      
+         WAIT: begin
+            if (&counter) begin
+               next_state = ACCESS_WRITE;
+            end else begin
+               inc_counter = 1'b1;
+               next_state = MEMORY_READ_MISS;
             end
          end
 
-         WAIT: begin
-            //write = 1'b1;
-            if (&counter) next_state = ACCESS_WRITE;
-            else begin inc_counter = 1'b1; next_state = MEMORY_READ_MISS; end
-         end
-
-
-         COMPARE_WRITE: begin
-            if (~valid) 
-               if (dirty) begin             // evict, check dirty bit
-                  comp = 1'b0;
-                  write = 1'b0;
+         WRITE_MISS: begin
+            Stall = 1'b1;
+               if (dirty) begin
                   mem_in = 1'b1;
                   write_mem = 1'b1;
                   next_state = ACCESS_READ;
                end else begin
-                  comp = 1'b0;
                   write = 1'b1;
                   valid_in = 1'b1;
                   cache_in = 1'b0;
-                  
                   next_state = ACCESS_WRITE;
                end
-            else begin
-               if (hit)
-                  comp = 1'b0;
-                  write = 1'b1;
-                  valid_in = 1'b1;
-                  cache_in = 1'b0;
-                  next_state = DONE;
-            end
+            
          end
 
          ACCESS_READ: begin
+            Stall = 1'b1;
             if (~mem_stall) begin
-               comp = 1'b0;
                write = 1'b1;
                valid_in = 1'b1;
                cache_in = 1'b1;
-              next_state = ACCESS_WRITE;
+               next_state = ACCESS_WRITE;
             end 
          end
 
          ACCESS_WRITE: begin
+            Stall = 1'b1;
             write = 1'b1;
-            valid_in = 1'b1;  // set valid bit
-          clr_counter = 1'b1;
+            valid_in = 1'b1;  // Set valid bit
+            clr_counter = 1'b1;
             next_state = DONE;
          end
 
-         DONE : begin
-           done = 1'b1;
-           Stall = 1'b1;
-           next_state = IDLE;
+         DONE: begin
+            Stall = 1'b1; 
+            done = 1'b1;
+            next_state = IDLE;
          end
 
          default: begin
-            next_state = IDLE; // Default case to reset to IDLE
+            next_state = IDLE; // Reset to IDLE in unknown state
          end
       endcase
    end
+
+
 
 
 

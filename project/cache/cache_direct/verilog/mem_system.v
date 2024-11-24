@@ -30,7 +30,11 @@ module mem_system(/*AUTOARG*/
    wire err_mem, err_cache;
    wire [15:0] data_out_cache,data_out_mem;
    wire write_mem, read_mem;
+   wire [1:0] counter;
    wire cache_in, mem_in, mem_stall;
+
+   wire [1:0]counter_ff;
+   dff counter_fffx [1:0](.q(counter_ff), .d(counter), .clk(clk), .rst(rst));
 
    /* data_mem = 1, inst_mem = 0 *
     * needed for cache parameter */
@@ -49,7 +53,7 @@ module mem_system(/*AUTOARG*/
                           .createdump           (createdump),
                           .tag_in               (Addr[15:11]),
                           .index                (Addr[10:3]),
-                          .offset               (Addr[2:0]),
+                          .offset               (Addr[2:0] + {counter_ff,1'b0}),
                           .data_in              (cache_in ? data_out_mem : DataIn),
                           .comp                 (comp),
                           .write                (write),
@@ -64,7 +68,7 @@ module mem_system(/*AUTOARG*/
                      .clk               (clk),
                      .rst               (rst),
                      .createdump        (createdump),
-                     .addr              (Addr),
+                     .addr              (Addr + {counter_ff,1'b0}),
                      .data_in           (mem_in ? data_out_cache : (DataIn + ctrl.inc_counter)),
                      .wr                (write_mem),
                      .rd                (read_mem));
@@ -87,6 +91,7 @@ module mem_system(/*AUTOARG*/
       .write_mem(write_mem),
       .read_mem(read_mem),
       .cache_in(cache_in),
+      .counter(counter),
       .mem_in(mem_in),
       .done(Done)
    ); 
@@ -96,8 +101,8 @@ module mem_system(/*AUTOARG*/
    assign Stall = ~Done;
    assign DataOut = data_out_cache;
 
-   // always@(posedge clk)
-   //    $display("data_out_cache : %h Addr : %h,write : %b",data_out_cache,Addr,write);
+   always@(posedge clk)
+      $display("data_out_mem : %h read_mem : %h,write : %h, counter %h",data_out_mem,read_mem,write, {counter,1'b0});
 
 
 endmodule // mem_system

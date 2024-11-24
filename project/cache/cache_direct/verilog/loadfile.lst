@@ -1,13 +1,8 @@
-          // Original test: ./eharris/hw4/problem6/jalr_1.asm
-          // Author: eharris
+          // Original test: ./shojaei/hw4/problem6/xori_2.asm
+          // Author: shojaei
           // Test source code follows
           
           
-          //Test immediate offset
-0000 c303 lbi r3, 0x03
-0002 3000 jal 0 //Just sets the PC of the next instruction to R7
-0004 3f02 jalr r7, 2
-0006 c304 lbi r3, 0x04
-0008 0000 halt
-          //If all goes well this executes linearly r7 = addr(lbi r3, 0x04)
-          // r3 = 4
+0000 c118 lbi r1, 24
+0002 5147 xori r2, r1, 7
+0004 0000 halt

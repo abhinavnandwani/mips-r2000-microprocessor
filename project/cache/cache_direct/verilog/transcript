@@ -1,6 +1,6 @@
 # vsim -c proc_hier_pbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 18:17:43 on Nov 23,2024
-# ** Warning: License feature 'msimpevsimvlog' will expire in 12 days.
+# Start time: 12:42:53 on Nov 24,2024
+# ** Warning: License feature 'msimpevsimvlog' will expire in 11 days.
 # Loading __work.proc_hier_pbench
 # Loading __work.proc_hier
 # Loading __work.clkrst
@@ -44,26 +44,53 @@
 # ** Warning: (vsim-PLI-3691) Expected a system task, not a system function '$value$plusargs'.
 #    Time: 0 ns  Iteration: 0  Instance: /proc_hier_pbench/DUT/p0/memory0/data_mem File: stallmem.v Line: 87
 # log -howmany -rec /* 
-# 6021
+# 6044
 #  run -all
 # Using seed           0
 # rand_pat=12153524 00010010000101010011010100100100
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.ptrace for output
-# w0 : 0000 w1 : 0000000000000000 w2 : 0000
-# w0 : 0000 w1 : 0000000000000000 w2 : 0000
-# w0 : 0000 w1 : 0000000000000000 w2 : 0000
-# w0 : 0000 w1 : 0000000000000000 w2 : 0000
-# w0 : 0000 w1 : 0000000000000000 w2 : 0000
-# w0 : 0000 w1 : 0000000000000000 w2 : 0000
-# w0 : 0000 w1 : 0000000000000000 w2 : 0000
-# w0 : c164 w1 : 0000000000000000 w2 : 0000
-# w0 : 0000 w1 : 0000000000000000 w2 : 0000
-# w0 : 0000 w1 : 0000000000000000 w2 : 0000
-# w0 : 0000 w1 : 0000000000000000 w2 : 0000
-# w0 : 0000 w1 : 0000000000000000 w2 : 0000
-# w0 : 0000 w1 : 0000000000000000 w2 : 0000
+# Addr : xxxx state : xxx, counter; X, inc: x, clr: x
+# Addr : 0000 state : 000, counter; 0, inc: 0, clr: 0
+# Addr : 0000 state : 000, counter; 0, inc: 0, clr: 0
+# Addr : 0000 state : 000, counter; 0, inc: 0, clr: 0
+# Addr : 0000 state : 001, counter; 0, inc: 0, clr: 0
+# Addr : 0000 state : 011, counter; 0, inc: 0, clr: 0
+# Addr : 0000 state : 100, counter; 0, inc: 1, clr: 0
+# Addr : 0000 state : 011, counter; 0, inc: 0, clr: 0
+# Addr : 0000 state : 100, counter; 2, inc: 1, clr: 0
+# Addr : 0000 state : 011, counter; 2, inc: 0, clr: 0
+# Addr : 0000 state : 100, counter; 4, inc: 1, clr: 0
+# Addr : 0000 state : 011, counter; 4, inc: 0, clr: 0
+# Addr : 0000 state : 100, counter; 6, inc: 0, clr: 0
+# Addr : 0000 state : 110, counter; 6, inc: 0, clr: 1
+# Addr : 0000 state : 111, counter; 6, inc: 0, clr: 0
+# Addr : 0000 state : 000, counter; 0, inc: 0, clr: 0
+# Addr : 0002 state : 001, counter; 0, inc: 0, clr: 0
+# Addr : 0002 state : 111, counter; 0, inc: 0, clr: 0
+# Addr : 0002 state : 000, counter; 0, inc: 0, clr: 0
+# Addr : 0004 state : 001, counter; 0, inc: 0, clr: 0
+# Addr : 0004 state : 111, counter; 0, inc: 0, clr: 0
+# Addr : 0004 state : 000, counter; 0, inc: 0, clr: 0
+# Addr : 0006 state : 001, counter; 0, inc: 0, clr: 0
+# Addr : 0006 state : 111, counter; 0, inc: 0, clr: 0
+# Addr : 0006 state : 000, counter; 0, inc: 0, clr: 0
+# Addr : 0008 state : 001, counter; 0, inc: 0, clr: 0
+# Addr : 0008 state : 011, counter; 0, inc: 0, clr: 0
+# Addr : 0008 state : 100, counter; 0, inc: 1, clr: 0
+# Addr : 0008 state : 011, counter; 0, inc: 0, clr: 0
+# Addr : 0008 state : 100, counter; 2, inc: 1, clr: 0
+# Addr : 0008 state : 011, counter; 2, inc: 0, clr: 0
+# Addr : 0008 state : 100, counter; 4, inc: 1, clr: 0
+# Addr : 0008 state : 011, counter; 4, inc: 0, clr: 0
+# Addr : 0008 state : 100, counter; 6, inc: 0, clr: 0
+# Addr : 0008 state : 110, counter; 6, inc: 0, clr: 1
+# Addr : 0008 state : 111, counter; 6, inc: 0, clr: 0
+# Addr : 0008 state : 000, counter; 0, inc: 0, clr: 0
+# Addr : 000a state : 001, counter; 0, inc: 0, clr: 0
+# Addr : 000a state : 111, counter; 0, inc: 0, clr: 0
+# Addr : 000a state : 000, counter; 0, inc: 0, clr: 0
 # ** Note: $finish    : proc_hier_pbench.v(116)
-#    Time: 1205 ns  Iteration: 0  Instance: /proc_hier_pbench
-# End time: 18:17:45 on Nov 23,2024, Elapsed time: 0:00:02
+#    Time: 3905 ns  Iteration: 0  Instance: /proc_hier_pbench
+# End time: 12:42:54 on Nov 24,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 1

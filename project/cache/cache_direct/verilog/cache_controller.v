@@ -18,6 +18,7 @@ module cache_controller (
    output reg read_mem,
    output reg cache_in,
    output reg mem_in,
+   output reg [1:0] counter,
    output reg done
    );
 
@@ -26,7 +27,7 @@ module cache_controller (
    parameter COMPARE_READ          = 3'b001;
    parameter COMPARE_WRITE         = 3'b010;
    parameter MEMORY_READ_MISS      = 3'b011;
-   parameter MEMORY_READ_NOTVALID  = 3'b100;
+   parameter WAIT                  = 3'b100;
    parameter ACCESS_READ           = 3'b101;
    parameter ACCESS_WRITE          = 3'b110;
    parameter DONE                  = 3'b111;
@@ -36,6 +37,17 @@ module cache_controller (
    reg [2:0] next_state;
 
    dff state_1 [2:0](.q(state), .d(next_state), .clk(clk), .rst(rst));
+
+   reg clr_counter, inc_counter;
+  // dff counter_ff [1:0](.q(counter), .d(clr_counter ? 2'b00 : (inc_counter ? counter + 1'b1 : counter)), .clk(clk), .rst(rst));
+
+   always@(posedge clk, posedge rst)
+      if (rst)
+         counter <= 2'b00;
+      else if (clr_counter)
+         counter <= 2'b00;
+      else if (inc_counter)
+         counter <= counter + 1'b1;
 
    // Next state and output logic
    always @(*) begin
@@ -48,6 +60,8 @@ module cache_controller (
       cache_in = 1'b1;
       mem_in = 1'b0;
       done = 1'b0;
+      clr_counter = 1'b0;
+      inc_counter = 1'b0;
       next_state = state;
 
       case (state)
@@ -64,8 +78,8 @@ module cache_controller (
          COMPARE_READ: begin
             if (~hit) begin
                comp = 1'b0;
-               write = 1'b0;
-               read_mem = 1'b1;
+               write = 1'b1;
+             //  read_mem = 1'b1;
                next_state = MEMORY_READ_MISS;
             end else begin
                if (hit&valid) begin
@@ -73,8 +87,8 @@ module cache_controller (
                end else begin
                   comp = 1'b0;
                   write = 1'b0;
-                  read_mem = 1'b1;
-                  next_state = MEMORY_READ_NOTVALID;
+       
+                  next_state = MEMORY_READ_MISS;
                end
             end
          end
@@ -92,20 +106,28 @@ module cache_controller (
                   write = 1'b1;
                   valid_in = 1'b1;
                   cache_in = 1'b1;
-                  next_state =  ACCESS_WRITE;
+                  read_mem = 1'b1;
+
+                  if (~(&counter))
+                     next_state = WAIT;
+                  else next_state =  ACCESS_WRITE;
                end
             end
          end
 
-         MEMORY_READ_NOTVALID: begin
-            if (~mem_stall) begin
-               comp = 1'b0;
-               write = 1'b1;
-               valid_in = 1'b1;  // set valid bit
-               cache_in = 1'b1;
-               next_state = ACCESS_WRITE; // write to cache
-            end
+         WAIT: begin
+            inc_counter = 1'b1;
+            next_state = MEMORY_READ_MISS;
          end
+         // MEMORY_READ_NOTVALID: begin
+         //    if (~mem_stall) begin
+         //       comp = 1'b0;
+         //       write = 1'b1;
+         //       valid_in = 1'b1;  // set valid bit
+         //       cache_in = 1'b1;
+         //       next_state = ACCESS_WRITE; // write to cache
+         //    end
+         // end
 
          COMPARE_WRITE: begin
             if (~valid) 
@@ -120,6 +142,7 @@ module cache_controller (
                   write = 1'b1;
                   valid_in = 1'b1;
                   cache_in = 1'b0;
+                  
                   next_state = ACCESS_WRITE;
                end
             else begin
@@ -150,6 +173,7 @@ module cache_controller (
 
          DONE : begin
            done = 1'b1;
+           clr_counter = 1'b1;
            next_state = IDLE;
          end
 
@@ -160,7 +184,7 @@ module cache_controller (
    end
 
    // always@(posedge clk)
-   //    $display("state : %b",state);
+   //    $display("state : %b, counter; %h, inc: %h, clr: %h",state, counter, inc_counter, clr_counter);
 
 endmodule
 `default_nettype wire

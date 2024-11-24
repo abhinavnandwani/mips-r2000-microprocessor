@@ -109,8 +109,8 @@ module decode (
     assign err = control_err | reg_err | IDF_err;
     // assign nHaltSig = nHaltSig_control | err;
 
-     always @(posedge clk) begin
-         $display("iNSTR : %h",instr);
-     end
+    //  always @(posedge clk) begin
+    //      $display("iNSTR : %h",instr);
+    //  end
 endmodule
 `default_nettype wire

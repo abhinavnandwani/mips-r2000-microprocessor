@@ -65,7 +65,7 @@ module mem_system(/*AUTOARG*/
                      .rst               (rst),
                      .createdump        (createdump),
                      .addr              (Addr),
-                     .data_in           (mem_in ? data_out_cache : DataIn),
+                     .data_in           (mem_in ? data_out_cache : (DataIn + ctrl.inc_counter)),
                      .wr                (write_mem),
                      .rd                (read_mem));
    
@@ -95,6 +95,10 @@ module mem_system(/*AUTOARG*/
    assign CacheHit = hit;
    assign Stall = ~Done;
    assign DataOut = data_out_cache;
+
+   // always@(posedge clk)
+   //    $display("data_out_cache : %h Addr : %h,write : %b",data_out_cache,Addr,write);
+
 
 endmodule // mem_system
 `default_nettype wire

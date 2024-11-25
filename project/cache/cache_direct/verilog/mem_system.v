@@ -37,7 +37,7 @@ module mem_system(/*AUTOARG*/
    wire done,stall;
   // assign counter_ff = counter;
    dff counter_fffx [1:0](.q(counter_ff), .d(counter), .clk({2{clk}}), .rst({2{rst}}));
-   assign #100 Done =  done;
+   assign Done =  done;
    assign Stall =  stall;
 
    /* data_mem = 1, inst_mem = 0 *

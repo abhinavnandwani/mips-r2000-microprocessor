@@ -29,9 +29,9 @@ module cache_controller (
     parameter FILL_CACHE_WRITE   = 3'b001;
     parameter WRITE_BACK         = 3'b010;
     parameter MEMORY_READ_MISS   = 3'b011;
-    parameter WAIT_1               = 3'b100;
-    parameter ACCESS_READ        = 3'b101;
-    parameter DONE       = 3'b110;
+    parameter WAIT_1             = 3'b100;
+    parameter CWRITE        = 3'b101;
+    parameter DONE               = 3'b110;
     parameter FILL_CACHE         = 3'b111;
 
     // State and counter logic
@@ -80,7 +80,7 @@ module cache_controller (
                 Stall = 1'b0;
                 clr_counter = 1'b1;
                 comp = Rd | Wr; // Enable comparison if read or write
-                CacheHit = comp&hit&valid; // Determine cache hit
+                CacheHit = comp & hit & valid; // Determine cache hit
                 MemWB = comp ? dirty : 1'b0; // Dirty bit indicates write-back is needed
                 done = comp & CacheHit & (Rd | (Wr & ~MemWB)); // Done if operation completes
                 next_state = Rd ? (CacheHit ? IDLE : (MemWB ? WRITE_BACK : FILL_CACHE)) :
@@ -92,7 +92,7 @@ module cache_controller (
                 Stall = 1'b1;
                 write_mem = 1'b1;
                 mem_in = 1'b1; // Data comes from memory
-                inc_counter = 1'b1; // Increment counter for memory writes
+                inc_counter = ~mem_stall; // Increment counter for memory writes
                 next_state = (&counter) ? FILL_CACHE : WRITE_BACK; // Transition based on counter
                 clr_counter = &counter; // Clear counter when done
             end
@@ -104,28 +104,32 @@ module cache_controller (
                 cache_in = ~Wr; // Write to cache only during reads
                 valid_in = 1'b1; // Mark cache line as valid
                 read_mem = Rd;
-              //  inc_counter = 1'b1; // Increment counter
-               // done = &counter; // Mark operation as done
-                //clr_counter = &counter; // Clear counter when operation completes
-                next_state =  WAIT_1; // Return to IDLE when done
+                next_state = ~mem_stall ? WAIT_1 : FILL_CACHE; // Transition to WAIT_1
             end
 
-            WAIT_1 : begin
-                     Stall = 1'b1;
-               write = 1'b1;
-               valid_in = 1'b1;
-               next_state = (&counter) ?  DONE : FILL_CACHE;
-              // done = &counter;
-               inc_counter = 1'b1;
+            WAIT_1: begin
+                Stall = 1'b1;
+                write = 1'b1;
+                valid_in = 1'b1;
+                next_state = (&counter) ? (1'b0 ? CWRITE : DONE) : FILL_CACHE;
+                clr_counter = &counter;
+                inc_counter = 1'b1;
             end
 
-            DONE : begin
-               done = 1'b1;
-               Stall = 1'b1;
-               write = 1'b1;
-               valid_in = 1'b1;
-               next_state = IDLE;
-               
+            DONE: begin
+                done = 1'b1;
+                Stall = 1'b1;
+                write = 1'b1;
+                valid_in = 1'b1;
+                next_state = IDLE;
+            end
+
+            CWRITE : begin
+                cache_in = 1'b1;
+                write = 1'b1;
+                valid_in = 1'b1;
+                next_state = DONE;
+                
             end
 
             default: begin
@@ -135,13 +139,6 @@ module cache_controller (
         endcase
     end
 
-
-   //  always @(posedge clk) begin
-   //    $display("Offset : %b CwRITE : %b", counter, valid);
-   //  end
-
-
 endmodule
 
 `default_nettype wire
-// DUMMY LINE FOR REV CONTROL :0:

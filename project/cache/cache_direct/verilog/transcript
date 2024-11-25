@@ -1,5 +1,5 @@
 # vsim -c proc_hier_pbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 20:55:41 on Nov 24,2024
+# Start time: 21:31:59 on Nov 24,2024
 # ** Warning: License feature 'msimpevsimvlog' will expire in 11 days.
 # Loading __work.proc_hier_pbench
 # Loading __work.proc_hier
@@ -7,16 +7,10 @@
 # Loading __work.proc
 # Loading __work.fetch
 # Loading __work.register
-# Loading __work.mem_system
-# Loading __work.cache
-# Loading __work.memc
-# Loading __work.memv
-# Loading __work.four_bank_mem
-# Loading __work.final_memory
-# Loading __work.dff
-# Loading __work.cache_controller
+# Loading __work.stallmem
 # Loading __work.cla_16b
 # Loading __work.IFID_latch
+# Loading __work.dff
 # Loading __work.stall_mech
 # Loading __work.decode
 # Loading __work.regFile_bypass
@@ -34,7 +28,13 @@
 # Loading __work.brchcnd
 # Loading __work.EXDM_latch
 # Loading __work.memory
-# Loading __work.stallmem
+# Loading __work.mem_system
+# Loading __work.cache
+# Loading __work.memc
+# Loading __work.memv
+# Loading __work.four_bank_mem
+# Loading __work.final_memory
+# Loading __work.cache_controller
 # Loading __work.DMWB_latch
 # Loading __work.wb
 # Loading __work.cla_4b
@@ -42,7 +42,7 @@
 # Loading __work.nand2
 # Loading __work.cla_1b
 # ** Warning: (vsim-PLI-3691) Expected a system task, not a system function '$value$plusargs'.
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_pbench/DUT/p0/memory0/data_mem File: stallmem.v Line: 87
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_pbench/DUT/p0/fetch0/instr_mem File: stallmem.v Line: 87
 # log -howmany -rec /* 
 # 6048
 #  run -all
@@ -50,7 +50,27 @@
 # rand_pat=12153524 00010010000101010011010100100100
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.ptrace for output
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
 # ** Note: $finish    : proc_hier_pbench.v(116)
-#    Time: 4705 ns  Iteration: 0  Instance: /proc_hier_pbench
-# End time: 20:55:42 on Nov 24,2024, Elapsed time: 0:00:01
+#    Time: 1905 ns  Iteration: 0  Instance: /proc_hier_pbench
+# End time: 21:32:00 on Nov 24,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 1

@@ -80,7 +80,9 @@ module cache_controller (
                 comp = Rd | Wr;
                 CacheHit = comp & hit & valid;
                 MemWB = comp ? dirty : 1'b0;
+                write = Wr&CacheHit;
                 done = comp & CacheHit & (Rd | (Wr & ~MemWB));
+              //  done = Rd ? CacheHit:1'b0;
                 next_state = Rd ? (CacheHit ? IDLE : (MemWB ? WRITE_BACK : FILL_CACHE)) :
                              Wr ? (CacheHit ? (MemWB ? WRITE_BACK : IDLE) : FILL_CACHE) : state;
             end
@@ -107,7 +109,6 @@ module cache_controller (
                 Stall = 1'b1;
                 write = 1'b1;
                 valid_in = 1'b1;
-            $display("state : %h Rd : %b Wr : %b mem_stall : %h",state,Rd,Wr,mem_stall);
                 next_state = (&counter) ? (Wr ? CWRITE : DONE) : FILL_CACHE;
                 clr_counter = &counter;
                 inc_counter = ~mem_stall;
@@ -116,8 +117,8 @@ module cache_controller (
             DONE: begin
                 done = 1'b1;
                 Stall = 1'b1;
-              //  write = 1'b1;
-             //   valid_in = 1'b1;
+                write = 1'b1;
+                valid_in = 1'b1;
                 next_state = IDLE;
             end
 

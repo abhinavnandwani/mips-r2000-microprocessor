@@ -1,2 +1,11 @@
-1 0 348 24
-0 1 348 0
+# Test dirty eviction which write all four words on the same cache line back to mem.
+# The read out data should be 1, 2, 3, 4 (in this order).
+1 0 0 1
+1 0 2 2
+1 0 4 3
+1 0 6 4
+0 1 61440 0			# dirty eviction, all four previous data should be written to mem
+0 1 0 0
+0 1 2 0
+0 1 4 0
+0 1 6 0

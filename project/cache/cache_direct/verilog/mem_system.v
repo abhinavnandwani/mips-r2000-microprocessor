@@ -27,6 +27,7 @@ module mem_system(/*AUTOARG*/
    wire comp, write;
    wire hit, dirty, valid, valid_in;
    wire [3:0] busy;
+   wire [4:0] tag_out;
    wire err_mem, err_cache;
    wire [15:0] data_out_cache,data_out_mem;
    wire write_mem, read_mem;
@@ -44,7 +45,7 @@ module mem_system(/*AUTOARG*/
     * needed for cache parameter */
    parameter memtype = 0;
    cache #(0 + memtype) c0(// Outputs
-                          .tag_out              (),
+                          .tag_out              (tag_out),
                           .data_out             (data_out_cache),
                           .hit                  (hit),
                           .dirty                (dirty),
@@ -72,7 +73,7 @@ module mem_system(/*AUTOARG*/
                      .clk               (clk),
                      .rst               (rst),
                      .createdump        (createdump),
-                     .addr              (Addr + {counter,1'b0}),
+                     .addr              ({mem_in ? tag_out:Addr[15:11],Addr[10:3],counter,1'b0}),
                      .data_in           (mem_in ? data_out_cache : (DataIn)),
                      .wr                (write_mem),
                      .rd                (read_mem));

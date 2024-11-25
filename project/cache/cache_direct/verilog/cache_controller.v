@@ -97,19 +97,20 @@ module cache_controller (
             FILL_CACHE: begin
                 Stall = 1'b1;
                 write = 1'b1;
-                cache_in = ~Wr;
+                cache_in = 1'b1;
                 valid_in = 1'b1;
-                read_mem = Rd;
-                next_state = ~mem_stall ? WAIT_1 : FILL_CACHE;
+                read_mem = 1'b1;
+                next_state = WAIT_1;
             end
 
             WAIT_1: begin
                 Stall = 1'b1;
                 write = 1'b1;
                 valid_in = 1'b1;
+            $display("state : %h Rd : %b Wr : %b mem_stall : %h",state,Rd,Wr,mem_stall);
                 next_state = (&counter) ? (Wr ? CWRITE : DONE) : FILL_CACHE;
                 clr_counter = &counter;
-                inc_counter = 1'b1;
+                inc_counter = ~mem_stall;
             end
 
             DONE: begin
@@ -132,12 +133,6 @@ module cache_controller (
                 next_state = IDLE;
             end
         endcase
-    end
-
-    always @(posedge mem_stall) begin
-
-        $display("Rd : %b Wr : %b mem_stall : %h",Rd,Wr,mem_stall);
-        
     end
 
 endmodule

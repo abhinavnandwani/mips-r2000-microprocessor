@@ -1,142 +1,77 @@
-# vsim -c proc_hier_pbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 15:11:53 on Nov 25,2024
+# vsim "+addr_trace_file_name=..//verification//mem.addr" -c mem_system_perfbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 15:24:57 on Nov 25,2024
 # ** Warning: License feature 'msimpevsimvlog' will expire in 10 days.
-# Loading __work.proc_hier_pbench
-# Loading __work.proc_hier
+# Loading __work.mem_system_perfbench
+# Loading __work.mem_system_hier
 # Loading __work.clkrst
-# Loading __work.proc
-# Loading __work.fetch
-# Loading __work.register
-# Loading __work.stallmem
-# Loading __work.cla_16b
-# Loading __work.IFID_latch
-# Loading __work.dff
-# Loading __work.stall_mech
-# Loading __work.decode
-# Loading __work.regFile_bypass
-# Loading __work.regFile
-# Loading __work.shifter
-# Loading __work.bit_shift
-# Loading __work.bit_2shift
-# Loading __work.bit_4shift
-# Loading __work.bit_8shift
-# Loading __work.alu_control
-# Loading __work.control
-# Loading __work.IDEX_latch
-# Loading __work.execute
-# Loading __work.alu
-# Loading __work.brchcnd
-# Loading __work.EXDM_latch
-# Loading __work.memory
 # Loading __work.mem_system
 # Loading __work.cache
 # Loading __work.memc
 # Loading __work.memv
 # Loading __work.four_bank_mem
 # Loading __work.final_memory
+# Loading __work.dff
 # Loading __work.cache_controller
-# Loading __work.DMWB_latch
-# Loading __work.wb
-# Loading __work.cla_4b
-# Loading __work.xor2
-# Loading __work.nand2
-# Loading __work.cla_1b
-# ** Warning: (vsim-PLI-3691) Expected a system task, not a system function '$value$plusargs'.
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_pbench/DUT/p0/fetch0/instr_mem File: stallmem.v Line: 87
+# Loading __work.mem_system_ref
 # log -howmany -rec /* 
-# 6049
+# 1475
 #  run -all
-# Using seed           0
-# rand_pat=12153524 00010010000101010011010100100100
-# Hello world...simulation starting
-# See verilogsim.log and verilogsim.ptrace for output
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# Rd : 1 Wr : 0 mem_stall : 1
-# ** Note: $finish    : proc_hier_pbench.v(116)
-#    Time: 734405 ns  Iteration: 0  Instance: /proc_hier_pbench
+# Using trace file                                                                                                                                                                                                                                       ..//verification//mem.addr
+# Line interpretted as comment:                                            # Test dirty eviction which write all four words on the same cache line back to mem.
+# 
+# Line interpretted as comment:                                                                       # The read out data should be 1, 2, 3, 4 (in this order).
+# 
+# state : 4 Rd : 0 Wr : 1 mem_stall : 1
+# state : 4 Rd : 0 Wr : 1 mem_stall : 0
+# state : 4 Rd : 0 Wr : 1 mem_stall : 1
+# state : 4 Rd : 0 Wr : 1 mem_stall : 0
+# state : 4 Rd : 0 Wr : 1 mem_stall : 1
+# state : 4 Rd : 0 Wr : 1 mem_stall : 0
+# state : 4 Rd : 0 Wr : 1 mem_stall : 1
+# state : 4 Rd : 0 Wr : 1 mem_stall : 0
+# LOG: ReQNum    1 Cycle       14 ReqCycle        5 Wr Addr 0x0000 Value 0x0001 ValueRef 0x0001 HIT 0
+# 
+# LOG: ReQNum    2 Cycle       16 ReqCycle       15 Wr Addr 0x0002 Value 0x0002 ValueRef 0x0002 HIT 1
+# 
+# LOG: ReQNum    3 Cycle       17 ReqCycle       16 Wr Addr 0x0004 Value 0x0003 ValueRef 0x0003 HIT 1
+# 
+# LOG: ReQNum    4 Cycle       18 ReqCycle       17 Wr Addr 0x0006 Value 0x0004 ValueRef 0x0004 HIT 1
+# 
+# state : 4 Rd : 1 Wr : 0 mem_stall : 1
+# state : 4 Rd : 1 Wr : 0 mem_stall : 0
+# state : 4 Rd : 1 Wr : 0 mem_stall : 1
+# state : 4 Rd : 1 Wr : 0 mem_stall : 0
+# state : 4 Rd : 1 Wr : 0 mem_stall : 1
+# state : 4 Rd : 1 Wr : 0 mem_stall : 0
+# state : 4 Rd : 1 Wr : 0 mem_stall : 1
+# state : 4 Rd : 1 Wr : 0 mem_stall : 0
+# LOG: ReqNum    5 Cycle       27 ReqCycle       18 Rd Addr 0xf000 Value 0x0000 ValueRef 0x0000 HIT 0
+# 
+# Line interpretted as comment:                                                               # dirty eviction, all four previous data should be written to mem
+# 
+# state : 4 Rd : 1 Wr : 0 mem_stall : 1
+# state : 4 Rd : 1 Wr : 0 mem_stall : 0
+# state : 4 Rd : 1 Wr : 0 mem_stall : 1
+# state : 4 Rd : 1 Wr : 0 mem_stall : 0
+# state : 4 Rd : 1 Wr : 0 mem_stall : 1
+# state : 4 Rd : 1 Wr : 0 mem_stall : 0
+# state : 4 Rd : 1 Wr : 0 mem_stall : 1
+# state : 4 Rd : 1 Wr : 0 mem_stall : 0
+# LOG: ReqNum    6 Cycle       38 ReqCycle       29 Rd Addr 0x0000 Value 0x9100 ValueRef 0x0001 HIT 0
+# 
+# ERROR Ref: 0x0001 DUT: 0x9100
+# LOG: ReqNum    7 Cycle       40 ReqCycle       39 Rd Addr 0x0002 Value 0x9000 ValueRef 0x0002 HIT 1
+# 
+# ERROR Ref: 0x0002 DUT: 0x9000
+# LOG: ReqNum    8 Cycle       41 ReqCycle       40 Rd Addr 0x0004 Value 0xc180 ValueRef 0x0003 HIT 1
+# 
+# ERROR Ref: 0x0003 DUT: 0xc180
+# LOG: ReqNum    9 Cycle       42 ReqCycle       41 Rd Addr 0x0006 Value 0x0000 ValueRef 0x0004 HIT 1
+# 
+# ERROR Ref: 0x0004 DUT: 0x0000
+# LOG: Done all Requests:          9 Replies:          9 Cycles:         42 Hits:          6
+# Test status: FAIL
+# ** Note: $stop    : mem_system_perfbench.v(203)
+#    Time: 4187 ns  Iteration: 0  Instance: /mem_system_perfbench
+# Break in Task end_simulation at mem_system_perfbench.v line 203
+# Stopped at mem_system_perfbench.v line 203

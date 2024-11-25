@@ -1,12 +1,9 @@
-# vsim -c proc_hier_pbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 17:49:37 on Nov 24,2024
+# vsim "+addr_trace_file_name=..//verification//mem.addr" -c mem_system_perfbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 18:21:53 on Nov 24,2024
 # ** Warning: License feature 'msimpevsimvlog' will expire in 11 days.
-# Loading __work.proc_hier_pbench
-# Loading __work.proc_hier
+# Loading __work.mem_system_perfbench
+# Loading __work.mem_system_hier
 # Loading __work.clkrst
-# Loading __work.proc
-# Loading __work.fetch
-# Loading __work.register
 # Loading __work.mem_system
 # Loading __work.cache
 # Loading __work.memc
@@ -15,42 +12,32 @@
 # Loading __work.final_memory
 # Loading __work.dff
 # Loading __work.cache_controller
-# Loading __work.cla_16b
-# Loading __work.IFID_latch
-# Loading __work.stall_mech
-# Loading __work.decode
-# Loading __work.regFile_bypass
-# Loading __work.regFile
-# Loading __work.shifter
-# Loading __work.bit_shift
-# Loading __work.bit_2shift
-# Loading __work.bit_4shift
-# Loading __work.bit_8shift
-# Loading __work.alu_control
-# Loading __work.control
-# Loading __work.IDEX_latch
-# Loading __work.execute
-# Loading __work.alu
-# Loading __work.brchcnd
-# Loading __work.EXDM_latch
-# Loading __work.memory
-# Loading __work.stallmem
-# Loading __work.DMWB_latch
-# Loading __work.wb
-# Loading __work.cla_4b
-# Loading __work.xor2
-# Loading __work.nand2
-# Loading __work.cla_1b
-# ** Warning: (vsim-PLI-3691) Expected a system task, not a system function '$value$plusargs'.
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_pbench/DUT/p0/memory0/data_mem File: stallmem.v Line: 87
+# Loading __work.mem_system_ref
 # log -howmany -rec /* 
-# 6048
+# 1473
 #  run -all
-# Using seed           0
-# rand_pat=12153524 00010010000101010011010100100100
-# Hello world...simulation starting
-# See verilogsim.log and verilogsim.ptrace for output
-# ** Note: $finish    : proc_hier_pbench.v(116)
-#    Time: 2005 ns  Iteration: 0  Instance: /proc_hier_pbench
-# End time: 17:49:37 on Nov 24,2024, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 1
+# Using trace file                                                                                                                                                                                                                                       ..//verification//mem.addr
+# Line interpretted as comment:                                                                          # Test two consecutive write misses to the same index.
+# 
+# Line interpretted as comment:                                               # The second write access and the read access should happen after dirty eviction.
+# 
+# Line interpretted as comment:                                                                           # The final read out value at Addr = 14 should be 18.
+# 
+# LOG: ReQNum    1 Cycle        9 ReqCycle        6 Wr Addr 0x000e Value 0x0012 ValueRef 0x0012 HIT 0
+# 
+# Line interpretted as comment:                                                                             # Write (cold) miss, tag = 0, index = 1, offset = 6
+# 
+# LOG: ReQNum    2 Cycle       14 ReqCycle       11 Wr Addr 0x0808 Value 0x0011 ValueRef 0x0011 HIT 0
+# 
+# Line interpretted as comment:                                                                    # Write miss, dirty eviction, tag = 1, index = 1, offset = 0
+# 
+# LOG: ReqNum    3 Cycle       26 ReqCycle       16 Rd Addr 0x000e Value 0x0000 ValueRef 0x0012 HIT 0
+# 
+# ERROR Ref: 0x0012 DUT: 0x0000
+# Line interpretted as comment:                                                                      # Read miss, dirty eviction, tag = 0, index = 1, offset = 6
+# LOG: Done all Requests:          3 Replies:          3 Cycles:         28 Hits:          0
+# Test status: FAIL
+# ** Note: $stop    : mem_system_perfbench.v(203)
+#    Time: 2787 ns  Iteration: 0  Instance: /mem_system_perfbench
+# Break in Task end_simulation at mem_system_perfbench.v line 203
+# Stopped at mem_system_perfbench.v line 203

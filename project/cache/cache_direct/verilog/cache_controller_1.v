@@ -20,26 +20,37 @@ module cache_controller (
    output reg read_mem,
    output reg cache_in,
    output reg mem_in,
+   output wire [1:0] counter,
    output reg done
    );
 
    // Define the states using parameters
-   parameter IDLE                   = 4'b0000;
-   parameter WRITE_MISS             = 4'b0001;
-   parameter MR0                    = 4'b0010;
-   parameter MR1                    = 4'b0011;
-   parameter MR2                    = 4'b0100;
-   parameter MR3                    = 4'b0101;
-   parameter ACCESS_READ            = 4'b0110;
-   parameter ACCESS_WRITE           = 4'b1000;
-   parameter DONE                   = 4'b1001;
+   parameter IDLE                  = 3'b000;
+   parameter COMPARE_READ          = 3'b001;
+   parameter WRITE_MISS         = 3'b010;
+   parameter MEMORY_READ_MISS      = 3'b011;
+   parameter WAIT                  = 3'b100;
+   parameter ACCESS_READ           = 3'b101;
+   parameter ACCESS_WRITE          = 3'b110;
+   parameter DONE                  = 3'b111;
 
 
-   wire [3:0] state;
-   reg [3:0] next_state;
+   wire [2:0] state;
+   reg [2:0] next_state;
 
-   dff state_1 [3:0](.q(state), .d(next_state), .clk(clk), .rst(rst));
+   dff state_1 [2:0](.q(state), .d(next_state), .clk(clk), .rst(rst));
 
+   reg clr_counter, inc_counter;
+  dff counter_ff [1:0](.q(counter), .d(clr_counter ? 2'b00 : (inc_counter ? counter + 1'b1 : counter)), .clk({2{clk}}), .rst({2{rst | clr_counter}}));
+  // assign counter = clr_counter ? 2'b00 : inc_counter ? counter + 2'b01 : counter;
+
+   // always@(posedge clk, posedge rst)
+   //    if (rst)
+   //       counter <= 2'b00;
+   //    else if (clr_counter)
+   //       counter <= 2'b00;
+   //    else if (inc_counter)
+   //       counter <= counter + 1'b1;
 
    always @(*) begin
       // Default output values
@@ -73,6 +84,7 @@ module cache_controller (
                   write_mem = 1'b1;
                   end 
                end
+            
             end else if (Wr) begin 
                comp = 1'b1;
                if (hit&valid&~dirty) begin
@@ -83,48 +95,25 @@ module cache_controller (
                  next_state = DONE;
                end else next_state = WRITE_MISS;
             end
-            // comp = (Rd | Wr);
-            // next_state = Rd ? 
          end
 
-         MR0: begin
+         MEMORY_READ_MISS: begin
             Stall = 1'b1;
                if (~mem_stall) begin
                   write = 1'b1;
                   valid_in = 1'b1;
                   cache_in = 1'b1;
                   read_mem = 1'b1;
-                  next_state = MR1;
-               end
+                  next_state = WAIT;
+               end else next_state = MEMORY_READ_MISS; //retry if mem busy
          end
       
-         MR1: begin
-               if (~mem_stall) begin
-                  write = 1'b1;
-                  valid_in = 1'b1;
-                  cache_in = 1'b1;
-                  read_mem = 1'b1;
-                  next_state = MR2;
-               end
-         end
-
-         MR2: begin
-               if (~mem_stall) begin
-                  write = 1'b1;
-                  valid_in = 1'b1;
-                  cache_in = 1'b1;
-                  read_mem = 1'b1;
-                  next_state = MR3;
-               end
-         end
-
-         MR3: begin
-            if (~mem_stall) begin
-               write = 1'b1;
-               valid_in = 1'b1;
-               cache_in = 1'b1;
-               read_mem = 1'b1;
+         WAIT: begin
+            if (&counter) begin
                next_state = ACCESS_WRITE;
+            end else begin
+               inc_counter = 1'b1;
+               next_state = MEMORY_READ_MISS;
             end
          end
 
@@ -172,6 +161,10 @@ module cache_controller (
          end
       endcase
    end
+
+
+
+
 
 endmodule
 `default_nettype wire

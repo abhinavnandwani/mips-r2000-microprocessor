@@ -57,6 +57,8 @@ module cache_controller (
         .rst({4{rst}})
     );
 
+
+
     reg MemWB;
 
     // Next state and output logic
@@ -174,21 +176,23 @@ module cache_controller (
                 write = 1'b1;
                 cache_in = 1'b1;
                 offset_out = 3'b110;
-                done = 1'b1;
-                next_state = IDLE;
+                done = Rd;
+                next_state = Rd ? IDLE : CWRITE;
             end
 
             CWRITE: begin
-                cache_in = 1'b1;
+                cache_in = 1'b0;
                 write = 1'b1;
                 valid_in = 1'b1;
                 done = 1'b1;
-                next_state = IDLE;
+                offset_out = offset_in;
+                next_state = DONE;
             end
 
             DONE: begin
                 done = 1'b1;
                 Stall = 1'b1;
+                cache_in = 1'b0;
                 write = 1'b1;
                 valid_in = 1'b1;
                 next_state = IDLE;
@@ -199,6 +203,9 @@ module cache_controller (
             end
         endcase
     end
+
+   always@(posedge clk)
+      $display("State : %h",state);
 
 endmodule
 

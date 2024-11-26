@@ -81,9 +81,8 @@ module cache (
    assign            valid = go & validbit & (~write | comp);
 
 
-   // always@(posedge clk)
-   //    $display("dirty : %h comp : %h match : %h dirtybit : %h valid %h", dirty,comp,match,dirtybit,valid);
-
+   always@(posedge clk)
+      $display("w0 : %h w1 : %h w2 : %h w3 : %h", w0,w1,w2,w3);
 endmodule
 `default_nettype wire
 // DUMMY LINE FOR REV CONTROL :0:

@@ -29,15 +29,16 @@ module mem_system(/*AUTOARG*/
    wire [3:0] busy;
    wire [4:0] tag_out;
    wire err_mem, err_cache;
-   wire [15:0] data_out_cache,data_out_mem;
+   wire [15:0] data_out_cache,data_out_mem,mem_addr;
    wire write_mem, read_mem;
-   wire [1:0] counter;
+   wire [2:0] offset_out;
    wire cache_in, mem_in, mem_stall;
+   wire [4:0] tag_in;
+   wire [7:0] index_in;
+   wire [2:0] offset_in;
 
-   wire [1:0]counter_ff;
+   wire [1:0]counter_ff, counter_2ff;
    wire done,stall;
-  // assign counter_ff = counter;
-   dff counter_fffx [1:0](.q(counter_ff), .d(counter), .clk({2{clk}}), .rst({2{rst}}));
    assign Done =  done;
    assign Stall =  stall;
 
@@ -58,7 +59,7 @@ module mem_system(/*AUTOARG*/
                           .createdump           (createdump),
                           .tag_in               (Addr[15:11]),
                           .index                (Addr[10:3]),
-                          .offset               (Addr[2:0] + {counter_ff,1'b0}),
+                          .offset               (offset_out),
                           .data_in              (cache_in ? data_out_mem : DataIn),
                           .comp                 (comp),
                           .write                (write),
@@ -73,7 +74,7 @@ module mem_system(/*AUTOARG*/
                      .clk               (clk),
                      .rst               (rst),
                      .createdump        (createdump),
-                     .addr              ({mem_in ? tag_out:Addr[15:11],Addr[10:3],counter,1'b0}),
+                     .addr              (mem_addr),
                      .data_in           (mem_in ? data_out_cache : (DataIn)),
                      .wr                (write_mem),
                      .rd                (read_mem));
@@ -84,23 +85,26 @@ module mem_system(/*AUTOARG*/
       .rst(rst),
       .createdump(createdump),
       .Rd(Rd),
-      .CacheHit(CacheHit),
       .Wr(Wr),
-      .busy(busy),
-      .mem_stall(mem_stall),
       .valid(valid),
       .dirty(dirty),
       .hit(hit),
+      .mem_stall(mem_stall),
+      .tag_in(Addr[15:11]),
+      .index_in(Addr[10:3]),
+      .offset_in(Addr[2:0]),
+      .tag_out(tag_out),
+      //outputs
       .valid_in(valid_in),
+      .offset_out(offset_out),
+      .mem_addr(mem_addr),
       .comp(comp),
       .write(write),
       .Stall(stall),
-      .write_mem(write_mem),  // always@(posedge clk)
-   //    $display("Addr : %h state : %b, counter; %h, inc: %h, clr: %h data_out_cache %h done %h",Addr,ctrl.state, {counter_ff,1'b0}, ctrl.inc_counter, ctrl.clr_counter, data_out_cache, Done);
-
+      .write_mem(write_mem), 
+      .CacheHit(CacheHit),
       .read_mem(read_mem),
       .cache_in(cache_in),
-      .counter(counter),
       .mem_in(mem_in),
       .done(done)
    ); 

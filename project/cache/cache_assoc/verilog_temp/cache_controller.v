@@ -6,9 +6,12 @@ module cache_controller (
     input wire createdump,
     input wire Rd,
     input wire Wr,
-    input wire valid,
-    input wire dirty,
-    input wire hit,
+    input wire valid_0,
+    input wire valid_1,
+    input wire dirty_0,
+    input wire dirty_1,
+    input wire hit_0,
+    input wire hit_1,
     input wire mem_stall,
     input wire [4:0] tag_in,
     input wire [7:0] index_in,
@@ -17,14 +20,19 @@ module cache_controller (
     output reg [2:0] offset_out,
     output reg [15:0] mem_addr,
     output wire CacheHit,
+    output wire CacheHit_0,
+    output wire CacheHit_1,
     output reg Stall,
-    output reg valid_in,
+    output reg valid_in_0,
+    output reg valid_in_1,
     output reg comp,
-    output reg write,
+    output reg write_0,
+    output reg write_1,
     output reg write_mem,
     output reg read_mem,
     output reg cache_in,
     output reg mem_in,
+    output reg cache_sel,
     output reg done
 );
 
@@ -46,7 +54,6 @@ module cache_controller (
     parameter CWRITE         = 4'b1011; // Write new data to cache
     parameter DONE           = 4'b1100; // Operation complete, return to IDLE
 
-
     // State and next state signals
     // The state register holds the current state of the state machine and 
     // updates to the next state at every clock cycle.
@@ -63,7 +70,9 @@ module cache_controller (
 
     // CacheHit indicates whether the requested data is present in the cache 
     // (comp and valid are true) and has been successfully accessed (hit is true).
-    assign CacheHit = comp & hit & valid;
+    assign CacheHit_0 = hit_0 & valid_0;
+    assign CacheHit_1 = hit_1 & valid_1;
+    assign CacheHit = comp & (CacheHit_0 | CacheHit_1);
 
     // Next state and output logic
     always @(*) begin
@@ -79,6 +88,7 @@ module cache_controller (
         offset_out = offset_in;
         done = 1'b0;
         Stall = 1'b1;
+        cache_sel = 1'b0;
         next_state = state;
 
         // State machine logic
@@ -89,15 +99,25 @@ module cache_controller (
                 // whether the operation will result in a hit or miss.
                 Stall = 1'b0;
                 comp = Rd | Wr;
-                write = Wr & CacheHit;
-                valid_in = write;
+                cache_sel = ~CacheHit_0;
+                write_0 = Wr & CacheHit_0 & ~cache_sel;
+                write_1 = Wr & CacheHit_1 & cache_sel;
+                valid_in_0 = write_0;
+                valid_in_1 = write_1;
                 cache_in = ~write;
                 done = comp & CacheHit;
 
                 // - If a read or write misses, move to WRITE_BACK or FILL_CACHE based on the dirty bit.
                 // - If a hit occurs, complete the operation in the same cycle.
-                next_state = Rd ? (CacheHit ? IDLE : (dirty ? WRITE_BACK_0 : FILL_CACHE_0)) :
-                             Wr ? (CacheHit ? IDLE : (dirty ? WRITE_BACK_0 : FILL_CACHE_0)) : state;
+                next_state = (Rd | Wr) ? (CacheHit ? IDLE : (valid_0 ? (valid_1 ? P_RAND : VICTIM_1) : VICTIM_0) : IDLE);
+                            
+            end
+
+            VICTIM_0 : begin
+
+
+
+            
             end
 
             WRITE_BACK_0: begin

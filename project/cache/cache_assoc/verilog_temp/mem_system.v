@@ -25,7 +25,7 @@ module mem_system(/*AUTOARG*/
    output wire        err;
 
    wire comp, write;
-   wire hit, dirty, valid, valid_in;
+   wire hit, dirty, valid, valid_out, valid_out_0, valid_out_1;
    wire hit_0, dirty_0, valid_0;
    wire hit_1, dirty_1, valid_1;
    wire [3:0] busy;
@@ -60,7 +60,7 @@ module mem_system(/*AUTOARG*/
                           .data_in              (cache_in ? data_out_mem : DataIn),
                           .comp                 (comp),
                           .write                (write), // write_0
-                          .valid_in             (valid_in));
+                          .valid_in             (valid_out_0)); // write_0
    cache #(2 + memtype) c1(// Outputs
                           .tag_out              (tag_out_1),
                           .data_out             (data_out_cache_1),
@@ -79,7 +79,7 @@ module mem_system(/*AUTOARG*/
                           .data_in              (cache_in ? data_out_mem : DataIn),
                           .comp                 (comp),
                           .write                (write), // write_1
-                          .valid_in             (valid_in));
+                          .valid_in             (valid_out_1));
 
    four_bank_mem mem(// Outputs
                      .data_out          (data_out_mem),
@@ -111,7 +111,7 @@ module mem_system(/*AUTOARG*/
       .offset_in(Addr[2:0]),
       .tag_out(tag_out),
       //outputs
-      .valid_in(valid_in),
+      .valid_in(valid_out),
       .offset_out(offset_out),
       .mem_addr(mem_addr),
       .comp(comp),
@@ -125,12 +125,35 @@ module mem_system(/*AUTOARG*/
       .done(Done)
    ); 
 
-   // Need Psuedo-Random Replacement Method
+   // // Need Psuedo-Random Replacement Method
+   // wire victimway, victim;
 
-   assign hit = 1'b1 ? hit_0 : hit_1;
-   assign dirty = 1'b1 ? dirty_0 : dirty_1;
-   assign valid = 1'b1 ? valid_0 : valid_1;
-   assign tag_out = 1'b1 ? tag_out_0 : tag_out_1;
+   // dff victimway (
+   //    .q(victimway),                      // Output: current state of victimway
+   //    .d(memtype ?                       // If it's data memory (memtype == 1)
+   //          ((Rd | Wr) ? ~victimway : victimway) :  // Flip victimway on read or write
+   //          ~victimway),                    // Always flip victimway for instruction memory (memtype == 0)
+   //    .clk(clk),                          // Clock signal
+   //    .rst(rst)                           // Reset signal
+   // );
+
+   // // Victim Selection Logic
+   // assign victim = 
+   //    (valid_0 & valid_1) ?               // Both ways are valid
+   //       (victimway ? 1'b0 : 1'b1) : // Choose victim based on victimway
+   //    (~valid_0 & ~valid_1) ?             // Both ways are invalid
+   //       1'b1 :                       // Install in way 0 (arbitrary choice when both are invalid)
+   //    (~valid_1) ?                        // If way 1 is invalid and way 0 is valid
+   //       1'b1 :                       // Install in way 0
+   //    1'b0;                            // If way 0 is invalid and way 1 is valid, install in way 1
+
+
+   // assign hit = 1'b1 ? hit_0 : hit_1;
+   // assign dirty = 1'b1 ? dirty_0 : dirty_1;
+   // assign valid = 1'b1 ? valid_0 : valid_1;
+   // assign tag_out = 1'b1 ? tag_out_0 : tag_out_1;
+   // assign valid_out_0 = 1'b1 ? valid_out : 1'b0;
+   // assign valid_out_1 = 1'b1 ? valid_out : 1'b0;
 
    assign err = err_mem | err_cache_0 | err_cache_1;
    assign DataOut = 1'b1 ? data_out_cache_0 : data_out_cache_1;

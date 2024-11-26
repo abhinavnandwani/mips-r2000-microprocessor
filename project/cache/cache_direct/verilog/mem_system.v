@@ -113,8 +113,6 @@ module mem_system(/*AUTOARG*/
   // assign CacheHit = hit;
    assign DataOut = CacheHit ? data_out_cache : data_out_mem;
 
-   always@(posedge clk)
-      $display("State : %h",ctrl.state);
 
 endmodule // mem_system
 `default_nettype wire

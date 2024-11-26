@@ -204,8 +204,8 @@ module cache_controller (
         endcase
     end
 
-   always@(posedge clk)
-      $display("State : %h",state);
+//    always@(posedge clk)
+//       $display("State : %h",state);
 
 endmodule
 

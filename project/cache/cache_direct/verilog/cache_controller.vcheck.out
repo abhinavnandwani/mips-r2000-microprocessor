@@ -1,0 +1,18 @@
+Line 72: Bad keyword if
+Line 74: Bad keyword if
+Line 77: Bad keyword else
+Line 79: Bad keyword if
+Line 85: Bad keyword else
+Line 85: Bad keyword if
+Line 87: Bad keyword if
+Line 92: Bad keyword else
+Line 98: Bad keyword if
+Line 104: Bad keyword else
+Line 109: Bad keyword if
+Line 111: Bad keyword else
+Line 119: Bad keyword if
+Line 123: Bad keyword else
+Line 134: Bad keyword if
+Line 162: Bad keyword posedge
+Line 162: Always without case(x)
+End of file /home/nandwani/private/cs552/mips-r2000-microprocessor/project/cache/cache_direct/verilog/cache_controller.v. Hash = 823986479

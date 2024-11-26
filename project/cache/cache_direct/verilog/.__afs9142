@@ -1,0 +1,374 @@
+Model Technology ModelSim DE vlog 10.7c Compiler 2018.08 Aug 17 2018
+Start time: 18:32:04 on Nov 25,2024
+vlog "+define+RANDSEED=3" -work __work DMWB_latch.v EXDM_latch.v IDEX_latch.v IFID_latch.v alu.v alu_control.v bit_2shift.v bit_4shift.v bit_8shift.v bit_shift.v brchcnd.v cache.v cache_controller.v cla_16b.v cla_1b.v cla_4b.v clkrst.v control.v decode.v dff.v execute.v fetch.v final_memory.v four_bank_mem.v mem_system.v mem_system_hier.v mem_system_perfbench.v mem_system_randbench.v mem_system_ref.v memc.v memory.v memv.v nand2.v nand3.v nor2.v nor3.v not1.v proc.v proc_hier.v proc_hier_pbench.v regFile.v regFile_bypass.v regFile_hier.v register.v shifter.v stall_mech.v stallmem.v wb.v xor2.v xor3.v 
+-- Compiling module DMWB_latch
+-- Compiling module EXDM_latch
+-- Compiling module IDEX_latch
+-- Compiling module IFID_latch
+-- Compiling module alu
+-- Compiling module alu_control
+-- Compiling module bit_2shift
+-- Compiling module bit_4shift
+-- Compiling module bit_8shift
+-- Compiling module bit_shift
+-- Compiling module brchcnd
+-- Compiling module cache
+-- Compiling module cache_controller
+-- Compiling module cla_16b
+-- Compiling module cla_1b
+-- Compiling module cla_4b
+-- Compiling module clkrst
+-- Compiling module control
+-- Compiling module decode
+-- Compiling module dff
+-- Compiling module execute
+-- Compiling module fetch
+-- Compiling module final_memory
+-- Compiling module four_bank_mem
+-- Compiling module mem_system
+-- Compiling module mem_system_hier
+-- Compiling module mem_system_perfbench
+-- Compiling module mem_system_randbench
+-- Compiling module mem_system_ref
+-- Compiling module memc
+-- Compiling module memory
+-- Compiling module memv
+-- Compiling module nand2
+-- Compiling module nand3
+-- Compiling module nor2
+-- Compiling module nor3
+-- Compiling module not1
+-- Compiling module proc
+-- Compiling module proc_hier
+-- Compiling module proc_hier_pbench
+-- Compiling module regFile
+-- Compiling module regFile_bypass
+-- Compiling module regFile_hier
+-- Compiling module register
+-- Compiling module shifter
+-- Compiling module stall_mech
+-- Compiling module stallmem
+-- Compiling module wb
+-- Compiling module xor2
+-- Compiling module xor3
+
+Top level modules:
+	mem_system_perfbench
+	mem_system_randbench
+	nand3
+	nor2
+	nor3
+	not1
+	proc_hier_pbench
+	regFile_hier
+	stallmem
+	xor3
+End time: 18:32:05 on Nov 25,2024, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_pbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 18:32:05 on Nov 25,2024
+# ** Warning: License feature 'msimpevsimvlog' will expire in 10 days.
+# Loading __work.proc_hier_pbench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.mem_system
+# Loading __work.cache
+# Loading __work.memc
+# Loading __work.memv
+# Loading __work.four_bank_mem
+# Loading __work.final_memory
+# Loading __work.dff
+# Loading __work.cache_controller
+# Loading __work.cla_16b
+# Loading __work.IFID_latch
+# Loading __work.stall_mech
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.alu_control
+# Loading __work.control
+# Loading __work.IDEX_latch
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.EXDM_latch
+# Loading __work.memory
+# Loading __work.DMWB_latch
+# Loading __work.wb
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.cla_1b
+# log -howmany -rec /* 
+# 7453
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.ptrace for output
+# ** Note: $finish    : proc_hier_pbench.v(116)
+#    Time: 4705 ns  Iteration: 0  Instance: /proc_hier_pbench
+# End time: 18:32:07 on Nov 25,2024, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/add_1.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_pbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 18:32:09 on Nov 25,2024
+# ** Warning: License feature 'msimpevsimvlog' will expire in 10 days.
+# Loading __work.proc_hier_pbench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.mem_system
+# Loading __work.cache
+# Loading __work.memc
+# Loading __work.memv
+# Loading __work.four_bank_mem
+# Loading __work.final_memory
+# Loading __work.dff
+# Loading __work.cache_controller
+# Loading __work.cla_16b
+# Loading __work.IFID_latch
+# Loading __work.stall_mech
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.alu_control
+# Loading __work.control
+# Loading __work.IDEX_latch
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.EXDM_latch
+# Loading __work.memory
+# Loading __work.DMWB_latch
+# Loading __work.wb
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.cla_1b
+# log -howmany -rec /* 
+# 7453
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.ptrace for output
+# ** Note: $finish    : proc_hier_pbench.v(116)
+#    Time: 2105 ns  Iteration: 0  Instance: /proc_hier_pbench
+# End time: 18:32:10 on Nov 25,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/add_2.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_pbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 18:32:11 on Nov 25,2024
+# ** Warning: License feature 'msimpevsimvlog' will expire in 10 days.
+# Loading __work.proc_hier_pbench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.mem_system
+# Loading __work.cache
+# Loading __work.memc
+# Loading __work.memv
+# Loading __work.four_bank_mem
+# Loading __work.final_memory
+# Loading __work.dff
+# Loading __work.cache_controller
+# Loading __work.cla_16b
+# Loading __work.IFID_latch
+# Loading __work.stall_mech
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.alu_control
+# Loading __work.control
+# Loading __work.IDEX_latch
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.EXDM_latch
+# Loading __work.memory
+# Loading __work.DMWB_latch
+# Loading __work.wb
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.cla_1b
+# log -howmany -rec /* 
+# 7453
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.ptrace for output
+# ** Note: $finish    : proc_hier_pbench.v(116)
+#    Time: 2105 ns  Iteration: 0  Instance: /proc_hier_pbench
+# End time: 18:32:13 on Nov 25,2024, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/addi_0.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_pbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 18:32:14 on Nov 25,2024
+# ** Warning: License feature 'msimpevsimvlog' will expire in 10 days.
+# Loading __work.proc_hier_pbench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.mem_system
+# Loading __work.cache
+# Loading __work.memc
+# Loading __work.memv
+# Loading __work.four_bank_mem
+# Loading __work.final_memory
+# Loading __work.dff
+# Loading __work.cache_controller
+# Loading __work.cla_16b
+# Loading __work.IFID_latch
+# Loading __work.stall_mech
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.alu_control
+# Loading __work.control
+# Loading __work.IDEX_latch
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.EXDM_latch
+# Loading __work.memory
+# Loading __work.DMWB_latch
+# Loading __work.wb
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.cla_1b
+# log -howmany -rec /* 
+# 7453
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.ptrace for output
+# ** Note: $finish    : proc_hier_pbench.v(116)
+#    Time: 2005 ns  Iteration: 0  Instance: /proc_hier_pbench
+# End time: 18:32:14 on Nov 25,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+Full name to pass to Assemble.java: /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/addi_1.asm
+Created the following files
+loadfile_0.img
+loadfile_1.img
+loadfile_2.img
+loadfile_3.img
+loadfile_all.img
+loadfile.lst
+Reading pref.tcl
+
+# 10.7c
+
+# vsim -c proc_hier_pbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 18:32:15 on Nov 25,2024
+# ** Warning: License feature 'msimpevsimvlog' will expire in 10 days.
+# Loading __work.proc_hier_pbench
+# Loading __work.proc_hier
+# Loading __work.clkrst
+# Loading __work.proc
+# Loading __work.fetch
+# Loading __work.register
+# Loading __work.mem_system
+# Loading __work.cache
+# Loading __work.memc
+# Loading __work.memv
+# Loading __work.four_bank_mem
+# Loading __work.final_memory
+# Loading __work.dff
+# Loading __work.cache_controller
+# Loading __work.cla_16b
+# Loading __work.IFID_latch
+# Loading __work.stall_mech
+# Loading __work.decode
+# Loading __work.regFile_bypass
+# Loading __work.regFile
+# Loading __work.shifter
+# Loading __work.bit_shift
+# Loading __work.bit_2shift
+# Loading __work.bit_4shift
+# Loading __work.bit_8shift
+# Loading __work.alu_control
+# Loading __work.control
+# Loading __work.IDEX_latch
+# Loading __work.execute
+# Loading __work.alu
+# Loading __work.brchcnd
+# Loading __work.EXDM_latch
+# Loading __work.memory
+# Loading __work.DMWB_latch
+# Loading __work.wb
+# Loading __work.cla_4b
+# Loading __work.xor2
+# Loading __work.nand2
+# Loading __work.cla_1b
+# log -howmany -rec /* 
+# 7453
+#  run -all
+# Hello world...simulation starting
+# See verilogsim.log and verilogsim.ptrace for output
+# ** Note: $finish    : proc_hier_pbench.v(116)
+#    Time: 2005 ns  Iteration: 0  Instance: /proc_hier_pbench
+# End time: 18:32:16 on Nov 25,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

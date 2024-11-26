@@ -1,5 +1,5 @@
 # vsim -c proc_hier_pbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 21:24:18 on Nov 25,2024
+# Start time: 21:56:07 on Nov 25,2024
 # ** Warning: License feature 'msimpevsimvlog' will expire in 10 days.
 # Loading __work.proc_hier_pbench
 # Loading __work.proc_hier
@@ -45,63 +45,35 @@
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.ptrace for output
-# State : x
-# State : x
-# State : x
-# State : x
-# State : 0
-# State : 0
-# State : 0
-# State : 0
-# State : 0
-# State : 0
-# State : 0
-# State : 0
-# State : 0
-# State : 0
-# State : 0
-# State : 0
-# State : 5
-# State : 5
-# State : 0
-# State : 0
-# State : 6
-# State : 6
-# State : 0
-# State : 0
-# State : 7
-# State : 7
-# State : 0
-# State : 0
-# State : 8
-# State : 8
-# State : 0
-# State : 0
-# State : 9
-# State : 9
-# State : 0
-# State : 0
-# State : a
-# State : a
-# State : 0
-# State : 0
-# State : 0
-# State : 0
-# State : 0
-# State : 0
-# State : 5
-# State : 5
-# State : 0
-# State : 0
-# State : 6
-# State : 6
-# State : 0
-# State : 0
-# State : 7
-# State : 7
-# State : 0
-# State : 0
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : c164 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : c164 w1 : c263 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : c164 w1 : c263 w2 : d94c w3 : 0000
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : c164 w1 : c263 w2 : d94c w3 : db28
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : c164 w1 : c263 w2 : d94c w3 : db28
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : c164 w1 : c263 w2 : d94c w3 : db28
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
+# w0 : 0000 w1 : c263 w2 : d94c w3 : db28
+# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
 # ** Note: $finish    : proc_hier_pbench.v(116)
 #    Time: 1305 ns  Iteration: 0  Instance: /proc_hier_pbench
-# End time: 21:24:18 on Nov 25,2024, Elapsed time: 0:00:00
+# End time: 21:56:07 on Nov 25,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0

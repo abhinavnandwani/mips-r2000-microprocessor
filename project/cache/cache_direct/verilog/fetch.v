@@ -24,7 +24,7 @@ module fetch (clk, rst, NOP, NOP_Branch, branch, PC_B, HaltSig, instr, PC_Next, 
     // PC Register
     register pc_reg (.r(PC), .w(PC_Next), .clk(clk), .rst(rst), .we(1'b1));
     assign PC_curr = branch ? PC_B : PC;
-    assign #100 done_ff = Done;
+    assign done_ff = Done;
 
     // Instruction Memory
    stallmem instr_mem(.DataOut(instr_memm), .Done(Done), .Stall(Stall), .CacheHit(), .DataIn(16'h0000), .Addr(PC_curr), .Rd(1'b1), .Wr(1'b0), .createdump(HaltSig), .clk(clk), .rst(rst), .err(err));

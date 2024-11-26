@@ -186,6 +186,7 @@ module cache_controller (
 
             CWRITE: begin
                 cache_in = 1'b0;
+                comp = 1'b1;
                 write = 1'b1;
                 valid_in = 1'b1;
                 offset_out = offset_in;

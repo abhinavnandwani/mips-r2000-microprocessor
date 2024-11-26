@@ -110,8 +110,7 @@ module mem_system(/*AUTOARG*/
    ); 
 
    assign err = err_mem | err_cache;
-  // assign CacheHit = hit;
-   assign DataOut = 1'b1 ? data_out_cache : data_out_mem;
+   assign DataOut = data_out_cache;
 
 
 endmodule // mem_system

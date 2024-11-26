@@ -20,40 +20,46 @@ module cache_controller (
     output reg read_mem,
     output reg cache_in,
     output reg mem_in,
-    output wire [1:0] counter,
+    output reg [1:0] counter,
     output reg done
 );
 
     // Define the states using parameters
-    parameter IDLE             = 3'b000;
-    parameter WRITE_BACK       = 3'b001;
-    parameter FILL_CACHE       = 3'b010;
-    parameter MEMORY_READ_MISS = 3'b011;
-    parameter WAIT_1           = 3'b100;
-    parameter CWRITE           = 3'b101;
-    parameter DONE             = 3'b110;
+    parameter IDLE               = 4'b0000;
+    parameter WRITE_BACK_0       = 4'b0001;
+    parameter WRITE_BACK_1       = 4'b0010;
+    parameter WRITE_BACK_2       = 4'b0011;
+    parameter WRITE_BACK_3       = 4'b0100;
+    parameter FILL_CACHE_0       = 4'b0101;
+    parameter FILL_CACHE_1       = 4'b0110;
+    parameter FILL_CACHE_2       = 4'b1000;
+    parameter FILL_CACHE_3       = 4'b1001;
+    // parameter WAIT_1           = 3'b100;
+    parameter CWRITE           = 4'b1010;
+    parameter DONE             = 4'b1100;
 
     // State and counter logic
-    wire [2:0] state;
-    reg [2:0] next_state;
+    wire [3:0] state;
+    reg [3:0] next_state;
 
     // State register
-    dff state_1 [2:0] (
+    dff state_1 [3:0] (
         .q(state),
         .d(next_state),
         .clk(clk),
         .rst(rst)
     );
 
-    reg clr_counter, inc_counter, MemWB;
+    reg MemWB;
+    // reg clr_counter, inc_counter, MemWB;
 
-    // Counter register
-    dff counter_ff [1:0] (
-        .q(counter),
-        .d(clr_counter ? 2'b00 : (inc_counter ? counter + 1'b1 : counter)),
-        .clk({2{clk}}),
-        .rst({2{rst}})
-    );
+    // // Counter register
+    // dff counter_ff [1:0] (
+    //     .q(counter),
+    //     .d(clr_counter ? 2'b00 : (inc_counter ? counter + 1'b1 : counter)),
+    //     .clk({2{clk}}),
+    //     .rst({2{rst}})
+    // );
 
     // Next state and output logic
     always @(*) begin
@@ -67,8 +73,7 @@ module cache_controller (
         mem_in = 1'b0;
         done = 1'b0;
         Stall = 1'b1;
-        clr_counter = 1'b0;
-        inc_counter = 1'b0;
+        counter = 2'b00;
         CacheHit = 1'b0; // Initialize to prevent latch inference
         next_state = state;
 
@@ -76,42 +81,100 @@ module cache_controller (
         case (state)
             IDLE: begin
                 Stall = 1'b0;
-                clr_counter = 1'b1;
                 comp = Rd | Wr;
                 CacheHit = comp & hit & valid;
                 MemWB = comp ? dirty : 1'b0;
-                write = Wr&CacheHit;
                 done = comp & CacheHit & (Rd | (Wr & ~MemWB));
-              //  done = Rd ? CacheHit:1'b0;
-                next_state = Rd ? (CacheHit ? IDLE : (MemWB ? WRITE_BACK : FILL_CACHE)) :
-                             Wr ? (CacheHit ? (MemWB ? WRITE_BACK : IDLE) : FILL_CACHE) : state;
+                $display("Cache Hit  %h", CacheHit);
+                next_state = Rd ? (CacheHit ? IDLE : (MemWB ? WRITE_BACK_0 : FILL_CACHE_0)) :
+                             Wr ? (CacheHit ? IDLE : (MemWB ? WRITE_BACK_0 : FILL_CACHE_0)) : state;
             end
 
-            WRITE_BACK: begin
+            WRITE_BACK_0: begin
                 Stall = 1'b1;
                 write_mem = 1'b1;
                 mem_in = 1'b1;
-                inc_counter = ~mem_stall;
-                next_state = (&counter) ? FILL_CACHE : WRITE_BACK;
-                clr_counter = &counter;
+                counter = 2'b00;
+                next_state = WRITE_BACK_1;
             end
 
-            FILL_CACHE: begin
+            WRITE_BACK_1: begin
+                Stall = 1'b1;
+                write_mem = 1'b1;
+                mem_in = 1'b1;
+                counter = 2'b01;
+                next_state = WRITE_BACK_2;
+            end
+
+            WRITE_BACK_2: begin
+                Stall = 1'b1;
+                write_mem = 1'b1;
+                mem_in = 1'b1;
+                counter = 2'b10;
+                next_state = WRITE_BACK_3;
+            end
+
+            WRITE_BACK_3: begin
+                Stall = 1'b1;
+                write_mem = 1'b1;
+                mem_in = 1'b1;
+                counter = 2'b11;
+                next_state = FILL_CACHE_0;
+            end
+
+            FILL_CACHE_0: begin
                 Stall = 1'b1;
                 write = 1'b1;
+                cache_in = ~Wr;
+                valid_in = 1'b1;
+                read_mem = Rd;
+                counter = 2'b00;
+                next_state = mem_stall ? state : FILL_CACHE_1;
+            end
+
+            FILL_CACHE_1: begin
+                Stall = 1'b1;
+                write = 1'b1;
+                cache_in = ~Wr;
+                valid_in = 1'b1;
+                read_mem = Rd;
+                counter = 2'b01;
+                next_state = mem_stall ? state : FILL_CACHE_2;
+            end
+
+            FILL_CACHE_2: begin
+                Stall = 1'b1;
+                write = 1'b1;
+                cache_in = ~Wr;
+                valid_in = 1'b1;
+                read_mem = Rd;
+                counter = 2'b10;
+                next_state = mem_stall ? state : FILL_CACHE_3;
+            end
+
+            FILL_CACHE_3: begin
+                Stall = 1'b1;
+                write = 1'b1;
+                valid_in = 1'b1;
+                counter = 2'b11;
+                next_state = Wr ? CWRITE : DONE;
+            end
+
+            // WAIT_1: begin
+            //     Stall = 1'b1;
+            //     write = 1'b1;
+            //     valid_in = 1'b1;
+            //     next_state = (&counter) ? (Wr ? CWRITE : DONE) : FILL_CACHE;
+            //     clr_counter = &counter;
+            //     inc_counter = ~mem_stall;
+            // end
+
+            CWRITE: begin
                 cache_in = 1'b1;
-                valid_in = 1'b1;
-                read_mem = 1'b1;
-                next_state = WAIT_1;
-            end
-
-            WAIT_1: begin
-                Stall = 1'b1;
                 write = 1'b1;
                 valid_in = 1'b1;
-                next_state = (&counter) ? (Wr ? CWRITE : DONE) : FILL_CACHE;
-                clr_counter = &counter;
-                inc_counter = ~mem_stall;
+                done = 1'b1;
+                next_state = IDLE;
             end
 
             DONE: begin
@@ -119,14 +182,6 @@ module cache_controller (
                 Stall = 1'b1;
                 write = 1'b1;
                 valid_in = 1'b1;
-                next_state = IDLE;
-            end
-
-            CWRITE: begin
-                cache_in = 1'b1;
-                write = 1'b1;
-                valid_in = 1'b1;
-                done = 1'b1;
                 next_state = IDLE;
             end
 

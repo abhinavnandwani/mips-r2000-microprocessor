@@ -1,5 +1,5 @@
 # vsim "+addr_trace_file_name=..//verification//mem.addr" -c mem_system_perfbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 16:24:56 on Nov 25,2024
+# Start time: 18:31:43 on Nov 25,2024
 # ** Warning: License feature 'msimpevsimvlog' will expire in 10 days.
 # Loading __work.mem_system_perfbench
 # Loading __work.mem_system_hier
@@ -14,43 +14,63 @@
 # Loading __work.cache_controller
 # Loading __work.mem_system_ref
 # log -howmany -rec /* 
-# 1475
+# 1468
 #  run -all
 # Using trace file                                                                                                                                                                                                                                       ..//verification//mem.addr
+# Cache Hit  0
+# Cache Hit  0
 # Line interpretted as comment:                                            # Test dirty eviction which write all four words on the same cache line back to mem.
 # 
 # Line interpretted as comment:                                                                       # The read out data should be 1, 2, 3, 4 (in this order).
 # 
-# LOG: ReQNum    1 Cycle       14 ReqCycle        5 Wr Addr 0x0000 Value 0x0001 ValueRef 0x0001 HIT 0
+# Cache Hit  0
+# LOG: ReQNum    1 Cycle       10 ReqCycle        5 Wr Addr 0x0000 Value 0x0001 ValueRef 0x0001 HIT 0
 # 
-# LOG: ReQNum    2 Cycle       16 ReqCycle       15 Wr Addr 0x0002 Value 0x0002 ValueRef 0x0002 HIT 1
+# Cache Hit  0
+# Cache Hit  0
+# Cache Hit  1
+# LOG: ReQNum    2 Cycle       12 ReqCycle       11 Wr Addr 0x0002 Value 0x0002 ValueRef 0x0002 HIT 1
 # 
-# w0 : c080 w1 : 0002 w2 : c180 w3 : 9100
-# LOG: ReQNum    3 Cycle       17 ReqCycle       16 Wr Addr 0x0004 Value 0x0003 ValueRef 0x0003 HIT 1
+# Cache Hit  0
+# Cache Hit  1
+# LOG: ReQNum    3 Cycle       13 ReqCycle       12 Wr Addr 0x0004 Value 0x0003 ValueRef 0x0003 HIT 1
 # 
-# w0 : c080 w1 : 0002 w2 : 0003 w3 : 9100
-# LOG: ReQNum    4 Cycle       18 ReqCycle       17 Wr Addr 0x0006 Value 0x0004 ValueRef 0x0004 HIT 1
+# Cache Hit  0
+# Cache Hit  1
+# LOG: ReQNum    4 Cycle       14 ReqCycle       13 Wr Addr 0x0006 Value 0x0004 ValueRef 0x0004 HIT 1
 # 
-# w0 : c080 w1 : 0002 w2 : 0003 w3 : 0004
-# LOG: ReqNum    5 Cycle       31 ReqCycle       18 Rd Addr 0xf000 Value 0x0000 ValueRef 0x0000 HIT 0
+# Cache Hit  0
+# Cache Hit  0
+# LOG: ReqNum    5 Cycle       19 ReqCycle       14 Rd Addr 0xf000 Value 0x0000 ValueRef 0x0000 HIT 0
 # 
+# Cache Hit  0
+# Cache Hit  0
 # Line interpretted as comment:                                                               # dirty eviction, all four previous data should be written to mem
 # 
-# LOG: ReqNum    6 Cycle       42 ReqCycle       33 Rd Addr 0x0000 Value 0x0003 ValueRef 0x0001 HIT 0
+# Cache Hit  0
+# LOG: ReqNum    6 Cycle       26 ReqCycle       21 Rd Addr 0x0000 Value 0xc180 ValueRef 0x0001 HIT 0
 # 
-# ERROR Ref: 0x0001 DUT: 0x0003
-# LOG: ReqNum    7 Cycle       44 ReqCycle       43 Rd Addr 0x0002 Value 0xc080 ValueRef 0x0002 HIT 1
+# ERROR Ref: 0x0001 DUT: 0xc180
+# Cache Hit  0
+# Cache Hit  0
+# Cache Hit  1
+# LOG: ReqNum    7 Cycle       28 ReqCycle       27 Rd Addr 0x0002 Value 0xc080 ValueRef 0x0002 HIT 1
 # 
 # ERROR Ref: 0x0002 DUT: 0xc080
-# LOG: ReqNum    8 Cycle       45 ReqCycle       44 Rd Addr 0x0004 Value 0x0002 ValueRef 0x0003 HIT 1
+# Cache Hit  0
+# Cache Hit  1
+# LOG: ReqNum    8 Cycle       29 ReqCycle       28 Rd Addr 0x0004 Value 0x0000 ValueRef 0x0003 HIT 1
 # 
-# ERROR Ref: 0x0003 DUT: 0x0002
-# LOG: ReqNum    9 Cycle       46 ReqCycle       45 Rd Addr 0x0006 Value 0x0000 ValueRef 0x0004 HIT 1
+# ERROR Ref: 0x0003 DUT: 0x0000
+# Cache Hit  0
+# Cache Hit  1
+# LOG: ReqNum    9 Cycle       30 ReqCycle       29 Rd Addr 0x0006 Value 0x0000 ValueRef 0x0004 HIT 1
 # 
 # ERROR Ref: 0x0004 DUT: 0x0000
-# LOG: Done all Requests:          9 Replies:          9 Cycles:         46 Hits:          6
+# Cache Hit  0
+# LOG: Done all Requests:          9 Replies:          9 Cycles:         30 Hits:          6
 # Test status: FAIL
 # ** Note: $stop    : mem_system_perfbench.v(203)
-#    Time: 4587 ns  Iteration: 0  Instance: /mem_system_perfbench
+#    Time: 2987 ns  Iteration: 0  Instance: /mem_system_perfbench
 # Break in Task end_simulation at mem_system_perfbench.v line 203
 # Stopped at mem_system_perfbench.v line 203

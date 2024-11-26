@@ -101,7 +101,6 @@ module mem_system_perfbench(/*AUTOARG*/);
    
    
    always @ (posedge clk) begin
-      
 
       #2;
       // simulation delay
@@ -112,12 +111,12 @@ module mem_system_perfbench(/*AUTOARG*/);
             n_cache_hits = n_cache_hits + 1;
          end
          if (Rd) begin
-            // $display("LOG: ReqNum %4d Cycle %8d ReqCycle %8d Rd Addr 0x%04x Value 0x%04x ValueRef 0x%04x HIT %1d\n",
-            //          n_replies, DUT.clkgen.cycle_count, req_cycle, Addr, DataOut, DataOut_ref, CacheHit);
+            $display("LOG: ReqNum %4d Cycle %8d ReqCycle %8d Rd Addr 0x%04x Value 0x%04x ValueRef 0x%04x HIT %1d\n",
+                     n_replies, DUT.clkgen.cycle_count, req_cycle, Addr, DataOut, DataOut_ref, CacheHit);
          end
          if (Wr) begin
-            // $display("LOG: ReQNum %4d Cycle %8d ReqCycle %8d Wr Addr 0x%04x Value 0x%04x ValueRef 0x%04x HIT %1d\n",
-            //          n_replies, DUT.clkgen.cycle_count, req_cycle, Addr, DataIn, DataIn, CacheHit);
+            $display("LOG: ReQNum %4d Cycle %8d ReqCycle %8d Wr Addr 0x%04x Value 0x%04x ValueRef 0x%04x HIT %1d\n",
+                     n_replies, DUT.clkgen.cycle_count, req_cycle, Addr, DataIn, DataIn, CacheHit);
          end
          if (Rd | Wr) begin
             if (CacheHit) begin
@@ -137,8 +136,6 @@ module mem_system_perfbench(/*AUTOARG*/);
          if (Rd) begin
             if (DataOut != DataOut_ref) begin
                $display("ERROR Ref: 0x%04x DUT: 0x%04x", DataOut_ref, DataOut);
-                     $display("LOG: ReqNum %4d Cycle %8d ReqCycle %8d Rd Addr 0x%04x Value 0x%04x ValueRef 0x%04x HIT %1d\n",
-                     n_replies, DUT.clkgen.cycle_count, req_cycle, Addr, DataOut, DataOut_ref, CacheHit);
                test_success = 1'b0;
             end
          end

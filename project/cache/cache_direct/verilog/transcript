@@ -1,12 +1,9 @@
-# vsim -c proc_hier_pbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 21:56:07 on Nov 25,2024
+# vsim "+addr_trace_file_name=..//verification//mem.addr" -c mem_system_perfbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 23:08:23 on Nov 25,2024
 # ** Warning: License feature 'msimpevsimvlog' will expire in 10 days.
-# Loading __work.proc_hier_pbench
-# Loading __work.proc_hier
+# Loading __work.mem_system_perfbench
+# Loading __work.mem_system_hier
 # Loading __work.clkrst
-# Loading __work.proc
-# Loading __work.fetch
-# Loading __work.register
 # Loading __work.mem_system
 # Loading __work.cache
 # Loading __work.memc
@@ -15,65 +12,41 @@
 # Loading __work.final_memory
 # Loading __work.dff
 # Loading __work.cache_controller
-# Loading __work.cla_16b
-# Loading __work.IFID_latch
-# Loading __work.stall_mech
-# Loading __work.decode
-# Loading __work.regFile_bypass
-# Loading __work.regFile
-# Loading __work.shifter
-# Loading __work.bit_shift
-# Loading __work.bit_2shift
-# Loading __work.bit_4shift
-# Loading __work.bit_8shift
-# Loading __work.alu_control
-# Loading __work.control
-# Loading __work.IDEX_latch
-# Loading __work.execute
-# Loading __work.alu
-# Loading __work.brchcnd
-# Loading __work.EXDM_latch
-# Loading __work.memory
-# Loading __work.DMWB_latch
-# Loading __work.wb
-# Loading __work.cla_4b
-# Loading __work.xor2
-# Loading __work.nand2
-# Loading __work.cla_1b
+# Loading __work.mem_system_ref
 # log -howmany -rec /* 
-# 7437
+# 1467
 #  run -all
-# Hello world...simulation starting
-# See verilogsim.log and verilogsim.ptrace for output
-# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
-# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
-# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
-# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
-# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
-# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
-# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
-# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
-# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
-# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
-# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
-# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
-# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
-# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
-# w0 : c164 w1 : 0000 w2 : 0000 w3 : 0000
-# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
-# w0 : c164 w1 : c263 w2 : 0000 w3 : 0000
-# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
-# w0 : c164 w1 : c263 w2 : d94c w3 : 0000
-# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
-# w0 : c164 w1 : c263 w2 : d94c w3 : db28
-# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
-# w0 : c164 w1 : c263 w2 : d94c w3 : db28
-# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
-# w0 : c164 w1 : c263 w2 : d94c w3 : db28
-# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
-# w0 : 0000 w1 : c263 w2 : d94c w3 : db28
-# w0 : 0000 w1 : 0000 w2 : 0000 w3 : 0000
-# ** Note: $finish    : proc_hier_pbench.v(116)
-#    Time: 1305 ns  Iteration: 0  Instance: /proc_hier_pbench
-# End time: 21:56:07 on Nov 25,2024, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
+# Using trace file                                                                                                                                                                                                                                       ..//verification//mem.addr
+# ERROR Ref: 0xd7f7 DUT: 0x0000
+# LOG: ReqNum  635 Cycle     5338 ReqCycle     5331 Rd Addr 0x2770 Value 0x0000 ValueRef 0xd7f7 HIT 0
+# 
+# ERROR Ref: 0x4632 DUT: 0x0000
+# LOG: ReqNum 1161 Cycle     9411 ReqCycle     9410 Rd Addr 0x66de Value 0x0000 ValueRef 0x4632 HIT 1
+# 
+# ERROR Ref: 0x0de1 DUT: 0x0000
+# LOG: ReqNum 1163 Cycle     9426 ReqCycle     9419 Rd Addr 0x6012 Value 0x0000 ValueRef 0x0de1 HIT 0
+# 
+# ERROR Ref: 0xb22c DUT: 0x0000
+# LOG: ReqNum 1367 Cycle    10219 ReqCycle    10218 Rd Addr 0x66fc Value 0x0000 ValueRef 0xb22c HIT 1
+# 
+# ERROR Ref: 0x3cbb DUT: 0x0000
+# LOG: ReqNum 1376 Cycle    10235 ReqCycle    10234 Rd Addr 0x662e Value 0x0000 ValueRef 0x3cbb HIT 1
+# 
+# ERROR Ref: 0xfa7c DUT: 0x0000
+# LOG: ReqNum 1464 Cycle    10421 ReqCycle    10420 Rd Addr 0x6494 Value 0x0000 ValueRef 0xfa7c HIT 1
+# 
+# ERROR Ref: 0xff2c DUT: 0x0000
+# LOG: ReqNum 1724 Cycle    10933 ReqCycle    10932 Rd Addr 0x6262 Value 0x0000 ValueRef 0xff2c HIT 1
+# 
+# ERROR Ref: 0x3cbb DUT: 0x0000
+# LOG: ReqNum 1733 Cycle    10942 ReqCycle    10941 Rd Addr 0x662e Value 0x0000 ValueRef 0x3cbb HIT 1
+# 
+# ERROR Ref: 0xe73d DUT: 0x0000
+# LOG: ReqNum 1740 Cycle    10949 ReqCycle    10948 Rd Addr 0x64e0 Value 0x0000 ValueRef 0xe73d HIT 1
+# 
+# LOG: Done all Requests:       3016 Replies:       3016 Cycles:      12548 Hits:       1764
+# Test status: FAIL
+# ** Note: $stop    : mem_system_perfbench.v(205)
+#    Time: 1254787 ns  Iteration: 0  Instance: /mem_system_perfbench
+# Break in Task end_simulation at mem_system_perfbench.v line 205
+# Stopped at mem_system_perfbench.v line 205

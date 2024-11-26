@@ -25,7 +25,7 @@ module memory (
 
     // Data Memory
     //memory2c_align data_mem(.data_out(readData), .data_in(writeData), .addr(ALU), .enable(MemWrt | readEn), .wr(MemWrt), .createdump(HaltSig), .clk(clk), .rst(rst), .err(err));
-    //stallmem data_mem(.DataOut(readData), .Done(done_mem), .Stall(Stall_DM), .CacheHit(), .DataIn(writeData), .Addr(ALU), .Rd(readEn), .Wr(MemWrt), .createdump(HaltSig), .clk(clk), .rst(rst), .err(err));
+   // stallmem data_mem(.DataOut(readData), .Done(done_mem), .Stall(Stall_DM), .CacheHit(), .DataIn(writeData), .Addr(ALU), .Rd(readEn), .Wr(MemWrt), .createdump(HaltSig), .clk(clk), .rst(rst), .err(err));
     mem_system data_mem(.DataOut(readData), .Done(done_mem), .Stall(Stall_DM), .CacheHit(CacheHit), .err(), .Addr(ALU), .DataIn(writeData), .Rd(readEn), .Wr(MemWrt), .createdump(HaltSig), .clk(clk), .rst(rst));
     assign Done_DM = done_mem | ~(readEn|MemWrt);
 

@@ -16,7 +16,7 @@ module cache_controller (
     input wire [4:0] tag_out,
     output reg [2:0] offset_out,
     output reg [15:0] mem_addr,
-    output reg CacheHit,
+    output wire CacheHit,
     output reg Stall,
     output reg valid_in,
     output reg comp,
@@ -29,19 +29,19 @@ module cache_controller (
 );
 
     // Define the states using parameters
-    parameter IDLE               = 4'b0000;
-    parameter WRITE_BACK_0       = 4'b0001;
-    parameter WRITE_BACK_1       = 4'b0010;
-    parameter WRITE_BACK_2       = 4'b0011;
-    parameter WRITE_BACK_3       = 4'b0100;
-    parameter FILL_CACHE_0       = 4'b0101;
-    parameter FILL_CACHE_1       = 4'b0110;
-    parameter FILL_CACHE_2       = 4'b0111;
-    parameter FILL_CACHE_3       = 4'b1000;
-    parameter FILL_CACHE_4       = 4'b1001;
-    parameter FILL_CACHE_5       = 4'b1010;
-    parameter CWRITE             = 4'b1011;
-    parameter DONE               = 4'b1100;
+    parameter IDLE               = 4'b0000;  // 0
+    parameter WRITE_BACK_0       = 4'b0001;  // 1
+    parameter WRITE_BACK_1       = 4'b0010;  // 2
+    parameter WRITE_BACK_2       = 4'b0011; // 3
+    parameter WRITE_BACK_3       = 4'b0100; // 4
+    parameter FILL_CACHE_0       = 4'b0101;  // 5
+    parameter FILL_CACHE_1       = 4'b0110;   // 6
+    parameter FILL_CACHE_2       = 4'b0111; // 7
+    parameter FILL_CACHE_3       = 4'b1000; // 8
+    parameter FILL_CACHE_4       = 4'b1001; // 9
+    parameter FILL_CACHE_5       = 4'b1010; // 10 / a
+    parameter CWRITE             = 4'b1011; // 11 / b
+    parameter DONE               = 4'b1100; // 12 / c
 
     // State and counter logic
     wire [3:0] state;
@@ -61,6 +61,8 @@ module cache_controller (
 
     reg MemWB;
 
+    assign CacheHit = comp & hit & valid;
+
     // Next state and output logic
     always @(*) begin
         // Default output values
@@ -69,13 +71,12 @@ module cache_controller (
         write_mem = 1'b0;
         read_mem = 1'b0;
         valid_in = 1'b0;
-        cache_in = 1'b1;
+        cache_in = 1'b0;
         mem_in = 1'b0;
         mem_addr = 16'h0000;
-        offset_out = 3'b000;
+        offset_out = offset_in;
         done = 1'b0;
         Stall = 1'b1;
-        CacheHit = 1'b0; // Initialize to prevent latch inference
         next_state = state;
 
         // State machine logic
@@ -83,7 +84,6 @@ module cache_controller (
             IDLE: begin
                 Stall = 1'b0;
                 comp = Rd | Wr;
-                CacheHit = comp & hit & valid;
                 MemWB = comp ? dirty : 1'b0;
                 write = Wr & CacheHit;
                 valid_in = write;
@@ -146,6 +146,7 @@ module cache_controller (
             FILL_CACHE_2: begin
                 Stall = 1'b1;
                 read_mem = 1'b1;
+                valid_in = 1'b1;
                 write = 1'b1;
                 cache_in = 1'b1;
                 mem_addr = {tag_in,index_in,3'b100};
@@ -157,6 +158,7 @@ module cache_controller (
                 Stall = 1'b1;
                 read_mem = 1'b1;
                 write = 1'b1;
+                valid_in = 1'b1;
                 cache_in = 1'b1;
                 mem_addr = {tag_in,index_in,3'b110};
                 offset_out = 3'b010;
@@ -166,6 +168,7 @@ module cache_controller (
             FILL_CACHE_4: begin
                 Stall = 1'b1;
                 write = 1'b1;
+                valid_in = 1'b1;
                 cache_in = 1'b1;
                 offset_out = 3'b100;
                 next_state = 1'b0 ? state : FILL_CACHE_5;
@@ -175,26 +178,23 @@ module cache_controller (
                 Stall = 1'b1;
                 write = 1'b1;
                 cache_in = 1'b1;
+                valid_in = 1'b1;
                 offset_out = 3'b110;
-                done = Rd;
-                next_state = Rd ? IDLE : CWRITE;
+             //   done = Rd;
+                next_state = Rd ? DONE : CWRITE;
             end
 
             CWRITE: begin
                 cache_in = 1'b0;
                 write = 1'b1;
                 valid_in = 1'b1;
-                done = 1'b1;
                 offset_out = offset_in;
+             //   done = 1'b1;
                 next_state = DONE;
             end
 
             DONE: begin
                 done = 1'b1;
-                Stall = 1'b1;
-                cache_in = 1'b0;
-                write = 1'b1;
-                valid_in = 1'b1;
                 next_state = IDLE;
             end
 
@@ -204,8 +204,13 @@ module cache_controller (
         endcase
     end
 
-//    always@(posedge clk)
-//       $display("State : %h",state);
+// always @(posedge clk) begin
+//     $display("State: %h | Rd: %b | Wr: %b | CacheHit: %b | Done: %b | tag_in: %h | tag_out: %h | dirty : %h",
+//              state, Rd, Wr, CacheHit, done, tag_in, tag_out,dirty);
+// end
+
+
+
 
 endmodule
 

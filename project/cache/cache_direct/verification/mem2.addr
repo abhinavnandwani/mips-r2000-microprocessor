@@ -1,0 +1,9 @@
+1 0 512 100    # Write miss, tag = 0, index = 64, offset = 0
+0 1 512 100    # Read hit, tag = 0, index = 64, offset = 0
+0 1 1024 200   # Read miss, tag = 0, index = 128, offset = 0
+1 0 3072 300   # Write miss, dirty evict, tag = 0, index = 384 (128), offset = 4
+0 1 2048 50    # Read miss, tag = 0, index = 256, offset = 0
+1 0 2048 500   # Write hit, tag = 0, index = 256, offset = 4
+0 1 2048 500   # Read hit, tag = 0, index = 256, offset = 4
+1 0 1024 200   # write miss, dirty evict, tag = 0, index = 128, offset = 0
+0 1 3072 150   # Read miss, dirty evict, tag = 0, index = 384 (128), offset = 0

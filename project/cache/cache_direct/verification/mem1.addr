@@ -1,0 +1,6 @@
+1 0 348 24    # Write miss, tag = 0, index = 43, offset = 4
+0 1 92 0      # Read miss, tag = 0, index = 11, offset = 4
+0 1 92 16     # Read hit, tag = 0, index = 11, offset = 0
+1 0 92 21     # Write hit, tag = 0, index = 11, offset = 5
+1 0 348 5     # Write hit, tag = 0, index = 43, offset = 5
+0 1 348 21    # Read hit, tag = 0, index = 43, offset = 5

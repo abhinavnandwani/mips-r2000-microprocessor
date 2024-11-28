@@ -1,0 +1,40 @@
+1 0 0 500        # Write miss, tag = 0, index = 0, offset = 0, way = 0
+1 0 8 600        # Write miss, tag = 0, index = 1, offset = 0, way = 0
+1 0 16 700       # Write miss, tag = 0, index = 2, offset = 0, way = 0
+0 1 0 500        # Read hit, tag = 0, index = 0, offset = 0, way = 0
+0 1 8 600        # Read hit, tag = 0, index = 1, offset = 0, way = 0
+1 0 256 800      # Write miss, tag = 1, index = 0, offset = 0, way = 0
+1 0 264 900      # Write miss, tag = 1, index = 1, offset = 0, way = 0
+1 0 272 1000     # Write miss, tag = 1, index = 2, offset = 0, way = 0
+0 1 256 800      # Read hit, tag = 1, index = 0, offset = 0, way = 0
+0 1 264 900      # Read hit, tag = 1, index = 1, offset = 0, way = 0
+1 0 1024 1100    # Write miss, evict, tag = 4, index = 0, offset = 0, way = 1
+0 1 1024 1100    # Read hit, tag = 4, index = 0, offset = 0, way = 1
+1 0 1032 1200    # Write miss, evict, tag = 4, index = 1, offset = 0, way = 0
+0 1 1032 1200    # Read hit, tag = 4, index = 1, offset = 0, way = 0
+1 0 1280 1300    # Write miss, evict, tag = 5, index = 0, offset = 0, way = 0
+0 1 1280 1300    # Read hit, tag = 5, index = 0, offset = 0, way = 0
+1 0 1288 1400    # Write miss, evict, tag = 5, index = 1, offset = 0, way = 0
+0 1 1288 1400    # Read hit, tag = 5, index = 1, offset = 0, way = 0
+1 0 1536 1500    # Write miss, evict, tag = 6, index = 0, offset = 0, way = 0
+0 1 1536 1500    # Read hit, tag = 6, index = 0, offset = 0, way = 0
+1 0 2048 1600    # Write miss, evict, tag = 8, index = 0, offset = 0, way = 1
+0 1 2048 1600    # Read hit, tag = 8, index = 0, offset = 0, way = 1
+1 0 2056 1700    # Write miss, evict, tag = 8, index = 1, offset = 0, way = 0
+0 1 2056 1700    # Read hit, tag = 8, index = 1, offset = 0, way = 0
+1 0 2304 1800    # Write miss, evict, tag = 9, index = 0, offset = 0, way = 0
+0 1 2304 1800    # Read hit, tag = 9, index = 0, offset = 0, way = 0
+1 0 2312 1900    # Write miss, evict, tag = 9, index = 1, offset = 0, way = 0
+0 1 2312 1900    # Read hit, tag = 9, index = 1, offset = 0, way = 0
+1 0 2560 2000    # Write miss, evict, tag = 10, index = 0, offset = 0, way = 1
+0 1 2560 2000    # Read hit, tag = 10, index = 0, offset = 0, way = 1
+1 0 2568 2100    # Write miss, evict, tag = 10, index = 1, offset = 0, way = 0
+0 1 2568 2100    # Read hit, tag = 10, index = 1, offset = 0, way = 0
+1 0 2816 2200    # Write miss, evict, tag = 11, index = 0, offset = 0, way = 0
+0 1 2816 2200    # Read hit, tag = 11, index = 0, offset = 0, way = 0
+1 0 2824 2300    # Write miss, evict, tag = 11, index = 1, offset = 0, way = 0
+0 1 2824 2300    # Read hit, tag = 11, index = 1, offset = 0, way = 0
+1 0 3072 2400    # Write miss, evict, tag = 12, index = 0, offset = 0, way = 1
+0 1 3072 2400    # Read hit, tag = 12, index = 0, offset = 0, way = 1
+1 0 3080 2500    # Write miss, evict, tag = 12, index = 1, offset = 0, way = 0
+0 1 3080 2500    # Read hit, tag = 12, index = 1, offset = 0, way = 0

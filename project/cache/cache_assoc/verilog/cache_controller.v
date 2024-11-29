@@ -201,7 +201,7 @@ module cache_controller (
                 cache_in = 1'b1;
                 valid_in = 1'b1;
                 offset_out = 3'b110;
-                next_state = Rd ? DONE : CWRITE;
+                next_state = Wr ? CWRITE : DONE;
             end
 
             CWRITE: begin

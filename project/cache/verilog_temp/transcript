@@ -1,6 +1,6 @@
 # vsim -c proc_hier_pbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 02:38:50 on Nov 28,2024
-# ** Warning: License feature 'msimpevsimvlog' will expire in 7 days.
+# Start time: 01:11:18 on Nov 29,2024
+# ** Warning: License feature 'msimpevsimvlog' will expire in 6 days.
 # Loading __work.proc_hier_pbench
 # Loading __work.proc_hier
 # Loading __work.clkrst
@@ -34,18 +34,23 @@
 # Loading __work.brchcnd
 # Loading __work.EXDM_latch
 # Loading __work.memory
+# Loading __work.stallmem
 # Loading __work.DMWB_latch
 # Loading __work.wb
 # Loading __work.cla_4b
 # Loading __work.xor2
 # Loading __work.nand2
 # Loading __work.cla_1b
+# ** Warning: (vsim-PLI-3691) Expected a system task, not a system function '$value$plusargs'.
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_pbench/DUT/p0/memory0/data_mem File: stallmem.v Line: 87
 # log -howmany -rec /* 
-# 7691
+# 6167
 #  run -all
+# Using seed           0
+# rand_pat=12153524 00010010000101010011010100100100
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.ptrace for output
 # ** Note: $finish    : proc_hier_pbench.v(116)
-#    Time: 3305 ns  Iteration: 0  Instance: /proc_hier_pbench
-# End time: 02:38:50 on Nov 28,2024, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
+#    Time: 339905 ns  Iteration: 0  Instance: /proc_hier_pbench
+# End time: 01:11:18 on Nov 29,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1

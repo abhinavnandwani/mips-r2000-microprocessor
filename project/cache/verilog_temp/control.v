@@ -42,7 +42,6 @@ module control (
     ALUSign = 1'b0;
     ALUJmp = 1'b0;
     MemWrt = 1'b0;
-    MemRead = 1'b1;
     err = 1'b0;
     ALUOpr = 6'b000000;  // Ensure it's a 6-bit value
     RegSrc = 2'b10;

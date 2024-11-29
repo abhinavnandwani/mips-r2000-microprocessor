@@ -16,7 +16,7 @@ module cache_controller (
     input wire [4:0] tag_out,
     output reg [2:0] offset_out,
     output reg [15:0] mem_addr,
-    output wire CacheHit,
+    output reg CacheHit,
     output reg Stall,
     output reg valid_in,
     output reg comp,
@@ -63,7 +63,7 @@ module cache_controller (
 
     // CacheHit indicates whether the requested data is present in the cache 
     // (comp and valid are true) and has been successfully accessed (hit is true).
-    assign CacheHit = comp & hit & valid;
+    //assign 
 
     // Next state and output logic
     always @(*) begin
@@ -73,6 +73,7 @@ module cache_controller (
         write_mem = 1'b0;
         read_mem = 1'b0;
         valid_in = 1'b0;
+        CacheHit = 1'b0;
         cache_in = 1'b0;
         mem_in = 1'b0;
         mem_addr = 16'h0000;
@@ -90,6 +91,7 @@ module cache_controller (
                 Stall = 1'b0;
                 comp = Rd | Wr;
                 write = Wr & CacheHit;
+                CacheHit = comp & hit & valid;
                 valid_in = write;
                 cache_in = ~write;
                 done = comp & CacheHit;
@@ -201,7 +203,7 @@ module cache_controller (
                 cache_in = 1'b1;
                 valid_in = 1'b1;
                 offset_out = 3'b110;
-                next_state = Rd ? DONE : CWRITE;
+                next_state = (Wr) ? CWRITE : DONE ;
             end
 
             CWRITE: begin
@@ -211,13 +213,15 @@ module cache_controller (
                 comp = 1'b1;
                 write = 1'b1;
                 valid_in = 1'b1;
+                done = 1'b1;
                 offset_out = offset_in;
-                next_state = DONE;
+                next_state = IDLE;
             end
 
             DONE: begin
                 // Signals the completion of a read or write operation and returns the controller to the IDLE state.
                 done = 1'b1;
+                comp = 1'b1;
                 next_state = IDLE;
             end
 

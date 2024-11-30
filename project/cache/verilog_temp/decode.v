@@ -40,6 +40,8 @@ module decode (
     // Outputs
     output wire [3:0] Oper,
     output wire [15:0] RSData,
+    output wire [2:0] Rs,
+    output wire [2:0] Rt,
     output wire [15:0] RTData,
     output wire [15:0] Imm5,
     output wire [15:0] Imm8,
@@ -94,6 +96,9 @@ module decode (
 
     regFile_bypass regFile0 (.read1Data(RSData), .read2Data(RTData), .err(reg_err), .clk(clk), .rst(rst), .read1RegSel(instr[10:8]), .read2RegSel(instr[7:5]), .writeRegSel(DMWB_RD), .writeData(WB), .writeEn(DMWB_RegWrt));
 
+    assign Rs = instr[10:8];
+    assign Rt = instr[7:5];
+    
     // Sign Extension
     assign Imm5 = (ZeroExt) ? {11'h000, instr[4:0]} : {{11{instr[4]}}, instr[4:0]};
     assign sImm8 = {{8{instr[7]}}, instr[7:0]};

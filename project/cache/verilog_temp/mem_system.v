@@ -61,7 +61,7 @@ module mem_system(/*AUTOARG*/
                           .data_in              (cache_in ? data_out_mem : DataIn),
                           .comp                 (comp),
                           .write                (write_0), // write_0
-                          .valid_in             (valid_in));
+                          .valid_in             (valid_out_0));
    cache #(2 + memtype) c1(// Outputs
                           .tag_out              (tag_out_1),
                           .data_out             (data_out_cache_1),
@@ -80,7 +80,7 @@ module mem_system(/*AUTOARG*/
                           .data_in              (cache_in ? data_out_mem : DataIn),
                           .comp                 (comp),
                           .write                (write_1), // write_1
-                          .valid_in             (valid_in));
+                          .valid_in             (valid_out_1));
 
    four_bank_mem mem(// Outputs
                      .data_out          (data_out_mem),
@@ -129,7 +129,7 @@ module mem_system(/*AUTOARG*/
 
    dff victimway_ff (
       .q(victimway),                      // Output: current state of victimway
-      .d((Done) ?  ~victimway : victimway), 
+      .d(Done ?  ~victimway : victimway), 
       .clk(clk),                          // Clock signal
       .rst(rst)                           // Reset signal
    );
@@ -140,7 +140,7 @@ module mem_system(/*AUTOARG*/
    // Victim Selection Logic
    assign evict = valid_0 ? (valid_1 ? victimway : 1'b1) : 1'b0;
 
-   assign cache_sel = CacheHit_0 ? 1'b0 : (CacheHit_1 ? 1'b1 : evict);
+   assign cache_sel = (Rd | Wr) ? (CacheHit_0 ? 1'b0 : (CacheHit_1 ? 1'b1 : evict)) : 1'b0;
 
    assign hit = hit_0 | hit_1;
    assign dirty = cache_sel ? dirty_1 : dirty_0;
@@ -153,14 +153,6 @@ module mem_system(/*AUTOARG*/
    assign DataOut = cache_sel ? data_out_cache_1 : data_out_cache_0;
 
    assign err = err_mem | err_cache_0 | err_cache_1;
-
-   always @(posedge clk) begin
-      if (memtype) begin
-         $display(" Comp : %b | DataOut : %h | State : %b | CacheHit_1 : %h |  CacheHit_0: %b | Done: %b | write_0: %b | write_1: %b | CacheSel: %b",
-                  comp,DataOut,ctrl.state,CacheHit_1, CacheHit_0, Done, write_0, write_1, cache_sel);
-      end
-   end
-
 
    
 endmodule // mem_system

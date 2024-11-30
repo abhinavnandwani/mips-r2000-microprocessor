@@ -35,7 +35,7 @@ module proc (/*AUTOARG*/
     wire ALUSign, Cin, ALUJmp, MemWrt, MemRead;
     wire [1:0] RegSrc, BSrc, RegDst;
     wire [3:0] Oper, BranchTaken;
-    wire [2:0] RD;
+    wire [2:0] RD,ID_Rt,ID_Rs,IDEX_Rs,IDEX_Rt;
 
     // Flopped signals between pipeline stages
     wire [15:0] ID_PC, ID_instr;
@@ -49,7 +49,7 @@ module proc (/*AUTOARG*/
     wire [2:0] RD_1_nflopped, RD_2_nflopped;
 
     wire IDEX_HaltSig, IDEX_MemRead, IDEX_ImmSrc, IDEX_HaltSig_comb, IDEX_ALUSign, IDEX_ALUJmp, IDEX_MemWrt, IDEX_err, IDEX_RegWrt;
-    wire [1:0] IDEX_RegSrc, IDEX_BSrc;
+    wire [1:0] IDEX_RegSrc, IDEX_BSrc,B_Sel,A_Sel;
     wire [3:0] IDEX_BranchTaken, IDEX_Oper;
     wire [15:0] IDEX_RSData, IDEX_RTData, IDEX_Imm5, IDEX_Imm8, IDEX_sImm8, IDEX_sImm11, IDEX_PC_Next;
     wire IDEX_invA, IDEX_invB, IDEX_Cin, IDEX_NOP, IDEX_RegWrt_2_nflopped, IDEX_RegWrt_1_nflopped;
@@ -60,13 +60,14 @@ module proc (/*AUTOARG*/
     wire [15:0] EXDM_RTData;
     wire [15:0] EXDM_PC;
     wire EXDM_MemWrt, EXDM_MemRead, EXDM_HaltSig;
-    wire [15:0] DMWB_ALU, DMWB_PC, DMWB_readData;
+    wire [15:0] DMWB_ALU, DMWB_PC, DMWB_readData,DMWB_RD_Data,EXDM_RD_Data;
     wire IF_err, ID_err, IDF_err, EX_err, ID_reg_err, DM_err, FDM_err, FWB_err, DMWB_err, WB_err ;
     wire Stall_DM, Done_DM,EX_RegWrt,ID_RegWrt,EXDM_RegWrt,DMWB_RegWrt;
     wire [2:0] EXDM_RD, DMWB_RD;
     wire fetch_stall;
     wire [1:0] EXDM_RegSrc, DMWB_RegSrc;
     wire CacheHit;
+    wire takeRs_EXDM, takeRt_EXDM,takeRs_DMWB,takeRt_DMWB;
     /* Fetch Stage */
     fetch fetch0 (
         .clk(clk), 
@@ -104,7 +105,20 @@ module proc (/*AUTOARG*/
  
       dff dmfanum(.q(Done_DM_ff), .d(Done_DM), .clk(clk), .rst(rst));
 
-    stall_mech stall(.NOP_reg(NOP_mech), .RSData(ID_instr[10:8]),.RTData(ID_instr[7:5]),.RD_ff(IDEX_RD),.RD_2ff(EXDM_RD), .RegWrt_2ff(EXDM_RegWrt), .RegWrt_ff(IDEX_RegWrt), .Done_DM(Done_DM), .fetch_stall(fetch_stall));
+    stall_mech stall(
+        .NOP_reg(NOP_mech), 
+        .RSData(ID_instr[10:8]),
+        .RTData(ID_instr[7:5]),
+        .RD_ff(IDEX_RD),
+        .RD_2ff(EXDM_RD), 
+        .RegWrt_2ff(EXDM_RegWrt), 
+        .RegWrt_ff(IDEX_RegWrt), 
+        .Done_DM(Done_DM), 
+        .takeRs_EXDM(takeRs_EXDM), 
+        .takeRt_EXDM(takeRt_EXDM), 
+        .takeRs_DMWB(takeRs_DMWB),
+        .takeRt_DMWB(takeRt_DMWB)
+        );
 
     /* Decode Stage */
     decode decode0 (
@@ -143,6 +157,8 @@ module proc (/*AUTOARG*/
         .Imm8(Imm8), 
         .sImm8(sImm8), 
         .sImm11(sImm11), 
+        .Rs(ID_Rs),
+        .Rt(ID_Rt),
         .PC_Next(PC_d),
         .RD_2_nflopped(RD_2_nflopped),
         .RD_1_nflopped(RD_1_nflopped),
@@ -168,7 +184,8 @@ module proc (/*AUTOARG*/
         .ID_MemWrt(MemWrt),
         .ID_err(ID_err),
         .ID_RegWrt(ID_RegWrt),
-
+        .ID_Rs(ID_Rs),
+        .ID_Rt(ID_Rt),
         // Register and Branch Controls
         .ID_RegSrc(RegSrc),
         .ID_BSrc(BSrc),
@@ -218,6 +235,8 @@ module proc (/*AUTOARG*/
         .IDEX_PC_Next(IDEX_PC_Next),
         .IDEX_invA(IDEX_invA),
         .IDEX_invB(IDEX_invB),
+        .IDEX_Rs(IDEX_Rs),
+        .IDEX_Rt(IDEX_Rt),
         .IDEX_Cin(IDEX_Cin),
         .IDEX_NOP(IDEX_NOP)
     );
@@ -246,8 +265,35 @@ module proc (/*AUTOARG*/
         .BranchTaken(IDEX_BranchTaken), 
         .ALU_Out(EX_ALU),
         .PC_Next(PC_Jump),
-        .BrchCnd(BrchCnd)
+        .BrchCnd(BrchCnd),
+        .EXDM_RD_Data(EXDM_RD_Data),
+        .DMWB_RD_Data(DMWB_RD_Data),
+        .A_Sel(A_Sel),
+        .B_Sel(B_Sel)
     );
+
+    forwarding_unit fu (
+        .RD_EXDM (EXDM_RD),
+        .RD_DMWB (DMWB_RD),
+        .Rs(IDEX_Rs),
+        .Rt(IDEX_Rt),
+        .B_Src(IDEX_BSrc),
+        .EXDM_ALU(EXDM_ALU),
+        .EXDM_PC(EXDM_PC),
+        .DMWB_readData(DMWB_readData),
+        .EXDM_RegSrc(EXDM_RegSrc),
+        .DMWB_RegSrc(DMWB_RegSrc),
+        .EXDM_RD_Data(EXDM_RD_Data),
+        .DMWB_RD_Data(DMWB_RD_Data),
+        .A_Sel(A_Sel),
+        .B_Sel(B_Sel),
+        .takeRs_EXDM(takeRs_EXDM),
+        .takeRt_EXDM(takeRt_EXDM),
+        .takeRs_DMWB(takeRs_DMWB),
+        .takeRt_DMWB(takeRt_DMWB),
+        .EXDM_RegWrt(EXDM_RegWrt),
+        .DMWB_RegWrt(DMWB_RegWrt)
+        );
 
     /* EXDM latch */
     EXDM_latch EXDM (

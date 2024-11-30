@@ -18,6 +18,10 @@ module execute (
     input wire [15:0] sImm11,
     input wire [1:0] BSrc,
     input wire [3:0] Oper,
+    input wire [1:0] A_Sel,
+    input wire [1:0] B_Sel,
+    input wire [15:0] EXDM_RD_Data,
+    input wire [15:0] DMWB_RD_Data,
     input wire [3:0] BranchTaken,
     input wire ImmSrc, 
     input wire ALUJmp, 
@@ -31,7 +35,7 @@ module execute (
     output wire BrchCnd
 );
 
-   wire [15:0] ALUIn;
+   wire [15:0] ALUIn,ALU_RSData,ALU_RTData;
    wire [15:0] PC_I, PC_Branch, Branch;
    wire SF, CF, OF, ZF;
 
@@ -44,10 +48,16 @@ module execute (
    assign PC_Next = (ALUJmp) ? ALU_Out : PC_Branch;
 
    // Register Mux
-   assign ALUIn = (BSrc == 2'b00) ? RTData : (BSrc == 2'b01) ? Imm5 : (BSrc == 2'b10) ? Imm8 : 16'h0000;
+   assign ALU_RTData = (B_Sel == 2'b01) ? EXDM_RD_Data : 
+                       (B_Sel == 2'b10) ? DMWB_RD_Data : RTData;
+
+   assign ALUIn = (BSrc == 2'b00) ? ALU_RTData : (BSrc == 2'b01) ? Imm5 : (BSrc == 2'b10) ? Imm8 : 16'h0000;
+
+   assign ALU_RSData = (A_Sel == 2'b01) ? EXDM_RD_Data : 
+                       (A_Sel == 2'b10) ? DMWB_RD_Data : RSData;
    
    // Register Adder 
-   alu alu1(.InA(RSData), .InB(ALUIn), .Cin(cin), .Oper(Oper), .invA(invA), .invB(invB), .sign(ALUSign), .Out(ALU_Out), .ZF(ZF), .SF(SF), .OF(OF), .CF(CF));
+   alu alu1(.InA(ALU_RSData), .InB(ALUIn), .Cin(cin), .Oper(Oper), .invA(invA), .invB(invB), .sign(ALUSign), .Out(ALU_Out), .ZF(ZF), .SF(SF), .OF(OF), .CF(CF));
 
    //BrchCnd 
    brchcnd branch_ctrl(.SF(SF), .ZF(ZF), .brch_instr(NOP ? 4'b0000:BranchTaken), .BrchCnd(BrchCnd));

@@ -1,0 +1,6 @@
+# Sequential Block Access
+1 0 4     50  # Miss, write to address 4 (index 1)
+1 0 8     60  # Miss, write to address 8 (index 2)
+1 0 2056  60  # Miss, write to address 2056 (index 2)
+0 1 4      0  # Hit, read from address 4
+0 1 8      0  # Miss, read from address 8, evicted by 2056

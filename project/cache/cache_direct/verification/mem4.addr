@@ -1,0 +1,8 @@
+# High Conflict Test
+1 0 0   100  # Miss, write to address 0 (index 0)
+1 0 512 200 # Miss, write to address 512 (index 0, replaces block)
+1 0 2048 300 # Miss, write to address 2048 (index 0, replaces block)
+0 1 0 100  # Miss, read from address 0
+0 1 512 200  # Hit, read from address 512
+0 1 2048 300  # Miss, read from address 2048, evicted
+

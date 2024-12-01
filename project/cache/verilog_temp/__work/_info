@@ -9,7 +9,7 @@ z2
 cModel Technology
 Z0 d/home/nandwani/private/cs552/mips-r2000-microprocessor/project/cache/verilog_temp
 valu
-Z1 !s110 1732908008
+Z1 !s110 1732998530
 !i10b 1
 !s100 ^74Gi==[9V9RRIX;SgB;`2
 I2]9d8iiWXIA5nhYfOX_A[3
@@ -23,7 +23,7 @@ Z4 OP;L;10.7c;67
 r1
 !s85 0
 31
-Z5 !s108 1732908008.000000
+Z5 !s108 1732998530.000000
 !s107 xor3.v|xor2.v|wb.v|stallmem.v|stall_mech.v|shifter.v|register.v|regFile.v|regFile_hier.v|regFile_bypass.v|proc.v|proc_hier.v|proc_hier_pbench.v|not1.v|nor3.v|nor2.v|nand3.v|nand2.v|memv.v|mem_system.v|mem_system_ref.v|mem_system_randbench.v|mem_system_perfbench.v|mem_system_hier.v|memory.v|memc.v|IFID_latch.v|IDEX_latch.v|four_bank_mem.v|forwarding_unit.v|final_memory.v|fetch.v|execute.v|EXDM_latch.v|DMWB_latch.v|dff.v|decode.v|control.v|clkrst.v|cla_4b.v|cla_1b.v|cla_16b.v|cache.v|cache_controller.v|brchcnd.v|bit_shift.v|bit_8shift.v|bit_4shift.v|bit_2shift.v|alu.v|alu_control.v|
 Z6 !s90 +define+RANDSEED=3|-work|__work|alu_control.v|alu.v|bit_2shift.v|bit_4shift.v|bit_8shift.v|bit_shift.v|brchcnd.v|cache_controller.v|cache.v|cla_16b.v|cla_1b.v|cla_4b.v|clkrst.v|control.v|decode.v|dff.v|DMWB_latch.v|EXDM_latch.v|execute.v|fetch.v|final_memory.v|forwarding_unit.v|four_bank_mem.v|IDEX_latch.v|IFID_latch.v|memc.v|memory.v|mem_system_hier.v|mem_system_perfbench.v|mem_system_randbench.v|mem_system_ref.v|mem_system.v|memv.v|nand2.v|nand3.v|nor2.v|nor3.v|not1.v|proc_hier_pbench.v|proc_hier.v|proc.v|regFile_bypass.v|regFile_hier.v|regFile.v|register.v|shifter.v|stall_mech.v|stallmem.v|wb.v|xor2.v|xor3.v|
 !i113 1
@@ -475,11 +475,11 @@ R9
 vforwarding_unit
 R1
 !i10b 1
-!s100 CC0Z`^CmnYHTgWR4Y2N5;0
-IT>RYS7lh1l8idPF28_lT82
+!s100 2L6g8WbU=[>04PaI<V3;81
+IO9D?9ZGNHRJz_HQ<?zHcm2
 R2
 R0
-w1732907601
+w1732997998
 8forwarding_unit.v
 Fforwarding_unit.v
 L0 1
@@ -1030,11 +1030,11 @@ R9
 vstall_mech
 R1
 !i10b 1
-!s100 ?hIdR;mPi5GM3mf`SJQNY2
-I4J5idz2gz:lJ5[S?g0JGA2
+!s100 gO_bYNFzRgfe=fRXQ_zgA3
+I?>zXV478cDNAmaN=iQ[lf2
 R2
 R0
-w1732908006
+w1732998527
 8stall_mech.v
 Fstall_mech.v
 L0 1

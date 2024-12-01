@@ -14,19 +14,21 @@ module stall_mech(
     input wire Done_DM
 );
 
-wire x,y,z,a;
+    wire x, y, z, a;
 
-assign x = (RD_ff ==  RSData ) ? (RegWrt_ff&~takeRs_EXDM):1'b0;
-assign y = (RD_2ff ==  RSData ) ? (RegWrt_2ff&~takeRs_DMWB):1'b0;
+    // Hazard detection logic
+    assign x = (RD_ff == RSData) ? (RegWrt_ff & ~takeRs_EXDM) : 1'b0;
+    assign y = (RD_2ff == RSData) ? (RegWrt_2ff & ~takeRs_DMWB) : 1'b0;
+    assign z = (RD_ff == RTData) ? (RegWrt_ff & ~takeRt_EXDM) : 1'b0;
+    assign a = (RD_2ff == RTData) ? (RegWrt_2ff & ~takeRt_DMWB) : 1'b0;
 
-assign z = (RD_ff ==  RTData ) ? (RegWrt_ff&~takeRt_EXDM):1'b0;
-assign a = (RD_2ff ==  RTData ) ? (RegWrt_2ff&~takeRt_DMWB):1'b0;
+    // Stall logic
+    assign NOP_reg = ~Done_DM | x | y | z | a;
 
-
-assign NOP_reg = ~Done_DM | x | y | z | a;
-    
-
-
-
+    // Debugging outputs in a single $display
+    always @(*) begin
+        $display("NOP_reg: %b, Done_DM: %b, x: %b, y: %b, z: %b, a: %b, takeRs_EXDM: %b, takeRt_EXDM: %b, takeRs_DMWB: %b, takeRt_DMWB: %b",
+                 NOP_reg, Done_DM, x, y, z, a, takeRs_EXDM, takeRt_EXDM, takeRs_DMWB, takeRt_DMWB);
+    end
 
 endmodule

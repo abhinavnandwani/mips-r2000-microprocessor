@@ -1,0 +1,5 @@
+1 0 3072   400  # Write 400 to address 3072 (maps to set 0, evicts way 1, victimway = 0 -> 1)
+1 0 4096   500  # Write 500 to address 4096 (maps to set 0, evicts way 0, victimway = 1 -> 0)
+0 1 2048   0    # Read from address 2048 (miss, evicted earlier)
+0 1 3072   400  # Read from address 3072 (hit, in way 1)
+0 1 4096   500  # Read from address 4096 (hit, in way 0)

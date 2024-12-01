@@ -1,0 +1,9 @@
+1 0 0      100  # Write 100 to address 0 (maps to set 0, way 0, victimway = 0)
+1 0 1024   200  # Write 200 to address 1024 (maps to set 0, way 1, victimway = 0 -> 1)
+
+1 0 2048   300  # Write 300 to address 2048 (maps to set 0, evicts way 0, victimway = 1 -> 0)
+0 1 0      0    # Read from address 0 (miss, evicted earlier)
+0 1 1024   200  # Read from address 1024 (hit, in way 1)
+0 1 2048   300  # Read from address 2048 (hit, in way 0)
+
+

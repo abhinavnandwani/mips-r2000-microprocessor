@@ -138,7 +138,7 @@ module mem_system(/*AUTOARG*/
    assign CacheHit_1 = hit_1 & valid_1;
 
    // Victim Selection Logic
-   assign evict = valid_0 ? (valid_1 ? victimway : 1'b1) : 1'b0;
+   assign evict = valid_0 ? (valid_1 ? ~victimway : 1'b1) : 1'b0;
 
    assign cache_sel = (Rd | Wr) ? (CacheHit_0 ? 1'b0 : (CacheHit_1 ? 1'b1 : evict)) : 1'b0;
 

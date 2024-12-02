@@ -23,7 +23,7 @@ module stall_mech(
     assign a = (RD_2ff == RTData) ? (RegWrt_2ff & ~takeRt_DMWB) : 1'b0;
 
     // Stall logic
-    assign NOP_reg = ~Done_DM | x | y | z | a;
+    assign NOP_reg = ~Done_DM | 1'b0 | y | 1'b0 | a;
 
     // Debugging outputs in a single $display
     always @(*) begin

@@ -273,6 +273,7 @@ module proc (/*AUTOARG*/
     );
 
     forwarding_unit fu (
+        //.clk(clk),
         .RD_EXDM (EXDM_RD),
         .RD_DMWB (DMWB_RD),
         .Rs(IDEX_Rs),
@@ -280,6 +281,8 @@ module proc (/*AUTOARG*/
         .B_Src(IDEX_BSrc),
         .EXDM_ALU(EXDM_ALU),
         .EXDM_PC(EXDM_PC),
+        .DMWB_PC(DMWB_PC),
+        .DMWB_ALU(DMWB_ALU),
         .DMWB_readData(DMWB_readData),
         .EXDM_RegSrc(EXDM_RegSrc),
         .DMWB_RegSrc(DMWB_RegSrc),

@@ -23,12 +23,12 @@ module DMWB_latch(
     // Flop PC from D (to E to M) to WB
     register dff_d_PC2(.r(DMWB_PC), .w(MEM_PC), .clk(clk), .rst(rst), .we(1'b1));
 
-    register dff_e_ALU2(.r(DMWB_ALU), .w(MEM_ALU), .clk(clk), .rst(rst), .we(1'b1));
+    register dff_e_ALU2(.r(DMWB_ALU), .w(Done_DM ? MEM_ALU :DMWB_ALU ), .clk(clk), .rst(rst), .we(1'b1));
     // DFF for memory stage read data
     register dff_memory(.r(DMWB_readData), .w(MEM_readData), .clk(clk), .rst(rst), .we(1'b1));
     dff dff_FWB_err (.q(FWB_err), .d(FMEM_err), .clk(clk), .rst(rst)); 
     dff dff_DMWB_err (.q(DMWB_err), .d(MMEM_err), .clk(clk), .rst(rst)); 
     dff dff_DMWB_RegWrt (.q(DMWB_RegWrt), .d(Done_DM ? MEM_RegWrt : 1'b0), .clk(clk), .rst(rst)); 
     dff dff_DMWB_RD [2:0] (.q(DMWB_RD), .d(Done_DM ? MEM_RD : 3'b000), .clk({3{clk}}), .rst({3{rst}})); 
-    dff dff_DMWVB_RegSrc[1:0] (.q(DMWB_RegSrc), .d(Done_DM ? MEM_RegSrc : 2'b00), .clk({2{clk}}), .rst({2{rst}})); 
+    dff dff_DMWVB_RegSrc[1:0] (.q(DMWB_RegSrc), .d(Done_DM ? MEM_RegSrc : DMWB_RegSrc), .clk({2{clk}}), .rst({2{rst}})); 
 endmodule

@@ -36,8 +36,5 @@ module forwarding(
                    takeRt_DMWB ? 2'b10 :
                    2'b00;
     
-    always@(*)
-        $display("EXDM_RTData : %h EXDM_RD_Data : %h DMWB_RD_Data : %h A_Sel : %h B_Sel : %h",EXDM_RTData,EXDM_RD_Data,DMWB_RD_Data,A_Sel,B_Sel);
-
 
 endmodule

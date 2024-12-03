@@ -134,7 +134,7 @@ module control (
         end
 
         5'b111xx: begin		// SEQ invA = 1;
-            RegSrc = 2'b11;
+            RegSrc = 2'b10;
             RegDst = 2'b10;
             RegWrt = 1'b1;
             BSrc = 2'b00;

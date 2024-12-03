@@ -127,6 +127,9 @@ module proc (/*AUTOARG*/
         assign #100 {a,b,c,d} = {Done_DM ? takeRs_EXDM : a,Done_DM ? takeRs_DMWB:b,Done_DM ? takeRt_EXDM:c,Done_DM ? takeRt_DMWB:d};
         // always@(posedge clk)
         //     $display("Done_DM : %b takeRs_DMWB : %h b : %h takeRt_DMWB : %h d : %h",Done_DM,takeRs_DMWB,b,takeRt_DMWB,d);
+    // always@(posedge clk)
+    //     if (PC == 16'h026e || PC == 16'h0270) 
+    //     $display("PC %h ID_Rs : %h EXDM_RegSrc : %h EXDM_ALU : %h DMWB_RegSrc : %h DMWB_ALU : %h A_Sel %h", PC,ID_Rs,EXDM_RegSrc,EXDM_ALU,DMWB_RegSrc,DMWB_ALU,A_Sel);
 
     /* Decode Stage */
     decode decode0 (

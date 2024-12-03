@@ -1,4 +1,17 @@
-INUM:        0 PC: 0x0000 REG: 0 VALUE: 0xff80
-INUM:        1 PC: 0x0002 REG: 1 VALUE: 0x002d
-INUM:        2 PC: 0x0004 ADDR: 0xff70 VALUE: 0x002d
-INUM:        3 PC: 0x0006
+INUM:        0 PC: 0x0000
+INUM:        1 PC: 0x0016
+INUM:        2 PC: 0x0022
+INUM:        3 PC: 0x003e
+INUM:        4 PC: 0x005e
+INUM:        5 PC: 0x007a
+INUM:        6 PC: 0x0084
+INUM:        7 PC: 0x0094
+INUM:        8 PC: 0x00a2
+INUM:        9 PC: 0x00c0
+INUM:       10 PC: 0x00d0
+INUM:       11 PC: 0x00e6
+INUM:       12 PC: 0x00ee
+INUM:       13 PC: 0x0106
+INUM:       14 PC: 0x0114
+INUM:       15 PC: 0x012a
+INUM:       16 PC: 0x0130

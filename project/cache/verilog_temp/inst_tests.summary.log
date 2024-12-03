@@ -104,9 +104,9 @@
 /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/jr_0.asm SUCCESS CPI:8.3 CYCLES:25 ICOUNT:3 IHITRATE: 0 DHITRATE: 0
 /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/lbi_0.asm SUCCESS CPI:5.2 CYCLES:26 ICOUNT:5 IHITRATE: 0 DHITRATE: 0
 /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/lbi_1.asm SUCCESS CPI:4.0 CYCLES:36 ICOUNT:9 IHITRATE: 0 DHITRATE: 0
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/ld_0.asm FAILED
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/ld_1.asm FAILED
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/ld_2.asm FAILED
+/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/ld_0.asm SUCCESS CPI:5.8 CYCLES:29 ICOUNT:5 IHITRATE: 0 DHITRATE: 0
+/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/ld_1.asm SUCCESS CPI:5.8 CYCLES:29 ICOUNT:5 IHITRATE: 0 DHITRATE: 0
+/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/ld_2.asm SUCCESS CPI:5.8 CYCLES:29 ICOUNT:5 IHITRATE: 0 DHITRATE: 0
 /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/ld_3.asm SUCCESS CPI:5.6 CYCLES:56 ICOUNT:10 IHITRATE: 0 DHITRATE: 0
 /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/rol_0.asm SUCCESS CPI:3.8 CYCLES:38 ICOUNT:10 IHITRATE: 0 DHITRATE: 0
 /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/rol_1.asm SUCCESS CPI:3.1 CYCLES:104 ICOUNT:34 IHITRATE: 0 DHITRATE: 0
@@ -167,19 +167,19 @@
 /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/srli_1.asm SUCCESS CPI:8.0 CYCLES:16 ICOUNT:2 IHITRATE: 0 DHITRATE: 0
 /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/srli_2.asm SUCCESS CPI:8.0 CYCLES:16 ICOUNT:2 IHITRATE: 0 DHITRATE: 0
 /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/st_0.asm SUCCESS CPI:5.8 CYCLES:29 ICOUNT:5 IHITRATE: 0 DHITRATE: 0
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/st_1.asm FAILED
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/st_10.asm FAILED
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/st_2.asm FAILED
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/st_3.asm FAILED
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/st_4.asm FAILED
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/st_5.asm FAILED
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/st_6.asm FAILED
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/st_7.asm FAILED
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/st_8.asm FAILED
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/st_9.asm FAILED
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/stu_0.asm FAILED
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/stu_1.asm FAILED
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/stu_2.asm FAILED
+/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/st_1.asm SUCCESS CPI:5.8 CYCLES:29 ICOUNT:5 IHITRATE: 100.0 DHITRATE: 100.0
+/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/st_10.asm SUCCESS CPI:6.2 CYCLES:25 ICOUNT:4 IHITRATE: 100.0 DHITRATE: 100.0
+/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/st_2.asm SUCCESS CPI:5.8 CYCLES:29 ICOUNT:5 IHITRATE: 100.0 DHITRATE: 100.0
+/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/st_3.asm SUCCESS CPI:5.0 CYCLES:30 ICOUNT:6 IHITRATE: 100.0 DHITRATE: 100.0
+/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/st_4.asm SUCCESS CPI:6.2 CYCLES:25 ICOUNT:4 IHITRATE: 0 DHITRATE: 0
+/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/st_5.asm SUCCESS CPI:6.2 CYCLES:25 ICOUNT:4 IHITRATE: 100.0 DHITRATE: 100.0
+/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/st_6.asm SUCCESS CPI:6.2 CYCLES:25 ICOUNT:4 IHITRATE: 100.0 DHITRATE: 100.0
+/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/st_7.asm SUCCESS CPI:6.2 CYCLES:25 ICOUNT:4 IHITRATE: 0 DHITRATE: 0
+/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/st_8.asm SUCCESS CPI:6.2 CYCLES:25 ICOUNT:4 IHITRATE: 100.0 DHITRATE: 100.0
+/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/st_9.asm SUCCESS CPI:6.2 CYCLES:25 ICOUNT:4 IHITRATE: 100.0 DHITRATE: 100.0
+/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/stu_0.asm SUCCESS CPI:4.5 CYCLES:27 ICOUNT:6 IHITRATE: 100.0 DHITRATE: 100.0
+/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/stu_1.asm SUCCESS CPI:4.5 CYCLES:27 ICOUNT:6 IHITRATE: 100.0 DHITRATE: 100.0
+/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/stu_2.asm SUCCESS CPI:4.5 CYCLES:27 ICOUNT:6 IHITRATE: 0 DHITRATE: 0
 /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/sub_0.asm SUCCESS CPI:5.0 CYCLES:25 ICOUNT:5 IHITRATE: 0 DHITRATE: 0
 /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/sub_1.asm SUCCESS CPI:5.2 CYCLES:26 ICOUNT:5 IHITRATE: 0 DHITRATE: 0
 /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/inst_tests/sub_2.asm SUCCESS CPI:5.6 CYCLES:17 ICOUNT:3 IHITRATE: 0 DHITRATE: 0

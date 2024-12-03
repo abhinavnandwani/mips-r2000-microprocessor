@@ -37,9 +37,9 @@ module stall_mech(
     assign NOP_reg = ~Done_DM | x | y | z | a;
 
     // Debugging outputs in a single $display
-    always @(*) begin
-        $display("NOP_reg: %b, Done_DM: %b, x: %b, y: %b, z: %b, a: %b, takeRs_EXDM: %b, takeRt_EXDM: %b, takeRs_DMWB: %b, takeRt_DMWB: %b",
-                 NOP_reg, Done_DM, x, y, z, a, takeRs_EXDM, takeRt_EXDM, takeRs_DMWB, takeRt_DMWB);
-    end
+    // always @(*) begin
+    //     $display("NOP_reg: %b, Done_DM: %b, x: %b, y: %b, z: %b, a: %b, takeRs_EXDM: %b, takeRt_EXDM: %b, takeRs_DMWB: %b, takeRt_DMWB: %b",
+    //              NOP_reg, Done_DM, x, y, z, a, takeRs_EXDM, takeRt_EXDM, takeRs_DMWB, takeRt_DMWB);
+    // end
 
 endmodule

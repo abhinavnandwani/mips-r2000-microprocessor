@@ -60,7 +60,7 @@ module proc (/*AUTOARG*/
     wire [15:0] EXDM_RTData;
     wire [15:0] EXDM_PC;
     wire EXDM_MemWrt, EXDM_MemRead, EXDM_HaltSig;
-    wire [15:0] DMWB_ALU, DMWB_PC, DMWB_readData,DMWB_RD_Data,EXDM_RD_Data;
+    wire [15:0] DMWB_ALU, DMWB_PC, DMWB_readData,DMWB_RD_Data,EXDM_RD_Data,ALU_RTData;
     wire IF_err, ID_err, IDF_err, EX_err, ID_reg_err, DM_err, FDM_err, FWB_err, DMWB_err, WB_err ;
     wire Stall_DM, Done_DM,EX_RegWrt,ID_RegWrt,EXDM_RegWrt,DMWB_RegWrt;
     wire [2:0] EXDM_RD, DMWB_RD;
@@ -124,7 +124,9 @@ module proc (/*AUTOARG*/
         .EXDM_RegWrt(EXDM_RegWrt)
         );
 
-        assign #100 {a,b,c,d} = {takeRs_EXDM,takeRs_DMWB,takeRt_EXDM,takeRt_DMWB};
+        assign #100 {a,b,c,d} = {Done_DM ? takeRs_EXDM : a,Done_DM ? takeRs_DMWB:b,Done_DM ? takeRt_EXDM:c,Done_DM ? takeRt_DMWB:d};
+        // always@(posedge clk)
+        //     $display("Done_DM : %b takeRs_DMWB : %h b : %h takeRt_DMWB : %h d : %h",Done_DM,takeRs_DMWB,b,takeRt_DMWB,d);
 
     /* Decode Stage */
     decode decode0 (
@@ -270,6 +272,7 @@ module proc (/*AUTOARG*/
         .cin(IDEX_Cin), 
         .BranchTaken(IDEX_BranchTaken), 
         .ALU_Out(EX_ALU),
+        .ALU_RTData(ALU_RTData),
         .PC_Next(PC_Jump),
         .BrchCnd(BrchCnd),
         .EXDM_RD_Data(EXDM_RD_Data),
@@ -313,6 +316,7 @@ module proc (/*AUTOARG*/
         .EXDM_RegSrc(EXDM_RegSrc),
         .DMWB_RegSrc(DMWB_RegSrc),
         .EXDM_RD_Data(EXDM_RD_Data),
+        .EXDM_RTData(EXDM_RTData),
         .DMWB_RD_Data(DMWB_RD_Data),
         .A_Sel(A_Sel),
         .B_Sel(B_Sel),
@@ -326,7 +330,7 @@ module proc (/*AUTOARG*/
     EXDM_latch EXDM (
         .clk(clk),
         .rst(rst),
-        .EX_RTData(IDEX_RTData),
+        .EX_RTData(ALU_RTData),
         .EX_PC(IDEX_PC_Next),
         .EX_ALU(EX_ALU),
         .EX_MemWrt(IDEX_MemWrt),

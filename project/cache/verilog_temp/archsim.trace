@@ -1,4 +1,4 @@
-INUM:        0 PC: 0x0000 REG: 1 VALUE: 0x0000
-INUM:        1 PC: 0x0002
-INUM:        2 PC: 0x000a REG: 1 VALUE: 0x000a
-INUM:        3 PC: 0x000c
+INUM:        0 PC: 0x0000 REG: 0 VALUE: 0xff80
+INUM:        1 PC: 0x0002 REG: 1 VALUE: 0x002d
+INUM:        2 PC: 0x0004 ADDR: 0xff70 VALUE: 0x002d
+INUM:        3 PC: 0x0006

@@ -1,21 +1,11 @@
-          // Author: Matt Sinclair
-          // CS/ECE 552 Spring '08
-          // Homework #4, Problem #7
-          //
-          // Filename: bgez_2.asm
-          // BGEZ assembly test
-          //
-          // This is a test of the bgez instruction.  This test should simply test that the
-          // branch branches when the register has the value 0 (testing the equality part
-          // of the bgez).
+          // Original test: ./ullmer/hw4/problem6/st_6.asm
+          // Author: ullmer
+          // Test source code follows
           
-0000 c100 LBI     r1, 0                   // loads 0 (base 10) into r1
-0002 7906 BGEZ    r1, .shouldGoHere       // 0 => 0, so should branch
-                                          // none of these should execute
-0004 c200 LBI     r2, 0
-0006 4241 ADDI    r2, r2, 1
-0008 4241 ADDI    r2, r2, 1
-000a      .shouldGoHere:
-000a 412a ADDI    r1, r1, 10
-000c 0000 HALT                            // end bgez_2.asm
-                                          // r1 = 10 (base 10) now
+          
+          //test where mem address is max neg reg
+          //offset + max neg immediate (mem address = 0xff70)
+0000 c080 lbi r0, -128
+0002 c12d lbi r1, 45
+0004 8030 st r1, r0, -16
+0006 0000 halt

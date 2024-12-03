@@ -32,10 +32,11 @@ module execute (
     input wire HaltSig,
     output wire [15:0] PC_Next,
     output wire [15:0] ALU_Out,
+    output wire [15:0] ALU_RTData,
     output wire BrchCnd
 );
 
-   wire [15:0] ALUIn,ALU_RSData,ALU_RTData;
+   wire [15:0] ALUIn,ALU_RSData;
    wire [15:0] PC_I, PC_Branch, Branch;
    wire SF, CF, OF, ZF;
 
@@ -62,9 +63,9 @@ module execute (
    //BrchCnd 
    brchcnd branch_ctrl(.SF(SF), .ZF(ZF), .brch_instr(NOP ? 4'b0000:BranchTaken), .BrchCnd(BrchCnd));
 
-    always @(posedge clk) begin
-        $display("RSData : %h ALUIn: %h NOP %h",RSData, ALUIn, NOP);
-    end
+    // always @(posedge clk) begin
+    //     $display("RSData : %h ALUIn: %h NOP %h",RSData, ALUIn, NOP);
+    // end
 
 endmodule
 `default_nettype wire

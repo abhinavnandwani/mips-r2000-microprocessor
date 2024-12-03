@@ -1,5 +1,5 @@
 module forwarding_unit(
-    //input wire clk,
+    input wire clk,
     input wire [2:0] RD_EXDM,
     input wire [2:0] RD_DMWB,
     input wire [1:0] B_Src,
@@ -28,13 +28,17 @@ module forwarding_unit(
     assign EXDM_RD_Data = (EXDM_RegSrc == 2'b00) ? EXDM_PC : 
                           (EXDM_RegSrc == 2'b10) ? EXDM_ALU : 16'h0000;
 
-    assign DMWB_RD_Data = (DMWB_RegSrc == 2'b01) ? DMWB_readData : 16'h0000;
+    assign DMWB_RD_Data = (DMWB_RegSrc == 2'b00) ? DMWB_PC : 
+                          (DMWB_RegSrc == 2'b10) ? DMWB_ALU : 
+                          (DMWB_RegSrc == 2'b01) ? DMWB_readData : 16'h0000;
 
     // Separate take signals for Rs and Rt
     assign takeRs_EXDM = (EXDM_RegSrc != 2'b01) & EXDM_RegWrt & (RD_EXDM == Rs);
     assign takeRt_EXDM = (EXDM_RegSrc != 2'b01) & EXDM_RegWrt & (RD_EXDM == Rt);
-    assign takeRs_DMWB = (DMWB_RegSrc == 2'b01) & DMWB_RegWrt & (RD_DMWB == Rs);
-    assign takeRt_DMWB = (DMWB_RegSrc == 2'b01) & DMWB_RegWrt & (RD_DMWB == Rt);
+    // assign takeRs_DMWB = (DMWB_RegSrc == 2'b01) & DMWB_RegWrt & (RD_DMWB == Rs);
+    // assign takeRt_DMWB = (DMWB_RegSrc == 2'b01) & DMWB_RegWrt & (RD_DMWB == Rt);
+    assign takeRs_DMWB = DMWB_RegWrt & (RD_DMWB == Rs);
+    assign takeRt_DMWB = DMWB_RegWrt & (RD_DMWB == Rt);
 
     // Selection logic
     assign A_Sel = takeRs_EXDM ? 2'b01 :

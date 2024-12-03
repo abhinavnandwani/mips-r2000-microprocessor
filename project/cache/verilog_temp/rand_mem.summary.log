@@ -1,7 +1,7 @@
 /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/rand_mem/t_1_mem.asm FAILED
 /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/rand_mem/t_2_mem.asm FAILED
 /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/rand_mem/t_3_mem.asm FAILED
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/rand_mem/t_4_mem.asm SUCCESS CPI:4.5 CYCLES:5886 ICOUNT:1317 IHITRATE: 100.0 DHITRATE: 100.0
+/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/rand_mem/t_4_mem.asm FAILED
 /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/rand_mem/t_5_mem.asm FAILED
 /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/rand_mem/t_6_mem.asm FAILED
 /u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/rand_mem/t_7_mem.asm FAILED

@@ -4,17 +4,28 @@ module stall_mech(
     input reg [2:0] RTData,
     input reg [2:0] RD_ff,
     input reg [2:0] RD_2ff,
+    input wire [1:0] IDEX_RegSrc,
+    input wire IDEX_RegWrt,
+    input wire EXDM_RegWrt,
+    // input wire [2:0] RD_IDEX,
+    // input wire [2:0] RD_EXDM,
     input wire RegWrt_2ff,
-    input wire fetch_stall,
+    //input wire fetch_stall,
     input wire RegWrt_ff,
-    input wire takeRs_DMWB,
-    input wire takeRt_DMWB,
-    input wire takeRs_EXDM,
-    input wire takeRt_EXDM,
+    output wire takeRs_DMWB,
+    output wire takeRt_DMWB,
+    output wire takeRs_EXDM,
+    output wire takeRt_EXDM,
     input wire Done_DM
 );
 
     wire x, y, z, a;
+
+    assign takeRs_EXDM = (IDEX_RegSrc != 2'b01) & IDEX_RegWrt & (RD_ff == RSData);
+    assign takeRt_EXDM = (IDEX_RegSrc != 2'b01) & IDEX_RegWrt & (RD_ff == RTData);
+
+    assign takeRs_DMWB = EXDM_RegWrt & (RD_2ff == RSData);
+    assign takeRt_DMWB = EXDM_RegWrt & (RD_2ff == RTData);
 
     // Hazard detection logic
     assign x = (RD_ff == RSData) ? (RegWrt_ff & ~takeRs_EXDM) : 1'b0;
@@ -23,7 +34,7 @@ module stall_mech(
     assign a = (RD_2ff == RTData) ? (RegWrt_2ff & ~takeRt_DMWB) : 1'b0;
 
     // Stall logic
-    assign NOP_reg = ~Done_DM | 1'b0 | y | 1'b0 | a;
+    assign NOP_reg = ~Done_DM | x | y | z | a;
 
     // Debugging outputs in a single $display
     always @(*) begin

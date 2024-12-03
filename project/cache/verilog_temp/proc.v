@@ -68,6 +68,7 @@ module proc (/*AUTOARG*/
     wire [1:0] EXDM_RegSrc, DMWB_RegSrc;
     wire CacheHit;
     wire takeRs_EXDM, takeRt_EXDM,takeRs_DMWB,takeRt_DMWB;
+    wire a,b,c,d;
     /* Fetch Stage */
     fetch fetch0 (
         .clk(clk), 
@@ -117,8 +118,13 @@ module proc (/*AUTOARG*/
         .takeRs_EXDM(takeRs_EXDM), 
         .takeRt_EXDM(takeRt_EXDM), 
         .takeRs_DMWB(takeRs_DMWB),
-        .takeRt_DMWB(takeRt_DMWB)
+        .takeRt_DMWB(takeRt_DMWB),
+        .IDEX_RegSrc(IDEX_RegSrc),
+        .IDEX_RegWrt(IDEX_RegWrt),
+        .EXDM_RegWrt(EXDM_RegWrt)
         );
+
+        assign #100 {a,b,c,d} = {takeRs_EXDM,takeRs_DMWB,takeRt_EXDM,takeRt_DMWB};
 
     /* Decode Stage */
     decode decode0 (
@@ -272,13 +278,33 @@ module proc (/*AUTOARG*/
         .B_Sel(B_Sel)
     );
 
-    forwarding_unit fu (
-        //.clk(clk),
-        .RD_EXDM (EXDM_RD),
-        .RD_DMWB (DMWB_RD),
-        .Rs(IDEX_Rs),
-        .Rt(IDEX_Rt),
-        .B_Src(IDEX_BSrc),
+    // forwarding_unit fu (
+    //     .clk(clk),
+    //     .RD_EXDM (EXDM_RD),
+    //     .RD_DMWB (DMWB_RD),
+    //     .Rs(IDEX_Rs),
+    //     .Rt(IDEX_Rt),
+    //     .B_Src(IDEX_BSrc),
+    //     .EXDM_ALU(EXDM_ALU),
+    //     .EXDM_PC(EXDM_PC),
+    //     .DMWB_PC(DMWB_PC),
+    //     .DMWB_ALU(DMWB_ALU),
+    //     .DMWB_readData(DMWB_readData),
+    //     .EXDM_RegSrc(EXDM_RegSrc),
+    //     .DMWB_RegSrc(DMWB_RegSrc),
+    //     .EXDM_RD_Data(EXDM_RD_Data),
+    //     .DMWB_RD_Data(DMWB_RD_Data),
+    //     .A_Sel(A_Sel),
+    //     .B_Sel(B_Sel),
+    //     .takeRs_EXDM(takeRs_EXDM),
+    //     .takeRt_EXDM(takeRt_EXDM),
+    //     .takeRs_DMWB(takeRs_DMWB),
+    //     .takeRt_DMWB(takeRt_DMWB),
+    //     .EXDM_RegWrt(EXDM_RegWrt),
+    //     .DMWB_RegWrt(DMWB_RegWrt)
+    //     );
+
+        forwarding fu (
         .EXDM_ALU(EXDM_ALU),
         .EXDM_PC(EXDM_PC),
         .DMWB_PC(DMWB_PC),
@@ -290,12 +316,10 @@ module proc (/*AUTOARG*/
         .DMWB_RD_Data(DMWB_RD_Data),
         .A_Sel(A_Sel),
         .B_Sel(B_Sel),
-        .takeRs_EXDM(takeRs_EXDM),
-        .takeRt_EXDM(takeRt_EXDM),
-        .takeRs_DMWB(takeRs_DMWB),
-        .takeRt_DMWB(takeRt_DMWB),
-        .EXDM_RegWrt(EXDM_RegWrt),
-        .DMWB_RegWrt(DMWB_RegWrt)
+        .takeRs_EXDM(a),
+        .takeRt_EXDM(c),
+        .takeRs_DMWB(b),
+        .takeRt_DMWB(d)
         );
 
     /* EXDM latch */

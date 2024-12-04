@@ -36,7 +36,7 @@ module proc (/*AUTOARG*/
 
    // Flopped signals between pipeline stages
    wire [15:0] ID_PC, ID_instr;
-   wire NOP, NOP_mech;
+   wire NOP, NOP_mech, NOP_Jump;
 
    wire valid;
    wire [15:0] IFID_instr_comb;
@@ -131,6 +131,7 @@ module proc (/*AUTOARG*/
       .clk(clk), 
       .rst(rst), 
       .NOP_Branch(NOP_Branch),
+      .BrchCnd(BrchCnd),
       .NOP(NOP),
       .NOP_mech(NOP_mech),
       .nHaltSig_comb(),
@@ -155,6 +156,7 @@ module proc (/*AUTOARG*/
       .RegSrc(RegSrc),
       .BSrc(BSrc),
       .BranchTaken(BranchTaken),
+      .IDEX_BranchTaken(IDEX_BranchTaken),
       .Oper(Oper),
       .err(ID_err), 
       .RSData(RSData), 

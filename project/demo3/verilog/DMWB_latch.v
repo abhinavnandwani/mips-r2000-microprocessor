@@ -23,7 +23,7 @@ module DMWB_latch(
     // Flop PC from D (to E to M) to WB
     register dff_d_PC2(.r(DMWB_PC), .w(MEM_PC), .clk(clk), .rst(rst), .we(1'b1));
 
-    register dff_e_ALU2(.r(DMWB_ALU), .w(Done_DM ? MEM_ALU :DMWB_ALU ), .clk(clk), .rst(rst), .we(1'b1));
+    register dff_e_ALU2(.r(DMWB_ALU), .w(Done_DM ? MEM_ALU : DMWB_ALU), .clk(clk), .rst(rst), .we(1'b1));
     
     // DFF for memory stage read data
     register dff_memory(.r(DMWB_readData), .w(MEM_readData), .clk(clk), .rst(rst), .we(1'b1));

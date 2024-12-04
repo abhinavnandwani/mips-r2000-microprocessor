@@ -61,7 +61,7 @@ module execute (
    alu alu1(.InA(ALU_RSData), .InB(ALUIn), .Cin(cin), .Oper(Oper), .invA(invA), .invB(invB), .sign(ALUSign), .Out(ALU_Out), .ZF(ZF), .SF(SF), .OF(OF), .CF(CF));
 
    //BrchCnd 
-   brchcnd branch_ctrl(.SF(SF), .ZF(ZF), .brch_instr(NOP ? 4'b0000:BranchTaken), .BrchCnd(BrchCnd));
+   brchcnd branch_ctrl(.SF(SF), .ZF(ZF), .OF(OF), .brch_instr(NOP ? 4'b0000:BranchTaken), .BrchCnd(BrchCnd));
 
 endmodule
 `default_nettype wire

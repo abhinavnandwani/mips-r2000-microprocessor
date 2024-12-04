@@ -41,16 +41,12 @@ module proc (/*AUTOARG*/
    wire valid;
    wire [15:0] IFID_instr_comb;
 
-   // Stall Flops
-   wire RegWrt_1_nflopped, RegWrt_2_nflopped;
-   wire [2:0] RD_1_nflopped, RD_2_nflopped;
-
    wire IDEX_HaltSig, IDEX_MemRead, IDEX_ImmSrc, IDEX_HaltSig_comb, IDEX_ALUSign, IDEX_ALUJmp, IDEX_MemWrt, IDEX_err, IDEX_RegWrt;
    wire [1:0] IDEX_RegSrc, IDEX_BSrc,B_Sel,A_Sel;
    wire [3:0] IDEX_BranchTaken, IDEX_Oper;
    wire [15:0] IDEX_RSData, IDEX_RTData, IDEX_Imm5, IDEX_Imm8, IDEX_sImm8, IDEX_sImm11, IDEX_PC_Next;
-   wire IDEX_invA, IDEX_invB, IDEX_Cin, IDEX_NOP, IDEX_RegWrt_2_nflopped, IDEX_RegWrt_1_nflopped;
-   wire [2:0] IDEX_RD, IDEX_RD_2_nflopped, IDEX_RD_1_nflopped;
+   wire IDEX_invA, IDEX_invB, IDEX_Cin, IDEX_NOP;
+   wire [2:0] IDEX_RD;
    wire BrchCnd, NOP_Branch;
 
    wire [15:0] EX_ALU,EXDM_ALU;
@@ -126,6 +122,10 @@ module proc (/*AUTOARG*/
       .EXDM_RegWrt(EXDM_RegWrt)
    );
 
+   //  always@(posedge clk)
+   //      $display("PC %h ID_Rs : %h ID_Rt : %h EXDM_RegSrc : %h EXDM_ALU : %h DMWB_RegSrc : %h DMWB_ALU : %h BrchCnd %h NOP_Branch %h BranchTaken %b", PC,ID_Rs,ID_Rt,EXDM_RegSrc,EXDM_ALU,DMWB_RegSrc,DMWB_ALU,BrchCnd, NOP_Branch, BranchTaken);
+
+
    /* Decode Stage */
    decode decode0 (
       .clk(clk), 
@@ -166,10 +166,6 @@ module proc (/*AUTOARG*/
       .Rs(ID_Rs),
       .Rt(ID_Rt),
       .PC_Next(PC_d),
-      .RD_2_nflopped(RD_2_nflopped),
-      .RD_1_nflopped(RD_1_nflopped),
-      .RegWrt_1_nflopped(RegWrt_1_nflopped),
-      .RegWrt_2_nflopped(RegWrt_2_nflopped),
       .DMWB_RegWrt(DMWB_RegWrt),
       .Done_DM(Done_DM),
       .Done_DM_ff(Done_DM_ff)

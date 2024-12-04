@@ -4,8 +4,8 @@
     Description     : This module generates the "BrchCnd" control signal for the branch mux in the execute.v module
 */
 
-module brchcnd (SF, ZF, brch_instr, BrchCnd);
-   input SF, ZF;
+module brchcnd (SF, ZF, OF, brch_instr, BrchCnd);
+   input SF, ZF, OF;
    input [3:0] brch_instr;
    output BrchCnd;
 
@@ -15,8 +15,8 @@ module brchcnd (SF, ZF, brch_instr, BrchCnd);
       case (brch_instr[1:0])
          2'b00: brch_sig = ZF;             // BEQZ
          2'b01: brch_sig = ~ZF;            // BNEZ
-         2'b10: brch_sig = ~SF & ~ZF;       // BLTZ (ZF should be low case it is pure "less than")
-         2'b11: brch_sig = SF | ZF;             // BGEZ
+         2'b10: brch_sig = (~SF & ~ZF) | OF;       // BLTZ (ZF should be low case it is pure "less than")
+         2'b11: brch_sig = (SF | ZF) & ~OF;             // BGEZ
       endcase
    end
 

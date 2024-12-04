@@ -53,10 +53,6 @@ module decode (
     output wire Cin,
     output wire [2:0] RD,
     output wire NOP,
-    output wire RegWrt_2_nflopped,
-    output wire RegWrt_1_nflopped,
-    output wire [2:0] RD_2_nflopped, 
-    output wire [2:0] RD_1_nflopped,
     output wire DMWB_RegWrt,
     output wire NOP_Branch
     

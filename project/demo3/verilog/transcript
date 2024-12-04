@@ -1,6 +1,6 @@
 # vsim -c proc_hier_pbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 23:58:07 on Dec 02,2024
-# ** Warning: License feature 'msimpevsimvlog' will expire in 3 days.
+# Start time: 12:58:55 on Dec 04,2024
+# ** Warning: License feature 'msimpevsimvlog' will expire in 1 days.
 # Loading __work.proc_hier_pbench
 # Loading __work.proc_hier
 # Loading __work.clkrst
@@ -42,11 +42,11 @@
 # Loading __work.nand2
 # Loading __work.cla_1b
 # log -howmany -rec /* 
-# 7791
+# 7780
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.ptrace for output
 # ** Note: $finish    : proc_hier_pbench.v(114)
 #    Time: 1505 ns  Iteration: 0  Instance: /proc_hier_pbench
-# End time: 23:58:07 on Dec 02,2024, Elapsed time: 0:00:00
+# End time: 12:58:55 on Dec 04,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0

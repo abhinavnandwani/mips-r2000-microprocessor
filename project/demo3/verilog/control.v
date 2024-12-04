@@ -85,7 +85,7 @@ module control (
             BSrc = 2'b01;
             ALUSign = 1'b0;
             ALUOpr = 6'b000000; //ADDI
-            BranchTaken = 3'b000;
+            BranchTaken = 4'b0000;
         end
         5'b10001: begin		// LD
             RegSrc = 2'b01;
@@ -97,7 +97,7 @@ module control (
             ALUSign = 1'b0;
             MemRead = 1'b1;
             ALUOpr = 6'b000000; //ADDI
-            BranchTaken = 3'b000;
+            BranchTaken = 4'b0000;
         end
         5'b10011: begin		// STU
             RegSrc = 2'b10;
@@ -108,7 +108,7 @@ module control (
             BSrc = 2'b01;
             ALUOpr = 6'b000000; //ADDI
             ALUSign = 1'b0;
-            BranchTaken = 3'b000;
+            BranchTaken = 4'b0000;
         end
                     
         /* R format below: */
@@ -121,7 +121,7 @@ module control (
             BSrc = 2'b01;
             ALUSign = 1'b0;
             ALUOpr = 6'b111xxx;
-            BranchTaken = 3'b000;
+            BranchTaken = 4'b0000;
         end
         // R Type //
         5'b1101x: begin	
@@ -161,7 +161,7 @@ module control (
             BSrc = 2'b10;
             ALUOpr = 6'b00101x;
             RegSrc = 2'b10;
-            BranchTaken = 3'b000;
+            BranchTaken = 4'b0000;
         end
         5'b10010: begin		// SLBI FIX
             RegWrt = 1'b1;
@@ -173,7 +173,7 @@ module control (
             BSrc = 2'b10;
             ALUOpr = 6'b00110x;
             RegSrc = 2'b10;
-            BranchTaken = 3'b000;
+            BranchTaken = 4'b0000;
         end
         
         /* Jump Instructions below: */
@@ -192,7 +192,7 @@ module control (
             ImmSrc = 1'b1;
             BSrc = 2'b10;
             //ZeroExt = 1'b1;
-            BranchTaken = 3'b100;
+            BranchTaken = 4'b1000;
         end
         5'b00110: begin		// JAL
             RegSrc = 2'b00;

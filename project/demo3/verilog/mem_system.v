@@ -36,7 +36,6 @@ module mem_system(/*AUTOARG*/
    wire [2:0] offset_out;
    wire cache_in, mem_in, mem_stall;
    wire [4:0] tag_in;
-   wire [7:0] index_in;
    wire [2:0] offset_in;
    wire victimway, evict, cache_sel, CacheHit_0, CacheHit_1;
 
@@ -125,32 +124,79 @@ module mem_system(/*AUTOARG*/
       .done(Done)
    ); 
 
+   // Victimway flip-flop for alternate victim selection
    dff victimway_ff (
       .q(victimway),                      // Output: current state of victimway
-      .d(Done ?  ~victimway : victimway), 
+      .d(Done ? ~victimway : victimway),  // Toggle on Done signal
       .clk(clk),                          // Clock signal
       .rst(rst)                           // Reset signal
    );
 
-   assign CacheHit_0 = hit_0 & valid_0;
-   assign CacheHit_1 = hit_1 & valid_1;
+   // LRU bits for 256 sets (one bit per set for 2-way cache)
+   wire [255:0] lru_out;                  // Current LRU state
+   reg [255:0] lru_in;                    // Next-state LRU
+   wire set_lru;                          // Determines LRU update
+
+   // LRU flip-flops for all sets
+   dff lru_ff[255:0] (
+      .q(lru_out),                        // Output: current LRU state
+      .d(Done ? lru_in : lru_out),        // Update LRU on Done
+      .clk(clk),                          // Clock signal
+      .rst(rst)                           // Reset signal
+   );
+
+   // LRU logic to determine next state
+   always @(*) begin
+      lru_in = lru_out;                   // Default: No change
+      case (set_lru)
+         1'b0: lru_in[Addr[10:3]] = 1'b0; // Mark Way 0 as least recently used
+         1'b1: lru_in[Addr[10:3]] = 1'b1; // Mark Way 1 as least recently used
+      endcase
+   end
+
+   // Determine which way was hit
+   assign CacheHit_0 = hit_0 & valid_0;   // Cache Way 0 hit
+   assign CacheHit_1 = hit_1 & valid_1;   // Cache Way 1 hit
+
+   // Set LRU on cache hit
+   assign set_lru = CacheHit_0 ? 1'b1 :   // If Way 0 is hit, mark Way 1 as LRU
+                    CacheHit_1 ? 1'b0 :   // If Way 1 is hit, mark Way 0 as LRU
+                    lru_out[Addr[10:3]];  // Default to current LRU state
+
+
+   always @(posedge clk) begin
+      $display("evict : %h",evict);
+      
+   end
 
    // Victim Selection Logic
-   assign evict = valid_0 ? (valid_1 ? ~victimway : 1'b1) : 1'b0;
+   assign evict = valid_0 ? (valid_1 ? lru_out[Addr[10:3]] : 1'b1) : 1'b0;
 
-   assign cache_sel = (Rd | Wr) ? (CacheHit_0 ? 1'b0 : (CacheHit_1 ? 1'b1 : evict)) : 1'b0;
+   // Cache selection logic
+   assign cache_sel = (Rd | Wr) ? 
+                      (CacheHit_0 ? 1'b0 : 
+                       (CacheHit_1 ? 1'b1 : evict)) : 1'b0;
 
+   // Combine hit signals
    assign hit = hit_0 | hit_1;
+
+   // Cache outputs based on selected way
    assign dirty = cache_sel ? dirty_1 : dirty_0;
    assign valid = cache_sel ? valid_1 : valid_0;
    assign tag_out = cache_sel ? tag_out_1 : tag_out_0;
+
+   // Write enables for cache ways
    assign valid_out_0 = cache_sel ? 1'b0 : valid_in;
    assign valid_out_1 = cache_sel ? valid_in : 1'b0;
    assign write_0 = cache_sel ? 1'b0 : write;
    assign write_1 = cache_sel ? write : 1'b0;
+
+   // Data output based on selected way
    assign DataOut = cache_sel ? data_out_cache_1 : data_out_cache_0;
 
+   // Aggregate error signals
    assign err = err_mem | err_cache_0 | err_cache_1;
+
    
 endmodule // mem_system
 `default_nettype wire

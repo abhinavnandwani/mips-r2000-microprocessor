@@ -30,6 +30,7 @@ module proc (/*AUTOARG*/
    // Control signals
    wire HaltSig, ZeroExt, ImmSrc, invA, invB;
    wire ALUSign, Cin, ALUJmp, MemWrt, MemRead;
+   wire BT;
    wire [1:0] RegSrc, BSrc, RegDst;
    wire [3:0] Oper, BranchTaken;
    wire [2:0] RD,ID_Rt,ID_Rs,IDEX_Rs,IDEX_Rt;
@@ -76,6 +77,8 @@ module proc (/*AUTOARG*/
       .rst(rst),
       .NOP(NOP_mech),
       .NOP_Branch(NOP_Branch),
+      .actualTaken(BT),
+      .IDEX_BranchTaken(IDEX_BranchTaken),
       .branch(|{BrchCnd,IDEX_ALUJmp}),
       .PC_B(PC_Jump), 
       .PC_curr(PC),
@@ -92,6 +95,7 @@ module proc (/*AUTOARG*/
       .clk(clk),
       .rst(rst),
       .NOP_mech(NOP_mech),
+      .BT(BT),
       .NOP_Branch(NOP_Branch),
       .fetch_stall(fetch_stall),
       .IF_instr(instr),
@@ -121,10 +125,6 @@ module proc (/*AUTOARG*/
       .IDEX_RegWrt(IDEX_RegWrt),
       .EXDM_RegWrt(EXDM_RegWrt)
    );
-
-   //  always@(posedge clk)
-   //      $display("PC %h ID_Rs : %h ID_Rt : %h EXDM_RegSrc : %h EXDM_ALU : %h DMWB_RegSrc : %h DMWB_ALU : %h BrchCnd %h NOP_Branch %h BranchTaken %b", PC,ID_Rs,ID_Rt,EXDM_RegSrc,EXDM_ALU,DMWB_RegSrc,DMWB_ALU,BrchCnd, NOP_Branch, BranchTaken);
-
 
    /* Decode Stage */
    decode decode0 (
@@ -170,8 +170,13 @@ module proc (/*AUTOARG*/
       .PC_Next(PC_d),
       .DMWB_RegWrt(DMWB_RegWrt),
       .Done_DM(Done_DM),
+      .BT(BT),
       .Done_DM_ff(Done_DM_ff)
    );
+
+   //  always@(posedge clk)
+   //      if (IDEX_Rs == 6)
+   //      $display("PC : %h instr : %h execute0.ALU_RSData : %h execute0.ALUIn : %h BT : %b halt : %h ", fetch0.instr_mem.Addr,instr,execute0.ALU_RSData, execute0.ALUIn,decode0.BT,fetch0.HaltSig);
 
    /* IDEX latch */
    IDEX_latch IDEX (

@@ -36,6 +36,7 @@ module IDEX_latch (
     input wire ID_invB,
     input wire ID_Cin,
     input wire ID_NOP,
+    input wire ID_expectedTaken,
 
     // Outputs
     output wire IDEX_nHaltSig,
@@ -68,7 +69,8 @@ module IDEX_latch (
     output wire IDEX_invA,
     output wire IDEX_invB,
     output wire IDEX_Cin,
-    output wire IDEX_NOP
+    output wire IDEX_NOP,
+    output wire IDEX_expectedTaken
 );
     dff dff_IDEX_RegSrc[1:0] (.q(IDEX_RegSrc), .d(Done_DM ? IDEX_RegSrc : ID_RegSrc), .clk({2{clk}}), .rst({2{rst}})); 
     dff dff_IDEX_BSrc[1:0] (.q(IDEX_BSrc), .d(Done_DM ? IDEX_BSrc : ID_BSrc), .clk({2{clk}}), .rst({2{rst}})); 
@@ -96,5 +98,6 @@ module IDEX_latch (
     dff dff_IDEX_NOP (.q(IDEX_NOP), .d(Done_DM ? IDEX_NOP : ID_NOP), .clk(clk), .rst(rst)); 
     dff dff_IDEX_err (.q(IDEX_err), .d(Done_DM ? IDEX_err : ID_err), .clk(clk), .rst(rst)); 
     dff dff_IDEX_RegWrt (.q(IDEX_RegWrt), .d(Done_DM ? IDEX_RegWrt : ID_RegWrt), .clk(clk), .rst(rst)); 
+    dff dff_IDEX_expectedTaken (.q(IDEX_expectedTaken), .d(ID_expectedTaken), .clk(clk), .rst(rst)); 
 
 endmodule

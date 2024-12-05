@@ -48,7 +48,7 @@ module control (
     RegDst = 2'b00;
     BSrc = 2'b00;
     MemRead = 1'b0;
-    BranchTaken = 4'b000;
+    BranchTaken = 4'b0000;
     NOP = 1'b0;
 
     casex(instr[15:11])

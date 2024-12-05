@@ -12,7 +12,7 @@ module decode (
     // Instruction and Data Inputs
     input wire [15:0] instr,
     input wire [15:0] instr_comb,
-    input wire x,
+    input wire expectedTaken,
     input wire [15:0] WB,
     input wire [15:0] PC,
     input wire NOP_mech,
@@ -81,17 +81,17 @@ module decode (
     wire rst_ff;
     dff dff_rst(.q(rst_ff), .d(rst), .clk(clk), .rst(1'b0));
    
-    assign valid = rst_ff ? 1'b0 : (BT ? 1'b0 : 1'b1);
+    assign valid = rst_ff ? 1'b0 : ((expectedTaken != BT) ? 1'b0 : 1'b1);
 
     assign BT = BrchCnd & IDEX_BranchTaken[2];
 
-    assign NOP_Branch =  (x != BT) ? 1'b1 : BranchTaken[3];
+    assign NOP_Branch =  (expectedTaken != BT) ? 1'b1 : BranchTaken[3];
 
-    assign RegWrt = BT ? 1'b0 : RegWrt_control;
-    assign MemWrt = BT ? 1'b0 : MemWrt_control;
-    assign MemRead = BT ? 1'b0 : MemRead_control;
-    assign ALUJmp = BT ? 1'b0 : ALUJmp_control;
-    assign BranchTaken = BT ? 4'h0 : BranchTaken_control;
+    assign RegWrt = (expectedTaken != BT) ? 1'b0 : RegWrt_control;
+    assign MemWrt = (expectedTaken != BT) ? 1'b0 : MemWrt_control;
+    assign MemRead = (expectedTaken != BT) ? 1'b0 : MemRead_control;
+    assign ALUJmp = (expectedTaken != BT) ? 1'b0 : ALUJmp_control;
+    assign BranchTaken =  BranchTaken_control;
 
 
     // Register File

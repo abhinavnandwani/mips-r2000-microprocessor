@@ -63,7 +63,7 @@ module proc (/*AUTOARG*/
    wire [1:0] EXDM_RegSrc, DMWB_RegSrc;
    wire CacheHit;
    wire takeRs_EXDM, takeRt_EXDM, takeRs_DMWB, takeRt_DMWB, takeRs_EXDM_ff, takeRt_EXDM_ff,takeRs_DMWB_ff,takeRt_DMWB_ff;
-   wire Done_DM_ff,expectedTaken,x;
+   wire Done_DM_ff,expectedTaken,IDEX_expectedTaken, IFID_expectedTaken;
 
    dff done_ff(.q(Done_DM_ff), .d(Done_DM), .clk(clk), .rst(rst));
 
@@ -80,7 +80,7 @@ module proc (/*AUTOARG*/
       .NOP_Branch(NOP_Branch),
       .actualTaken(BT),
       .IDEX_BranchTaken(IDEX_BranchTaken),
-      .branch( (x != BT) ? (IDEX_BranchTaken[2] | IDEX_ALUJmp) : 1'b0),
+      .branch( (IDEX_expectedTaken != BT) ? (IDEX_BranchTaken[2] | IDEX_ALUJmp) : 1'b0),
       .PC_B(PC_Jump), 
       .PC_curr(PC),
       .instr_ddd(instr_ddd),
@@ -93,14 +93,13 @@ module proc (/*AUTOARG*/
       .err(IF_err)
    );
 
-   assign #200 x = expectedTaken;
-
    /* IFID latch */
    IFID_latch IFID(
       .clk(clk),
       .rst(rst),
       .NOP_mech(NOP_mech),
-      .BT(BT),
+      .BT(instr_ddd),
+      .IF_expectedTaken(expectedTaken),
       .NOP_Branch(NOP_Branch),
       .fetch_stall(fetch_stall),
       .IF_instr(instr),
@@ -110,7 +109,8 @@ module proc (/*AUTOARG*/
       .IFID_PC_Next(ID_PC),
       .nHaltSig(1'b1 ? HaltSig : 1'b0),
       .IF_err(IF_err),
-      .IFID_err(IDF_err)
+      .IFID_err(IDF_err),
+      .IFID_expectedTaken(IFID_expectedTaken)
    );
 
    stall_mech stall(
@@ -146,7 +146,7 @@ module proc (/*AUTOARG*/
       .invB(invB),
       .RegWrt(ID_RegWrt),
       .IDF_err(IDF_err),
-      .x(x),
+      .expectedTaken(IDEX_expectedTaken),
       .DMWB_RD(DMWB_RD),
       .Cin(Cin),
       .RD(RD),
@@ -181,13 +181,14 @@ module proc (/*AUTOARG*/
    );
 
     always@(posedge clk)
-        $display("WB : %h RegScr : %h RegWrt : %h ", WB,DMWB_RegSrc,DMWB_RegWrt);
+        $display("PC : %h BT : %h instr_ddd : %h instr : %h branch %h", execute0.PC_Next,decode0.BT,instr_ddd,IFID.IFID_instr_comb, IDEX_BranchTaken[2]);
 
    /* IDEX latch */
    IDEX_latch IDEX (
       .clk(clk),
       .rst(rst),
       .valid(valid),
+      .ID_expectedTaken(IFID_expectedTaken),
       // Control Signals
       .ID_nHaltSig(HaltSig),
       .ID_MemRead(MemRead),
@@ -252,7 +253,8 @@ module proc (/*AUTOARG*/
       .IDEX_Rs(IDEX_Rs),
       .IDEX_Rt(IDEX_Rt),
       .IDEX_Cin(IDEX_Cin),
-      .IDEX_NOP(IDEX_NOP)
+      .IDEX_NOP(IDEX_NOP),
+      .IDEX_expectedTaken(IDEX_expectedTaken)
    );
 
    /* Execute Stage */

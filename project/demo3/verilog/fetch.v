@@ -21,11 +21,11 @@ module fetch (
 );
 
     // Internal wires
-    wire [15:0] PC, PC_regs;     // Program Counter registers
+    wire [15:0] PC, PC_regs,sigma;     // Program Counter registers
     wire [15:0] PC_Sum;    // Incremented PC value
     wire [15:0] instr_memm;      // Instruction fetched from memory
     wire [15:0] instr_ff;        // Latched instruction
-    wire Stall, Done;            // Memory stall and done signals
+    wire Stall, Done,y;            // Memory stall and done signals
     wire [15:0] PC_expected;
 
     // PC Register: Holds the current Program Counter
@@ -59,6 +59,8 @@ module fetch (
     // Default instruction assignment (placeholder, could be conditional logic)
     assign instr = (1'b0) ? 16'h0800 : instr_memm;
 
+    assign sigma = (NOP | NOP_Branch ) ? 16'h0800 : instr_memm;
+
     // Adder: Compute PC + 2 for sequential execution
     cla_16b pc_add2 (
         .sum(PC_Sum), 
@@ -68,24 +70,26 @@ module fetch (
         .c_in(1'b0)
     );
 
-     assign instr_ddd = (IFID_instr[15:13] == 3'b011) ? 1'b1 : 1'b0;
+     assign instr_ddd = (instr[15:13] == 3'b011) ? 1'b1 : 1'b0;
 
     branchFSM bFSM(
         .clk(clk),
         .rst(rst),
         .instr_b(IDEX_BranchTaken[2]),
         .actualTaken(actualTaken),
-        .expectedTaken(expectedTaken)
+        .expectedTaken(y)
     );
+
+    assign expectedTaken = y & (~fetch_stall);
 
     cla_16b pc_branch(.sum(PC_expected), .c_out(), .a(PC_Sum), .b({{8{IFID_instr[7]}},IFID_instr[7:0]}), .c_in(1'b0));
 
     // Halt Mux: Select next PC value based on control signals
-    assign PC_Next = (NOP | NOP_Branch | fetch_stall) ? PC_curr : PC_Sum;
+    assign PC_Next = (NOP | NOP_Branch |  fetch_stall) ? PC_curr : PC_Sum;
 
-    // always @(posedge clk) begin
-    //     $display("PC : %h",PC_curr);
-    // end
+    always @(posedge clk) begin
+        $display("PC : %h",NOP_Branch);
+    end
 
     // Fetch Stall: Assert stall if memory access is not complete
     assign fetch_stall = ~Done;

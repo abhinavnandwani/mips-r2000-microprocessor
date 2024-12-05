@@ -63,7 +63,7 @@ module proc (/*AUTOARG*/
    wire [1:0] EXDM_RegSrc, DMWB_RegSrc;
    wire CacheHit;
    wire takeRs_EXDM, takeRt_EXDM, takeRs_DMWB, takeRt_DMWB, takeRs_EXDM_ff, takeRt_EXDM_ff,takeRs_DMWB_ff,takeRt_DMWB_ff;
-   wire Done_DM_ff,expectedTaken,IDEX_expectedTaken, IFID_expectedTaken;
+   wire Done_DM_ff,expectedTaken,IDEX_expectedTaken, IFID_expectedTaken,actualTaken,misprediction;
 
    dff done_ff(.q(Done_DM_ff), .d(Done_DM), .clk(clk), .rst(rst));
 
@@ -78,7 +78,7 @@ module proc (/*AUTOARG*/
       .rst(rst),
       .NOP(NOP_mech),
       .NOP_Branch(NOP_Branch),
-      .actualTaken(BT),
+      .actualTaken(actualTaken),
       .IDEX_BranchTaken(IDEX_BranchTaken),
       .branch( (IDEX_expectedTaken != BT) ? (IDEX_BranchTaken[2] | IDEX_ALUJmp) : 1'b0),
       .PC_B(PC_Jump), 
@@ -89,6 +89,7 @@ module proc (/*AUTOARG*/
       .instr(instr), 
       .PC_Next(PC_f),
       .IFID_instr(IFID_instr_comb),
+      .misprediction(misprediction),
       .expectedTaken(expectedTaken),
       .err(IF_err)
    );
@@ -98,7 +99,7 @@ module proc (/*AUTOARG*/
       .clk(clk),
       .rst(rst),
       .NOP_mech(NOP_mech),
-      .BT(instr_ddd),
+      .misprediction(misprediction),
       .IF_expectedTaken(expectedTaken),
       .NOP_Branch(NOP_Branch),
       .fetch_stall(fetch_stall),
@@ -176,12 +177,11 @@ module proc (/*AUTOARG*/
       .PC_Next(PC_d),
       .DMWB_RegWrt(DMWB_RegWrt),
       .Done_DM(Done_DM),
-      .BT(BT),
+      .misprediction(misprediction),
+      .actualTaken(actualTaken),
       .Done_DM_ff(Done_DM_ff)
    );
 
-    always@(posedge clk)
-        $display("PC : %h BT : %h instr_ddd : %h instr : %h branch %h", execute0.PC_Next,decode0.BT,instr_ddd,IFID.IFID_instr_comb, IDEX_BranchTaken[2]);
 
    /* IDEX latch */
    IDEX_latch IDEX (

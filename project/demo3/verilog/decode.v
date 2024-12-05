@@ -19,6 +19,8 @@ module decode (
     input wire Done_DM,
     input wire Done_DM_ff,
     input wire [2:0] DMWB_RD,
+    input wire BrchCnd,
+    input wire [3:0] IDEX_BranchTaken,
     
     // Control Signals
     output wire nHaltSig,
@@ -51,11 +53,11 @@ module decode (
     output wire invA,
     output wire invB,
     output wire Cin,
+    output wire BT,
     output wire [2:0] RD,
     output wire NOP,
     output wire DMWB_RegWrt,
     output wire NOP_Branch
-    
 );
 
     // Control Signals
@@ -69,16 +71,26 @@ module decode (
     wire ALUSign_nflopped;
     wire ALUJmp_nflopped;
     wire MemWrt_nflopped,nHaltSig_nflopped;
-    wire reg_err, control_err;
+    wire reg_err, control_err,RegWrt_control,MemWrt_control;
     wire nHaltSig_control;
+    wire ALUJmp_control, MemRead_control;
+    wire [3:0] BranchTaken_control;
 
 
     wire rst_ff;
     dff dff_rst(.q(rst_ff), .d(rst), .clk(clk), .rst(1'b0));
    
-    assign valid = rst_ff ? 1'b0 : 1'b1;
+    assign valid = rst_ff ? 1'b0 : (BT ? 1'b0 : 1'b1);
 
-    assign NOP_Branch =  BranchTaken[3] | BranchTaken[2];
+    assign BT = BrchCnd & IDEX_BranchTaken[2];
+
+    assign NOP_Branch =  BT | BranchTaken[3];
+
+    assign RegWrt = BT ? 1'b0 : RegWrt_control;
+    assign MemWrt = BT ? 1'b0 : MemWrt_control;
+    assign MemRead = BT ? 1'b0 : MemRead_control;
+    assign ALUJmp = BT ? 1'b0 : ALUJmp_control;
+    assign BranchTaken = BT ? 4'h0 : BranchTaken_control;
 
 
     // Register File
@@ -92,16 +104,23 @@ module decode (
     assign Rs = instr[10:8];
     assign Rt = instr[7:5];
     
-    // Sign Extension
-    assign Imm5 = (ZeroExt) ? {11'h000, instr[4:0]} : {{11{instr[4]}}, instr[4:0]};
-    assign sImm8 = {{8{instr[7]}}, instr[7:0]};
-    assign Imm8 = (ZeroExt) ? {8'h00, instr[7:0]} : sImm8;
-    assign sImm11 = {{5{instr[10]}}, instr[10:0]};
+   // Sign Extension
+    assign Imm5 = BT ? 16'h0000 : ((ZeroExt) ? {11'h000, instr[4:0]} : {{11{instr[4]}}, instr[4:0]});
+    assign sImm8 = BT ? 16'h0000 : ({{8{instr[7]}}, instr[7:0]});
+    assign Imm8 = BT ? 16'h0000 : ((ZeroExt) ? {8'h00, instr[7:0]} : sImm8);
+    assign sImm11 = BT ? 16'h0000 : ({{5{instr[10]}}, instr[10:0]});
     assign nHaltSig_comb = nHaltSig_nflopped;
+
+
+    // assign Imm5 =  ((ZeroExt) ? {11'h000, instr[4:0]} : {{11{instr[4]}}, instr[4:0]});
+    // assign sImm8 =  ({{8{instr[7]}}, instr[7:0]});
+    // assign Imm8 = ((ZeroExt) ? {8'h00, instr[7:0]} : sImm8);
+    // assign sImm11 = ({{5{instr[10]}}, instr[10:0]});
+    // assign nHaltSig_comb = nHaltSig_nflopped;
 
     alu_control aluc (.aluoper(ALUOpr), .instr(instr[1:0]), .op(Oper), .invA(invA), .invB(invB), .Cin(Cin));
 
-    control control0 (.instr((NOP_mech) ? 16'b0000_1xxx_xxxx_xxxx : instr), .err(control_err), .NOP(NOP), .nHaltSig(nHaltSig), .MemRead(MemRead), .RegDst(RegDst), .RegWrt(RegWrt), .ZeroExt(ZeroExt), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUOpr(ALUOpr), .ALUSign(ALUSign), .ALUJmp(ALUJmp), .MemWrt(MemWrt), .RegSrc(RegSrc), .BranchTaken(BranchTaken));
+    control control0 (.instr((NOP_mech) ? 16'b0000_1xxx_xxxx_xxxx : instr), .err(control_err), .NOP(NOP), .nHaltSig(nHaltSig), .MemRead(MemRead_control), .RegDst(RegDst), .RegWrt(RegWrt_control), .ZeroExt(ZeroExt), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUOpr(ALUOpr), .ALUSign(ALUSign), .ALUJmp(ALUJmp_control), .MemWrt(MemWrt_control), .RegSrc(RegSrc), .BranchTaken(BranchTaken_control));
 
     assign err = control_err | reg_err | IDF_err;
 

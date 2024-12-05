@@ -198,7 +198,6 @@ module control (
             RegSrc = 2'b00;
             RegDst = 2'b11;
             RegWrt = 1'b1;
-    
             ALUJmp = 1'b0;
             ImmSrc = 1'b0;
             BranchTaken = 4'b1000;

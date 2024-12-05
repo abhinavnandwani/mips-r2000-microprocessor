@@ -45,7 +45,7 @@ module execute (
    cla_16b pc_adder(.sum(Branch), .c_out(), .a(PC), .b(PC_I), .c_in(1'b0));
    
    //Branch & Jump Mux
-   assign PC_Branch = (~HaltSig ? BrchCnd : 1'b0) ? Branch : PC;
+   assign PC_Branch = (~HaltSig ? BrchCnd  : 1'b0) ? Branch : PC;
    assign PC_Next = (ALUJmp) ? ALU_Out : PC_Branch;
 
    // Register Mux
@@ -61,7 +61,7 @@ module execute (
    alu alu1(.InA(ALU_RSData), .InB(ALUIn), .Cin(cin), .Oper(Oper), .invA(invA), .invB(invB), .sign(ALUSign), .Out(ALU_Out), .ZF(ZF), .SF(SF), .OF(OF), .CF(CF));
 
    //BrchCnd 
-   brchcnd branch_ctrl(.SF(SF), .ZF(ZF), .OF(OF), .brch_instr(NOP ? 4'b0000:BranchTaken), .BrchCnd(BrchCnd));
+   brchcnd branch_ctrl(.SF(SF), .ZF(ZF), .OF(OF), .brch_instr(1'b0 ? 4'b0000:BranchTaken), .BrchCnd(BrchCnd));
 
 endmodule
 `default_nettype wire

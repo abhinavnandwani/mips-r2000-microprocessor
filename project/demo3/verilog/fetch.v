@@ -45,12 +45,17 @@ module fetch (
         .err(err), 
         .Addr(PC_curr), 
         .DataIn(16'h0000), 
-        .Rd(~(NOP | NOP_Branch)), 
+        .Rd(1'b1), 
         .Wr(1'b0), 
         .createdump(HaltSig), 
         .clk(clk), 
         .rst(rst)
     );
+
+     //stallmem instr_mem(.DataOut(instr_memm), .Done(Done), .Stall(Stall), .CacheHit(), .DataIn(16'h0000), .Addr(PC_curr), .Rd(1'b1), .Wr(1'b0), .createdump(HaltSig), .clk(clk), .rst(rst), .err(err));
+   
+
+   
 
     // Default instruction assignment (placeholder, could be conditional logic)
     assign instr = (1'b0) ? 16'h0800 : instr_memm;

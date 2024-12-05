@@ -12,6 +12,7 @@ module decode (
     // Instruction and Data Inputs
     input wire [15:0] instr,
     input wire [15:0] instr_comb,
+    input wire x,
     input wire [15:0] WB,
     input wire [15:0] PC,
     input wire NOP_mech,
@@ -84,7 +85,7 @@ module decode (
 
     assign BT = BrchCnd & IDEX_BranchTaken[2];
 
-    assign NOP_Branch =  BT | BranchTaken[3];
+    assign NOP_Branch =  (x != BT) ? 1'b1 : BranchTaken[3];
 
     assign RegWrt = BT ? 1'b0 : RegWrt_control;
     assign MemWrt = BT ? 1'b0 : MemWrt_control;
@@ -110,13 +111,6 @@ module decode (
     assign Imm8 = BT ? 16'h0000 : ((ZeroExt) ? {8'h00, instr[7:0]} : sImm8);
     assign sImm11 = BT ? 16'h0000 : ({{5{instr[10]}}, instr[10:0]});
     assign nHaltSig_comb = nHaltSig_nflopped;
-
-
-    // assign Imm5 =  ((ZeroExt) ? {11'h000, instr[4:0]} : {{11{instr[4]}}, instr[4:0]});
-    // assign sImm8 =  ({{8{instr[7]}}, instr[7:0]});
-    // assign Imm8 = ((ZeroExt) ? {8'h00, instr[7:0]} : sImm8);
-    // assign sImm11 = ({{5{instr[10]}}, instr[10:0]});
-    // assign nHaltSig_comb = nHaltSig_nflopped;
 
     alu_control aluc (.aluoper(ALUOpr), .instr(instr[1:0]), .op(Oper), .invA(invA), .invB(invB), .Cin(Cin));
 

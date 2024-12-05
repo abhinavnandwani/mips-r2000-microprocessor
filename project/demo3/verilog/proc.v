@@ -31,6 +31,7 @@ module proc (/*AUTOARG*/
    wire HaltSig, ZeroExt, ImmSrc, invA, invB;
    wire ALUSign, Cin, ALUJmp, MemWrt, MemRead;
    wire BT;
+   wire instr_ddd;
    wire [1:0] RegSrc, BSrc, RegDst;
    wire [3:0] Oper, BranchTaken;
    wire [2:0] RD,ID_Rt,ID_Rs,IDEX_Rs,IDEX_Rt;
@@ -62,7 +63,7 @@ module proc (/*AUTOARG*/
    wire [1:0] EXDM_RegSrc, DMWB_RegSrc;
    wire CacheHit;
    wire takeRs_EXDM, takeRt_EXDM, takeRs_DMWB, takeRt_DMWB, takeRs_EXDM_ff, takeRt_EXDM_ff,takeRs_DMWB_ff,takeRt_DMWB_ff;
-   wire Done_DM_ff;
+   wire Done_DM_ff,expectedTaken,x;
 
    dff done_ff(.q(Done_DM_ff), .d(Done_DM), .clk(clk), .rst(rst));
 
@@ -77,16 +78,22 @@ module proc (/*AUTOARG*/
       .rst(rst),
       .NOP(NOP_mech),
       .NOP_Branch(NOP_Branch),
-      .branch(|{BrchCnd,IDEX_ALUJmp}),
+      .actualTaken(BT),
+      .IDEX_BranchTaken(IDEX_BranchTaken),
+      .branch( (x != BT) ? (IDEX_BranchTaken[2] | IDEX_ALUJmp) : 1'b0),
       .PC_B(PC_Jump), 
       .PC_curr(PC),
+      .instr_ddd(instr_ddd),
       .fetch_stall(fetch_stall),
       .HaltSig(HaltSig),
       .instr(instr), 
       .PC_Next(PC_f),
-      .IFID_instr(ID_instr),
+      .IFID_instr(IFID_instr_comb),
+      .expectedTaken(expectedTaken),
       .err(IF_err)
    );
+
+   assign #200 x = expectedTaken;
 
    /* IFID latch */
    IFID_latch IFID(
@@ -124,10 +131,6 @@ module proc (/*AUTOARG*/
       .EXDM_RegWrt(EXDM_RegWrt)
    );
 
-   //  always@(posedge clk)
-   //      $display("PC %h ID_Rs : %h ID_Rt : %h EXDM_RegSrc : %h EXDM_ALU : %h DMWB_RegSrc : %h DMWB_ALU : %h BrchCnd %h NOP_Branch %h BranchTaken %b", PC,ID_Rs,ID_Rt,EXDM_RegSrc,EXDM_ALU,DMWB_RegSrc,DMWB_ALU,BrchCnd, NOP_Branch, BranchTaken);
-
-
    /* Decode Stage */
    decode decode0 (
       .clk(clk), 
@@ -143,6 +146,7 @@ module proc (/*AUTOARG*/
       .invB(invB),
       .RegWrt(ID_RegWrt),
       .IDF_err(IDF_err),
+      .x(x),
       .DMWB_RD(DMWB_RD),
       .Cin(Cin),
       .RD(RD),
@@ -177,9 +181,7 @@ module proc (/*AUTOARG*/
    );
 
     always@(posedge clk)
-        if (IDEX_Rs == 6)
-        $display("PC : %h instr : %h execute0.ALU_RSData : %h execute0.ALUIn : %h BT : %b halt : %h ", fetch0.instr_mem.Addr,instr,execute0.ALU_RSData, execute0.ALUIn,decode0.BT,fetch0.HaltSig);
-
+        $display("WB : %h RegScr : %h RegWrt : %h ", WB,DMWB_RegSrc,DMWB_RegWrt);
 
    /* IDEX latch */
    IDEX_latch IDEX (

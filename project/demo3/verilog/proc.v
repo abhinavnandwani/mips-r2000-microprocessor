@@ -30,6 +30,7 @@ module proc (/*AUTOARG*/
    // Control signals
    wire HaltSig, ZeroExt, ImmSrc, invA, invB;
    wire ALUSign, Cin, ALUJmp, MemWrt, MemRead;
+   wire BT;
    wire [1:0] RegSrc, BSrc, RegDst;
    wire [3:0] Oper, BranchTaken;
    wire [2:0] RD,ID_Rt,ID_Rs,IDEX_Rs,IDEX_Rt;
@@ -92,6 +93,7 @@ module proc (/*AUTOARG*/
       .clk(clk),
       .rst(rst),
       .NOP_mech(NOP_mech),
+      .BT(BT),
       .NOP_Branch(NOP_Branch),
       .fetch_stall(fetch_stall),
       .IF_instr(instr),
@@ -170,8 +172,14 @@ module proc (/*AUTOARG*/
       .PC_Next(PC_d),
       .DMWB_RegWrt(DMWB_RegWrt),
       .Done_DM(Done_DM),
+      .BT(BT),
       .Done_DM_ff(Done_DM_ff)
    );
+
+    always@(posedge clk)
+        if (IDEX_Rs == 6)
+        $display("PC : %h instr : %h execute0.ALU_RSData : %h execute0.ALUIn : %h BT : %b halt : %h ", fetch0.instr_mem.Addr,instr,execute0.ALU_RSData, execute0.ALUIn,decode0.BT,fetch0.HaltSig);
+
 
    /* IDEX latch */
    IDEX_latch IDEX (

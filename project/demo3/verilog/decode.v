@@ -53,6 +53,7 @@ module decode (
     output wire invA,
     output wire invB,
     output wire Cin,
+    output wire BT,
     output wire [2:0] RD,
     output wire NOP,
     output wire DMWB_RegWrt,
@@ -76,10 +77,10 @@ module decode (
     wire [3:0] BranchTaken_control;
 
 
-    wire rst_ff, BT;
+    wire rst_ff;
     dff dff_rst(.q(rst_ff), .d(rst), .clk(clk), .rst(1'b0));
    
-    assign valid = rst_ff ? 1'b0 : 1'b1;
+    assign valid = rst_ff ? 1'b0 : (BT ? 1'b0 : 1'b1);
 
     assign BT = BrchCnd & IDEX_BranchTaken[2];
 
@@ -89,11 +90,8 @@ module decode (
     assign MemWrt = BT ? 1'b0 : MemWrt_control;
     assign MemRead = BT ? 1'b0 : MemRead_control;
     assign ALUJmp = BT ? 1'b0 : ALUJmp_control;
-    assign BranchTaken = 1'b0 ? 4'h0 : BranchTaken_control;
+    assign BranchTaken = BT ? 4'h0 : BranchTaken_control;
 
-    // always@(posedge clk)
-    //     if (instr[15:11] == 5'b00110)
-    //     $display("BT %h NOP_Branch %h RegWrt %h MemWrt %h BrchCnd %h Branch %h", BT, NOP_Branch, RegWrt, MemWrt, BrchCnd, BranchTaken);
 
     // Register File
     assign RD = (RegDst == 2'b00) ? instr[7:5] :
@@ -106,12 +104,19 @@ module decode (
     assign Rs = instr[10:8];
     assign Rt = instr[7:5];
     
-    // Sign Extension
+   // Sign Extension
     assign Imm5 = BT ? 16'h0000 : ((ZeroExt) ? {11'h000, instr[4:0]} : {{11{instr[4]}}, instr[4:0]});
     assign sImm8 = BT ? 16'h0000 : ({{8{instr[7]}}, instr[7:0]});
     assign Imm8 = BT ? 16'h0000 : ((ZeroExt) ? {8'h00, instr[7:0]} : sImm8);
     assign sImm11 = BT ? 16'h0000 : ({{5{instr[10]}}, instr[10:0]});
     assign nHaltSig_comb = nHaltSig_nflopped;
+
+
+    // assign Imm5 =  ((ZeroExt) ? {11'h000, instr[4:0]} : {{11{instr[4]}}, instr[4:0]});
+    // assign sImm8 =  ({{8{instr[7]}}, instr[7:0]});
+    // assign Imm8 = ((ZeroExt) ? {8'h00, instr[7:0]} : sImm8);
+    // assign sImm11 = ({{5{instr[10]}}, instr[10:0]});
+    // assign nHaltSig_comb = nHaltSig_nflopped;
 
     alu_control aluc (.aluoper(ALUOpr), .instr(instr[1:0]), .op(Oper), .invA(invA), .invB(invB), .Cin(Cin));
 

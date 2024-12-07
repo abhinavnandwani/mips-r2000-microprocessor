@@ -11,15 +11,16 @@ module branchFSM(
                WEAK_TAKEN     = 2'b10,
                STRONG_TAKEN   = 2'b11;
 
-    reg [1:0] state, next_state;
+    wire [1:0] state;
+    reg [1:0] next_state;
 
-    // State transition logic (synchronous reset)
-    always @(posedge clk or negedge rst) begin
-        if (!rst)
-            state <= STRONG_NOT_TAKEN; // Reset to STRONG_NOT_TAKEN on reset
-        else 
-            state <= next_state; // Transition to the next state
-    end
+    // State register
+    dff state_1 [1:0] (
+        .q(state),
+        .d(next_state),
+        .clk(clk),
+        .rst(rst)
+    );
 
     // Combinatorial logic for state transitions and expectedTaken assignment
     always @(*) begin

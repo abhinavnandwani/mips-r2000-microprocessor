@@ -111,13 +111,6 @@ module decode (
     assign sImm11 = BT ? 16'h0000 : ({{5{instr[10]}}, instr[10:0]});
     assign nHaltSig_comb = nHaltSig_nflopped;
 
-
-    // assign Imm5 =  ((ZeroExt) ? {11'h000, instr[4:0]} : {{11{instr[4]}}, instr[4:0]});
-    // assign sImm8 =  ({{8{instr[7]}}, instr[7:0]});
-    // assign Imm8 = ((ZeroExt) ? {8'h00, instr[7:0]} : sImm8);
-    // assign sImm11 = ({{5{instr[10]}}, instr[10:0]});
-    // assign nHaltSig_comb = nHaltSig_nflopped;
-
     alu_control aluc (.aluoper(ALUOpr), .instr(instr[1:0]), .op(Oper), .invA(invA), .invB(invB), .Cin(Cin));
 
     control control0 (.instr((NOP_mech) ? 16'b0000_1xxx_xxxx_xxxx : instr), .err(control_err), .NOP(NOP), .nHaltSig(nHaltSig), .MemRead(MemRead_control), .RegDst(RegDst), .RegWrt(RegWrt_control), .ZeroExt(ZeroExt), .BSrc(BSrc), .ImmSrc(ImmSrc), .ALUOpr(ALUOpr), .ALUSign(ALUSign), .ALUJmp(ALUJmp_control), .MemWrt(MemWrt_control), .RegSrc(RegSrc), .BranchTaken(BranchTaken_control));

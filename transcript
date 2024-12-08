@@ -1,0 +1,8 @@
+# vsim -c proc_hier_pbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
+# Start time: 01:00:49 on Dec 08,2024
+# ** Error: (vsim-3170) Could not find 'proc_hier_pbench'.
+#         Searched libraries:
+#             /home/nandwani/private/cs552/mips-r2000-microprocessor/__work
+# Error loading design
+# End time: 01:00:50 on Dec 08,2024, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 0

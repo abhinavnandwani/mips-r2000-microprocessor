@@ -3,7 +3,7 @@
 Report : cell
 Design : proc
 Version: V-2023.12-SP5
-Date   : Sat Dec  7 23:59:29 2024
+Date   : Sun Dec  8 11:56:30 2024
 ****************************************
 
 Attributes:
@@ -15,73 +15,65 @@ Attributes:
 
 Cell                      Reference       Library             Area  Attributes
 --------------------------------------------------------------------------------
-DMWB                      DMWB_latch                      890.520601
+DMWB                      DMWB_latch                      1012.749383
                                                                     h, n
-EXDM                      EXDM_latch                      844.520537
+EXDM                      EXDM_latch                      994.446683
                                                                     h, n
-IDEX                      IDEX_latch                      2447.152647
+IDEX                      IDEX_latch                      3112.397556
                                                                     h, n
-IFID                      IFID_latch                      620.365517
+IFID                      IFID_latch                      773.875686
                                                                     h, n
-Rs_DMWB_ff                dff_881                         9.911616  h, n
-Rs_EXDM_ff                dff_882                         9.911616  h, n
-Rt_DMWB_ff                dff_879                         9.911616  h, n
-Rt_EXDM_ff                dff_880                         9.911616  h, n
-U8                        IBUFFX2_LVT     saed32lvt_tt0p85v25c
-                                                          2.541440  
-U9                        IBUFFX2_LVT     saed32lvt_tt0p85v25c
-                                                          2.541440  
-U10                       MUX21X1_LVT     saed32lvt_tt0p85v25c
-                                                          3.303872  
-U11                       MUX21X1_LVT     saed32lvt_tt0p85v25c
-                                                          3.303872  
-U12                       INVX0_LVT       saed32lvt_tt0p85v25c
-                                                          1.270720  
-U13                       NBUFFX2_LVT     saed32lvt_tt0p85v25c
-                                                          2.033152  
-U14                       OR2X2_LVT       saed32lvt_tt0p85v25c
-                                                          2.287296  
-U15                       DELLN3X2_LVT    saed32lvt_tt0p85v25c
-                                                          9.657472  
-U16                       DELLN3X2_LVT    saed32lvt_tt0p85v25c
-                                                          9.657472  
-U17                       NBUFFX2_LVT     saed32lvt_tt0p85v25c
-                                                          2.033152  
-U18                       DELLN3X2_LVT    saed32lvt_tt0p85v25c
-                                                          9.657472  
-U19                       INVX0_LVT       saed32lvt_tt0p85v25c
-                                                          1.270720  
-U20                       DELLN3X2_LVT    saed32lvt_tt0p85v25c
-                                                          9.657472  
-U21                       IBUFFX2_LVT     saed32lvt_tt0p85v25c
-                                                          2.541440  
-U22                       MUX21X1_LVT     saed32lvt_tt0p85v25c
-                                                          3.303872  
-U23                       NBUFFX2_LVT     saed32lvt_tt0p85v25c
-                                                          2.033152  
-U24                       DELLN3X2_LVT    saed32lvt_tt0p85v25c
-                                                          9.657472  
-U25                       INVX0_LVT       saed32lvt_tt0p85v25c
-                                                          1.270720  
-U26                       IBUFFX2_LVT     saed32lvt_tt0p85v25c
-                                                          2.541440  
-U27                       INVX0_LVT       saed32lvt_tt0p85v25c
-                                                          1.270720  
-U28                       MUX21X1_LVT     saed32lvt_tt0p85v25c
-                                                          3.303872  
-decode0                   decode                          3196.114988
+Rs_DMWB_ff                dff_881                         11.732500 h, n
+Rs_EXDM_ff                dff_882                         11.732500 h, n
+Rt_DMWB_ff                dff_879                         11.732500 h, n
+Rt_EXDM_ff                dff_880                         11.732500 h, n
+U12                       INVX1           gscl45nm        1.407900  
+U13                       INVX1           gscl45nm        1.407900  
+U14                       INVX1           gscl45nm        1.407900  
+U15                       INVX1           gscl45nm        1.407900  
+U16                       INVX1           gscl45nm        1.407900  
+U17                       INVX1           gscl45nm        1.407900  
+U18                       INVX1           gscl45nm        1.407900  
+U19                       BUFX2           gscl45nm        2.346500  
+U20                       BUFX2           gscl45nm        2.346500  
+U21                       BUFX2           gscl45nm        2.346500  
+U22                       BUFX2           gscl45nm        2.346500  
+U23                       INVX1           gscl45nm        1.407900  
+U24                       INVX8           gscl45nm        3.285100  
+U25                       INVX8           gscl45nm        3.285100  
+U26                       INVX8           gscl45nm        3.285100  
+U27                       INVX8           gscl45nm        3.285100  
+U28                       INVX8           gscl45nm        3.285100  
+U29                       INVX8           gscl45nm        3.285100  
+U30                       INVX8           gscl45nm        3.285100  
+U31                       INVX8           gscl45nm        3.285100  
+U32                       INVX8           gscl45nm        3.285100  
+U33                       INVX8           gscl45nm        3.285100  
+U34                       INVX8           gscl45nm        3.285100  
+U35                       INVX8           gscl45nm        3.285100  
+U36                       INVX8           gscl45nm        3.285100  
+U37                       INVX8           gscl45nm        3.285100  
+U38                       INVX8           gscl45nm        3.285100  
+U39                       NAND2X1         gscl45nm        1.877200  
+U40                       MUX2X1          gscl45nm        3.754400  
+U41                       MUX2X1          gscl45nm        3.754400  
+U42                       MUX2X1          gscl45nm        3.754400  
+U43                       MUX2X1          gscl45nm        3.754400  
+decode0                   decode                          4274.384329
                                                                     h, n
-done_ff                   dff_883                         9.911616  h, n
-execute0                  execute                         2418.688453
+done_ff                   dff_883                         11.732500 h, n
+execute0                  execute                         3250.841060
                                                                     h
-fetch0                    fetch                           83565.344736
+fetch0                    fetch                           115939.624528
                                                                     h, n
-fu                        forwarding                      147.657666
+fu                        forwarding                      256.237798
                                                                     h
-memory0                   memory                          81417.065391
+memory0                   memory                          113592.655212
                                                                     h, n
-stall                     stall_mech                      95.304000 h
-wb0                       wb                              65.060866 h
+stall                     stall_mech                      127.180297
+                                                                    h
+wb0                       wb                              164.724298
+                                                                    h
 --------------------------------------------------------------------------------
-Total 37 cells                                            175842.491723
+Total 48 cells                                            243644.599829
 1

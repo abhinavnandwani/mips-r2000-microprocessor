@@ -12,12 +12,12 @@ module fetch (
     input NOP, branch, NOP_Branch,    // Control signals
     input actualTaken,
     input [3:0] IDEX_BranchTaken,
+    input expectedTaken,
     input misprediction,
     output [15:0] instr,              // Fetched instruction
     output [15:0] PC_Next, PC_curr,   // Next and current PC values
     output err,                       // Error signal
     output instr_ddd,
-    output expectedTaken,
     output fetch_stall                // Stall signal for fetch stage
 );
 
@@ -39,7 +39,8 @@ module fetch (
     );
 
     // Select current PC based on branch signal
-    assign PC_curr =   (instr_ddd & expectedTaken) ? PC_expected : (branch ?  PC_B : PC);
+   // assign PC_curr =  (branch ?  PC_B : PC);
+
 
     // Instruction Memory: Fetch instruction based on current PC
     mem_system #(0) instr_mem (
@@ -68,25 +69,23 @@ module fetch (
         .c_in(1'b0)
     );
 
-     assign instr_ddd = (IFID_instr[15:13] == 3'b011) ? 1'b1 : 1'b0;
 
-    branchFSM bFSM(
-        .clk(clk),
-        .rst(rst),
-        .instr_b(IDEX_BranchTaken[2]),
-        .actualTaken(actualTaken),
-        .expectedTaken(expectedTaken)
-    );
 
-    cla_16b pc_branch(.sum(PC_expected), .c_out(), .a(PC_Sum), .b({{8{IFID_instr[7]}},IFID_instr[7:0]}), .c_in(1'b0));
+   cla_16b pc_branch(.sum(PC_expected), .c_out(), .a(PC_Sum), .b({{8{IFID_instr[7]}},IFID_instr[7:0]}), .c_in(1'b0));
+
+   // assign PC_expected = PC_Sum + {{8{IFID_instr[7]}},IFID_instr[7:0]};
 
     // Halt Mux: Select next PC value based on control signals
-    assign PC_Next = (NOP | NOP_Branch |  fetch_stall) ? PC_curr : PC_Sum;
+    assign PC_Next = (NOP | NOP_Branch | fetch_stall) ? PC_curr : PC_Sum;
+
+
+    assign PC_curr =  (IFID_instr[15:13] == 3'b011) ? (expectedTaken ? PC_expected : PC) :
+                          ((misprediction | branch) ? PC_B : PC);
+
 
     always @(posedge clk) begin
-        $display("PC : %b",PC_Sum);
+        $display("pc : %h ",PC_curr);
     end
-
     // Fetch Stall: Assert stall if memory access is not complete
     assign fetch_stall = ~Done;
 

@@ -12,9 +12,9 @@ module decode (
     // Instruction and Data Inputs
     input wire [15:0] instr,
     input wire [15:0] instr_comb,
-    input wire expectedTaken,
     input wire [15:0] WB,
     input wire [15:0] PC,
+    input wire misprediction,
     input wire NOP_mech,
     input wire IDF_err,
     input wire Done_DM,
@@ -54,8 +54,7 @@ module decode (
     output wire invA,
     output wire invB,
     output wire Cin,
-    output wire actualTaken,
-    output wire misprediction,
+    output wire BT,
     output wire [2:0] RD,
     output wire NOP,
     output wire DMWB_RegWrt,
@@ -82,19 +81,17 @@ module decode (
     wire rst_ff;
     dff dff_rst(.q(rst_ff), .d(rst), .clk(clk), .rst(1'b0));
    
-    assign valid = rst_ff ? 1'b0 : (misprediction ? 1'b0 : 1'b1);
+    assign valid = rst_ff ? 1'b0 : (BT ? 1'b0 : 1'b1);
 
-    assign misprediction =   (actualTaken != expectedTaken) ? 1'b1 : 1'b0;
+    assign BT = misprediction;
 
-    assign actualTaken = BrchCnd & IDEX_BranchTaken[2];
+    assign NOP_Branch =  BT | BranchTaken[3];
 
-    assign NOP_Branch = misprediction ? 1'b1 : BranchTaken[3];
-
-    assign RegWrt = misprediction ? 1'b0 : RegWrt_control;
-    assign MemWrt = misprediction ? 1'b0 : MemWrt_control;
-    assign MemRead = misprediction ? 1'b0 : MemRead_control;
-    assign ALUJmp = misprediction ? 1'b0 : ALUJmp_control;
-    assign BranchTaken =  misprediction ? 4'b0000 : BranchTaken_control;
+    assign RegWrt = BT ? 1'b0 : RegWrt_control;
+    assign MemWrt = BT ? 1'b0 : MemWrt_control;
+    assign MemRead = BT ? 1'b0 : MemRead_control;
+    assign ALUJmp = BT ? 1'b0 : ALUJmp_control;
+    assign BranchTaken = BT ? 4'h0 : BranchTaken_control;
 
 
     // Register File
@@ -109,11 +106,11 @@ module decode (
     assign Rt = instr[7:5];
     
    // Sign Extension
-    assign Imm5 = misprediction ? 16'h0000 : ((ZeroExt) ? {11'h000, instr[4:0]} : {{11{instr[4]}}, instr[4:0]});
-    assign sImm8 = misprediction ? 16'h0000 : ({{8{instr[7]}}, instr[7:0]});
-    assign Imm8 = misprediction ? 16'h0000 : ((ZeroExt) ? {8'h00, instr[7:0]} : sImm8);
-    assign sImm11 = misprediction ? 16'h0000 : ({{5{instr[10]}}, instr[10:0]});
-    assign nHaltSig_comb = nHaltSig_nflopped;
+    assign Imm5 = BT ? 16'h0000 : ((ZeroExt) ? {11'h000, instr[4:0]} : {{11{instr[4]}}, instr[4:0]});
+    assign sImm8 = BT ? 16'h0000 : ({{8{instr[7]}}, instr[7:0]});
+    assign Imm8 = BT ? 16'h0000 : ((ZeroExt) ? {8'h00, instr[7:0]} : sImm8);
+    assign sImm11 = BT ? 16'h0000 : ({{5{instr[10]}}, instr[10:0]});
+    assign nHaltSig_comb = BT ? 16'h0000 : nHaltSig_nflopped;
 
     alu_control aluc (.aluoper(ALUOpr), .instr(instr[1:0]), .op(Oper), .invA(invA), .invB(invB), .Cin(Cin));
 

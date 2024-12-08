@@ -31,7 +31,6 @@ module proc (/*AUTOARG*/
    wire HaltSig, ZeroExt, ImmSrc, invA, invB;
    wire ALUSign, Cin, ALUJmp, MemWrt, MemRead;
    wire BT;
-   wire instr_ddd;
    wire [1:0] RegSrc, BSrc, RegDst;
    wire [3:0] Oper, BranchTaken;
    wire [2:0] RD,ID_Rt,ID_Rs,IDEX_Rs,IDEX_Rt;
@@ -49,10 +48,11 @@ module proc (/*AUTOARG*/
    wire [15:0] IDEX_RSData, IDEX_RTData, IDEX_Imm5, IDEX_Imm8, IDEX_sImm8, IDEX_sImm11, IDEX_PC_Next;
    wire IDEX_invA, IDEX_invB, IDEX_Cin, IDEX_NOP;
    wire [2:0] IDEX_RD;
-   wire BrchCnd, NOP_Branch;
+   wire BrchCnd, NOP_Branch,IDEX_expectedTaken,IFID_expectedTaken;
 
    wire [15:0] EX_ALU,EXDM_ALU;
    wire [15:0] EXDM_RTData;
+   wire expectedTaken;
    wire [15:0] EXDM_PC;
    wire EXDM_MemWrt, EXDM_MemRead, EXDM_HaltSig;
    wire [15:0] DMWB_ALU, DMWB_PC, DMWB_readData,DMWB_RD_Data,EXDM_RD_Data,ALU_RTData;
@@ -63,7 +63,7 @@ module proc (/*AUTOARG*/
    wire [1:0] EXDM_RegSrc, DMWB_RegSrc;
    wire CacheHit;
    wire takeRs_EXDM, takeRt_EXDM, takeRs_DMWB, takeRt_DMWB, takeRs_EXDM_ff, takeRt_EXDM_ff,takeRs_DMWB_ff,takeRt_DMWB_ff;
-   wire Done_DM_ff,expectedTaken,IDEX_expectedTaken, IFID_expectedTaken,actualTaken,misprediction;
+   wire Done_DM_ff,misprediction;
 
    dff done_ff(.q(Done_DM_ff), .d(Done_DM), .clk(clk), .rst(rst));
 
@@ -78,19 +78,16 @@ module proc (/*AUTOARG*/
       .rst(rst),
       .NOP(NOP_mech),
       .NOP_Branch(NOP_Branch),
-      .actualTaken(actualTaken),
-      .IDEX_BranchTaken(IDEX_BranchTaken),
-      .branch( (IDEX_expectedTaken != BT) ? (IDEX_BranchTaken[2] | IDEX_ALUJmp) : 1'b0),
+      .branch(|{BrchCnd,IDEX_ALUJmp}),
       .PC_B(PC_Jump), 
       .PC_curr(PC),
-      .instr_ddd(instr_ddd),
       .fetch_stall(fetch_stall),
       .HaltSig(HaltSig),
+      .expectedTaken(expectedTaken),
       .instr(instr), 
       .PC_Next(PC_f),
-      .IFID_instr(IFID_instr_comb),
       .misprediction(misprediction),
-      .expectedTaken(expectedTaken),
+      .IFID_instr(IFID_instr_comb),
       .err(IF_err)
    );
 
@@ -99,8 +96,8 @@ module proc (/*AUTOARG*/
       .clk(clk),
       .rst(rst),
       .NOP_mech(NOP_mech),
-      .misprediction(misprediction),
       .IF_expectedTaken(expectedTaken),
+      .BT(BT),
       .NOP_Branch(NOP_Branch),
       .fetch_stall(fetch_stall),
       .IF_instr(instr),
@@ -108,10 +105,10 @@ module proc (/*AUTOARG*/
       .IFID_instr(ID_instr),
       .IFID_instr_comb(IFID_instr_comb),
       .IFID_PC_Next(ID_PC),
-      .nHaltSig(1'b1 ? HaltSig : 1'b0),
+      .IFID_expectedTaken(IFID_expectedTaken),
+      .nHaltSig(HaltSig),
       .IF_err(IF_err),
-      .IFID_err(IDF_err),
-      .IFID_expectedTaken(IFID_expectedTaken)
+      .IFID_err(IDF_err)
    );
 
    stall_mech stall(
@@ -147,7 +144,6 @@ module proc (/*AUTOARG*/
       .invB(invB),
       .RegWrt(ID_RegWrt),
       .IDF_err(IDF_err),
-      .expectedTaken(IDEX_expectedTaken),
       .DMWB_RD(DMWB_RD),
       .Cin(Cin),
       .RD(RD),
@@ -166,6 +162,7 @@ module proc (/*AUTOARG*/
       .IDEX_BranchTaken(IDEX_BranchTaken),
       .Oper(Oper),
       .err(ID_err), 
+      .misprediction(misprediction),
       .RSData(RSData), 
       .RTData(RTData), 
       .Imm5(Imm5), 
@@ -177,18 +174,15 @@ module proc (/*AUTOARG*/
       .PC_Next(PC_d),
       .DMWB_RegWrt(DMWB_RegWrt),
       .Done_DM(Done_DM),
-      .misprediction(misprediction),
-      .actualTaken(actualTaken),
+      .BT(BT),
       .Done_DM_ff(Done_DM_ff)
    );
-
 
    /* IDEX latch */
    IDEX_latch IDEX (
       .clk(clk),
       .rst(rst),
       .valid(valid),
-      .ID_expectedTaken(IFID_expectedTaken),
       // Control Signals
       .ID_nHaltSig(HaltSig),
       .ID_MemRead(MemRead),
@@ -218,6 +212,7 @@ module proc (/*AUTOARG*/
       .ID_invA(invA),
       .ID_invB(invB),
       .ID_Cin(Cin),
+      .ID_expectedTaken(IFID_expectedTaken),
       .ID_RD(RD),
       .ID_NOP(NOP_mech),
       .Done_DM(~Done_DM),
@@ -227,6 +222,7 @@ module proc (/*AUTOARG*/
       .IDEX_MemRead(IDEX_MemRead),
       .IDEX_ImmSrc(IDEX_ImmSrc),
       .IDEX_nHaltSig_comb(),
+      .IDEX_expectedTaken(IDEX_expectedTaken),
       .IDEX_ALUSign(IDEX_ALUSign),
       .IDEX_ALUJmp(IDEX_ALUJmp),
       .IDEX_MemWrt(IDEX_MemWrt),
@@ -253,8 +249,7 @@ module proc (/*AUTOARG*/
       .IDEX_Rs(IDEX_Rs),
       .IDEX_Rt(IDEX_Rt),
       .IDEX_Cin(IDEX_Cin),
-      .IDEX_NOP(IDEX_NOP),
-      .IDEX_expectedTaken(IDEX_expectedTaken)
+      .IDEX_NOP(IDEX_NOP)
    );
 
    /* Execute Stage */
@@ -270,12 +265,15 @@ module proc (/*AUTOARG*/
       .Imm5(IDEX_Imm5), 
       .Imm8(IDEX_Imm8), 
       .sImm8(IDEX_sImm8), 
+      .IDEX_expectedTaken(IDEX_expectedTaken),
       .sImm11(IDEX_sImm11), 
       .BSrc(IDEX_BSrc), 
       .ImmSrc(IDEX_ImmSrc), 
       .ALUJmp(IDEX_ALUJmp), 
       .invA(IDEX_invA), 
       .invB(IDEX_invB), 
+      .expectedTaken(expectedTaken),
+      .misprediction(misprediction),
       .ALUSign(IDEX_ALUSign), 
       .cin(IDEX_Cin), 
       .BranchTaken(IDEX_BranchTaken), 

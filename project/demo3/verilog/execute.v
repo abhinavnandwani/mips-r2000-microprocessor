@@ -15,6 +15,7 @@ module execute (
     input wire [15:0] Imm5, 
     input wire [15:0] Imm8, 
     input wire [15:0] sImm8, 
+    input wire IDEX_expectedTaken,
     input wire [15:0] sImm11,
     input wire [1:0] BSrc,
     input wire [3:0] Oper,
@@ -31,6 +32,8 @@ module execute (
     input wire cin, 
     input wire HaltSig,
     output wire [15:0] PC_Next,
+    output wire expectedTaken,
+    output wire misprediction,
     output wire [15:0] ALU_Out,
     output wire [15:0] ALU_RTData,
     output wire BrchCnd
@@ -62,6 +65,17 @@ module execute (
 
    //BrchCnd 
    brchcnd branch_ctrl(.SF(SF), .ZF(ZF), .OF(OF), .brch_instr(1'b0 ? 4'b0000:BranchTaken), .BrchCnd(BrchCnd));
+
+    branchFSM bFSM(
+        .clk(clk),
+        .rst(rst),
+        .instr_b(BranchTaken[2]),
+        .actualTaken(BrchCnd),
+        .expectedTaken(expectedTaken)
+    );
+
+    assign misprediction = (BranchTaken[2] && (IDEX_expectedTaken != BrchCnd)) ? 1'b1 : 1'b0;
+
 
 endmodule
 `default_nettype wire

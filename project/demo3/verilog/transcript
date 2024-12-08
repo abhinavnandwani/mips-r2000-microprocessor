@@ -1,6 +1,6 @@
 # vsim -c proc_hier_pbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 14:01:12 on Dec 05,2024
-# ** Warning: License feature 'msimpevsimvlog' will expire today.
+# Start time: 11:23:08 on Dec 08,2024
+# ** Warning: License feature 'msimpevsimvlog' will expire in 12 days.
 # Loading __work.proc_hier_pbench
 # Loading __work.proc_hier
 # Loading __work.clkrst
@@ -15,8 +15,8 @@
 # Loading __work.four_bank_mem
 # Loading __work.final_memory
 # Loading __work.cache_controller
+# Loading __work.reg_16
 # Loading __work.cla_16b
-# Loading __work.branchFSM
 # Loading __work.IFID_latch
 # Loading __work.stall_mech
 # Loading __work.decode
@@ -33,6 +33,7 @@
 # Loading __work.execute
 # Loading __work.alu
 # Loading __work.brchcnd
+# Loading __work.branchFSM
 # Loading __work.forwarding
 # Loading __work.EXDM_latch
 # Loading __work.memory
@@ -42,42 +43,59 @@
 # Loading __work.xor2
 # Loading __work.nand2
 # Loading __work.cla_1b
-# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'IFID'.  Expected 17, found 16.
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_pbench/DUT/p0/IFID File: proc.v Line: 98
-# ** Warning: (vsim-3722) proc.v(98): [TFMPC] - Missing connection for port 'BT'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'fetch0'.  Expected 18, found 15.
+#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_pbench/DUT/p0/fetch0 File: proc.v Line: 76
+# ** Warning: (vsim-3722) proc.v(76): [TFMPC] - Missing connection for port 'actualTaken'.
+# ** Warning: (vsim-3722) proc.v(76): [TFMPC] - Missing connection for port 'IDEX_BranchTaken'.
+# ** Warning: (vsim-3722) proc.v(76): [TFMPC] - Missing connection for port 'instr_ddd'.
 # log -howmany -rec /* 
-# 8439
+# 11318
 #  run -all
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.ptrace for output
-# PC : xxxxxxxxxxxxxxxx
-# PC : 0000000000000010
-# PC : 0000000000000010
-# PC : 0000000000000010
-# PC : 0000000000000010
-# PC : 0000000000000010
-# PC : 0000000000000010
-# PC : 0000000000000010
-# PC : 0000000000000010
-# PC : 0000000000000010
-# PC : 0000000000000010
-# PC : 0000000000000100
-# PC : 0000000000000110
-# PC : 0000000000001000
-# PC : 0000000000001x10
-# PC : 0000000000001x10
-# PC : 0000000000001x10
-# PC : 0000000000001x10
-# PC : 0000000000001x10
-# PC : 0000000000001x10
-# PC : 0000000000001x10
-# PC : 0000000000001x10
-# PC : 0000000000001x10
-# PC : 00000000000xxx00
-# PC : 00000000000xxx10
-# PC : 0000000000xxxxx0
-# PC : 0000000000xxxxx0
-# ** Note: $finish    : proc_hier_pbench.v(114)
-#    Time: 2605 ns  Iteration: 0  Instance: /proc_hier_pbench
-# End time: 14:01:13 on Dec 05,2024, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 2
+# pc : xxxx 
+# pc : 0000 
+# pc : 0000 
+# pc : 0000 
+# pc : 0000 
+# pc : 0000 
+# pc : 0000 
+# pc : 0000 
+# pc : 0000 
+# pc : 0000 
+# pc : 0002 
+# pc : 0004 
+# pc : 0006 
+# pc : 0008 
+# pc : 0008 
+# pc : 0008 
+# pc : 0008 
+# pc : 0008 
+# pc : 0008 
+# pc : 0008 
+# pc : 000a 
+# pc : 0004 
+# pc : 0004 
+# pc : 0006 
+# pc : 0008 
+# pc : 000a 
+# pc : 0004 
+# pc : 0004 
+# pc : 0006 
+#############  Autofindloop Analysis  ###############
+#############  Loop found at time 2801 ns ###############
+#       Signal: /proc_hier_pbench/DUT/p0/fetch0/pc_branch/cla[1]/fa[2]/c_out @ sub-iteration 0 at Value St0 (cla_1b.v:8)
+#       Signal: /proc_hier_pbench/DUT/p0/fetch0/pc_branch/cla[1]/carries @ sub-iteration 0 at Value St0 (cla_4b.v:18)
+#   Active process: /proc_hier_pbench/DUT/p0/fetch0/pc_reg/#IMPLICIT-WIRE(we?w:r)#13 @ sub-iteration 1
+#     Source: fetch.v:33
+#   Active process: /proc_hier_pbench/DUT/p0/IFID/dff_f_pc/#IMPLICIT-WIRE(we?w:r)#13 @ sub-iteration 1
+#     Source: IFID_latch.v:22
+#   Active process: /proc_hier_pbench/DUT/p0/fetch0/#ASSIGN#82 @ sub-iteration 1
+#     Source: proc.v:76
+#   Active process: /proc_hier_pbench/DUT/p0/fetch0/instr_mem/ctrl/#ALWAYS#82 @ sub-iteration 1
+#     Source: mem_system.v:94
+#       Signal: /proc_hier_pbench/DUT/p0/fetch0/PC_expected @ sub-iteration 2 at Value St0 (fetch.v:30)
+#   Active process: /proc_hier_pbench/DUT/p0/fetch0/pc_reg/#IMPLICIT-WIRE(we?w:r)#13 @ sub-iteration 3
+#     Source: fetch.v:33
+################# END OF LOOP #################
+# ** Error (suppressible): (vsim-3601) Iteration limit 10000000 reached at time 2801 ns.

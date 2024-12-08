@@ -2,156 +2,134 @@
 /* $LastChangedDate: 2009-04-24 09:28:13 -0500 (Fri, 24 Apr 2009) $ */
 /* $Rev: 77 $ */
 
-`default_nettype none
 module mem_system(/*AUTOARG*/
    // Outputs
-   DataOut, Done, Stall, CacheHit, err,
+   DataOut, Done, Stall, CacheHit, err, 
    // Inputs
    Addr, DataIn, Rd, Wr, createdump, clk, rst
    );
    
-   input wire [15:0] Addr;
-   input wire [15:0] DataIn;
-   input wire        Rd;
-   input wire        Wr;
-   input wire        createdump;
-   input wire        clk;
-   input wire        rst;
+   input [15:0] Addr;
+   input [15:0] DataIn;
+   input        Rd;
+   input        Wr;
+   input        createdump;
+   input        clk;
+   input        rst;
    
-   output wire [15:0] DataOut;
-   output wire        Done;
-   output wire        Stall;
-   output wire        CacheHit;
-   output wire        err;
+   output [15:0] DataOut;
+   output Done;
+   output Stall;
+   output CacheHit;
+   output err;
 
-   wire comp, write, write_0, write_1;
-   wire hit, dirty, valid, valid_out, valid_out_0, valid_out_1, valid_in;
-   wire hit_0, dirty_0, valid_0;
-   wire hit_1, dirty_1, valid_1;
-   wire [3:0] busy;
-   wire [4:0] tag_out, tag_out_0, tag_out_1;
-   wire err_mem, err_cache_0, err_cache_1;
-   wire [15:0] data_out_cache_0,data_out_cache_1,data_out_mem,mem_addr;
-   wire write_mem, read_mem;
-   wire [2:0] offset_out;
-   wire cache_in, mem_in, mem_stall;
-   wire [4:0] tag_in;
-   wire [7:0] index_in;
-   wire [2:0] offset_in;
-   wire victimway, evict, cache_sel, CacheHit_0, CacheHit_1;
+   // needed wires
+   wire enable_ct, hit_0, hit_1, dirty_0, dirty_1, valid_0, valid_1, err_c0, err_c1, cmp_ct, wr_ct, valid_in_ct;
+   wire Hit, stall_dummy, err_m, wr_m, rd_m, ori, err_reg, enable_ct_0, enable_ct_1, final_state, idle;
+   wire [2:0] offset_ct;
+   wire [3:0] busy_dummy;
+   wire [4:0] tag_out_0, tag_out_1, tag_out_c, tag_ct;
+   wire [7:0] index_ct;
+   wire [15:0] data_out_0, data_out_1, data_out_c, data_in_ct, data_out_m, addr_in_m, data_in_m, DataOut_ct, dataout_temp;
+   wire [255:0] victimway_in_c, victimway_out_c;
+
 
    /* data_mem = 1, inst_mem = 0 *
     * needed for cache parameter */
    parameter memtype = 0;
    cache #(0 + memtype) c0(// Outputs
                           .tag_out              (tag_out_0),
-                          .data_out             (data_out_cache_0),
+                          .data_out             (data_out_0),
                           .hit                  (hit_0),
                           .dirty                (dirty_0),
                           .valid                (valid_0),
-                          .err                  (err_cache_0),
+                          .err                  (err_c0),
                           // Inputs
-                          .enable               (1'b1),
+                          .enable               (enable_ct_0),
                           .clk                  (clk),
                           .rst                  (rst),
                           .createdump           (createdump),
-                          .tag_in               (Addr[15:11]),
-                          .index                (Addr[10:3]),
-                          .offset               (offset_out),
-                          .data_in              (cache_in ? data_out_mem : DataIn),
-                          .comp                 (comp),
-                          .write                (write_0), // write_0
-                          .valid_in             (valid_out_0));
+                          .tag_in               (tag_ct),
+                          .index                (index_ct),
+                          .offset               (offset_ct),
+                          .data_in              (data_in_ct),
+                          .comp                 (cmp_ct),
+                          .write                (wr_ct),
+                          .valid_in             (valid_in_ct));
    cache #(2 + memtype) c1(// Outputs
                           .tag_out              (tag_out_1),
-                          .data_out             (data_out_cache_1),
+                          .data_out             (data_out_1),
                           .hit                  (hit_1),
                           .dirty                (dirty_1),
                           .valid                (valid_1),
-                          .err                  (err_cache_1),
+                          .err                  (err_c1),
                           // Inputs
-                          .enable               (1'b1),
+                          .enable               (enable_ct_1),
                           .clk                  (clk),
                           .rst                  (rst),
                           .createdump           (createdump),
-                          .tag_in               (Addr[15:11]),
-                          .index                (Addr[10:3]),
-                          .offset               (offset_out),
-                          .data_in              (cache_in ? data_out_mem : DataIn),
-                          .comp                 (comp),
-                          .write                (write_1), // write_1
-                          .valid_in             (valid_out_1));
+                          .tag_in               (tag_ct),
+                          .index                (index_ct),
+                          .offset               (offset_ct),
+                          .data_in              (data_in_ct),
+                          .comp                 (cmp_ct),
+                          .write                (wr_ct),
+                          .valid_in             (valid_in_ct));
 
    four_bank_mem mem(// Outputs
-                     .data_out          (data_out_mem),
-                     .stall             (mem_stall),
-                     .busy              (busy),
-                     .err               (err_mem),
+                     .data_out          (data_out_m),
+                     .stall             (stall_dummy),
+                     .busy              (busy_dummy),
+                     .err               (err_m),
                      // Inputs
                      .clk               (clk),
                      .rst               (rst),
                      .createdump        (createdump),
-                     .addr              (mem_addr),
-                     .data_in           (mem_in ? DataOut : (DataIn)),
-                     .wr                (write_mem),
-                     .rd                (read_mem));
+                     .addr              (addr_in_m),
+                     .data_in           (data_in_m),
+                     .wr                (wr_m),
+                     .rd                (rd_m));
    
+   // your code here
    cache_controller ctrl(
-      .clk(clk),
-      .rst(rst),
-      .createdump(createdump),
-      .Rd(Rd),
-      .Wr(Wr),
-      .valid(valid),
-      .dirty(dirty),
-      .hit(hit),
-      .mem_stall(mem_stall),
-      .tag_in(Addr[15:11]),
-      .index_in(Addr[10:3]),
-      .offset_in(Addr[2:0]),
-      .tag_out(tag_out),
-      //outputs
-      .valid_in(valid_in),
-      .offset_out(offset_out),
-      .mem_addr(mem_addr),
-      .comp(comp),
-      .write(write),
-      .Stall(Stall),
-      .write_mem(write_mem), 
-      .CacheHit(CacheHit),
-      .read_mem(read_mem),
-      .cache_in(cache_in),
-      .mem_in(mem_in),
-      .done(Done)
-   ); 
+      // Input from system
+	.clk(clk), .rst(rst), .creat_dump(createdump),
+	// Input from mem
+	.Addr(Addr), .DataIn(DataIn), .Rd(Rd), .Wr(Wr), .Hit(Hit), .victimway_in(victimway_out_c), .Data_latch(dataout_temp),
+	// Input from cache0
+	.hit_0(hit_0), .dirty_0(dirty_0), .tag_out_0(tag_out_0) ,.DataOut_cache_0(data_out_0), .valid_0(valid_0),
+	// Input from cache1
+	.hit_1(hit_1), .dirty_1(dirty_1), .tag_out_1(tag_out_1), .DataOut_cache_1(data_out_1), .valid_1(valid_1),
+   // Input from the whole cache
+   .DataOut_cache(data_out_c), .tag_out(tag_out_c),
+	// Input from four bank
+	.DataOut_mem(data_out_m),
+	// Output to cache
+	.enable_ct(enable_ct), .index_cache(index_ct), .offset_cache(offset_ct), .cmp_ct(cmp_ct), .wr_cache(wr_ct), .tag_cache(tag_ct), .DataIn_ct(data_in_ct),.valid_in_ct(valid_in_ct),
+	// Output to fourbank
+	.Addr_mem(addr_in_m), .DataIn_mem(data_in_m), .wr_mem(wr_m), .rd_mem(rd_m),
+	// Output to system
+	.Done(Done), .CacheHit(CacheHit), .Stall_sys(Stall), .victimway_out(victimway_in_c), .ori(ori), .idle(idle), .final_state(final_state), .DataOut_ct(DataOut_ct)
+);
 
-   dff victimway_ff (
-      .q(victimway),                      // Output: current state of victimway
-      .d(Done ?  ~victimway : victimway), 
-      .clk(clk),                          // Clock signal
-      .rst(rst)                           // Reset signal
-   );
 
-   assign CacheHit_0 = hit_0 & valid_0;
-   assign CacheHit_1 = hit_1 & valid_1;
+   assign tag_out_c = enable_ct ? tag_out_0 : tag_out_1; 
+   assign data_out_c = enable_ct ? data_out_0 : data_out_1;
+   assign Hit = ((hit_0 & valid_0) | (hit_1 & valid_1));
+   assign err = err_c0 | err_c1 | err_m; 
+   assign enable_ct_0 = idle ? 1'b0 : (ori ? 1 : enable_ct);
+   assign enable_ct_1 = idle ? 1'b0 : (ori ? 1 : (!enable_ct)); 
 
-   // Victim Selection Logic
-   assign evict = valid_0 ? (valid_1 ? ~victimway : 1'b1) : 1'b0;
 
-   assign cache_sel = (Rd | Wr) ? (CacheHit_0 ? 1'b0 : (CacheHit_1 ? 1'b1 : evict)) : 1'b0;
+   reg_16 #(.SIZE(256)) LRU_cnter(.readData(victimway_out_c), .err(err_reg), .clk(clk), .rst(rst), .writeData(victimway_in_c), .writeEn(1'b1));
 
-   assign hit = hit_0 | hit_1;
-   assign dirty = cache_sel ? dirty_1 : dirty_0;
-   assign valid = cache_sel ? valid_1 : valid_0;
-   assign tag_out = cache_sel ? tag_out_1 : tag_out_0;
-   assign valid_out_0 = cache_sel ? 1'b0 : valid_in;
-   assign valid_out_1 = cache_sel ? valid_in : 1'b0;
-   assign write_0 = cache_sel ? 1'b0 : write;
-   assign write_1 = cache_sel ? write : 1'b0;
-   assign DataOut = cache_sel ? data_out_cache_1 : data_out_cache_0;
+   // reg_16 #(.SIZE(1)) latch_victimway(.readData(victimway_out_c), .err(err_reg), .clk(clk), .rst(rst), .writeData(victimway_in_c), .writeEn(1'b1));
 
-   assign err = err_mem | err_cache_0 | err_cache_1;
+   reg_16 #(.SIZE(16)) latch_DataOut(.readData(dataout_temp), .err(err_reg), .clk(clk), .rst(rst), .writeData(DataOut_ct), .writeEn(1'b1));
+   assign DataOut = final_state ? (DataOut_ct) : (dataout_temp);
+
    
 endmodule // mem_system
-`default_nettype wire
+
+
 // DUMMY LINE FOR REV CONTROL :9:

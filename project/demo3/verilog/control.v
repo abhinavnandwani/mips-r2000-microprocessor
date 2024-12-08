@@ -180,7 +180,6 @@ module control (
         
         5'b00100: begin		// J displacement
             RegWrt = 1'b0;
-    
             ALUJmp = 1'b0;
             ImmSrc = 1'b0;
             BranchTaken = 4'b1000;

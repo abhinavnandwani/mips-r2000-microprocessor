@@ -11,9 +11,12 @@ module cache_controller (
     input wire hit,
     input wire mem_stall,
     input wire [4:0] tag_in,
+    input wire cache_sel,
     input wire [7:0] index_in,
     input wire [2:0] offset_in,
     input wire [4:0] tag_out,
+    input wire [255:0] lru_out,
+    output reg [255:0] lru_in,
     output reg [2:0] offset_out,
     output reg [15:0] mem_addr,
     output wire CacheHit,
@@ -73,6 +76,7 @@ module cache_controller (
         write_mem = 1'b0;
         read_mem = 1'b0;
         valid_in = 1'b0;
+        lru_in = lru_out;
         cache_in = 1'b0;
         mem_in = 1'b0;
         mem_addr = 16'h0000;
@@ -219,6 +223,7 @@ module cache_controller (
             DONE: begin
                 // Signals the completion of a read or write operation and returns the controller to the IDLE state.
                 done = 1'b1;
+                lru_in[index_in] = ~cache_sel;
                 next_state = IDLE;
             end
 

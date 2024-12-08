@@ -1,18 +1,6 @@
 # vsim -c proc_hier_pbench -lib __work -voptargs="+acc" -wlf dump.wlf -do "log -howmany -rec /* ; run -all" 
-# Start time: 22:00:37 on Dec 05,2024
-# //  ModelSim DE 10.7c Aug 17 2018Linux 5.15.0-126-generic
-# //
-# //  Copyright 1991-2018 Mentor Graphics Corporation
-# //  All Rights Reserved.
-# //
-# //  ModelSim DE and its associated documentation contain trade
-# //  secrets and commercial or financial information that are the property of
-# //  Mentor Graphics Corporation and are privileged, confidential,
-# //  and exempt from disclosure under the Freedom of Information Act,
-# //  5 U.S.C. Section 552. Furthermore, this information
-# //  is prohibited from disclosure under the Trade Secrets Act,
-# //  18 U.S.C. Section 1905.
-# //
+# Start time: 22:00:37 on Dec 07,2024
+# ** Warning: License feature 'msimpevsimvlog' will expire in 13 days.
 # Loading __work.proc_hier_pbench
 # Loading __work.proc_hier
 # Loading __work.clkrst
@@ -20,7 +8,14 @@
 # Loading __work.dff
 # Loading __work.fetch
 # Loading __work.register
-# Loading __work.stallmem
+# Loading __work.mem_system
+# Loading __work.cache
+# Loading __work.memc
+# Loading __work.memv
+# Loading __work.four_bank_mem
+# Loading __work.final_memory
+# Loading __work.cache_controller
+# Loading __work.reg_16
 # Loading __work.cla_16b
 # Loading __work.IFID_latch
 # Loading __work.stall_mech
@@ -41,44 +36,31 @@
 # Loading __work.forwarding
 # Loading __work.EXDM_latch
 # Loading __work.memory
-# Loading __work.mem_system
-# Loading __work.cache
-# Loading __work.memc
-# Loading __work.memv
-# Loading __work.four_bank_mem
-# Loading __work.final_memory
-# Loading __work.cache_controller
 # Loading __work.DMWB_latch
 # Loading __work.wb
 # Loading __work.cla_4b
 # Loading __work.xor2
 # Loading __work.nand2
 # Loading __work.cla_1b
-# ** Warning: (vsim-PLI-3691) Expected a system task, not a system function '$value$plusargs'.
-#    Time: 0 ns  Iteration: 0  Instance: /proc_hier_pbench/DUT/p0/fetch0/instr_mem File: stallmem.v Line: 87
 # log -howmany -rec /* 
-# 7548
+# 10671
 #  run -all
-# Using seed           0
-# rand_pat=12153524 00010010000101010011010100100100
 # Hello world...simulation starting
 # See verilogsim.log and verilogsim.ptrace for output
-# evict : 0
-# evict : 0
-# evict : 0
-# evict : 0
-# evict : 0
-# evict : 0
-# evict : 0
-# evict : 0
-# evict : 0
-# evict : 0
-# evict : 0
-# evict : 0
-# evict : 0
-# evict : 0
-# evict : 0
+# PC : 035c instr : 0000 execute0.ALU_RSData : 0000 execute0.ALUIn : ffff BT : 0 halt : 0 
+# PC : 061e instr : 0000 execute0.ALU_RSData : 0000 execute0.ALUIn : 0000 BT : 0 halt : 0 
+# PC : 079e instr : 0000 execute0.ALU_RSData : 0000 execute0.ALUIn : 0000 BT : 0 halt : 0 
+# PC : 09b8 instr : 0000 execute0.ALU_RSData : 0000 execute0.ALUIn : 0000 BT : 0 halt : 0 
+# PC : 0b56 instr : 0000 execute0.ALU_RSData : 0000 execute0.ALUIn : 0000 BT : 0 halt : 0 
+# PC : 11ca instr : 0000 execute0.ALU_RSData : 0000 execute0.ALUIn : 0000 BT : 0 halt : 0 
+# PC : 1bca instr : 0000 execute0.ALU_RSData : 0000 execute0.ALUIn : 0000 BT : 0 halt : 0 
+# PC : 1f08 instr : 0000 execute0.ALU_RSData : 0000 execute0.ALUIn : 0001 BT : 0 halt : 0 
+# PC : 1f18 instr : d5dc execute0.ALU_RSData : 0000 execute0.ALUIn : 0000 BT : 0 halt : 0 
+# PC : 1f1c instr : d65b execute0.ALU_RSData : 0000 execute0.ALUIn : 0001 BT : 0 halt : 0 
+# PC : 1f20 instr : e128 execute0.ALU_RSData : 0000 execute0.ALUIn : 0000 BT : 0 halt : 0 
+# PC : 1f26 instr : d35c execute0.ALU_RSData : 0000 execute0.ALUIn : 0001 BT : 0 halt : 0 
+# PC : 1f30 instr : da5a execute0.ALU_RSData : 0000 execute0.ALUIn : 0000 BT : 0 halt : 0 
 # ** Note: $finish    : proc_hier_pbench.v(114)
-#    Time: 1405 ns  Iteration: 0  Instance: /proc_hier_pbench
-# End time: 22:00:38 on Dec 05,2024, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 1
+#    Time: 92805 ns  Iteration: 0  Instance: /proc_hier_pbench
+# End time: 22:00:37 on Dec 07,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0

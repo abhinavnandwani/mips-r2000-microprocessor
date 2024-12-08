@@ -39,6 +39,9 @@ module mem_system(/*AUTOARG*/
    wire [2:0] offset_in;
    wire victimway, evict, cache_sel, CacheHit_0, CacheHit_1;
 
+   wire [255:0] lru_out;                  // Current LRU state
+   wire [255:0] lru_in;                    // Next-state LRU
+
    /* data_mem = 1, inst_mem = 0 *
     * needed for cache parameter */
    parameter memtype = 0;
@@ -113,6 +116,9 @@ module mem_system(/*AUTOARG*/
       .valid_in(valid_in),
       .offset_out(offset_out),
       .mem_addr(mem_addr),
+      .cache_sel(cache_sel),
+      .lru_in(lru_in),
+      .lru_out(lru_out),
       .comp(comp),
       .write(write),
       .Stall(Stall),
@@ -133,35 +139,34 @@ module mem_system(/*AUTOARG*/
    );
 
    // LRU bits for 256 sets (one bit per set for 2-way cache)
-   wire [255:0] lru_out;                  // Current LRU state
-   reg [255:0] lru_in;                    // Next-state LRU
+
    wire set_lru;                          // Determines LRU update
 
    // LRU flip-flops for all sets
    dff lru_ff[255:0] (
       .q(lru_out),                        // Output: current LRU state
-      .d(Done ? lru_in : lru_out),        // Update LRU on Done
+      .d(lru_in),        // Update LRU on Done
       .clk(clk),                          // Clock signal
       .rst(rst)                           // Reset signal
    );
 
    // LRU logic to determine next state
-   always @(*) begin
-      lru_in = lru_out;                   // Default: No change
-      case (set_lru)
-         1'b0: lru_in[Addr[10:3]] = 1'b0; // Mark Way 0 as least recently used
-         1'b1: lru_in[Addr[10:3]] = 1'b1; // Mark Way 1 as least recently used
-      endcase
-   end
+   // always @(*) begin
+   //    lru_in = lru_out;                   // Default: No change
+   //    case (set_lru)
+   //       1'b0: lru_in[Addr[10:3]] = 1'b0; // Mark Way 0 as least recently used
+   //       1'b1: lru_in[Addr[10:3]] = 1'b1; // Mark Way 1 as least recently used
+   //    endcase
+   // end
 
    // Determine which way was hit
    assign CacheHit_0 = hit_0 & valid_0;   // Cache Way 0 hit
    assign CacheHit_1 = hit_1 & valid_1;   // Cache Way 1 hit
-
    // Set LRU on cache hit
-   assign set_lru = CacheHit_0 ? 1'b1 :   // If Way 0 is hit, mark Way 1 as LRU
-                    CacheHit_1 ? 1'b0 :   // If Way 1 is hit, mark Way 0 as LRU
-                    lru_out[Addr[10:3]];  // Default to current LRU state
+
+   // assign lru_in[Addr[10:3]] = CacheHit_0 ? 1'b1 :   // If Way 0 is hit, mark Way 1 as LRU
+   //                         CacheHit_1 ? 1'b0 :   // If Way 1 is hit, mark Way 0 as LRU
+   //                         lru_out[Addr[10:3]];  // Default to current LRU state
 
 
    always @(posedge clk) begin

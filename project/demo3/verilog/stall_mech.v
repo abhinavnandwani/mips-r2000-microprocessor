@@ -1,19 +1,20 @@
+
 module stall_mech(
-    output wire NOP_reg,
-    input reg [2:0] RSData,
-    input reg [2:0] RTData,
-    input reg [2:0] RD_ff,
-    input reg [2:0] RD_2ff,
-    input wire [1:0] IDEX_RegSrc,
-    input wire IDEX_RegWrt,
-    input wire EXDM_RegWrt,
-    input wire RegWrt_2ff,
-    input wire RegWrt_ff,
-    output wire takeRs_DMWB,
-    output wire takeRt_DMWB,
-    output wire takeRs_EXDM,
-    output wire takeRt_EXDM,
-    input wire Done_DM
+    output NOP_reg,
+    input [2:0] RSData,
+    input [2:0] RTData,
+    input [2:0] RD_ff,
+    input [2:0] RD_2ff,
+    input [1:0] IDEX_RegSrc,
+    input IDEX_RegWrt,
+    input EXDM_RegWrt,
+    input RegWrt_2ff,
+    input RegWrt_ff,
+    output takeRs_DMWB,
+    output takeRt_DMWB,
+    output takeRs_EXDM,
+    output takeRt_EXDM,
+    input Done_DM
 );
 
     wire Rs_EXDM, Rs_DMWB, Rt_EXDM, Rt_DMWB;
@@ -34,3 +35,4 @@ module stall_mech(
     assign NOP_reg = ~Done_DM | Rs_EXDM | Rs_DMWB | Rt_EXDM | Rt_DMWB;
 
 endmodule
+

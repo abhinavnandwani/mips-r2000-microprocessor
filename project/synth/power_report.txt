@@ -1,0 +1,58 @@
+Loading db file '/filespace/n/nandwani2/Downloads/demo3/verilog/libs/gscl45nm.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : proc
+Version: V-2023.12-SP5
+Date   : Sun Dec  8 11:56:33 2024
+****************************************
+
+
+Library(s) Used:
+
+    gscl45nm (File: /filespace/n/nandwani2/Downloads/demo3/verilog/libs/gscl45nm.db)
+
+
+Operating Conditions: typical   Library: gscl45nm
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 1.1  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+Attributes
+----------
+i - Including register clock pin internal power
+
+
+  Cell Internal Power  = 183.7349 mW   (99%)
+  Net Switching Power  =   1.1338 mW    (1%)
+                         ---------
+Total Dynamic Power    = 184.8687 mW  (100%)
+
+Cell Leakage Power     =   1.1975 mW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network    182.5574            0.0000            0.0000          182.5574  (  98.11%)  i
+register       8.1604e-02        3.2770e-02        7.1361e+05            0.8280  (   0.44%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational      1.1025            1.1011        4.8388e+05            2.6874  (   1.44%)
+--------------------------------------------------------------------------------------------------
+Total            183.7415 mW         1.1339 mW     1.1975e+06 nW       186.0728 mW
+1

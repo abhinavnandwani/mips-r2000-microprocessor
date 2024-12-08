@@ -3,6 +3,7 @@
 /* $Rev: 45 $ */
 //`timescale 1ns/1ns
 `default_nettype none
+`timescale 1ns/10ps
 module proc_hier();
    
    /*AUTOWIRE*/

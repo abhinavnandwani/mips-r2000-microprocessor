@@ -2,6 +2,7 @@
 /* $LastChangedDate: 2009-03-04 23:09:45 -0600 (Wed, 04 Mar 2009) $ */
 /* $Rev: 45 $ */
 `default_nettype none
+`timescale 1ns/10ps
 module proc_hier_pbench();
 
    /* BEGIN DO NOT TOUCH */

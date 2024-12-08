@@ -1,0 +1,87 @@
+ 
+****************************************
+Report : cell
+Design : proc
+Version: V-2023.12-SP5
+Date   : Sat Dec  7 23:59:29 2024
+****************************************
+
+Attributes:
+    b - black box (unknown)
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    u - contains unmapped logic
+
+Cell                      Reference       Library             Area  Attributes
+--------------------------------------------------------------------------------
+DMWB                      DMWB_latch                      890.520601
+                                                                    h, n
+EXDM                      EXDM_latch                      844.520537
+                                                                    h, n
+IDEX                      IDEX_latch                      2447.152647
+                                                                    h, n
+IFID                      IFID_latch                      620.365517
+                                                                    h, n
+Rs_DMWB_ff                dff_881                         9.911616  h, n
+Rs_EXDM_ff                dff_882                         9.911616  h, n
+Rt_DMWB_ff                dff_879                         9.911616  h, n
+Rt_EXDM_ff                dff_880                         9.911616  h, n
+U8                        IBUFFX2_LVT     saed32lvt_tt0p85v25c
+                                                          2.541440  
+U9                        IBUFFX2_LVT     saed32lvt_tt0p85v25c
+                                                          2.541440  
+U10                       MUX21X1_LVT     saed32lvt_tt0p85v25c
+                                                          3.303872  
+U11                       MUX21X1_LVT     saed32lvt_tt0p85v25c
+                                                          3.303872  
+U12                       INVX0_LVT       saed32lvt_tt0p85v25c
+                                                          1.270720  
+U13                       NBUFFX2_LVT     saed32lvt_tt0p85v25c
+                                                          2.033152  
+U14                       OR2X2_LVT       saed32lvt_tt0p85v25c
+                                                          2.287296  
+U15                       DELLN3X2_LVT    saed32lvt_tt0p85v25c
+                                                          9.657472  
+U16                       DELLN3X2_LVT    saed32lvt_tt0p85v25c
+                                                          9.657472  
+U17                       NBUFFX2_LVT     saed32lvt_tt0p85v25c
+                                                          2.033152  
+U18                       DELLN3X2_LVT    saed32lvt_tt0p85v25c
+                                                          9.657472  
+U19                       INVX0_LVT       saed32lvt_tt0p85v25c
+                                                          1.270720  
+U20                       DELLN3X2_LVT    saed32lvt_tt0p85v25c
+                                                          9.657472  
+U21                       IBUFFX2_LVT     saed32lvt_tt0p85v25c
+                                                          2.541440  
+U22                       MUX21X1_LVT     saed32lvt_tt0p85v25c
+                                                          3.303872  
+U23                       NBUFFX2_LVT     saed32lvt_tt0p85v25c
+                                                          2.033152  
+U24                       DELLN3X2_LVT    saed32lvt_tt0p85v25c
+                                                          9.657472  
+U25                       INVX0_LVT       saed32lvt_tt0p85v25c
+                                                          1.270720  
+U26                       IBUFFX2_LVT     saed32lvt_tt0p85v25c
+                                                          2.541440  
+U27                       INVX0_LVT       saed32lvt_tt0p85v25c
+                                                          1.270720  
+U28                       MUX21X1_LVT     saed32lvt_tt0p85v25c
+                                                          3.303872  
+decode0                   decode                          3196.114988
+                                                                    h, n
+done_ff                   dff_883                         9.911616  h, n
+execute0                  execute                         2418.688453
+                                                                    h
+fetch0                    fetch                           83565.344736
+                                                                    h, n
+fu                        forwarding                      147.657666
+                                                                    h
+memory0                   memory                          81417.065391
+                                                                    h, n
+stall                     stall_mech                      95.304000 h
+wb0                       wb                              65.060866 h
+--------------------------------------------------------------------------------
+Total 37 cells                                            175842.491723
+1

@@ -1,0 +1,52 @@
+ 
+****************************************
+Report : reference
+Design : proc
+Version: V-2023.12-SP5
+Date   : Sat Dec  7 23:59:29 2024
+****************************************
+
+Attributes:
+    b - black box (unknown)
+   bo - allows boundary optimization
+    d - dont_touch
+   mo - map_only
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    s - synthetic operator
+    u - contains unmapped logic
+
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+DELLN3X2_LVT       saed32lvt_tt0p85v25c
+                                  9.657472       5     48.287358  
+DMWB_latch                      890.520601       1    890.520601  h, n
+EXDM_latch                      844.520537       1    844.520537  h, n
+IBUFFX2_LVT        saed32lvt_tt0p85v25c
+                                  2.541440       4     10.165760  
+IDEX_latch                     2447.152647       1   2447.152647  h, n
+IFID_latch                      620.365517       1    620.365517  h, n
+INVX0_LVT          saed32lvt_tt0p85v25c
+                                  1.270720       4      5.082880  
+MUX21X1_LVT        saed32lvt_tt0p85v25c
+                                  3.303872       4     13.215488  
+NBUFFX2_LVT        saed32lvt_tt0p85v25c
+                                  2.033152       3      6.099456  
+OR2X2_LVT          saed32lvt_tt0p85v25c
+                                  2.287296       1      2.287296  
+decode                         3196.114988       1   3196.114988  h, n
+dff_879                           9.911616       1      9.911616  h, n
+dff_880                           9.911616       1      9.911616  h, n
+dff_881                           9.911616       1      9.911616  h, n
+dff_882                           9.911616       1      9.911616  h, n
+dff_883                           9.911616       1      9.911616  h, n
+execute                        2418.688453       1   2418.688453  h
+fetch                         83565.344736       1  83565.344736  h, n
+forwarding                      147.657666       1    147.657666  h
+memory                        81417.065391       1  81417.065391  h, n
+stall_mech                       95.304000       1     95.304000  h
+wb                               65.060866       1     65.060866  h
+-----------------------------------------------------------------------------
+Total 22 references                                 175842.491723
+1

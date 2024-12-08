@@ -1,0 +1,2912 @@
+/* Edif file name is "CADENCE_EDIF" */
+
+/* EDIF version: 2 0 0 */
+
+library("NCSU_Analog_Parts") {
+  SCALE = 1.0 / 10.0;
+  ROUTE_GRID = 1024;
+  set_route_grid(ROUTE_GRID);
+  set_meter_scale(0.0254 / (160 * SCALE * ROUTE_GRID));
+  symbol ("gnd") {
+    set_minimum_boundary (-10 * SCALE, -40 * SCALE, 10 * SCALE, 0 * SCALE);
+    line (-10 * SCALE, -30 * SCALE, 10 * SCALE, -30 * SCALE);
+    line (10 * SCALE, -30 * SCALE, 0 * SCALE, -40 * SCALE);
+    line (-10 * SCALE, -30 * SCALE, 0 * SCALE, -40 * SCALE);
+    line (0 * SCALE, 0 * SCALE, 0 * SCALE, -30 * SCALE);
+    line (-4 * SCALE, -4 * SCALE, -4 * SCALE, 4 * SCALE);
+    line (-4 * SCALE, 4 * SCALE, 4 * SCALE, 4 * SCALE);
+    line (4 * SCALE, 4 * SCALE, 4 * SCALE, -4 * SCALE);
+    line (4 * SCALE, -4 * SCALE, -4 * SCALE, -4 * SCALE);
+    pin ("gnd!", 0 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "gnd" */
+  symbol ("nmos4") {
+    set_minimum_boundary (10 * SCALE, 80 * SCALE, 40 * SCALE, 120 * SCALE);
+    line (25 * SCALE, 100 * SCALE, 40 * SCALE, 100 * SCALE);
+    line (40 * SCALE, 130 * SCALE, 40 * SCALE, 115 * SCALE);
+    line (40 * SCALE, 115 * SCALE, 25 * SCALE, 115 * SCALE);
+    line (25 * SCALE, 115 * SCALE, 25 * SCALE, 85 * SCALE);
+    line (25 * SCALE, 85 * SCALE, 40 * SCALE, 85 * SCALE);
+    line (40 * SCALE, 85 * SCALE, 40 * SCALE, 70 * SCALE);
+    line (20 * SCALE, 115 * SCALE, 20 * SCALE, 85 * SCALE);
+    line (0 * SCALE, 100 * SCALE, 20 * SCALE, 100 * SCALE);
+    line (40 * SCALE, 85 * SCALE, 35 * SCALE, 88 * SCALE);
+    line (35 * SCALE, 88 * SCALE, 35 * SCALE, 82 * SCALE);
+    line (35 * SCALE, 82 * SCALE, 40 * SCALE, 85 * SCALE);
+    line (36 * SCALE, 126 * SCALE, 36 * SCALE, 134 * SCALE);
+    line (36 * SCALE, 134 * SCALE, 44 * SCALE, 134 * SCALE);
+    line (44 * SCALE, 134 * SCALE, 44 * SCALE, 126 * SCALE);
+    line (44 * SCALE, 126 * SCALE, 36 * SCALE, 126 * SCALE);
+    pin ("D", 40 * SCALE, 130 * SCALE, ANY_ROTATION);
+    line (36 * SCALE, 96 * SCALE, 36 * SCALE, 104 * SCALE);
+    line (36 * SCALE, 104 * SCALE, 44 * SCALE, 104 * SCALE);
+    line (44 * SCALE, 104 * SCALE, 44 * SCALE, 96 * SCALE);
+    line (44 * SCALE, 96 * SCALE, 36 * SCALE, 96 * SCALE);
+    pin ("B", 40 * SCALE, 100 * SCALE, ANY_ROTATION);
+    line (-4 * SCALE, 96 * SCALE, -4 * SCALE, 104 * SCALE);
+    line (-4 * SCALE, 104 * SCALE, 4 * SCALE, 104 * SCALE);
+    line (4 * SCALE, 104 * SCALE, 4 * SCALE, 96 * SCALE);
+    line (4 * SCALE, 96 * SCALE, -4 * SCALE, 96 * SCALE);
+    pin ("G", 0 * SCALE, 100 * SCALE, ANY_ROTATION);
+    line (36 * SCALE, 66 * SCALE, 36 * SCALE, 74 * SCALE);
+    line (36 * SCALE, 74 * SCALE, 44 * SCALE, 74 * SCALE);
+    line (44 * SCALE, 74 * SCALE, 44 * SCALE, 66 * SCALE);
+    line (44 * SCALE, 66 * SCALE, 36 * SCALE, 66 * SCALE);
+    pin ("S", 40 * SCALE, 70 * SCALE, ANY_ROTATION);
+  } /* end of symbol "nmos4" */
+  symbol ("pmos4") {
+    set_minimum_boundary (10 * SCALE, 80 * SCALE, 40 * SCALE, 120 * SCALE);
+    line (25 * SCALE, 100 * SCALE, 40 * SCALE, 100 * SCALE);
+    line (25 * SCALE, 115 * SCALE, 30 * SCALE, 112 * SCALE);
+    line (30 * SCALE, 112 * SCALE, 30 * SCALE, 118 * SCALE);
+    line (30 * SCALE, 118 * SCALE, 25 * SCALE, 115 * SCALE);
+    line (0 * SCALE, 100 * SCALE, 10 * SCALE, 100 * SCALE);
+    circle (15 * SCALE, 100 * SCALE, 5 * SCALE);
+    line (20 * SCALE, 115 * SCALE, 20 * SCALE, 85 * SCALE);
+    line (40 * SCALE, 130 * SCALE, 40 * SCALE, 115 * SCALE);
+    line (40 * SCALE, 115 * SCALE, 25 * SCALE, 115 * SCALE);
+    line (25 * SCALE, 115 * SCALE, 25 * SCALE, 85 * SCALE);
+    line (25 * SCALE, 85 * SCALE, 40 * SCALE, 85 * SCALE);
+    line (40 * SCALE, 85 * SCALE, 40 * SCALE, 70 * SCALE);
+    line (36 * SCALE, 66 * SCALE, 36 * SCALE, 74 * SCALE);
+    line (36 * SCALE, 74 * SCALE, 44 * SCALE, 74 * SCALE);
+    line (44 * SCALE, 74 * SCALE, 44 * SCALE, 66 * SCALE);
+    line (44 * SCALE, 66 * SCALE, 36 * SCALE, 66 * SCALE);
+    pin ("D", 40 * SCALE, 70 * SCALE, ANY_ROTATION);
+    line (36 * SCALE, 96 * SCALE, 36 * SCALE, 104 * SCALE);
+    line (36 * SCALE, 104 * SCALE, 44 * SCALE, 104 * SCALE);
+    line (44 * SCALE, 104 * SCALE, 44 * SCALE, 96 * SCALE);
+    line (44 * SCALE, 96 * SCALE, 36 * SCALE, 96 * SCALE);
+    pin ("B", 40 * SCALE, 100 * SCALE, ANY_ROTATION);
+    line (-4 * SCALE, 96 * SCALE, -4 * SCALE, 104 * SCALE);
+    line (-4 * SCALE, 104 * SCALE, 4 * SCALE, 104 * SCALE);
+    line (4 * SCALE, 104 * SCALE, 4 * SCALE, 96 * SCALE);
+    line (4 * SCALE, 96 * SCALE, -4 * SCALE, 96 * SCALE);
+    pin ("G", 0 * SCALE, 100 * SCALE, ANY_ROTATION);
+    line (36 * SCALE, 126 * SCALE, 36 * SCALE, 134 * SCALE);
+    line (36 * SCALE, 134 * SCALE, 44 * SCALE, 134 * SCALE);
+    line (44 * SCALE, 134 * SCALE, 44 * SCALE, 126 * SCALE);
+    line (44 * SCALE, 126 * SCALE, 36 * SCALE, 126 * SCALE);
+    pin ("S", 40 * SCALE, 130 * SCALE, ANY_ROTATION);
+  } /* end of symbol "pmos4" */
+  symbol ("vdd") {
+    set_minimum_boundary (-25 * SCALE, 0 * SCALE, 25 * SCALE, 50 * SCALE);
+    line (0 * SCALE, 0 * SCALE, 0 * SCALE, 40 * SCALE);
+    line (-25 * SCALE, 40 * SCALE, 25 * SCALE, 40 * SCALE);
+    line (-4 * SCALE, -4 * SCALE, -4 * SCALE, 4 * SCALE);
+    line (-4 * SCALE, 4 * SCALE, 4 * SCALE, 4 * SCALE);
+    line (4 * SCALE, 4 * SCALE, 4 * SCALE, -4 * SCALE);
+    line (4 * SCALE, -4 * SCALE, -4 * SCALE, -4 * SCALE);
+    pin ("vdd!", 0 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "vdd" */
+} /* end of library "NCSU_Analog_Parts" */
+library("vtvt_tsmc180") {
+  SCALE = 1.0 / 10.0;
+  ROUTE_GRID = 1024;
+  set_route_grid(ROUTE_GRID);
+  set_meter_scale(0.0254 / (160 * SCALE * ROUTE_GRID));
+  symbol ("ABnorC") {
+    set_minimum_boundary (-150 * SCALE, -50 * SCALE, 180 * SCALE, 60 * SCALE);
+    line (0 * SCALE, 30 * SCALE, 0 * SCALE, 0 * SCALE);
+    line (-150 * SCALE, -40 * SCALE, -50 * SCALE, -40 * SCALE);
+    line (0 * SCALE, 30 * SCALE, -15 * SCALE, 30 * SCALE);
+    line (-90 * SCALE, 50 * SCALE, -150 * SCALE, 50 * SCALE);
+    line (-90 * SCALE, 10 * SCALE, -150 * SCALE, 10 * SCALE);
+    line (-45 * SCALE, 0 * SCALE, -90 * SCALE, 0 * SCALE);
+    line (-90 * SCALE, 60 * SCALE, -45 * SCALE, 60 * SCALE);
+    arc (-45 * SCALE, 60 * SCALE, -45 * SCALE, 0 * SCALE,\
+        -45 * SCALE, 30 * SCALE);
+    line (-90 * SCALE, 0 * SCALE, -90 * SCALE, 60 * SCALE);
+    line (105 * SCALE, -20 * SCALE, 180 * SCALE, -20 * SCALE);
+    line (16 * SCALE, -40 * SCALE, -50 * SCALE, -40 * SCALE);
+    line (16 * SCALE, 0 * SCALE, 0 * SCALE, 0 * SCALE);
+    arc (44 * SCALE, 10 * SCALE, 95 * SCALE, -20 * SCALE,\
+        44.9268 * SCALE, -46.7744 * SCALE);
+    line (44 * SCALE, 10 * SCALE, 12 * SCALE, 10 * SCALE);
+    line (44 * SCALE, -50 * SCALE, 12 * SCALE, -50 * SCALE);
+    arc (12 * SCALE, 10 * SCALE, 12 * SCALE, -50 * SCALE,\
+        -40.25 * SCALE, -20 * SCALE);
+    arc (95 * SCALE, -20 * SCALE, 44 * SCALE, -50 * SCALE,\
+        44.9268 * SCALE, 6.77439 * SCALE);
+    circle (100 * SCALE, -20 * SCALE, 5 * SCALE);
+    line (-154 * SCALE, -44 * SCALE, -154 * SCALE, -36 * SCALE);
+    line (-154 * SCALE, -36 * SCALE, -146 * SCALE, -36 * SCALE);
+    line (-146 * SCALE, -36 * SCALE, -146 * SCALE, -44 * SCALE);
+    line (-146 * SCALE, -44 * SCALE, -154 * SCALE, -44 * SCALE);
+    pin ("ip3", -150 * SCALE, -40 * SCALE, ANY_ROTATION);
+    line (-154 * SCALE, 6 * SCALE, -154 * SCALE, 14 * SCALE);
+    line (-154 * SCALE, 14 * SCALE, -146 * SCALE, 14 * SCALE);
+    line (-146 * SCALE, 14 * SCALE, -146 * SCALE, 6 * SCALE);
+    line (-146 * SCALE, 6 * SCALE, -154 * SCALE, 6 * SCALE);
+    pin ("ip2", -150 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-154 * SCALE, 46 * SCALE, -154 * SCALE, 54 * SCALE);
+    line (-154 * SCALE, 54 * SCALE, -146 * SCALE, 54 * SCALE);
+    line (-146 * SCALE, 54 * SCALE, -146 * SCALE, 46 * SCALE);
+    line (-146 * SCALE, 46 * SCALE, -154 * SCALE, 46 * SCALE);
+    pin ("ip1", -150 * SCALE, 50 * SCALE, ANY_ROTATION);
+    line (176 * SCALE, -24 * SCALE, 176 * SCALE, -16 * SCALE);
+    line (176 * SCALE, -16 * SCALE, 184 * SCALE, -16 * SCALE);
+    line (184 * SCALE, -16 * SCALE, 184 * SCALE, -24 * SCALE);
+    line (184 * SCALE, -24 * SCALE, 176 * SCALE, -24 * SCALE);
+    pin ("op", 180 * SCALE, -20 * SCALE, ANY_ROTATION);
+  } /* end of symbol "ABnorC" */
+  symbol ("ABorC") {
+    set_minimum_boundary (-150 * SCALE, -50 * SCALE, 150 * SCALE, 60 * SCALE);
+    arc (95 * SCALE, -20 * SCALE, 44 * SCALE, -50 * SCALE,\
+        44.9268 * SCALE, 6.77439 * SCALE);
+    arc (12 * SCALE, 10 * SCALE, 12 * SCALE, -50 * SCALE,\
+        -40.25 * SCALE, -20 * SCALE);
+    line (44 * SCALE, -50 * SCALE, 12 * SCALE, -50 * SCALE);
+    line (44 * SCALE, 10 * SCALE, 12 * SCALE, 10 * SCALE);
+    arc (44 * SCALE, 10 * SCALE, 95 * SCALE, -20 * SCALE,\
+        44.9268 * SCALE, -46.7744 * SCALE);
+    line (16 * SCALE, 0 * SCALE, 0 * SCALE, 0 * SCALE);
+    line (16 * SCALE, -40 * SCALE, -50 * SCALE, -40 * SCALE);
+    line (95 * SCALE, -20 * SCALE, 150 * SCALE, -20 * SCALE);
+    line (-90 * SCALE, 0 * SCALE, -90 * SCALE, 60 * SCALE);
+    arc (-45 * SCALE, 60 * SCALE, -45 * SCALE, 0 * SCALE,\
+        -45 * SCALE, 30 * SCALE);
+    line (-90 * SCALE, 60 * SCALE, -45 * SCALE, 60 * SCALE);
+    line (-45 * SCALE, 0 * SCALE, -90 * SCALE, 0 * SCALE);
+    line (-90 * SCALE, 10 * SCALE, -150 * SCALE, 10 * SCALE);
+    line (-90 * SCALE, 50 * SCALE, -150 * SCALE, 50 * SCALE);
+    line (0 * SCALE, 30 * SCALE, -15 * SCALE, 30 * SCALE);
+    line (-150 * SCALE, -40 * SCALE, -50 * SCALE, -40 * SCALE);
+    line (0 * SCALE, 30 * SCALE, 0 * SCALE, 0 * SCALE);
+    line (-154 * SCALE, -44 * SCALE, -154 * SCALE, -36 * SCALE);
+    line (-154 * SCALE, -36 * SCALE, -146 * SCALE, -36 * SCALE);
+    line (-146 * SCALE, -36 * SCALE, -146 * SCALE, -44 * SCALE);
+    line (-146 * SCALE, -44 * SCALE, -154 * SCALE, -44 * SCALE);
+    pin ("ip3", -150 * SCALE, -40 * SCALE, ANY_ROTATION);
+    line (-154 * SCALE, 46 * SCALE, -154 * SCALE, 54 * SCALE);
+    line (-154 * SCALE, 54 * SCALE, -146 * SCALE, 54 * SCALE);
+    line (-146 * SCALE, 54 * SCALE, -146 * SCALE, 46 * SCALE);
+    line (-146 * SCALE, 46 * SCALE, -154 * SCALE, 46 * SCALE);
+    pin ("ip1", -150 * SCALE, 50 * SCALE, ANY_ROTATION);
+    line (-154 * SCALE, 6 * SCALE, -154 * SCALE, 14 * SCALE);
+    line (-154 * SCALE, 14 * SCALE, -146 * SCALE, 14 * SCALE);
+    line (-146 * SCALE, 14 * SCALE, -146 * SCALE, 6 * SCALE);
+    line (-146 * SCALE, 6 * SCALE, -154 * SCALE, 6 * SCALE);
+    pin ("ip2", -150 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (146 * SCALE, -24 * SCALE, 146 * SCALE, -16 * SCALE);
+    line (146 * SCALE, -16 * SCALE, 154 * SCALE, -16 * SCALE);
+    line (154 * SCALE, -16 * SCALE, 154 * SCALE, -24 * SCALE);
+    line (154 * SCALE, -24 * SCALE, 146 * SCALE, -24 * SCALE);
+    pin ("op", 150 * SCALE, -20 * SCALE, ANY_ROTATION);
+  } /* end of symbol "ABorC" */
+  symbol ("ab_or_c_or_d") {
+    set_minimum_boundary (-150 * SCALE, -50 * SCALE, 150 * SCALE, 60 * SCALE);
+    line (0 * SCALE, 30 * SCALE, 0 * SCALE, 0 * SCALE);
+    line (-150 * SCALE, -20 * SCALE, -50 * SCALE, -20 * SCALE);
+    line (-150 * SCALE, -40 * SCALE, -50 * SCALE, -40 * SCALE);
+    line (0 * SCALE, 30 * SCALE, -15 * SCALE, 30 * SCALE);
+    line (-90 * SCALE, 50 * SCALE, -150 * SCALE, 50 * SCALE);
+    line (-90 * SCALE, 10 * SCALE, -150 * SCALE, 10 * SCALE);
+    line (-45 * SCALE, 0 * SCALE, -90 * SCALE, 0 * SCALE);
+    line (-90 * SCALE, 60 * SCALE, -45 * SCALE, 60 * SCALE);
+    arc (-45 * SCALE, 60 * SCALE, -45 * SCALE, 0 * SCALE,\
+        -45 * SCALE, 30 * SCALE);
+    line (-90 * SCALE, 0 * SCALE, -90 * SCALE, 60 * SCALE);
+    line (95 * SCALE, -20 * SCALE, 150 * SCALE, -20 * SCALE);
+    line (16 * SCALE, -40 * SCALE, -50 * SCALE, -40 * SCALE);
+    line (20 * SCALE, -20 * SCALE, -50 * SCALE, -20 * SCALE);
+    line (16 * SCALE, 0 * SCALE, 0 * SCALE, 0 * SCALE);
+    arc (44 * SCALE, 10 * SCALE, 95 * SCALE, -20 * SCALE,\
+        44.9268 * SCALE, -46.7744 * SCALE);
+    line (44 * SCALE, 10 * SCALE, 12 * SCALE, 10 * SCALE);
+    line (44 * SCALE, -50 * SCALE, 12 * SCALE, -50 * SCALE);
+    arc (12 * SCALE, 10 * SCALE, 12 * SCALE, -50 * SCALE,\
+        -40.25 * SCALE, -20 * SCALE);
+    arc (95 * SCALE, -20 * SCALE, 44 * SCALE, -50 * SCALE,\
+        44.9268 * SCALE, 6.77439 * SCALE);
+    line (-154 * SCALE, -44 * SCALE, -154 * SCALE, -36 * SCALE);
+    line (-154 * SCALE, -36 * SCALE, -146 * SCALE, -36 * SCALE);
+    line (-146 * SCALE, -36 * SCALE, -146 * SCALE, -44 * SCALE);
+    line (-146 * SCALE, -44 * SCALE, -154 * SCALE, -44 * SCALE);
+    pin ("ip4", -150 * SCALE, -40 * SCALE, ANY_ROTATION);
+    line (146 * SCALE, -24 * SCALE, 146 * SCALE, -16 * SCALE);
+    line (146 * SCALE, -16 * SCALE, 154 * SCALE, -16 * SCALE);
+    line (154 * SCALE, -16 * SCALE, 154 * SCALE, -24 * SCALE);
+    line (154 * SCALE, -24 * SCALE, 146 * SCALE, -24 * SCALE);
+    pin ("op", 150 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (-154 * SCALE, 6 * SCALE, -154 * SCALE, 14 * SCALE);
+    line (-154 * SCALE, 14 * SCALE, -146 * SCALE, 14 * SCALE);
+    line (-146 * SCALE, 14 * SCALE, -146 * SCALE, 6 * SCALE);
+    line (-146 * SCALE, 6 * SCALE, -154 * SCALE, 6 * SCALE);
+    pin ("ip2", -150 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-154 * SCALE, -24 * SCALE, -154 * SCALE, -16 * SCALE);
+    line (-154 * SCALE, -16 * SCALE, -146 * SCALE, -16 * SCALE);
+    line (-146 * SCALE, -16 * SCALE, -146 * SCALE, -24 * SCALE);
+    line (-146 * SCALE, -24 * SCALE, -154 * SCALE, -24 * SCALE);
+    pin ("ip3", -150 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (-154 * SCALE, 46 * SCALE, -154 * SCALE, 54 * SCALE);
+    line (-154 * SCALE, 54 * SCALE, -146 * SCALE, 54 * SCALE);
+    line (-146 * SCALE, 54 * SCALE, -146 * SCALE, 46 * SCALE);
+    line (-146 * SCALE, 46 * SCALE, -154 * SCALE, 46 * SCALE);
+    pin ("ip1", -150 * SCALE, 50 * SCALE, ANY_ROTATION);
+  } /* end of symbol "ab_or_c_or_d" */
+  symbol ("and2_1") {
+    set_minimum_boundary (-90 * SCALE, -30 * SCALE, 110 * SCALE, 30 * SCALE);
+    line (-30 * SCALE, -30 * SCALE, -30 * SCALE, 30 * SCALE);
+    arc (15 * SCALE, 30 * SCALE, 15 * SCALE, -30 * SCALE,\
+        15 * SCALE, -0 * SCALE);
+    line (-30 * SCALE, 30 * SCALE, 15 * SCALE, 30 * SCALE);
+    line (15 * SCALE, -30 * SCALE, -30 * SCALE, -30 * SCALE);
+    line (-30 * SCALE, -20 * SCALE, -90 * SCALE, -20 * SCALE);
+    line (-30 * SCALE, 20 * SCALE, -90 * SCALE, 20 * SCALE);
+    line (110 * SCALE, 0 * SCALE, 45 * SCALE, 0 * SCALE);
+    line (-94 * SCALE, 16 * SCALE, -94 * SCALE, 24 * SCALE);
+    line (-94 * SCALE, 24 * SCALE, -86 * SCALE, 24 * SCALE);
+    line (-86 * SCALE, 24 * SCALE, -86 * SCALE, 16 * SCALE);
+    line (-86 * SCALE, 16 * SCALE, -94 * SCALE, 16 * SCALE);
+    pin ("ip1", -90 * SCALE, 20 * SCALE, ANY_ROTATION);
+    line (-94 * SCALE, -24 * SCALE, -94 * SCALE, -16 * SCALE);
+    line (-94 * SCALE, -16 * SCALE, -86 * SCALE, -16 * SCALE);
+    line (-86 * SCALE, -16 * SCALE, -86 * SCALE, -24 * SCALE);
+    line (-86 * SCALE, -24 * SCALE, -94 * SCALE, -24 * SCALE);
+    pin ("ip2", -90 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (106 * SCALE, -4 * SCALE, 106 * SCALE, 4 * SCALE);
+    line (106 * SCALE, 4 * SCALE, 114 * SCALE, 4 * SCALE);
+    line (114 * SCALE, 4 * SCALE, 114 * SCALE, -4 * SCALE);
+    line (114 * SCALE, -4 * SCALE, 106 * SCALE, -4 * SCALE);
+    pin ("op", 110 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "and2_1" */
+  symbol ("and2_2") {
+    set_minimum_boundary (-90 * SCALE, -30 * SCALE, 110 * SCALE, 30 * SCALE);
+    line (-30 * SCALE, -30 * SCALE, -30 * SCALE, 30 * SCALE);
+    arc (15 * SCALE, 30 * SCALE, 15 * SCALE, -30 * SCALE,\
+        15 * SCALE, -0 * SCALE);
+    line (-30 * SCALE, 30 * SCALE, 15 * SCALE, 30 * SCALE);
+    line (15 * SCALE, -30 * SCALE, -30 * SCALE, -30 * SCALE);
+    line (-30 * SCALE, -20 * SCALE, -90 * SCALE, -20 * SCALE);
+    line (-30 * SCALE, 20 * SCALE, -90 * SCALE, 20 * SCALE);
+    line (110 * SCALE, 0 * SCALE, 45 * SCALE, 0 * SCALE);
+    line (-94 * SCALE, 16 * SCALE, -94 * SCALE, 24 * SCALE);
+    line (-94 * SCALE, 24 * SCALE, -86 * SCALE, 24 * SCALE);
+    line (-86 * SCALE, 24 * SCALE, -86 * SCALE, 16 * SCALE);
+    line (-86 * SCALE, 16 * SCALE, -94 * SCALE, 16 * SCALE);
+    pin ("ip1", -90 * SCALE, 20 * SCALE, ANY_ROTATION);
+    line (-94 * SCALE, -24 * SCALE, -94 * SCALE, -16 * SCALE);
+    line (-94 * SCALE, -16 * SCALE, -86 * SCALE, -16 * SCALE);
+    line (-86 * SCALE, -16 * SCALE, -86 * SCALE, -24 * SCALE);
+    line (-86 * SCALE, -24 * SCALE, -94 * SCALE, -24 * SCALE);
+    pin ("ip2", -90 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (106 * SCALE, -4 * SCALE, 106 * SCALE, 4 * SCALE);
+    line (106 * SCALE, 4 * SCALE, 114 * SCALE, 4 * SCALE);
+    line (114 * SCALE, 4 * SCALE, 114 * SCALE, -4 * SCALE);
+    line (114 * SCALE, -4 * SCALE, 106 * SCALE, -4 * SCALE);
+    pin ("op", 110 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "and2_2" */
+  symbol ("and2_4") {
+    set_minimum_boundary (-100 * SCALE, -30 * SCALE, 100 * SCALE, 30 * SCALE);
+    line (-40 * SCALE, -30 * SCALE, -40 * SCALE, 30 * SCALE);
+    arc (5 * SCALE, 30 * SCALE, 5 * SCALE, -30 * SCALE,\
+        5 * SCALE, -0 * SCALE);
+    line (-40 * SCALE, 30 * SCALE, 5 * SCALE, 30 * SCALE);
+    line (5 * SCALE, -30 * SCALE, -40 * SCALE, -30 * SCALE);
+    line (-40 * SCALE, -20 * SCALE, -100 * SCALE, -20 * SCALE);
+    line (-40 * SCALE, 20 * SCALE, -100 * SCALE, 20 * SCALE);
+    line (100 * SCALE, 0 * SCALE, 35 * SCALE, 0 * SCALE);
+    line (96 * SCALE, -4 * SCALE, 96 * SCALE, 4 * SCALE);
+    line (96 * SCALE, 4 * SCALE, 104 * SCALE, 4 * SCALE);
+    line (104 * SCALE, 4 * SCALE, 104 * SCALE, -4 * SCALE);
+    line (104 * SCALE, -4 * SCALE, 96 * SCALE, -4 * SCALE);
+    pin ("op", 100 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, -24 * SCALE, -104 * SCALE, -16 * SCALE);
+    line (-104 * SCALE, -16 * SCALE, -96 * SCALE, -16 * SCALE);
+    line (-96 * SCALE, -16 * SCALE, -96 * SCALE, -24 * SCALE);
+    line (-96 * SCALE, -24 * SCALE, -104 * SCALE, -24 * SCALE);
+    pin ("ip2", -100 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, 16 * SCALE, -104 * SCALE, 24 * SCALE);
+    line (-104 * SCALE, 24 * SCALE, -96 * SCALE, 24 * SCALE);
+    line (-96 * SCALE, 24 * SCALE, -96 * SCALE, 16 * SCALE);
+    line (-96 * SCALE, 16 * SCALE, -104 * SCALE, 16 * SCALE);
+    pin ("ip1", -100 * SCALE, 20 * SCALE, ANY_ROTATION);
+  } /* end of symbol "and2_4" */
+  symbol ("and3_1") {
+    set_minimum_boundary (-100 * SCALE, -30 * SCALE, 100 * SCALE, 30 * SCALE);
+    line (100 * SCALE, 0 * SCALE, 35 * SCALE, 0 * SCALE);
+    line (-40 * SCALE, 20 * SCALE, -100 * SCALE, 20 * SCALE);
+    line (-40 * SCALE, 0 * SCALE, -100 * SCALE, 0 * SCALE);
+    line (-40 * SCALE, -20 * SCALE, -100 * SCALE, -20 * SCALE);
+    line (5 * SCALE, -30 * SCALE, -40 * SCALE, -30 * SCALE);
+    line (-40 * SCALE, 30 * SCALE, 5 * SCALE, 30 * SCALE);
+    arc (5 * SCALE, 30 * SCALE, 5 * SCALE, -30 * SCALE,\
+        5 * SCALE, -0 * SCALE);
+    line (-40 * SCALE, -30 * SCALE, -40 * SCALE, 30 * SCALE);
+    line (-104 * SCALE, -4 * SCALE, -104 * SCALE, 4 * SCALE);
+    line (-104 * SCALE, 4 * SCALE, -96 * SCALE, 4 * SCALE);
+    line (-96 * SCALE, 4 * SCALE, -96 * SCALE, -4 * SCALE);
+    line (-96 * SCALE, -4 * SCALE, -104 * SCALE, -4 * SCALE);
+    pin ("ip2", -100 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, -24 * SCALE, -104 * SCALE, -16 * SCALE);
+    line (-104 * SCALE, -16 * SCALE, -96 * SCALE, -16 * SCALE);
+    line (-96 * SCALE, -16 * SCALE, -96 * SCALE, -24 * SCALE);
+    line (-96 * SCALE, -24 * SCALE, -104 * SCALE, -24 * SCALE);
+    pin ("ip3", -100 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, 16 * SCALE, -104 * SCALE, 24 * SCALE);
+    line (-104 * SCALE, 24 * SCALE, -96 * SCALE, 24 * SCALE);
+    line (-96 * SCALE, 24 * SCALE, -96 * SCALE, 16 * SCALE);
+    line (-96 * SCALE, 16 * SCALE, -104 * SCALE, 16 * SCALE);
+    pin ("ip1", -100 * SCALE, 20 * SCALE, ANY_ROTATION);
+    line (96 * SCALE, -4 * SCALE, 96 * SCALE, 4 * SCALE);
+    line (96 * SCALE, 4 * SCALE, 104 * SCALE, 4 * SCALE);
+    line (104 * SCALE, 4 * SCALE, 104 * SCALE, -4 * SCALE);
+    line (104 * SCALE, -4 * SCALE, 96 * SCALE, -4 * SCALE);
+    pin ("op", 100 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "and3_1" */
+  symbol ("and3_2") {
+    set_minimum_boundary (-100 * SCALE, -30 * SCALE, 100 * SCALE, 30 * SCALE);
+    line (100 * SCALE, 0 * SCALE, 35 * SCALE, 0 * SCALE);
+    line (-40 * SCALE, 20 * SCALE, -100 * SCALE, 20 * SCALE);
+    line (-40 * SCALE, 0 * SCALE, -100 * SCALE, 0 * SCALE);
+    line (-40 * SCALE, -20 * SCALE, -100 * SCALE, -20 * SCALE);
+    line (5 * SCALE, -30 * SCALE, -40 * SCALE, -30 * SCALE);
+    line (-40 * SCALE, 30 * SCALE, 5 * SCALE, 30 * SCALE);
+    arc (5 * SCALE, 30 * SCALE, 5 * SCALE, -30 * SCALE,\
+        5 * SCALE, -0 * SCALE);
+    line (-40 * SCALE, -30 * SCALE, -40 * SCALE, 30 * SCALE);
+    line (-104 * SCALE, -4 * SCALE, -104 * SCALE, 4 * SCALE);
+    line (-104 * SCALE, 4 * SCALE, -96 * SCALE, 4 * SCALE);
+    line (-96 * SCALE, 4 * SCALE, -96 * SCALE, -4 * SCALE);
+    line (-96 * SCALE, -4 * SCALE, -104 * SCALE, -4 * SCALE);
+    pin ("ip2", -100 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, -24 * SCALE, -104 * SCALE, -16 * SCALE);
+    line (-104 * SCALE, -16 * SCALE, -96 * SCALE, -16 * SCALE);
+    line (-96 * SCALE, -16 * SCALE, -96 * SCALE, -24 * SCALE);
+    line (-96 * SCALE, -24 * SCALE, -104 * SCALE, -24 * SCALE);
+    pin ("ip3", -100 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, 16 * SCALE, -104 * SCALE, 24 * SCALE);
+    line (-104 * SCALE, 24 * SCALE, -96 * SCALE, 24 * SCALE);
+    line (-96 * SCALE, 24 * SCALE, -96 * SCALE, 16 * SCALE);
+    line (-96 * SCALE, 16 * SCALE, -104 * SCALE, 16 * SCALE);
+    pin ("ip1", -100 * SCALE, 20 * SCALE, ANY_ROTATION);
+    line (96 * SCALE, -4 * SCALE, 96 * SCALE, 4 * SCALE);
+    line (96 * SCALE, 4 * SCALE, 104 * SCALE, 4 * SCALE);
+    line (104 * SCALE, 4 * SCALE, 104 * SCALE, -4 * SCALE);
+    line (104 * SCALE, -4 * SCALE, 96 * SCALE, -4 * SCALE);
+    pin ("op", 100 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "and3_2" */
+  symbol ("and3_4") {
+    set_minimum_boundary (-100 * SCALE, -30 * SCALE, 100 * SCALE, 30 * SCALE);
+    line (-40 * SCALE, -30 * SCALE, -40 * SCALE, 30 * SCALE);
+    arc (5 * SCALE, 30 * SCALE, 5 * SCALE, -30 * SCALE,\
+        5 * SCALE, -0 * SCALE);
+    line (-40 * SCALE, 30 * SCALE, 5 * SCALE, 30 * SCALE);
+    line (5 * SCALE, -30 * SCALE, -40 * SCALE, -30 * SCALE);
+    line (-40 * SCALE, -20 * SCALE, -100 * SCALE, -20 * SCALE);
+    line (-40 * SCALE, 0 * SCALE, -100 * SCALE, 0 * SCALE);
+    line (-40 * SCALE, 20 * SCALE, -100 * SCALE, 20 * SCALE);
+    line (100 * SCALE, 0 * SCALE, 35 * SCALE, 0 * SCALE);
+    line (96 * SCALE, -4 * SCALE, 96 * SCALE, 4 * SCALE);
+    line (96 * SCALE, 4 * SCALE, 104 * SCALE, 4 * SCALE);
+    line (104 * SCALE, 4 * SCALE, 104 * SCALE, -4 * SCALE);
+    line (104 * SCALE, -4 * SCALE, 96 * SCALE, -4 * SCALE);
+    pin ("op", 100 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, -24 * SCALE, -104 * SCALE, -16 * SCALE);
+    line (-104 * SCALE, -16 * SCALE, -96 * SCALE, -16 * SCALE);
+    line (-96 * SCALE, -16 * SCALE, -96 * SCALE, -24 * SCALE);
+    line (-96 * SCALE, -24 * SCALE, -104 * SCALE, -24 * SCALE);
+    pin ("ip3", -100 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, -4 * SCALE, -104 * SCALE, 4 * SCALE);
+    line (-104 * SCALE, 4 * SCALE, -96 * SCALE, 4 * SCALE);
+    line (-96 * SCALE, 4 * SCALE, -96 * SCALE, -4 * SCALE);
+    line (-96 * SCALE, -4 * SCALE, -104 * SCALE, -4 * SCALE);
+    pin ("ip2", -100 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, 16 * SCALE, -104 * SCALE, 24 * SCALE);
+    line (-104 * SCALE, 24 * SCALE, -96 * SCALE, 24 * SCALE);
+    line (-96 * SCALE, 24 * SCALE, -96 * SCALE, 16 * SCALE);
+    line (-96 * SCALE, 16 * SCALE, -104 * SCALE, 16 * SCALE);
+    pin ("ip1", -100 * SCALE, 20 * SCALE, ANY_ROTATION);
+  } /* end of symbol "and3_4" */
+  symbol ("and4_1") {
+    set_minimum_boundary (-100 * SCALE, -40 * SCALE, 100 * SCALE, 40 * SCALE);
+    line (-40 * SCALE, -30 * SCALE, -40 * SCALE, -40 * SCALE);
+    line (-40 * SCALE, 30 * SCALE, -40 * SCALE, 40 * SCALE);
+    line (-100 * SCALE, -10 * SCALE, -80 * SCALE, -10 * SCALE);
+    line (-80 * SCALE, -10 * SCALE, -40 * SCALE, -10 * SCALE);
+    line (-100 * SCALE, -30 * SCALE, -70 * SCALE, -30 * SCALE);
+    line (-70 * SCALE, -30 * SCALE, -40 * SCALE, -30 * SCALE);
+    line (-100 * SCALE, 10 * SCALE, -80 * SCALE, 10 * SCALE);
+    line (-80 * SCALE, 10 * SCALE, -40 * SCALE, 10 * SCALE);
+    line (-100 * SCALE, 30 * SCALE, -70 * SCALE, 30 * SCALE);
+    line (-70 * SCALE, 30 * SCALE, -40 * SCALE, 30 * SCALE);
+    line (100 * SCALE, 0 * SCALE, 35 * SCALE, 0 * SCALE);
+    line (-40 * SCALE, 40 * SCALE, 5 * SCALE, 40 * SCALE);
+    line (-40 * SCALE, -30 * SCALE, -40 * SCALE, 30 * SCALE);
+    arc (5 * SCALE, 40 * SCALE, 5 * SCALE, -40 * SCALE,\
+        -6.66667 * SCALE, 0 * SCALE);
+    line (5 * SCALE, -40 * SCALE, -40 * SCALE, -40 * SCALE);
+    line (-104 * SCALE, -14 * SCALE, -104 * SCALE, -6 * SCALE);
+    line (-104 * SCALE, -6 * SCALE, -96 * SCALE, -6 * SCALE);
+    line (-96 * SCALE, -6 * SCALE, -96 * SCALE, -14 * SCALE);
+    line (-96 * SCALE, -14 * SCALE, -104 * SCALE, -14 * SCALE);
+    pin ("ip3", -100 * SCALE, -10 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, 6 * SCALE, -104 * SCALE, 14 * SCALE);
+    line (-104 * SCALE, 14 * SCALE, -96 * SCALE, 14 * SCALE);
+    line (-96 * SCALE, 14 * SCALE, -96 * SCALE, 6 * SCALE);
+    line (-96 * SCALE, 6 * SCALE, -104 * SCALE, 6 * SCALE);
+    pin ("ip2", -100 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, -34 * SCALE, -104 * SCALE, -26 * SCALE);
+    line (-104 * SCALE, -26 * SCALE, -96 * SCALE, -26 * SCALE);
+    line (-96 * SCALE, -26 * SCALE, -96 * SCALE, -34 * SCALE);
+    line (-96 * SCALE, -34 * SCALE, -104 * SCALE, -34 * SCALE);
+    pin ("ip4", -100 * SCALE, -30 * SCALE, ANY_ROTATION);
+    line (96 * SCALE, -4 * SCALE, 96 * SCALE, 4 * SCALE);
+    line (96 * SCALE, 4 * SCALE, 104 * SCALE, 4 * SCALE);
+    line (104 * SCALE, 4 * SCALE, 104 * SCALE, -4 * SCALE);
+    line (104 * SCALE, -4 * SCALE, 96 * SCALE, -4 * SCALE);
+    pin ("op", 100 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, 26 * SCALE, -104 * SCALE, 34 * SCALE);
+    line (-104 * SCALE, 34 * SCALE, -96 * SCALE, 34 * SCALE);
+    line (-96 * SCALE, 34 * SCALE, -96 * SCALE, 26 * SCALE);
+    line (-96 * SCALE, 26 * SCALE, -104 * SCALE, 26 * SCALE);
+    pin ("ip1", -100 * SCALE, 30 * SCALE, ANY_ROTATION);
+  } /* end of symbol "and4_1" */
+  symbol ("and4_2") {
+    set_minimum_boundary (-100 * SCALE, -40 * SCALE, 100 * SCALE, 40 * SCALE);
+    line (-40 * SCALE, -30 * SCALE, -40 * SCALE, -40 * SCALE);
+    line (-40 * SCALE, 30 * SCALE, -40 * SCALE, 40 * SCALE);
+    line (-100 * SCALE, -10 * SCALE, -80 * SCALE, -10 * SCALE);
+    line (-80 * SCALE, -10 * SCALE, -40 * SCALE, -10 * SCALE);
+    line (-100 * SCALE, -30 * SCALE, -70 * SCALE, -30 * SCALE);
+    line (-70 * SCALE, -30 * SCALE, -40 * SCALE, -30 * SCALE);
+    line (-100 * SCALE, 10 * SCALE, -80 * SCALE, 10 * SCALE);
+    line (-80 * SCALE, 10 * SCALE, -40 * SCALE, 10 * SCALE);
+    line (-100 * SCALE, 30 * SCALE, -70 * SCALE, 30 * SCALE);
+    line (-70 * SCALE, 30 * SCALE, -40 * SCALE, 30 * SCALE);
+    line (100 * SCALE, 0 * SCALE, 35 * SCALE, 0 * SCALE);
+    line (-40 * SCALE, 40 * SCALE, 5 * SCALE, 40 * SCALE);
+    line (-40 * SCALE, -30 * SCALE, -40 * SCALE, 30 * SCALE);
+    arc (5 * SCALE, 40 * SCALE, 5 * SCALE, -40 * SCALE,\
+        -6.66667 * SCALE, 0 * SCALE);
+    line (5 * SCALE, -40 * SCALE, -40 * SCALE, -40 * SCALE);
+    line (-104 * SCALE, -14 * SCALE, -104 * SCALE, -6 * SCALE);
+    line (-104 * SCALE, -6 * SCALE, -96 * SCALE, -6 * SCALE);
+    line (-96 * SCALE, -6 * SCALE, -96 * SCALE, -14 * SCALE);
+    line (-96 * SCALE, -14 * SCALE, -104 * SCALE, -14 * SCALE);
+    pin ("ip3", -100 * SCALE, -10 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, 6 * SCALE, -104 * SCALE, 14 * SCALE);
+    line (-104 * SCALE, 14 * SCALE, -96 * SCALE, 14 * SCALE);
+    line (-96 * SCALE, 14 * SCALE, -96 * SCALE, 6 * SCALE);
+    line (-96 * SCALE, 6 * SCALE, -104 * SCALE, 6 * SCALE);
+    pin ("ip2", -100 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, -34 * SCALE, -104 * SCALE, -26 * SCALE);
+    line (-104 * SCALE, -26 * SCALE, -96 * SCALE, -26 * SCALE);
+    line (-96 * SCALE, -26 * SCALE, -96 * SCALE, -34 * SCALE);
+    line (-96 * SCALE, -34 * SCALE, -104 * SCALE, -34 * SCALE);
+    pin ("ip4", -100 * SCALE, -30 * SCALE, ANY_ROTATION);
+    line (96 * SCALE, -4 * SCALE, 96 * SCALE, 4 * SCALE);
+    line (96 * SCALE, 4 * SCALE, 104 * SCALE, 4 * SCALE);
+    line (104 * SCALE, 4 * SCALE, 104 * SCALE, -4 * SCALE);
+    line (104 * SCALE, -4 * SCALE, 96 * SCALE, -4 * SCALE);
+    pin ("op", 100 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, 26 * SCALE, -104 * SCALE, 34 * SCALE);
+    line (-104 * SCALE, 34 * SCALE, -96 * SCALE, 34 * SCALE);
+    line (-96 * SCALE, 34 * SCALE, -96 * SCALE, 26 * SCALE);
+    line (-96 * SCALE, 26 * SCALE, -104 * SCALE, 26 * SCALE);
+    pin ("ip1", -100 * SCALE, 30 * SCALE, ANY_ROTATION);
+  } /* end of symbol "and4_2" */
+  symbol ("and4_4") {
+    set_minimum_boundary (-100 * SCALE, -40 * SCALE, 100 * SCALE, 40 * SCALE);
+    line (-40 * SCALE, -30 * SCALE, -40 * SCALE, -40 * SCALE);
+    line (-40 * SCALE, 30 * SCALE, -40 * SCALE, 40 * SCALE);
+    line (-100 * SCALE, -10 * SCALE, -80 * SCALE, -10 * SCALE);
+    line (-80 * SCALE, -10 * SCALE, -40 * SCALE, -10 * SCALE);
+    line (-100 * SCALE, -30 * SCALE, -70 * SCALE, -30 * SCALE);
+    line (-70 * SCALE, -30 * SCALE, -40 * SCALE, -30 * SCALE);
+    line (-100 * SCALE, 10 * SCALE, -80 * SCALE, 10 * SCALE);
+    line (-80 * SCALE, 10 * SCALE, -40 * SCALE, 10 * SCALE);
+    line (-100 * SCALE, 30 * SCALE, -70 * SCALE, 30 * SCALE);
+    line (-70 * SCALE, 30 * SCALE, -40 * SCALE, 30 * SCALE);
+    line (100 * SCALE, 0 * SCALE, 35 * SCALE, 0 * SCALE);
+    line (-40 * SCALE, 40 * SCALE, 5 * SCALE, 40 * SCALE);
+    line (-40 * SCALE, -30 * SCALE, -40 * SCALE, 30 * SCALE);
+    arc (5 * SCALE, 40 * SCALE, 5 * SCALE, -40 * SCALE,\
+        -6.66667 * SCALE, 0 * SCALE);
+    line (5 * SCALE, -40 * SCALE, -40 * SCALE, -40 * SCALE);
+    line (-104 * SCALE, -14 * SCALE, -104 * SCALE, -6 * SCALE);
+    line (-104 * SCALE, -6 * SCALE, -96 * SCALE, -6 * SCALE);
+    line (-96 * SCALE, -6 * SCALE, -96 * SCALE, -14 * SCALE);
+    line (-96 * SCALE, -14 * SCALE, -104 * SCALE, -14 * SCALE);
+    pin ("ip3", -100 * SCALE, -10 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, 6 * SCALE, -104 * SCALE, 14 * SCALE);
+    line (-104 * SCALE, 14 * SCALE, -96 * SCALE, 14 * SCALE);
+    line (-96 * SCALE, 14 * SCALE, -96 * SCALE, 6 * SCALE);
+    line (-96 * SCALE, 6 * SCALE, -104 * SCALE, 6 * SCALE);
+    pin ("ip2", -100 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, -34 * SCALE, -104 * SCALE, -26 * SCALE);
+    line (-104 * SCALE, -26 * SCALE, -96 * SCALE, -26 * SCALE);
+    line (-96 * SCALE, -26 * SCALE, -96 * SCALE, -34 * SCALE);
+    line (-96 * SCALE, -34 * SCALE, -104 * SCALE, -34 * SCALE);
+    pin ("ip4", -100 * SCALE, -30 * SCALE, ANY_ROTATION);
+    line (96 * SCALE, -4 * SCALE, 96 * SCALE, 4 * SCALE);
+    line (96 * SCALE, 4 * SCALE, 104 * SCALE, 4 * SCALE);
+    line (104 * SCALE, 4 * SCALE, 104 * SCALE, -4 * SCALE);
+    line (104 * SCALE, -4 * SCALE, 96 * SCALE, -4 * SCALE);
+    pin ("op", 100 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, 26 * SCALE, -104 * SCALE, 34 * SCALE);
+    line (-104 * SCALE, 34 * SCALE, -96 * SCALE, 34 * SCALE);
+    line (-96 * SCALE, 34 * SCALE, -96 * SCALE, 26 * SCALE);
+    line (-96 * SCALE, 26 * SCALE, -104 * SCALE, 26 * SCALE);
+    pin ("ip1", -100 * SCALE, 30 * SCALE, ANY_ROTATION);
+  } /* end of symbol "and4_4" */
+  symbol ("buf_1") {
+    set_minimum_boundary (-90 * SCALE, -40 * SCALE, 110 * SCALE, 40 * SCALE);
+    line (-90 * SCALE, 0 * SCALE, -30 * SCALE, 0 * SCALE);
+    line (-30 * SCALE, 0 * SCALE, -30 * SCALE, 40 * SCALE);
+    line (-30 * SCALE, 40 * SCALE, 50 * SCALE, 0 * SCALE);
+    line (50 * SCALE, 0 * SCALE, -30 * SCALE, -40 * SCALE);
+    line (-30 * SCALE, -40 * SCALE, -30 * SCALE, 0 * SCALE);
+    line (50 * SCALE, 0 * SCALE, 110 * SCALE, 0 * SCALE);
+    pin ("op", 110 * SCALE, 0 * SCALE, ANY_ROTATION);
+    pin ("ip", -90 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "buf_1" */
+  symbol ("buf_2") {
+    set_minimum_boundary (-100 * SCALE, -40 * SCALE, 100 * SCALE, 40 * SCALE);
+    line (40 * SCALE, 0 * SCALE, 100 * SCALE, 0 * SCALE);
+    line (-100 * SCALE, 0 * SCALE, -40 * SCALE, 0 * SCALE);
+    line (-40 * SCALE, 0 * SCALE, -40 * SCALE, 40 * SCALE);
+    line (-40 * SCALE, 40 * SCALE, 40 * SCALE, 0 * SCALE);
+    line (40 * SCALE, 0 * SCALE, -40 * SCALE, -40 * SCALE);
+    line (-40 * SCALE, -40 * SCALE, -40 * SCALE, 0 * SCALE);
+    pin ("op", 100 * SCALE, 0 * SCALE, ANY_ROTATION);
+    pin ("ip", -100 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "buf_2" */
+  symbol ("buf_4") {
+    set_minimum_boundary (-100 * SCALE, -40 * SCALE, 100 * SCALE, 40 * SCALE);
+    line (-100 * SCALE, 0 * SCALE, -40 * SCALE, 0 * SCALE);
+    line (-40 * SCALE, 0 * SCALE, -40 * SCALE, 40 * SCALE);
+    line (-40 * SCALE, 40 * SCALE, 40 * SCALE, 0 * SCALE);
+    line (40 * SCALE, 0 * SCALE, -40 * SCALE, -40 * SCALE);
+    line (-40 * SCALE, -40 * SCALE, -40 * SCALE, 0 * SCALE);
+    line (40 * SCALE, 0 * SCALE, 100 * SCALE, 0 * SCALE);
+    pin ("ip", -100 * SCALE, 0 * SCALE, ANY_ROTATION);
+    pin ("op", 100 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "buf_4" */
+  symbol ("bufzp_2") {
+    set_minimum_boundary (-80 * SCALE, -60 * SCALE, 90 * SCALE, 40 * SCALE);
+    circle (3 * SCALE, -33 * SCALE, 10 * SCALE);
+    line (40 * SCALE, 0 * SCALE, 90 * SCALE, 0 * SCALE);
+    line (-30 * SCALE, 0 * SCALE, -80 * SCALE, 0 * SCALE);
+    line (-30 * SCALE, 40 * SCALE, 40 * SCALE, 0 * SCALE);
+    line (40 * SCALE, 0 * SCALE, -30 * SCALE, -40 * SCALE);
+    line (-30 * SCALE, -40 * SCALE, -30 * SCALE, 40 * SCALE);
+    line (10 * SCALE, -40 * SCALE, 10 * SCALE, -60 * SCALE);
+    line (-84 * SCALE, -4 * SCALE, -84 * SCALE, 4 * SCALE);
+    line (-84 * SCALE, 4 * SCALE, -76 * SCALE, 4 * SCALE);
+    line (-76 * SCALE, 4 * SCALE, -76 * SCALE, -4 * SCALE);
+    line (-76 * SCALE, -4 * SCALE, -84 * SCALE, -4 * SCALE);
+    pin ("ip", -80 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (6 * SCALE, -64 * SCALE, 6 * SCALE, -56 * SCALE);
+    line (6 * SCALE, -56 * SCALE, 14 * SCALE, -56 * SCALE);
+    line (14 * SCALE, -56 * SCALE, 14 * SCALE, -64 * SCALE);
+    line (14 * SCALE, -64 * SCALE, 6 * SCALE, -64 * SCALE);
+    pin ("c", 10 * SCALE, -60 * SCALE, ANY_ROTATION);
+    line (86 * SCALE, -4 * SCALE, 86 * SCALE, 4 * SCALE);
+    line (86 * SCALE, 4 * SCALE, 94 * SCALE, 4 * SCALE);
+    line (94 * SCALE, 4 * SCALE, 94 * SCALE, -4 * SCALE);
+    line (94 * SCALE, -4 * SCALE, 86 * SCALE, -4 * SCALE);
+    pin ("op", 90 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "bufzp_2" */
+  symbol ("cd_12") {
+    set_minimum_boundary (-80 * SCALE, -30 * SCALE, 90 * SCALE, 30 * SCALE);
+    line (90 * SCALE, 0 * SCALE, 50 * SCALE, 0 * SCALE);
+    line (-80 * SCALE, 0 * SCALE, -40 * SCALE, 0 * SCALE);
+    line (-40 * SCALE, -30 * SCALE, -40 * SCALE, 30 * SCALE);
+    line (-40 * SCALE, 30 * SCALE, 50 * SCALE, 30 * SCALE);
+    line (50 * SCALE, 30 * SCALE, 50 * SCALE, -30 * SCALE);
+    line (50 * SCALE, -30 * SCALE, -40 * SCALE, -30 * SCALE);
+    line (-20 * SCALE, 10 * SCALE, -10 * SCALE, 10 * SCALE);
+    line (-10 * SCALE, 10 * SCALE, -10 * SCALE, -10 * SCALE);
+    line (-10 * SCALE, -10 * SCALE, 0 * SCALE, -10 * SCALE);
+    line (0 * SCALE, -10 * SCALE, 0 * SCALE, 10 * SCALE);
+    line (0 * SCALE, 10 * SCALE, 10 * SCALE, 10 * SCALE);
+    line (10 * SCALE, 10 * SCALE, 10 * SCALE, -10 * SCALE);
+    line (10 * SCALE, -10 * SCALE, 20 * SCALE, -10 * SCALE);
+    line (20 * SCALE, -10 * SCALE, 20 * SCALE, 10 * SCALE);
+    line (20 * SCALE, 10 * SCALE, 30 * SCALE, 10 * SCALE);
+    line (-84 * SCALE, -4 * SCALE, -84 * SCALE, 4 * SCALE);
+    line (-84 * SCALE, 4 * SCALE, -76 * SCALE, 4 * SCALE);
+    line (-76 * SCALE, 4 * SCALE, -76 * SCALE, -4 * SCALE);
+    line (-76 * SCALE, -4 * SCALE, -84 * SCALE, -4 * SCALE);
+    pin ("ip", -80 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (86 * SCALE, -4 * SCALE, 86 * SCALE, 4 * SCALE);
+    line (86 * SCALE, 4 * SCALE, 94 * SCALE, 4 * SCALE);
+    line (94 * SCALE, 4 * SCALE, 94 * SCALE, -4 * SCALE);
+    line (94 * SCALE, -4 * SCALE, 86 * SCALE, -4 * SCALE);
+    pin ("op", 90 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "cd_12" */
+  symbol ("cd_16") {
+    set_minimum_boundary (-90 * SCALE, -30 * SCALE, 80 * SCALE, 30 * SCALE);
+    line (80 * SCALE, 0 * SCALE, 40 * SCALE, 0 * SCALE);
+    line (-90 * SCALE, 0 * SCALE, -50 * SCALE, 0 * SCALE);
+    line (-50 * SCALE, -30 * SCALE, -50 * SCALE, 30 * SCALE);
+    line (-50 * SCALE, 30 * SCALE, 40 * SCALE, 30 * SCALE);
+    line (40 * SCALE, 30 * SCALE, 40 * SCALE, -30 * SCALE);
+    line (40 * SCALE, -30 * SCALE, -50 * SCALE, -30 * SCALE);
+    line (-30 * SCALE, 10 * SCALE, -20 * SCALE, 10 * SCALE);
+    line (-20 * SCALE, 10 * SCALE, -20 * SCALE, -10 * SCALE);
+    line (-20 * SCALE, -10 * SCALE, -10 * SCALE, -10 * SCALE);
+    line (-10 * SCALE, -10 * SCALE, -10 * SCALE, 10 * SCALE);
+    line (-10 * SCALE, 10 * SCALE, 0 * SCALE, 10 * SCALE);
+    line (0 * SCALE, 10 * SCALE, 0 * SCALE, -10 * SCALE);
+    line (0 * SCALE, -10 * SCALE, 10 * SCALE, -10 * SCALE);
+    line (10 * SCALE, -10 * SCALE, 10 * SCALE, 10 * SCALE);
+    line (10 * SCALE, 10 * SCALE, 20 * SCALE, 10 * SCALE);
+    line (-94 * SCALE, -4 * SCALE, -94 * SCALE, 4 * SCALE);
+    line (-94 * SCALE, 4 * SCALE, -86 * SCALE, 4 * SCALE);
+    line (-86 * SCALE, 4 * SCALE, -86 * SCALE, -4 * SCALE);
+    line (-86 * SCALE, -4 * SCALE, -94 * SCALE, -4 * SCALE);
+    pin ("ip", -90 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (76 * SCALE, -4 * SCALE, 76 * SCALE, 4 * SCALE);
+    line (76 * SCALE, 4 * SCALE, 84 * SCALE, 4 * SCALE);
+    line (84 * SCALE, 4 * SCALE, 84 * SCALE, -4 * SCALE);
+    line (84 * SCALE, -4 * SCALE, 76 * SCALE, -4 * SCALE);
+    pin ("op", 80 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "cd_16" */
+  symbol ("cd_8") {
+    set_minimum_boundary (-80 * SCALE, -30 * SCALE, 90 * SCALE, 30 * SCALE);
+    line (-80 * SCALE, 0 * SCALE, -40 * SCALE, 0 * SCALE);
+    line (90 * SCALE, 0 * SCALE, 50 * SCALE, 0 * SCALE);
+    line (-20 * SCALE, 10 * SCALE, -10 * SCALE, 10 * SCALE);
+    line (-10 * SCALE, 10 * SCALE, -10 * SCALE, -10 * SCALE);
+    line (-10 * SCALE, -10 * SCALE, 0 * SCALE, -10 * SCALE);
+    line (0 * SCALE, -10 * SCALE, 0 * SCALE, 10 * SCALE);
+    line (0 * SCALE, 10 * SCALE, 10 * SCALE, 10 * SCALE);
+    line (10 * SCALE, 10 * SCALE, 10 * SCALE, -10 * SCALE);
+    line (10 * SCALE, -10 * SCALE, 20 * SCALE, -10 * SCALE);
+    line (20 * SCALE, -10 * SCALE, 20 * SCALE, 10 * SCALE);
+    line (20 * SCALE, 10 * SCALE, 30 * SCALE, 10 * SCALE);
+    line (-40 * SCALE, -30 * SCALE, -40 * SCALE, 30 * SCALE);
+    line (-40 * SCALE, 30 * SCALE, 50 * SCALE, 30 * SCALE);
+    line (50 * SCALE, 30 * SCALE, 50 * SCALE, -30 * SCALE);
+    line (50 * SCALE, -30 * SCALE, -40 * SCALE, -30 * SCALE);
+    line (86 * SCALE, -4 * SCALE, 86 * SCALE, 4 * SCALE);
+    line (86 * SCALE, 4 * SCALE, 94 * SCALE, 4 * SCALE);
+    line (94 * SCALE, 4 * SCALE, 94 * SCALE, -4 * SCALE);
+    line (94 * SCALE, -4 * SCALE, 86 * SCALE, -4 * SCALE);
+    pin ("op", 90 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-84 * SCALE, -4 * SCALE, -84 * SCALE, 4 * SCALE);
+    line (-84 * SCALE, 4 * SCALE, -76 * SCALE, 4 * SCALE);
+    line (-76 * SCALE, 4 * SCALE, -76 * SCALE, -4 * SCALE);
+    line (-76 * SCALE, -4 * SCALE, -84 * SCALE, -4 * SCALE);
+    pin ("ip", -80 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "cd_8" */
+  symbol ("dksp_1") {
+    set_minimum_boundary (-80 * SCALE, -90 * SCALE, 90 * SCALE, 50 * SCALE);
+    line (90 * SCALE, -20 * SCALE, 50 * SCALE, -20 * SCALE);
+    line (-40 * SCALE, -50 * SCALE, -40 * SCALE, 50 * SCALE);
+    line (-40 * SCALE, 50 * SCALE, 50 * SCALE, 50 * SCALE);
+    line (50 * SCALE, 50 * SCALE, 50 * SCALE, -50 * SCALE);
+    line (50 * SCALE, -50 * SCALE, -40 * SCALE, -50 * SCALE);
+    line (20 * SCALE, -90 * SCALE, 20 * SCALE, -60 * SCALE);
+    line (20 * SCALE, -60 * SCALE, 20 * SCALE, -50 * SCALE);
+    line (15 * SCALE, -50 * SCALE, 20 * SCALE, -35 * SCALE);
+    line (20 * SCALE, -35 * SCALE, 25 * SCALE, -50 * SCALE);
+    line (-10 * SCALE, -90 * SCALE, -10 * SCALE, -50 * SCALE);
+    line (-15 * SCALE, -50 * SCALE, -10 * SCALE, -35 * SCALE);
+    line (-10 * SCALE, -35 * SCALE, -5 * SCALE, -50 * SCALE);
+    line (90 * SCALE, 10 * SCALE, 50 * SCALE, 10 * SCALE);
+    line (-80 * SCALE, 0 * SCALE, -40 * SCALE, 0 * SCALE);
+    line (86 * SCALE, 6 * SCALE, 86 * SCALE, 14 * SCALE);
+    line (86 * SCALE, 14 * SCALE, 94 * SCALE, 14 * SCALE);
+    line (94 * SCALE, 14 * SCALE, 94 * SCALE, 6 * SCALE);
+    line (94 * SCALE, 6 * SCALE, 86 * SCALE, 6 * SCALE);
+    pin ("q", 90 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-14 * SCALE, -94 * SCALE, -14 * SCALE, -86 * SCALE);
+    line (-14 * SCALE, -86 * SCALE, -6 * SCALE, -86 * SCALE);
+    line (-6 * SCALE, -86 * SCALE, -6 * SCALE, -94 * SCALE);
+    line (-6 * SCALE, -94 * SCALE, -14 * SCALE, -94 * SCALE);
+    pin ("ck", -10 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (-84 * SCALE, -4 * SCALE, -84 * SCALE, 4 * SCALE);
+    line (-84 * SCALE, 4 * SCALE, -76 * SCALE, 4 * SCALE);
+    line (-76 * SCALE, 4 * SCALE, -76 * SCALE, -4 * SCALE);
+    line (-76 * SCALE, -4 * SCALE, -84 * SCALE, -4 * SCALE);
+    pin ("ip", -80 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (86 * SCALE, -24 * SCALE, 86 * SCALE, -16 * SCALE);
+    line (86 * SCALE, -16 * SCALE, 94 * SCALE, -16 * SCALE);
+    line (94 * SCALE, -16 * SCALE, 94 * SCALE, -24 * SCALE);
+    line (94 * SCALE, -24 * SCALE, 86 * SCALE, -24 * SCALE);
+    pin ("qb", 90 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (16 * SCALE, -94 * SCALE, 16 * SCALE, -86 * SCALE);
+    line (16 * SCALE, -86 * SCALE, 24 * SCALE, -86 * SCALE);
+    line (24 * SCALE, -86 * SCALE, 24 * SCALE, -94 * SCALE);
+    line (24 * SCALE, -94 * SCALE, 16 * SCALE, -94 * SCALE);
+    pin ("sb", 20 * SCALE, -90 * SCALE, ANY_ROTATION);
+  } /* end of symbol "dksp_1" */
+  symbol ("dp_1") {
+    set_minimum_boundary (-90 * SCALE, -90 * SCALE, 80 * SCALE, 50 * SCALE);
+    line (-90 * SCALE, 10 * SCALE, -50 * SCALE, 10 * SCALE);
+    line (80 * SCALE, 10 * SCALE, 40 * SCALE, 10 * SCALE);
+    line (-25 * SCALE, -50 * SCALE, -20 * SCALE, -35 * SCALE);
+    line (-20 * SCALE, -35 * SCALE, -15 * SCALE, -50 * SCALE);
+    line (-20 * SCALE, -90 * SCALE, -20 * SCALE, -50 * SCALE);
+    line (-50 * SCALE, -50 * SCALE, -50 * SCALE, 50 * SCALE);
+    line (-50 * SCALE, 50 * SCALE, 40 * SCALE, 50 * SCALE);
+    line (40 * SCALE, 50 * SCALE, 40 * SCALE, -50 * SCALE);
+    line (40 * SCALE, -50 * SCALE, -50 * SCALE, -50 * SCALE);
+    line (-24 * SCALE, -94 * SCALE, -24 * SCALE, -86 * SCALE);
+    line (-24 * SCALE, -86 * SCALE, -16 * SCALE, -86 * SCALE);
+    line (-16 * SCALE, -86 * SCALE, -16 * SCALE, -94 * SCALE);
+    line (-16 * SCALE, -94 * SCALE, -24 * SCALE, -94 * SCALE);
+    pin ("clk", -20 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (76 * SCALE, 6 * SCALE, 76 * SCALE, 14 * SCALE);
+    line (76 * SCALE, 14 * SCALE, 84 * SCALE, 14 * SCALE);
+    line (84 * SCALE, 14 * SCALE, 84 * SCALE, 6 * SCALE);
+    line (84 * SCALE, 6 * SCALE, 76 * SCALE, 6 * SCALE);
+    pin ("p", 80 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-94 * SCALE, 6 * SCALE, -94 * SCALE, 14 * SCALE);
+    line (-94 * SCALE, 14 * SCALE, -86 * SCALE, 14 * SCALE);
+    line (-86 * SCALE, 14 * SCALE, -86 * SCALE, 6 * SCALE);
+    line (-86 * SCALE, 6 * SCALE, -94 * SCALE, 6 * SCALE);
+    pin ("ip", -90 * SCALE, 10 * SCALE, ANY_ROTATION);
+  } /* end of symbol "dp_1" */
+  symbol ("dp_2") {
+    set_minimum_boundary (-90 * SCALE, -90 * SCALE, 80 * SCALE, 50 * SCALE);
+    line (-50 * SCALE, -50 * SCALE, -50 * SCALE, 50 * SCALE);
+    line (-50 * SCALE, 50 * SCALE, 40 * SCALE, 50 * SCALE);
+    line (40 * SCALE, 50 * SCALE, 40 * SCALE, -50 * SCALE);
+    line (40 * SCALE, -50 * SCALE, -50 * SCALE, -50 * SCALE);
+    line (-20 * SCALE, -90 * SCALE, -20 * SCALE, -50 * SCALE);
+    line (-25 * SCALE, -50 * SCALE, -20 * SCALE, -35 * SCALE);
+    line (-20 * SCALE, -35 * SCALE, -15 * SCALE, -50 * SCALE);
+    line (80 * SCALE, 10 * SCALE, 40 * SCALE, 10 * SCALE);
+    line (-90 * SCALE, 10 * SCALE, -50 * SCALE, 10 * SCALE);
+    line (-94 * SCALE, 6 * SCALE, -94 * SCALE, 14 * SCALE);
+    line (-94 * SCALE, 14 * SCALE, -86 * SCALE, 14 * SCALE);
+    line (-86 * SCALE, 14 * SCALE, -86 * SCALE, 6 * SCALE);
+    line (-86 * SCALE, 6 * SCALE, -94 * SCALE, 6 * SCALE);
+    pin ("ip", -90 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (76 * SCALE, 6 * SCALE, 76 * SCALE, 14 * SCALE);
+    line (76 * SCALE, 14 * SCALE, 84 * SCALE, 14 * SCALE);
+    line (84 * SCALE, 14 * SCALE, 84 * SCALE, 6 * SCALE);
+    line (84 * SCALE, 6 * SCALE, 76 * SCALE, 6 * SCALE);
+    pin ("p", 80 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-24 * SCALE, -94 * SCALE, -24 * SCALE, -86 * SCALE);
+    line (-24 * SCALE, -86 * SCALE, -16 * SCALE, -86 * SCALE);
+    line (-16 * SCALE, -86 * SCALE, -16 * SCALE, -94 * SCALE);
+    line (-16 * SCALE, -94 * SCALE, -24 * SCALE, -94 * SCALE);
+    pin ("clk", -20 * SCALE, -90 * SCALE, ANY_ROTATION);
+  } /* end of symbol "dp_2" */
+  symbol ("dp_4") {
+    set_minimum_boundary (-80 * SCALE, -90 * SCALE, 90 * SCALE, 50 * SCALE);
+    line (-80 * SCALE, 10 * SCALE, -40 * SCALE, 10 * SCALE);
+    line (90 * SCALE, 10 * SCALE, 50 * SCALE, 10 * SCALE);
+    line (-15 * SCALE, -50 * SCALE, -10 * SCALE, -35 * SCALE);
+    line (-10 * SCALE, -35 * SCALE, -5 * SCALE, -50 * SCALE);
+    line (-10 * SCALE, -90 * SCALE, -10 * SCALE, -50 * SCALE);
+    line (-40 * SCALE, -50 * SCALE, -40 * SCALE, 50 * SCALE);
+    line (-40 * SCALE, 50 * SCALE, 50 * SCALE, 50 * SCALE);
+    line (50 * SCALE, 50 * SCALE, 50 * SCALE, -50 * SCALE);
+    line (50 * SCALE, -50 * SCALE, -40 * SCALE, -50 * SCALE);
+    line (-14 * SCALE, -94 * SCALE, -14 * SCALE, -86 * SCALE);
+    line (-14 * SCALE, -86 * SCALE, -6 * SCALE, -86 * SCALE);
+    line (-6 * SCALE, -86 * SCALE, -6 * SCALE, -94 * SCALE);
+    line (-6 * SCALE, -94 * SCALE, -14 * SCALE, -94 * SCALE);
+    pin ("clk", -10 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (86 * SCALE, 6 * SCALE, 86 * SCALE, 14 * SCALE);
+    line (86 * SCALE, 14 * SCALE, 94 * SCALE, 14 * SCALE);
+    line (94 * SCALE, 14 * SCALE, 94 * SCALE, 6 * SCALE);
+    line (94 * SCALE, 6 * SCALE, 86 * SCALE, 6 * SCALE);
+    pin ("p", 90 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-84 * SCALE, 6 * SCALE, -84 * SCALE, 14 * SCALE);
+    line (-84 * SCALE, 14 * SCALE, -76 * SCALE, 14 * SCALE);
+    line (-76 * SCALE, 14 * SCALE, -76 * SCALE, 6 * SCALE);
+    line (-76 * SCALE, 6 * SCALE, -84 * SCALE, 6 * SCALE);
+    pin ("ip", -80 * SCALE, 10 * SCALE, ANY_ROTATION);
+  } /* end of symbol "dp_4" */
+  symbol ("drp_1") {
+    set_minimum_boundary (-120 * SCALE, -90 * SCALE, 110 * SCALE, 40 * SCALE);
+    line (-120 * SCALE, -10 * SCALE, -80 * SCALE, -10 * SCALE);
+    line (110 * SCALE, -10 * SCALE, 70 * SCALE, -10 * SCALE);
+    line (-25 * SCALE, -50 * SCALE, -20 * SCALE, -35 * SCALE);
+    line (-20 * SCALE, -35 * SCALE, -15 * SCALE, -50 * SCALE);
+    line (-20 * SCALE, -90 * SCALE, -20 * SCALE, -50 * SCALE);
+    circle (20 * SCALE, -55 * SCALE, 5 * SCALE);
+    line (20 * SCALE, -90 * SCALE, 20 * SCALE, -60 * SCALE);
+    line (-80 * SCALE, -50 * SCALE, -80 * SCALE, 40 * SCALE);
+    line (-80 * SCALE, 40 * SCALE, 70 * SCALE, 40 * SCALE);
+    line (70 * SCALE, 40 * SCALE, 70 * SCALE, -50 * SCALE);
+    line (70 * SCALE, -50 * SCALE, -80 * SCALE, -50 * SCALE);
+    line (16 * SCALE, -94 * SCALE, 16 * SCALE, -86 * SCALE);
+    line (16 * SCALE, -86 * SCALE, 24 * SCALE, -86 * SCALE);
+    line (24 * SCALE, -86 * SCALE, 24 * SCALE, -94 * SCALE);
+    line (24 * SCALE, -94 * SCALE, 16 * SCALE, -94 * SCALE);
+    pin ("rb", 20 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (-24 * SCALE, -94 * SCALE, -24 * SCALE, -86 * SCALE);
+    line (-24 * SCALE, -86 * SCALE, -16 * SCALE, -86 * SCALE);
+    line (-16 * SCALE, -86 * SCALE, -16 * SCALE, -94 * SCALE);
+    line (-16 * SCALE, -94 * SCALE, -24 * SCALE, -94 * SCALE);
+    pin ("clk", -20 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (106 * SCALE, -14 * SCALE, 106 * SCALE, -6 * SCALE);
+    line (106 * SCALE, -6 * SCALE, 114 * SCALE, -6 * SCALE);
+    line (114 * SCALE, -6 * SCALE, 114 * SCALE, -14 * SCALE);
+    line (114 * SCALE, -14 * SCALE, 106 * SCALE, -14 * SCALE);
+    pin ("p", 110 * SCALE, -10 * SCALE, ANY_ROTATION);
+    line (-124 * SCALE, -14 * SCALE, -124 * SCALE, -6 * SCALE);
+    line (-124 * SCALE, -6 * SCALE, -116 * SCALE, -6 * SCALE);
+    line (-116 * SCALE, -6 * SCALE, -116 * SCALE, -14 * SCALE);
+    line (-116 * SCALE, -14 * SCALE, -124 * SCALE, -14 * SCALE);
+    pin ("ip", -120 * SCALE, -10 * SCALE, ANY_ROTATION);
+  } /* end of symbol "drp_1" */
+  symbol ("drp_2") {
+    set_minimum_boundary (-120 * SCALE, -80 * SCALE, 110 * SCALE, 50 * SCALE);
+    line (-80 * SCALE, -40 * SCALE, -80 * SCALE, 50 * SCALE);
+    line (-80 * SCALE, 50 * SCALE, 70 * SCALE, 50 * SCALE);
+    line (70 * SCALE, 50 * SCALE, 70 * SCALE, -40 * SCALE);
+    line (70 * SCALE, -40 * SCALE, -80 * SCALE, -40 * SCALE);
+    line (20 * SCALE, -80 * SCALE, 20 * SCALE, -50 * SCALE);
+    circle (20 * SCALE, -45 * SCALE, 5 * SCALE);
+    line (-20 * SCALE, -80 * SCALE, -20 * SCALE, -40 * SCALE);
+    line (-25 * SCALE, -40 * SCALE, -20 * SCALE, -25 * SCALE);
+    line (-20 * SCALE, -25 * SCALE, -15 * SCALE, -40 * SCALE);
+    line (110 * SCALE, 0 * SCALE, 70 * SCALE, 0 * SCALE);
+    line (-120 * SCALE, 0 * SCALE, -80 * SCALE, 0 * SCALE);
+    line (-124 * SCALE, -4 * SCALE, -124 * SCALE, 4 * SCALE);
+    line (-124 * SCALE, 4 * SCALE, -116 * SCALE, 4 * SCALE);
+    line (-116 * SCALE, 4 * SCALE, -116 * SCALE, -4 * SCALE);
+    line (-116 * SCALE, -4 * SCALE, -124 * SCALE, -4 * SCALE);
+    pin ("ip", -120 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (106 * SCALE, -4 * SCALE, 106 * SCALE, 4 * SCALE);
+    line (106 * SCALE, 4 * SCALE, 114 * SCALE, 4 * SCALE);
+    line (114 * SCALE, 4 * SCALE, 114 * SCALE, -4 * SCALE);
+    line (114 * SCALE, -4 * SCALE, 106 * SCALE, -4 * SCALE);
+    pin ("p", 110 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-24 * SCALE, -84 * SCALE, -24 * SCALE, -76 * SCALE);
+    line (-24 * SCALE, -76 * SCALE, -16 * SCALE, -76 * SCALE);
+    line (-16 * SCALE, -76 * SCALE, -16 * SCALE, -84 * SCALE);
+    line (-16 * SCALE, -84 * SCALE, -24 * SCALE, -84 * SCALE);
+    pin ("clk", -20 * SCALE, -80 * SCALE, ANY_ROTATION);
+    line (16 * SCALE, -84 * SCALE, 16 * SCALE, -76 * SCALE);
+    line (16 * SCALE, -76 * SCALE, 24 * SCALE, -76 * SCALE);
+    line (24 * SCALE, -76 * SCALE, 24 * SCALE, -84 * SCALE);
+    line (24 * SCALE, -84 * SCALE, 16 * SCALE, -84 * SCALE);
+    pin ("rb", 20 * SCALE, -80 * SCALE, ANY_ROTATION);
+  } /* end of symbol "drp_2" */
+  symbol ("drp_4") {
+    set_minimum_boundary (-120 * SCALE, -80 * SCALE, 110 * SCALE, 50 * SCALE);
+    line (-120 * SCALE, 0 * SCALE, -80 * SCALE, 0 * SCALE);
+    line (110 * SCALE, 0 * SCALE, 70 * SCALE, 0 * SCALE);
+    line (-25 * SCALE, -40 * SCALE, -20 * SCALE, -25 * SCALE);
+    line (-20 * SCALE, -25 * SCALE, -15 * SCALE, -40 * SCALE);
+    line (-20 * SCALE, -80 * SCALE, -20 * SCALE, -40 * SCALE);
+    circle (20 * SCALE, -45 * SCALE, 5 * SCALE);
+    line (20 * SCALE, -80 * SCALE, 20 * SCALE, -50 * SCALE);
+    line (-80 * SCALE, -40 * SCALE, -80 * SCALE, 50 * SCALE);
+    line (-80 * SCALE, 50 * SCALE, 70 * SCALE, 50 * SCALE);
+    line (70 * SCALE, 50 * SCALE, 70 * SCALE, -40 * SCALE);
+    line (70 * SCALE, -40 * SCALE, -80 * SCALE, -40 * SCALE);
+    line (16 * SCALE, -84 * SCALE, 16 * SCALE, -76 * SCALE);
+    line (16 * SCALE, -76 * SCALE, 24 * SCALE, -76 * SCALE);
+    line (24 * SCALE, -76 * SCALE, 24 * SCALE, -84 * SCALE);
+    line (24 * SCALE, -84 * SCALE, 16 * SCALE, -84 * SCALE);
+    pin ("rb", 20 * SCALE, -80 * SCALE, ANY_ROTATION);
+    line (-24 * SCALE, -84 * SCALE, -24 * SCALE, -76 * SCALE);
+    line (-24 * SCALE, -76 * SCALE, -16 * SCALE, -76 * SCALE);
+    line (-16 * SCALE, -76 * SCALE, -16 * SCALE, -84 * SCALE);
+    line (-16 * SCALE, -84 * SCALE, -24 * SCALE, -84 * SCALE);
+    pin ("clk", -20 * SCALE, -80 * SCALE, ANY_ROTATION);
+    line (106 * SCALE, -4 * SCALE, 106 * SCALE, 4 * SCALE);
+    line (106 * SCALE, 4 * SCALE, 114 * SCALE, 4 * SCALE);
+    line (114 * SCALE, 4 * SCALE, 114 * SCALE, -4 * SCALE);
+    line (114 * SCALE, -4 * SCALE, 106 * SCALE, -4 * SCALE);
+    pin ("p", 110 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-124 * SCALE, -4 * SCALE, -124 * SCALE, 4 * SCALE);
+    line (-124 * SCALE, 4 * SCALE, -116 * SCALE, 4 * SCALE);
+    line (-116 * SCALE, 4 * SCALE, -116 * SCALE, -4 * SCALE);
+    line (-116 * SCALE, -4 * SCALE, -124 * SCALE, -4 * SCALE);
+    pin ("ip", -120 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "drp_4" */
+  symbol ("drsp_1") {
+    set_minimum_boundary (-90 * SCALE, -90 * SCALE, 80 * SCALE, 50 * SCALE);
+    line (-90 * SCALE, 10 * SCALE, -50 * SCALE, 10 * SCALE);
+    line (80 * SCALE, 10 * SCALE, 40 * SCALE, 10 * SCALE);
+    line (-5 * SCALE, -50 * SCALE, 0 * SCALE, -35 * SCALE);
+    line (0 * SCALE, -35 * SCALE, 5 * SCALE, -50 * SCALE);
+    line (0 * SCALE, -90 * SCALE, 0 * SCALE, -50 * SCALE);
+    line (30 * SCALE, -90 * SCALE, 30 * SCALE, -50 * SCALE);
+    line (-50 * SCALE, -50 * SCALE, -50 * SCALE, 50 * SCALE);
+    line (-50 * SCALE, 50 * SCALE, 40 * SCALE, 50 * SCALE);
+    line (40 * SCALE, 50 * SCALE, 40 * SCALE, -50 * SCALE);
+    line (40 * SCALE, -50 * SCALE, -50 * SCALE, -50 * SCALE);
+    circle (-30 * SCALE, -55 * SCALE, 5 * SCALE);
+    line (-30 * SCALE, -60 * SCALE, -30 * SCALE, -90 * SCALE);
+    line (26 * SCALE, -94 * SCALE, 26 * SCALE, -86 * SCALE);
+    line (26 * SCALE, -86 * SCALE, 34 * SCALE, -86 * SCALE);
+    line (34 * SCALE, -86 * SCALE, 34 * SCALE, -94 * SCALE);
+    line (34 * SCALE, -94 * SCALE, 26 * SCALE, -94 * SCALE);
+    pin ("s", 30 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (-34 * SCALE, -94 * SCALE, -34 * SCALE, -86 * SCALE);
+    line (-34 * SCALE, -86 * SCALE, -26 * SCALE, -86 * SCALE);
+    line (-26 * SCALE, -86 * SCALE, -26 * SCALE, -94 * SCALE);
+    line (-26 * SCALE, -94 * SCALE, -34 * SCALE, -94 * SCALE);
+    pin ("rb", -30 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (-4 * SCALE, -94 * SCALE, -4 * SCALE, -86 * SCALE);
+    line (-4 * SCALE, -86 * SCALE, 4 * SCALE, -86 * SCALE);
+    line (4 * SCALE, -86 * SCALE, 4 * SCALE, -94 * SCALE);
+    line (4 * SCALE, -94 * SCALE, -4 * SCALE, -94 * SCALE);
+    pin ("clk", 0 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (76 * SCALE, 6 * SCALE, 76 * SCALE, 14 * SCALE);
+    line (76 * SCALE, 14 * SCALE, 84 * SCALE, 14 * SCALE);
+    line (84 * SCALE, 14 * SCALE, 84 * SCALE, 6 * SCALE);
+    line (84 * SCALE, 6 * SCALE, 76 * SCALE, 6 * SCALE);
+    pin ("p", 80 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-94 * SCALE, 6 * SCALE, -94 * SCALE, 14 * SCALE);
+    line (-94 * SCALE, 14 * SCALE, -86 * SCALE, 14 * SCALE);
+    line (-86 * SCALE, 14 * SCALE, -86 * SCALE, 6 * SCALE);
+    line (-86 * SCALE, 6 * SCALE, -94 * SCALE, 6 * SCALE);
+    pin ("ip", -90 * SCALE, 10 * SCALE, ANY_ROTATION);
+  } /* end of symbol "drsp_1" */
+  symbol ("drsp_2") {
+    set_minimum_boundary (-90 * SCALE, -90 * SCALE, 80 * SCALE, 50 * SCALE);
+    line (-30 * SCALE, -60 * SCALE, -30 * SCALE, -90 * SCALE);
+    circle (-30 * SCALE, -55 * SCALE, 5 * SCALE);
+    line (-50 * SCALE, -50 * SCALE, -50 * SCALE, 50 * SCALE);
+    line (-50 * SCALE, 50 * SCALE, 40 * SCALE, 50 * SCALE);
+    line (40 * SCALE, 50 * SCALE, 40 * SCALE, -50 * SCALE);
+    line (40 * SCALE, -50 * SCALE, -50 * SCALE, -50 * SCALE);
+    line (0 * SCALE, -90 * SCALE, 0 * SCALE, -50 * SCALE);
+    line (-5 * SCALE, -50 * SCALE, 0 * SCALE, -35 * SCALE);
+    line (0 * SCALE, -35 * SCALE, 5 * SCALE, -50 * SCALE);
+    line (80 * SCALE, 10 * SCALE, 40 * SCALE, 10 * SCALE);
+    line (-90 * SCALE, 10 * SCALE, -50 * SCALE, 10 * SCALE);
+    line (30 * SCALE, -90 * SCALE, 30 * SCALE, -50 * SCALE);
+    line (-94 * SCALE, 6 * SCALE, -94 * SCALE, 14 * SCALE);
+    line (-94 * SCALE, 14 * SCALE, -86 * SCALE, 14 * SCALE);
+    line (-86 * SCALE, 14 * SCALE, -86 * SCALE, 6 * SCALE);
+    line (-86 * SCALE, 6 * SCALE, -94 * SCALE, 6 * SCALE);
+    pin ("ip", -90 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (76 * SCALE, 6 * SCALE, 76 * SCALE, 14 * SCALE);
+    line (76 * SCALE, 14 * SCALE, 84 * SCALE, 14 * SCALE);
+    line (84 * SCALE, 14 * SCALE, 84 * SCALE, 6 * SCALE);
+    line (84 * SCALE, 6 * SCALE, 76 * SCALE, 6 * SCALE);
+    pin ("p", 80 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-4 * SCALE, -94 * SCALE, -4 * SCALE, -86 * SCALE);
+    line (-4 * SCALE, -86 * SCALE, 4 * SCALE, -86 * SCALE);
+    line (4 * SCALE, -86 * SCALE, 4 * SCALE, -94 * SCALE);
+    line (4 * SCALE, -94 * SCALE, -4 * SCALE, -94 * SCALE);
+    pin ("clk", 0 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (26 * SCALE, -94 * SCALE, 26 * SCALE, -86 * SCALE);
+    line (26 * SCALE, -86 * SCALE, 34 * SCALE, -86 * SCALE);
+    line (34 * SCALE, -86 * SCALE, 34 * SCALE, -94 * SCALE);
+    line (34 * SCALE, -94 * SCALE, 26 * SCALE, -94 * SCALE);
+    pin ("s", 30 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (-34 * SCALE, -94 * SCALE, -34 * SCALE, -86 * SCALE);
+    line (-34 * SCALE, -86 * SCALE, -26 * SCALE, -86 * SCALE);
+    line (-26 * SCALE, -86 * SCALE, -26 * SCALE, -94 * SCALE);
+    line (-26 * SCALE, -94 * SCALE, -34 * SCALE, -94 * SCALE);
+    pin ("rb", -30 * SCALE, -90 * SCALE, ANY_ROTATION);
+  } /* end of symbol "drsp_2" */
+  symbol ("drsp_4") {
+    set_minimum_boundary (-90 * SCALE, -90 * SCALE, 80 * SCALE, 50 * SCALE);
+    line (-30 * SCALE, -60 * SCALE, -30 * SCALE, -90 * SCALE);
+    circle (-30 * SCALE, -55 * SCALE, 5 * SCALE);
+    line (-50 * SCALE, -50 * SCALE, -50 * SCALE, 50 * SCALE);
+    line (-50 * SCALE, 50 * SCALE, 40 * SCALE, 50 * SCALE);
+    line (40 * SCALE, 50 * SCALE, 40 * SCALE, -50 * SCALE);
+    line (40 * SCALE, -50 * SCALE, -50 * SCALE, -50 * SCALE);
+    line (0 * SCALE, -90 * SCALE, 0 * SCALE, -50 * SCALE);
+    line (-5 * SCALE, -50 * SCALE, 0 * SCALE, -35 * SCALE);
+    line (0 * SCALE, -35 * SCALE, 5 * SCALE, -50 * SCALE);
+    line (80 * SCALE, 10 * SCALE, 40 * SCALE, 10 * SCALE);
+    line (-90 * SCALE, 10 * SCALE, -50 * SCALE, 10 * SCALE);
+    line (30 * SCALE, -90 * SCALE, 30 * SCALE, -50 * SCALE);
+    line (-94 * SCALE, 6 * SCALE, -94 * SCALE, 14 * SCALE);
+    line (-94 * SCALE, 14 * SCALE, -86 * SCALE, 14 * SCALE);
+    line (-86 * SCALE, 14 * SCALE, -86 * SCALE, 6 * SCALE);
+    line (-86 * SCALE, 6 * SCALE, -94 * SCALE, 6 * SCALE);
+    pin ("ip", -90 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (76 * SCALE, 6 * SCALE, 76 * SCALE, 14 * SCALE);
+    line (76 * SCALE, 14 * SCALE, 84 * SCALE, 14 * SCALE);
+    line (84 * SCALE, 14 * SCALE, 84 * SCALE, 6 * SCALE);
+    line (84 * SCALE, 6 * SCALE, 76 * SCALE, 6 * SCALE);
+    pin ("p", 80 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-4 * SCALE, -94 * SCALE, -4 * SCALE, -86 * SCALE);
+    line (-4 * SCALE, -86 * SCALE, 4 * SCALE, -86 * SCALE);
+    line (4 * SCALE, -86 * SCALE, 4 * SCALE, -94 * SCALE);
+    line (4 * SCALE, -94 * SCALE, -4 * SCALE, -94 * SCALE);
+    pin ("clk", 0 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (26 * SCALE, -94 * SCALE, 26 * SCALE, -86 * SCALE);
+    line (26 * SCALE, -86 * SCALE, 34 * SCALE, -86 * SCALE);
+    line (34 * SCALE, -86 * SCALE, 34 * SCALE, -94 * SCALE);
+    line (34 * SCALE, -94 * SCALE, 26 * SCALE, -94 * SCALE);
+    pin ("s", 30 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (-34 * SCALE, -94 * SCALE, -34 * SCALE, -86 * SCALE);
+    line (-34 * SCALE, -86 * SCALE, -26 * SCALE, -86 * SCALE);
+    line (-26 * SCALE, -86 * SCALE, -26 * SCALE, -94 * SCALE);
+    line (-26 * SCALE, -94 * SCALE, -34 * SCALE, -94 * SCALE);
+    pin ("rb", -30 * SCALE, -90 * SCALE, ANY_ROTATION);
+  } /* end of symbol "drsp_4" */
+  symbol ("dtrsp_2") {
+    set_minimum_boundary (-80 * SCALE, -90 * SCALE, 140 * SCALE, 50 * SCALE);
+    line (60 * SCALE, -90 * SCALE, 60 * SCALE, -50 * SCALE);
+    line (40 * SCALE, -90 * SCALE, 40 * SCALE, -50 * SCALE);
+    line (80 * SCALE, -90 * SCALE, 80 * SCALE, -50 * SCALE);
+    line (-40 * SCALE, -50 * SCALE, -40 * SCALE, 50 * SCALE);
+    line (-40 * SCALE, 50 * SCALE, 100 * SCALE, 50 * SCALE);
+    line (100 * SCALE, 50 * SCALE, 100 * SCALE, -50 * SCALE);
+    line (100 * SCALE, -50 * SCALE, -40 * SCALE, -50 * SCALE);
+    line (20 * SCALE, -90 * SCALE, 20 * SCALE, -60 * SCALE);
+    circle (20 * SCALE, -55 * SCALE, 5 * SCALE);
+    line (-10 * SCALE, -90 * SCALE, -10 * SCALE, -50 * SCALE);
+    line (-15 * SCALE, -50 * SCALE, -10 * SCALE, -35 * SCALE);
+    line (-10 * SCALE, -35 * SCALE, -5 * SCALE, -50 * SCALE);
+    line (140 * SCALE, 10 * SCALE, 100 * SCALE, 10 * SCALE);
+    line (-80 * SCALE, 10 * SCALE, -40 * SCALE, 10 * SCALE);
+    line (136 * SCALE, 6 * SCALE, 136 * SCALE, 14 * SCALE);
+    line (136 * SCALE, 14 * SCALE, 144 * SCALE, 14 * SCALE);
+    line (144 * SCALE, 14 * SCALE, 144 * SCALE, 6 * SCALE);
+    line (144 * SCALE, 6 * SCALE, 136 * SCALE, 6 * SCALE);
+    pin ("q", 140 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-14 * SCALE, -94 * SCALE, -14 * SCALE, -86 * SCALE);
+    line (-14 * SCALE, -86 * SCALE, -6 * SCALE, -86 * SCALE);
+    line (-6 * SCALE, -86 * SCALE, -6 * SCALE, -94 * SCALE);
+    line (-6 * SCALE, -94 * SCALE, -14 * SCALE, -94 * SCALE);
+    pin ("ck", -10 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (16 * SCALE, -94 * SCALE, 16 * SCALE, -86 * SCALE);
+    line (16 * SCALE, -86 * SCALE, 24 * SCALE, -86 * SCALE);
+    line (24 * SCALE, -86 * SCALE, 24 * SCALE, -94 * SCALE);
+    line (24 * SCALE, -94 * SCALE, 16 * SCALE, -94 * SCALE);
+    pin ("rb", 20 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (-84 * SCALE, 6 * SCALE, -84 * SCALE, 14 * SCALE);
+    line (-84 * SCALE, 14 * SCALE, -76 * SCALE, 14 * SCALE);
+    line (-76 * SCALE, 14 * SCALE, -76 * SCALE, 6 * SCALE);
+    line (-76 * SCALE, 6 * SCALE, -84 * SCALE, 6 * SCALE);
+    pin ("ip", -80 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (36 * SCALE, -94 * SCALE, 36 * SCALE, -86 * SCALE);
+    line (36 * SCALE, -86 * SCALE, 44 * SCALE, -86 * SCALE);
+    line (44 * SCALE, -86 * SCALE, 44 * SCALE, -94 * SCALE);
+    line (44 * SCALE, -94 * SCALE, 36 * SCALE, -94 * SCALE);
+    pin ("s", 40 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (56 * SCALE, -94 * SCALE, 56 * SCALE, -86 * SCALE);
+    line (56 * SCALE, -86 * SCALE, 64 * SCALE, -86 * SCALE);
+    line (64 * SCALE, -86 * SCALE, 64 * SCALE, -94 * SCALE);
+    line (64 * SCALE, -94 * SCALE, 56 * SCALE, -94 * SCALE);
+    pin ("sm", 60 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (76 * SCALE, -94 * SCALE, 76 * SCALE, -86 * SCALE);
+    line (76 * SCALE, -86 * SCALE, 84 * SCALE, -86 * SCALE);
+    line (84 * SCALE, -86 * SCALE, 84 * SCALE, -94 * SCALE);
+    line (84 * SCALE, -94 * SCALE, 76 * SCALE, -94 * SCALE);
+    pin ("sip", 80 * SCALE, -90 * SCALE, ANY_ROTATION);
+  } /* end of symbol "dtrsp_2" */
+  symbol ("fulladder") {
+    set_minimum_boundary (-100 * SCALE, -50 * SCALE, 90 * SCALE, 50 * SCALE);
+    line (-100 * SCALE, -40 * SCALE, -50 * SCALE, -40 * SCALE);
+    line (-100 * SCALE, 20 * SCALE, -50 * SCALE, 20 * SCALE);
+    line (90 * SCALE, 10 * SCALE, 40 * SCALE, 10 * SCALE);
+    line (90 * SCALE, -30 * SCALE, 40 * SCALE, -30 * SCALE);
+    line (-50 * SCALE, -10 * SCALE, -100 * SCALE, -10 * SCALE);
+    line (-50 * SCALE, -50 * SCALE, -50 * SCALE, 50 * SCALE);
+    line (-50 * SCALE, 50 * SCALE, 40 * SCALE, 50 * SCALE);
+    line (40 * SCALE, 50 * SCALE, 40 * SCALE, -50 * SCALE);
+    line (40 * SCALE, -50 * SCALE, -50 * SCALE, -50 * SCALE);
+    pin ("co", 90 * SCALE, 10 * SCALE, ANY_ROTATION);
+    pin ("ci", -100 * SCALE, -40 * SCALE, ANY_ROTATION);
+    pin ("a", -100 * SCALE, 20 * SCALE, ANY_ROTATION);
+    pin ("b", -100 * SCALE, -10 * SCALE, ANY_ROTATION);
+    pin ("s", 90 * SCALE, -30 * SCALE, ANY_ROTATION);
+  } /* end of symbol "fulladder" */
+  symbol ("inv_1") {
+    set_minimum_boundary (-50 * SCALE, -25 * SCALE, 70 * SCALE, 25 * SCALE);
+    line (28 * SCALE, 0 * SCALE, -15 * SCALE, 25 * SCALE);
+    circle (33 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (-15 * SCALE, 0 * SCALE, -50 * SCALE, 0 * SCALE);
+    line (39 * SCALE, 0 * SCALE, 70 * SCALE, 0 * SCALE);
+    line (-15 * SCALE, -25 * SCALE, -15 * SCALE, 25 * SCALE);
+    line (28 * SCALE, 0 * SCALE, -15 * SCALE, -25 * SCALE);
+    pin ("op", 70 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-54 * SCALE, -4 * SCALE, -54 * SCALE, 4 * SCALE);
+    line (-54 * SCALE, 4 * SCALE, -46 * SCALE, 4 * SCALE);
+    line (-46 * SCALE, 4 * SCALE, -46 * SCALE, -4 * SCALE);
+    line (-46 * SCALE, -4 * SCALE, -54 * SCALE, -4 * SCALE);
+    pin ("ip", -50 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "inv_1" */
+  symbol ("inv_2") {
+    set_minimum_boundary (-50 * SCALE, -25 * SCALE, 70 * SCALE, 25 * SCALE);
+    line (28 * SCALE, 0 * SCALE, -15 * SCALE, 25 * SCALE);
+    circle (33 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (-15 * SCALE, 0 * SCALE, -50 * SCALE, 0 * SCALE);
+    line (39 * SCALE, 0 * SCALE, 70 * SCALE, 0 * SCALE);
+    line (-15 * SCALE, -25 * SCALE, -15 * SCALE, 25 * SCALE);
+    line (28 * SCALE, 0 * SCALE, -15 * SCALE, -25 * SCALE);
+    pin ("op", 70 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-54 * SCALE, -4 * SCALE, -54 * SCALE, 4 * SCALE);
+    line (-54 * SCALE, 4 * SCALE, -46 * SCALE, 4 * SCALE);
+    line (-46 * SCALE, 4 * SCALE, -46 * SCALE, -4 * SCALE);
+    line (-46 * SCALE, -4 * SCALE, -54 * SCALE, -4 * SCALE);
+    pin ("ip", -50 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "inv_2" */
+  symbol ("inv_4") {
+    set_minimum_boundary (-50 * SCALE, -25 * SCALE, 70 * SCALE, 25 * SCALE);
+    line (28 * SCALE, 0 * SCALE, -15 * SCALE, 25 * SCALE);
+    circle (33 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (-15 * SCALE, 0 * SCALE, -50 * SCALE, 0 * SCALE);
+    line (39 * SCALE, 0 * SCALE, 70 * SCALE, 0 * SCALE);
+    line (-15 * SCALE, -25 * SCALE, -15 * SCALE, 25 * SCALE);
+    line (28 * SCALE, 0 * SCALE, -15 * SCALE, -25 * SCALE);
+    pin ("op", 70 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-54 * SCALE, -4 * SCALE, -54 * SCALE, 4 * SCALE);
+    line (-54 * SCALE, 4 * SCALE, -46 * SCALE, 4 * SCALE);
+    line (-46 * SCALE, 4 * SCALE, -46 * SCALE, -4 * SCALE);
+    line (-46 * SCALE, -4 * SCALE, -54 * SCALE, -4 * SCALE);
+    pin ("ip", -50 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "inv_4" */
+  symbol ("invzp_1") {
+    set_minimum_boundary (-80 * SCALE, -60 * SCALE, 90 * SCALE, 40 * SCALE);
+    circle (3 * SCALE, -33 * SCALE, 10 * SCALE);
+    line (40 * SCALE, 0 * SCALE, 90 * SCALE, 0 * SCALE);
+    line (-30 * SCALE, 0 * SCALE, -80 * SCALE, 0 * SCALE);
+    line (-30 * SCALE, 40 * SCALE, 40 * SCALE, 0 * SCALE);
+    line (40 * SCALE, 0 * SCALE, -30 * SCALE, -40 * SCALE);
+    line (-30 * SCALE, -40 * SCALE, -30 * SCALE, 40 * SCALE);
+    line (10 * SCALE, -40 * SCALE, 10 * SCALE, -60 * SCALE);
+    line (-84 * SCALE, -4 * SCALE, -84 * SCALE, 4 * SCALE);
+    line (-84 * SCALE, 4 * SCALE, -76 * SCALE, 4 * SCALE);
+    line (-76 * SCALE, 4 * SCALE, -76 * SCALE, -4 * SCALE);
+    line (-76 * SCALE, -4 * SCALE, -84 * SCALE, -4 * SCALE);
+    pin ("ip", -80 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (6 * SCALE, -64 * SCALE, 6 * SCALE, -56 * SCALE);
+    line (6 * SCALE, -56 * SCALE, 14 * SCALE, -56 * SCALE);
+    line (14 * SCALE, -56 * SCALE, 14 * SCALE, -64 * SCALE);
+    line (14 * SCALE, -64 * SCALE, 6 * SCALE, -64 * SCALE);
+    pin ("c", 10 * SCALE, -60 * SCALE, ANY_ROTATION);
+    line (86 * SCALE, -4 * SCALE, 86 * SCALE, 4 * SCALE);
+    line (86 * SCALE, 4 * SCALE, 94 * SCALE, 4 * SCALE);
+    line (94 * SCALE, 4 * SCALE, 94 * SCALE, -4 * SCALE);
+    line (94 * SCALE, -4 * SCALE, 86 * SCALE, -4 * SCALE);
+    pin ("op", 90 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "invzp_1" */
+  symbol ("invzp_2") {
+    set_minimum_boundary (-80 * SCALE, -60 * SCALE, 90 * SCALE, 40 * SCALE);
+    circle (3 * SCALE, -33 * SCALE, 10 * SCALE);
+    line (40 * SCALE, 0 * SCALE, 90 * SCALE, 0 * SCALE);
+    line (-30 * SCALE, 0 * SCALE, -80 * SCALE, 0 * SCALE);
+    line (-30 * SCALE, 40 * SCALE, 40 * SCALE, 0 * SCALE);
+    line (40 * SCALE, 0 * SCALE, -30 * SCALE, -40 * SCALE);
+    line (-30 * SCALE, -40 * SCALE, -30 * SCALE, 40 * SCALE);
+    line (10 * SCALE, -40 * SCALE, 10 * SCALE, -60 * SCALE);
+    line (-84 * SCALE, -4 * SCALE, -84 * SCALE, 4 * SCALE);
+    line (-84 * SCALE, 4 * SCALE, -76 * SCALE, 4 * SCALE);
+    line (-76 * SCALE, 4 * SCALE, -76 * SCALE, -4 * SCALE);
+    line (-76 * SCALE, -4 * SCALE, -84 * SCALE, -4 * SCALE);
+    pin ("ip", -80 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (6 * SCALE, -64 * SCALE, 6 * SCALE, -56 * SCALE);
+    line (6 * SCALE, -56 * SCALE, 14 * SCALE, -56 * SCALE);
+    line (14 * SCALE, -56 * SCALE, 14 * SCALE, -64 * SCALE);
+    line (14 * SCALE, -64 * SCALE, 6 * SCALE, -64 * SCALE);
+    pin ("c", 10 * SCALE, -60 * SCALE, ANY_ROTATION);
+    line (86 * SCALE, -4 * SCALE, 86 * SCALE, 4 * SCALE);
+    line (86 * SCALE, 4 * SCALE, 94 * SCALE, 4 * SCALE);
+    line (94 * SCALE, 4 * SCALE, 94 * SCALE, -4 * SCALE);
+    line (94 * SCALE, -4 * SCALE, 86 * SCALE, -4 * SCALE);
+    pin ("op", 90 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "invzp_2" */
+  symbol ("invzp_4") {
+    set_minimum_boundary (-80 * SCALE, -60 * SCALE, 90 * SCALE, 40 * SCALE);
+    circle (3 * SCALE, -33 * SCALE, 10 * SCALE);
+    line (40 * SCALE, 0 * SCALE, 90 * SCALE, 0 * SCALE);
+    line (-30 * SCALE, 0 * SCALE, -80 * SCALE, 0 * SCALE);
+    line (-30 * SCALE, 40 * SCALE, 40 * SCALE, 0 * SCALE);
+    line (40 * SCALE, 0 * SCALE, -30 * SCALE, -40 * SCALE);
+    line (-30 * SCALE, -40 * SCALE, -30 * SCALE, 40 * SCALE);
+    line (10 * SCALE, -40 * SCALE, 10 * SCALE, -60 * SCALE);
+    line (-84 * SCALE, -4 * SCALE, -84 * SCALE, 4 * SCALE);
+    line (-84 * SCALE, 4 * SCALE, -76 * SCALE, 4 * SCALE);
+    line (-76 * SCALE, 4 * SCALE, -76 * SCALE, -4 * SCALE);
+    line (-76 * SCALE, -4 * SCALE, -84 * SCALE, -4 * SCALE);
+    pin ("ip", -80 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (6 * SCALE, -64 * SCALE, 6 * SCALE, -56 * SCALE);
+    line (6 * SCALE, -56 * SCALE, 14 * SCALE, -56 * SCALE);
+    line (14 * SCALE, -56 * SCALE, 14 * SCALE, -64 * SCALE);
+    line (14 * SCALE, -64 * SCALE, 6 * SCALE, -64 * SCALE);
+    pin ("c", 10 * SCALE, -60 * SCALE, ANY_ROTATION);
+    line (86 * SCALE, -4 * SCALE, 86 * SCALE, 4 * SCALE);
+    line (86 * SCALE, 4 * SCALE, 94 * SCALE, 4 * SCALE);
+    line (94 * SCALE, 4 * SCALE, 94 * SCALE, -4 * SCALE);
+    line (94 * SCALE, -4 * SCALE, 86 * SCALE, -4 * SCALE);
+    pin ("op", 90 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "invzp_4" */
+  symbol ("jkrp_2") {
+    set_minimum_boundary (-80 * SCALE, -90 * SCALE, 90 * SCALE, 50 * SCALE);
+    line (90 * SCALE, -40 * SCALE, 50 * SCALE, -40 * SCALE);
+    line (-80 * SCALE, -40 * SCALE, -40 * SCALE, -40 * SCALE);
+    line (-40 * SCALE, -50 * SCALE, -40 * SCALE, 50 * SCALE);
+    line (-40 * SCALE, 50 * SCALE, 50 * SCALE, 50 * SCALE);
+    line (50 * SCALE, 50 * SCALE, 50 * SCALE, -50 * SCALE);
+    line (50 * SCALE, -50 * SCALE, -40 * SCALE, -50 * SCALE);
+    line (20 * SCALE, -90 * SCALE, 20 * SCALE, -60 * SCALE);
+    circle (20 * SCALE, -55 * SCALE, 5 * SCALE);
+    line (15 * SCALE, -50 * SCALE, 20 * SCALE, -35 * SCALE);
+    line (20 * SCALE, -35 * SCALE, 25 * SCALE, -50 * SCALE);
+    line (-10 * SCALE, -90 * SCALE, -10 * SCALE, -50 * SCALE);
+    line (-15 * SCALE, -50 * SCALE, -10 * SCALE, -35 * SCALE);
+    line (-10 * SCALE, -35 * SCALE, -5 * SCALE, -50 * SCALE);
+    line (90 * SCALE, 10 * SCALE, 50 * SCALE, 10 * SCALE);
+    line (-80 * SCALE, 10 * SCALE, -40 * SCALE, 10 * SCALE);
+    line (86 * SCALE, 6 * SCALE, 86 * SCALE, 14 * SCALE);
+    line (86 * SCALE, 14 * SCALE, 94 * SCALE, 14 * SCALE);
+    line (94 * SCALE, 14 * SCALE, 94 * SCALE, 6 * SCALE);
+    line (94 * SCALE, 6 * SCALE, 86 * SCALE, 6 * SCALE);
+    pin ("q", 90 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-14 * SCALE, -94 * SCALE, -14 * SCALE, -86 * SCALE);
+    line (-14 * SCALE, -86 * SCALE, -6 * SCALE, -86 * SCALE);
+    line (-6 * SCALE, -86 * SCALE, -6 * SCALE, -94 * SCALE);
+    line (-6 * SCALE, -94 * SCALE, -14 * SCALE, -94 * SCALE);
+    pin ("ck", -10 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (16 * SCALE, -94 * SCALE, 16 * SCALE, -86 * SCALE);
+    line (16 * SCALE, -86 * SCALE, 24 * SCALE, -86 * SCALE);
+    line (24 * SCALE, -86 * SCALE, 24 * SCALE, -94 * SCALE);
+    line (24 * SCALE, -94 * SCALE, 16 * SCALE, -94 * SCALE);
+    pin ("rb", 20 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (-84 * SCALE, 6 * SCALE, -84 * SCALE, 14 * SCALE);
+    line (-84 * SCALE, 14 * SCALE, -76 * SCALE, 14 * SCALE);
+    line (-76 * SCALE, 14 * SCALE, -76 * SCALE, 6 * SCALE);
+    line (-76 * SCALE, 6 * SCALE, -84 * SCALE, 6 * SCALE);
+    pin ("j", -80 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-84 * SCALE, -44 * SCALE, -84 * SCALE, -36 * SCALE);
+    line (-84 * SCALE, -36 * SCALE, -76 * SCALE, -36 * SCALE);
+    line (-76 * SCALE, -36 * SCALE, -76 * SCALE, -44 * SCALE);
+    line (-76 * SCALE, -44 * SCALE, -84 * SCALE, -44 * SCALE);
+    pin ("k", -80 * SCALE, -40 * SCALE, ANY_ROTATION);
+    line (86 * SCALE, -44 * SCALE, 86 * SCALE, -36 * SCALE);
+    line (86 * SCALE, -36 * SCALE, 94 * SCALE, -36 * SCALE);
+    line (94 * SCALE, -36 * SCALE, 94 * SCALE, -44 * SCALE);
+    line (94 * SCALE, -44 * SCALE, 86 * SCALE, -44 * SCALE);
+    pin ("qb", 90 * SCALE, -40 * SCALE, ANY_ROTATION);
+  } /* end of symbol "jkrp_2" */
+  symbol ("lp_1") {
+    set_minimum_boundary (-80 * SCALE, -90 * SCALE, 90 * SCALE, 50 * SCALE);
+    line (-40 * SCALE, -50 * SCALE, -40 * SCALE, 50 * SCALE);
+    line (-40 * SCALE, 50 * SCALE, 50 * SCALE, 50 * SCALE);
+    line (50 * SCALE, 50 * SCALE, 50 * SCALE, -50 * SCALE);
+    line (50 * SCALE, -50 * SCALE, -40 * SCALE, -50 * SCALE);
+    line (-10 * SCALE, -90 * SCALE, -10 * SCALE, -50 * SCALE);
+    line (-15 * SCALE, -50 * SCALE, -10 * SCALE, -35 * SCALE);
+    line (-10 * SCALE, -35 * SCALE, -5 * SCALE, -50 * SCALE);
+    line (90 * SCALE, 10 * SCALE, 50 * SCALE, 10 * SCALE);
+    line (-80 * SCALE, 10 * SCALE, -40 * SCALE, 10 * SCALE);
+    line (86 * SCALE, 6 * SCALE, 86 * SCALE, 14 * SCALE);
+    line (86 * SCALE, 14 * SCALE, 94 * SCALE, 14 * SCALE);
+    line (94 * SCALE, 14 * SCALE, 94 * SCALE, 6 * SCALE);
+    line (94 * SCALE, 6 * SCALE, 86 * SCALE, 6 * SCALE);
+    pin ("q", 90 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-84 * SCALE, 6 * SCALE, -84 * SCALE, 14 * SCALE);
+    line (-84 * SCALE, 14 * SCALE, -76 * SCALE, 14 * SCALE);
+    line (-76 * SCALE, 14 * SCALE, -76 * SCALE, 6 * SCALE);
+    line (-76 * SCALE, 6 * SCALE, -84 * SCALE, 6 * SCALE);
+    pin ("ip", -80 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-14 * SCALE, -94 * SCALE, -14 * SCALE, -86 * SCALE);
+    line (-14 * SCALE, -86 * SCALE, -6 * SCALE, -86 * SCALE);
+    line (-6 * SCALE, -86 * SCALE, -6 * SCALE, -94 * SCALE);
+    line (-6 * SCALE, -94 * SCALE, -14 * SCALE, -94 * SCALE);
+    pin ("clk", -10 * SCALE, -90 * SCALE, ANY_ROTATION);
+  } /* end of symbol "lp_1" */
+  symbol ("lp_2") {
+    set_minimum_boundary (-80 * SCALE, -100 * SCALE, 90 * SCALE, 40 * SCALE);
+    line (-80 * SCALE, 0 * SCALE, -40 * SCALE, 0 * SCALE);
+    line (90 * SCALE, 0 * SCALE, 50 * SCALE, 0 * SCALE);
+    line (-15 * SCALE, -60 * SCALE, -10 * SCALE, -45 * SCALE);
+    line (-10 * SCALE, -45 * SCALE, -5 * SCALE, -60 * SCALE);
+    line (-10 * SCALE, -100 * SCALE, -10 * SCALE, -60 * SCALE);
+    line (-40 * SCALE, -60 * SCALE, -40 * SCALE, 40 * SCALE);
+    line (-40 * SCALE, 40 * SCALE, 50 * SCALE, 40 * SCALE);
+    line (50 * SCALE, 40 * SCALE, 50 * SCALE, -60 * SCALE);
+    line (50 * SCALE, -60 * SCALE, -40 * SCALE, -60 * SCALE);
+    line (-14 * SCALE, -104 * SCALE, -14 * SCALE, -96 * SCALE);
+    line (-14 * SCALE, -96 * SCALE, -6 * SCALE, -96 * SCALE);
+    line (-6 * SCALE, -96 * SCALE, -6 * SCALE, -104 * SCALE);
+    line (-6 * SCALE, -104 * SCALE, -14 * SCALE, -104 * SCALE);
+    pin ("clk", -10 * SCALE, -100 * SCALE, ANY_ROTATION);
+    line (86 * SCALE, -4 * SCALE, 86 * SCALE, 4 * SCALE);
+    line (86 * SCALE, 4 * SCALE, 94 * SCALE, 4 * SCALE);
+    line (94 * SCALE, 4 * SCALE, 94 * SCALE, -4 * SCALE);
+    line (94 * SCALE, -4 * SCALE, 86 * SCALE, -4 * SCALE);
+    pin ("q", 90 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-84 * SCALE, -4 * SCALE, -84 * SCALE, 4 * SCALE);
+    line (-84 * SCALE, 4 * SCALE, -76 * SCALE, 4 * SCALE);
+    line (-76 * SCALE, 4 * SCALE, -76 * SCALE, -4 * SCALE);
+    line (-76 * SCALE, -4 * SCALE, -84 * SCALE, -4 * SCALE);
+    pin ("ip", -80 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "lp_2" */
+  symbol ("lrp_1") {
+    set_minimum_boundary (-80 * SCALE, -90 * SCALE, 90 * SCALE, 50 * SCALE);
+    line (-40 * SCALE, -50 * SCALE, -40 * SCALE, 50 * SCALE);
+    line (-40 * SCALE, 50 * SCALE, 50 * SCALE, 50 * SCALE);
+    line (50 * SCALE, 50 * SCALE, 50 * SCALE, -50 * SCALE);
+    line (50 * SCALE, -50 * SCALE, -40 * SCALE, -50 * SCALE);
+    line (20 * SCALE, -90 * SCALE, 20 * SCALE, -60 * SCALE);
+    circle (20 * SCALE, -55 * SCALE, 5 * SCALE);
+    line (15 * SCALE, -50 * SCALE, 20 * SCALE, -35 * SCALE);
+    line (20 * SCALE, -35 * SCALE, 25 * SCALE, -50 * SCALE);
+    line (-10 * SCALE, -90 * SCALE, -10 * SCALE, -50 * SCALE);
+    line (-15 * SCALE, -50 * SCALE, -10 * SCALE, -35 * SCALE);
+    line (-10 * SCALE, -35 * SCALE, -5 * SCALE, -50 * SCALE);
+    line (90 * SCALE, 10 * SCALE, 50 * SCALE, 10 * SCALE);
+    line (-80 * SCALE, 10 * SCALE, -40 * SCALE, 10 * SCALE);
+    line (86 * SCALE, 6 * SCALE, 86 * SCALE, 14 * SCALE);
+    line (86 * SCALE, 14 * SCALE, 94 * SCALE, 14 * SCALE);
+    line (94 * SCALE, 14 * SCALE, 94 * SCALE, 6 * SCALE);
+    line (94 * SCALE, 6 * SCALE, 86 * SCALE, 6 * SCALE);
+    pin ("q", 90 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-14 * SCALE, -94 * SCALE, -14 * SCALE, -86 * SCALE);
+    line (-14 * SCALE, -86 * SCALE, -6 * SCALE, -86 * SCALE);
+    line (-6 * SCALE, -86 * SCALE, -6 * SCALE, -94 * SCALE);
+    line (-6 * SCALE, -94 * SCALE, -14 * SCALE, -94 * SCALE);
+    pin ("ck", -10 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (16 * SCALE, -94 * SCALE, 16 * SCALE, -86 * SCALE);
+    line (16 * SCALE, -86 * SCALE, 24 * SCALE, -86 * SCALE);
+    line (24 * SCALE, -86 * SCALE, 24 * SCALE, -94 * SCALE);
+    line (24 * SCALE, -94 * SCALE, 16 * SCALE, -94 * SCALE);
+    pin ("rb", 20 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (-84 * SCALE, 6 * SCALE, -84 * SCALE, 14 * SCALE);
+    line (-84 * SCALE, 14 * SCALE, -76 * SCALE, 14 * SCALE);
+    line (-76 * SCALE, 14 * SCALE, -76 * SCALE, 6 * SCALE);
+    line (-76 * SCALE, 6 * SCALE, -84 * SCALE, 6 * SCALE);
+    pin ("ip", -80 * SCALE, 10 * SCALE, ANY_ROTATION);
+  } /* end of symbol "lrp_1" */
+  symbol ("lrp_2") {
+    set_minimum_boundary (-90 * SCALE, -100 * SCALE, 80 * SCALE, 40 * SCALE);
+    line (-50 * SCALE, -60 * SCALE, -50 * SCALE, 40 * SCALE);
+    line (-50 * SCALE, 40 * SCALE, 40 * SCALE, 40 * SCALE);
+    line (40 * SCALE, 40 * SCALE, 40 * SCALE, -60 * SCALE);
+    line (40 * SCALE, -60 * SCALE, -50 * SCALE, -60 * SCALE);
+    line (10 * SCALE, -100 * SCALE, 10 * SCALE, -70 * SCALE);
+    circle (10 * SCALE, -65 * SCALE, 5 * SCALE);
+    line (5 * SCALE, -60 * SCALE, 10 * SCALE, -45 * SCALE);
+    line (10 * SCALE, -45 * SCALE, 15 * SCALE, -60 * SCALE);
+    line (-20 * SCALE, -100 * SCALE, -20 * SCALE, -60 * SCALE);
+    line (-25 * SCALE, -60 * SCALE, -20 * SCALE, -45 * SCALE);
+    line (-20 * SCALE, -45 * SCALE, -15 * SCALE, -60 * SCALE);
+    line (80 * SCALE, 0 * SCALE, 40 * SCALE, 0 * SCALE);
+    line (-90 * SCALE, 0 * SCALE, -50 * SCALE, 0 * SCALE);
+    line (76 * SCALE, -4 * SCALE, 76 * SCALE, 4 * SCALE);
+    line (76 * SCALE, 4 * SCALE, 84 * SCALE, 4 * SCALE);
+    line (84 * SCALE, 4 * SCALE, 84 * SCALE, -4 * SCALE);
+    line (84 * SCALE, -4 * SCALE, 76 * SCALE, -4 * SCALE);
+    pin ("q", 80 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-24 * SCALE, -104 * SCALE, -24 * SCALE, -96 * SCALE);
+    line (-24 * SCALE, -96 * SCALE, -16 * SCALE, -96 * SCALE);
+    line (-16 * SCALE, -96 * SCALE, -16 * SCALE, -104 * SCALE);
+    line (-16 * SCALE, -104 * SCALE, -24 * SCALE, -104 * SCALE);
+    pin ("ck", -20 * SCALE, -100 * SCALE, ANY_ROTATION);
+    line (6 * SCALE, -104 * SCALE, 6 * SCALE, -96 * SCALE);
+    line (6 * SCALE, -96 * SCALE, 14 * SCALE, -96 * SCALE);
+    line (14 * SCALE, -96 * SCALE, 14 * SCALE, -104 * SCALE);
+    line (14 * SCALE, -104 * SCALE, 6 * SCALE, -104 * SCALE);
+    pin ("rb", 10 * SCALE, -100 * SCALE, ANY_ROTATION);
+    line (-94 * SCALE, -4 * SCALE, -94 * SCALE, 4 * SCALE);
+    line (-94 * SCALE, 4 * SCALE, -86 * SCALE, 4 * SCALE);
+    line (-86 * SCALE, 4 * SCALE, -86 * SCALE, -4 * SCALE);
+    line (-86 * SCALE, -4 * SCALE, -94 * SCALE, -4 * SCALE);
+    pin ("ip", -90 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "lrp_2" */
+  symbol ("lrp_4") {
+    set_minimum_boundary (-80 * SCALE, -100 * SCALE, 90 * SCALE, 40 * SCALE);
+    line (-40 * SCALE, -60 * SCALE, -40 * SCALE, 40 * SCALE);
+    line (-40 * SCALE, 40 * SCALE, 50 * SCALE, 40 * SCALE);
+    line (50 * SCALE, 40 * SCALE, 50 * SCALE, -60 * SCALE);
+    line (50 * SCALE, -60 * SCALE, -40 * SCALE, -60 * SCALE);
+    line (20 * SCALE, -100 * SCALE, 20 * SCALE, -70 * SCALE);
+    circle (20 * SCALE, -65 * SCALE, 5 * SCALE);
+    line (15 * SCALE, -60 * SCALE, 20 * SCALE, -45 * SCALE);
+    line (20 * SCALE, -45 * SCALE, 25 * SCALE, -60 * SCALE);
+    line (-10 * SCALE, -100 * SCALE, -10 * SCALE, -60 * SCALE);
+    line (-15 * SCALE, -60 * SCALE, -10 * SCALE, -45 * SCALE);
+    line (-10 * SCALE, -45 * SCALE, -5 * SCALE, -60 * SCALE);
+    line (90 * SCALE, 0 * SCALE, 50 * SCALE, 0 * SCALE);
+    line (-80 * SCALE, 0 * SCALE, -40 * SCALE, 0 * SCALE);
+    line (86 * SCALE, -4 * SCALE, 86 * SCALE, 4 * SCALE);
+    line (86 * SCALE, 4 * SCALE, 94 * SCALE, 4 * SCALE);
+    line (94 * SCALE, 4 * SCALE, 94 * SCALE, -4 * SCALE);
+    line (94 * SCALE, -4 * SCALE, 86 * SCALE, -4 * SCALE);
+    pin ("q", 90 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-14 * SCALE, -104 * SCALE, -14 * SCALE, -96 * SCALE);
+    line (-14 * SCALE, -96 * SCALE, -6 * SCALE, -96 * SCALE);
+    line (-6 * SCALE, -96 * SCALE, -6 * SCALE, -104 * SCALE);
+    line (-6 * SCALE, -104 * SCALE, -14 * SCALE, -104 * SCALE);
+    pin ("ck", -10 * SCALE, -100 * SCALE, ANY_ROTATION);
+    line (16 * SCALE, -104 * SCALE, 16 * SCALE, -96 * SCALE);
+    line (16 * SCALE, -96 * SCALE, 24 * SCALE, -96 * SCALE);
+    line (24 * SCALE, -96 * SCALE, 24 * SCALE, -104 * SCALE);
+    line (24 * SCALE, -104 * SCALE, 16 * SCALE, -104 * SCALE);
+    pin ("rb", 20 * SCALE, -100 * SCALE, ANY_ROTATION);
+    line (-84 * SCALE, -4 * SCALE, -84 * SCALE, 4 * SCALE);
+    line (-84 * SCALE, 4 * SCALE, -76 * SCALE, 4 * SCALE);
+    line (-76 * SCALE, 4 * SCALE, -76 * SCALE, -4 * SCALE);
+    line (-76 * SCALE, -4 * SCALE, -84 * SCALE, -4 * SCALE);
+    pin ("ip", -80 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "lrp_4" */
+  symbol ("lrsp_1") {
+    set_minimum_boundary (-80 * SCALE, -90 * SCALE, 90 * SCALE, 50 * SCALE);
+    line (40 * SCALE, -90 * SCALE, 40 * SCALE, -50 * SCALE);
+    line (-40 * SCALE, -50 * SCALE, -40 * SCALE, 50 * SCALE);
+    line (-40 * SCALE, 50 * SCALE, 50 * SCALE, 50 * SCALE);
+    line (50 * SCALE, 50 * SCALE, 50 * SCALE, -50 * SCALE);
+    line (50 * SCALE, -50 * SCALE, -40 * SCALE, -50 * SCALE);
+    line (20 * SCALE, -90 * SCALE, 20 * SCALE, -60 * SCALE);
+    circle (20 * SCALE, -55 * SCALE, 5 * SCALE);
+    line (15 * SCALE, -50 * SCALE, 20 * SCALE, -35 * SCALE);
+    line (20 * SCALE, -35 * SCALE, 25 * SCALE, -50 * SCALE);
+    line (-10 * SCALE, -90 * SCALE, -10 * SCALE, -50 * SCALE);
+    line (-15 * SCALE, -50 * SCALE, -10 * SCALE, -35 * SCALE);
+    line (-10 * SCALE, -35 * SCALE, -5 * SCALE, -50 * SCALE);
+    line (90 * SCALE, 10 * SCALE, 50 * SCALE, 10 * SCALE);
+    line (-80 * SCALE, 10 * SCALE, -40 * SCALE, 10 * SCALE);
+    line (86 * SCALE, 6 * SCALE, 86 * SCALE, 14 * SCALE);
+    line (86 * SCALE, 14 * SCALE, 94 * SCALE, 14 * SCALE);
+    line (94 * SCALE, 14 * SCALE, 94 * SCALE, 6 * SCALE);
+    line (94 * SCALE, 6 * SCALE, 86 * SCALE, 6 * SCALE);
+    pin ("q", 90 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (16 * SCALE, -94 * SCALE, 16 * SCALE, -86 * SCALE);
+    line (16 * SCALE, -86 * SCALE, 24 * SCALE, -86 * SCALE);
+    line (24 * SCALE, -86 * SCALE, 24 * SCALE, -94 * SCALE);
+    line (24 * SCALE, -94 * SCALE, 16 * SCALE, -94 * SCALE);
+    pin ("rb", 20 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (36 * SCALE, -94 * SCALE, 36 * SCALE, -86 * SCALE);
+    line (36 * SCALE, -86 * SCALE, 44 * SCALE, -86 * SCALE);
+    line (44 * SCALE, -86 * SCALE, 44 * SCALE, -94 * SCALE);
+    line (44 * SCALE, -94 * SCALE, 36 * SCALE, -94 * SCALE);
+    pin ("s", 40 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (-84 * SCALE, 6 * SCALE, -84 * SCALE, 14 * SCALE);
+    line (-84 * SCALE, 14 * SCALE, -76 * SCALE, 14 * SCALE);
+    line (-76 * SCALE, 14 * SCALE, -76 * SCALE, 6 * SCALE);
+    line (-76 * SCALE, 6 * SCALE, -84 * SCALE, 6 * SCALE);
+    pin ("ip", -80 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-14 * SCALE, -94 * SCALE, -14 * SCALE, -86 * SCALE);
+    line (-14 * SCALE, -86 * SCALE, -6 * SCALE, -86 * SCALE);
+    line (-6 * SCALE, -86 * SCALE, -6 * SCALE, -94 * SCALE);
+    line (-6 * SCALE, -94 * SCALE, -14 * SCALE, -94 * SCALE);
+    pin ("ck", -10 * SCALE, -90 * SCALE, ANY_ROTATION);
+  } /* end of symbol "lrsp_1" */
+  symbol ("lrsp_2") {
+    set_minimum_boundary (-80 * SCALE, -90 * SCALE, 90 * SCALE, 50 * SCALE);
+    line (40 * SCALE, -90 * SCALE, 40 * SCALE, -50 * SCALE);
+    line (-40 * SCALE, -50 * SCALE, -40 * SCALE, 50 * SCALE);
+    line (-40 * SCALE, 50 * SCALE, 50 * SCALE, 50 * SCALE);
+    line (50 * SCALE, 50 * SCALE, 50 * SCALE, -50 * SCALE);
+    line (50 * SCALE, -50 * SCALE, -40 * SCALE, -50 * SCALE);
+    line (20 * SCALE, -90 * SCALE, 20 * SCALE, -60 * SCALE);
+    circle (20 * SCALE, -55 * SCALE, 5 * SCALE);
+    line (15 * SCALE, -50 * SCALE, 20 * SCALE, -35 * SCALE);
+    line (20 * SCALE, -35 * SCALE, 25 * SCALE, -50 * SCALE);
+    line (-10 * SCALE, -90 * SCALE, -10 * SCALE, -50 * SCALE);
+    line (-15 * SCALE, -50 * SCALE, -10 * SCALE, -35 * SCALE);
+    line (-10 * SCALE, -35 * SCALE, -5 * SCALE, -50 * SCALE);
+    line (90 * SCALE, 10 * SCALE, 50 * SCALE, 10 * SCALE);
+    line (-80 * SCALE, 10 * SCALE, -40 * SCALE, 10 * SCALE);
+    line (86 * SCALE, 6 * SCALE, 86 * SCALE, 14 * SCALE);
+    line (86 * SCALE, 14 * SCALE, 94 * SCALE, 14 * SCALE);
+    line (94 * SCALE, 14 * SCALE, 94 * SCALE, 6 * SCALE);
+    line (94 * SCALE, 6 * SCALE, 86 * SCALE, 6 * SCALE);
+    pin ("q", 90 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (16 * SCALE, -94 * SCALE, 16 * SCALE, -86 * SCALE);
+    line (16 * SCALE, -86 * SCALE, 24 * SCALE, -86 * SCALE);
+    line (24 * SCALE, -86 * SCALE, 24 * SCALE, -94 * SCALE);
+    line (24 * SCALE, -94 * SCALE, 16 * SCALE, -94 * SCALE);
+    pin ("rb", 20 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (36 * SCALE, -94 * SCALE, 36 * SCALE, -86 * SCALE);
+    line (36 * SCALE, -86 * SCALE, 44 * SCALE, -86 * SCALE);
+    line (44 * SCALE, -86 * SCALE, 44 * SCALE, -94 * SCALE);
+    line (44 * SCALE, -94 * SCALE, 36 * SCALE, -94 * SCALE);
+    pin ("s", 40 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (-84 * SCALE, 6 * SCALE, -84 * SCALE, 14 * SCALE);
+    line (-84 * SCALE, 14 * SCALE, -76 * SCALE, 14 * SCALE);
+    line (-76 * SCALE, 14 * SCALE, -76 * SCALE, 6 * SCALE);
+    line (-76 * SCALE, 6 * SCALE, -84 * SCALE, 6 * SCALE);
+    pin ("ip", -80 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-14 * SCALE, -94 * SCALE, -14 * SCALE, -86 * SCALE);
+    line (-14 * SCALE, -86 * SCALE, -6 * SCALE, -86 * SCALE);
+    line (-6 * SCALE, -86 * SCALE, -6 * SCALE, -94 * SCALE);
+    line (-6 * SCALE, -94 * SCALE, -14 * SCALE, -94 * SCALE);
+    pin ("ck", -10 * SCALE, -90 * SCALE, ANY_ROTATION);
+  } /* end of symbol "lrsp_2" */
+  symbol ("lrsp_4") {
+    set_minimum_boundary (-80 * SCALE, -90 * SCALE, 90 * SCALE, 50 * SCALE);
+    line (40 * SCALE, -90 * SCALE, 40 * SCALE, -50 * SCALE);
+    line (-40 * SCALE, -50 * SCALE, -40 * SCALE, 50 * SCALE);
+    line (-40 * SCALE, 50 * SCALE, 50 * SCALE, 50 * SCALE);
+    line (50 * SCALE, 50 * SCALE, 50 * SCALE, -50 * SCALE);
+    line (50 * SCALE, -50 * SCALE, -40 * SCALE, -50 * SCALE);
+    line (20 * SCALE, -90 * SCALE, 20 * SCALE, -60 * SCALE);
+    circle (20 * SCALE, -55 * SCALE, 5 * SCALE);
+    line (15 * SCALE, -50 * SCALE, 20 * SCALE, -35 * SCALE);
+    line (20 * SCALE, -35 * SCALE, 25 * SCALE, -50 * SCALE);
+    line (-10 * SCALE, -90 * SCALE, -10 * SCALE, -50 * SCALE);
+    line (-15 * SCALE, -50 * SCALE, -10 * SCALE, -35 * SCALE);
+    line (-10 * SCALE, -35 * SCALE, -5 * SCALE, -50 * SCALE);
+    line (90 * SCALE, 10 * SCALE, 50 * SCALE, 10 * SCALE);
+    line (-80 * SCALE, 10 * SCALE, -40 * SCALE, 10 * SCALE);
+    line (86 * SCALE, 6 * SCALE, 86 * SCALE, 14 * SCALE);
+    line (86 * SCALE, 14 * SCALE, 94 * SCALE, 14 * SCALE);
+    line (94 * SCALE, 14 * SCALE, 94 * SCALE, 6 * SCALE);
+    line (94 * SCALE, 6 * SCALE, 86 * SCALE, 6 * SCALE);
+    pin ("q", 90 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (16 * SCALE, -94 * SCALE, 16 * SCALE, -86 * SCALE);
+    line (16 * SCALE, -86 * SCALE, 24 * SCALE, -86 * SCALE);
+    line (24 * SCALE, -86 * SCALE, 24 * SCALE, -94 * SCALE);
+    line (24 * SCALE, -94 * SCALE, 16 * SCALE, -94 * SCALE);
+    pin ("rb", 20 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (36 * SCALE, -94 * SCALE, 36 * SCALE, -86 * SCALE);
+    line (36 * SCALE, -86 * SCALE, 44 * SCALE, -86 * SCALE);
+    line (44 * SCALE, -86 * SCALE, 44 * SCALE, -94 * SCALE);
+    line (44 * SCALE, -94 * SCALE, 36 * SCALE, -94 * SCALE);
+    pin ("s", 40 * SCALE, -90 * SCALE, ANY_ROTATION);
+    line (-84 * SCALE, 6 * SCALE, -84 * SCALE, 14 * SCALE);
+    line (-84 * SCALE, 14 * SCALE, -76 * SCALE, 14 * SCALE);
+    line (-76 * SCALE, 14 * SCALE, -76 * SCALE, 6 * SCALE);
+    line (-76 * SCALE, 6 * SCALE, -84 * SCALE, 6 * SCALE);
+    pin ("ip", -80 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-14 * SCALE, -94 * SCALE, -14 * SCALE, -86 * SCALE);
+    line (-14 * SCALE, -86 * SCALE, -6 * SCALE, -86 * SCALE);
+    line (-6 * SCALE, -86 * SCALE, -6 * SCALE, -94 * SCALE);
+    line (-6 * SCALE, -94 * SCALE, -14 * SCALE, -94 * SCALE);
+    pin ("ck", -10 * SCALE, -90 * SCALE, ANY_ROTATION);
+  } /* end of symbol "lrsp_4" */
+  symbol ("mux2_1") {
+    set_minimum_boundary (-100 * SCALE, -80 * SCALE, 80 * SCALE, 80 * SCALE);
+    line (0 * SCALE, -80 * SCALE, 0 * SCALE, -40 * SCALE);
+    line (-80 * SCALE, 40 * SCALE, 80 * SCALE, 40 * SCALE);
+    line (80 * SCALE, 40 * SCALE, 40 * SCALE, -40 * SCALE);
+    line (40 * SCALE, -40 * SCALE, -40 * SCALE, -40 * SCALE);
+    line (-80 * SCALE, 40 * SCALE, -40 * SCALE, -40 * SCALE);
+    line (40 * SCALE, 80 * SCALE, 40 * SCALE, 40 * SCALE);
+    line (-100 * SCALE, 10 * SCALE, -65 * SCALE, 10 * SCALE);
+    line (-40 * SCALE, 40 * SCALE, -40 * SCALE, 80 * SCALE);
+    line (-104 * SCALE, 6 * SCALE, -104 * SCALE, 14 * SCALE);
+    line (-104 * SCALE, 14 * SCALE, -96 * SCALE, 14 * SCALE);
+    line (-96 * SCALE, 14 * SCALE, -96 * SCALE, 6 * SCALE);
+    line (-96 * SCALE, 6 * SCALE, -104 * SCALE, 6 * SCALE);
+    pin ("s", -100 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-4 * SCALE, -84 * SCALE, -4 * SCALE, -76 * SCALE);
+    line (-4 * SCALE, -76 * SCALE, 4 * SCALE, -76 * SCALE);
+    line (4 * SCALE, -76 * SCALE, 4 * SCALE, -84 * SCALE);
+    line (4 * SCALE, -84 * SCALE, -4 * SCALE, -84 * SCALE);
+    pin ("op", 0 * SCALE, -80 * SCALE, ANY_ROTATION);
+    line (-44 * SCALE, 76 * SCALE, -44 * SCALE, 84 * SCALE);
+    line (-44 * SCALE, 84 * SCALE, -36 * SCALE, 84 * SCALE);
+    line (-36 * SCALE, 84 * SCALE, -36 * SCALE, 76 * SCALE);
+    line (-36 * SCALE, 76 * SCALE, -44 * SCALE, 76 * SCALE);
+    pin ("ip1", -40 * SCALE, 80 * SCALE, ANY_ROTATION);
+    line (36 * SCALE, 76 * SCALE, 36 * SCALE, 84 * SCALE);
+    line (36 * SCALE, 84 * SCALE, 44 * SCALE, 84 * SCALE);
+    line (44 * SCALE, 84 * SCALE, 44 * SCALE, 76 * SCALE);
+    line (44 * SCALE, 76 * SCALE, 36 * SCALE, 76 * SCALE);
+    pin ("ip2", 40 * SCALE, 80 * SCALE, ANY_ROTATION);
+  } /* end of symbol "mux2_1" */
+  symbol ("mux2_2") {
+    set_minimum_boundary (-100 * SCALE, -80 * SCALE, 80 * SCALE, 80 * SCALE);
+    line (0 * SCALE, -80 * SCALE, 0 * SCALE, -40 * SCALE);
+    line (-80 * SCALE, 40 * SCALE, 80 * SCALE, 40 * SCALE);
+    line (80 * SCALE, 40 * SCALE, 40 * SCALE, -40 * SCALE);
+    line (40 * SCALE, -40 * SCALE, -40 * SCALE, -40 * SCALE);
+    line (-80 * SCALE, 40 * SCALE, -40 * SCALE, -40 * SCALE);
+    line (40 * SCALE, 80 * SCALE, 40 * SCALE, 40 * SCALE);
+    line (-100 * SCALE, 10 * SCALE, -65 * SCALE, 10 * SCALE);
+    line (-40 * SCALE, 40 * SCALE, -40 * SCALE, 80 * SCALE);
+    line (-104 * SCALE, 6 * SCALE, -104 * SCALE, 14 * SCALE);
+    line (-104 * SCALE, 14 * SCALE, -96 * SCALE, 14 * SCALE);
+    line (-96 * SCALE, 14 * SCALE, -96 * SCALE, 6 * SCALE);
+    line (-96 * SCALE, 6 * SCALE, -104 * SCALE, 6 * SCALE);
+    pin ("s", -100 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-4 * SCALE, -84 * SCALE, -4 * SCALE, -76 * SCALE);
+    line (-4 * SCALE, -76 * SCALE, 4 * SCALE, -76 * SCALE);
+    line (4 * SCALE, -76 * SCALE, 4 * SCALE, -84 * SCALE);
+    line (4 * SCALE, -84 * SCALE, -4 * SCALE, -84 * SCALE);
+    pin ("op", 0 * SCALE, -80 * SCALE, ANY_ROTATION);
+    line (-44 * SCALE, 76 * SCALE, -44 * SCALE, 84 * SCALE);
+    line (-44 * SCALE, 84 * SCALE, -36 * SCALE, 84 * SCALE);
+    line (-36 * SCALE, 84 * SCALE, -36 * SCALE, 76 * SCALE);
+    line (-36 * SCALE, 76 * SCALE, -44 * SCALE, 76 * SCALE);
+    pin ("ip1", -40 * SCALE, 80 * SCALE, ANY_ROTATION);
+    line (36 * SCALE, 76 * SCALE, 36 * SCALE, 84 * SCALE);
+    line (36 * SCALE, 84 * SCALE, 44 * SCALE, 84 * SCALE);
+    line (44 * SCALE, 84 * SCALE, 44 * SCALE, 76 * SCALE);
+    line (44 * SCALE, 76 * SCALE, 36 * SCALE, 76 * SCALE);
+    pin ("ip2", 40 * SCALE, 80 * SCALE, ANY_ROTATION);
+  } /* end of symbol "mux2_2" */
+  symbol ("mux2_4") {
+    set_minimum_boundary (-100 * SCALE, -80 * SCALE, 80 * SCALE, 80 * SCALE);
+    line (-40 * SCALE, 40 * SCALE, -40 * SCALE, 80 * SCALE);
+    line (-100 * SCALE, 10 * SCALE, -65 * SCALE, 10 * SCALE);
+    line (40 * SCALE, 80 * SCALE, 40 * SCALE, 40 * SCALE);
+    line (-80 * SCALE, 40 * SCALE, 80 * SCALE, 40 * SCALE);
+    line (80 * SCALE, 40 * SCALE, 40 * SCALE, -40 * SCALE);
+    line (40 * SCALE, -40 * SCALE, -40 * SCALE, -40 * SCALE);
+    line (-80 * SCALE, 40 * SCALE, -40 * SCALE, -40 * SCALE);
+    line (0 * SCALE, -80 * SCALE, 0 * SCALE, -40 * SCALE);
+    line (36 * SCALE, 76 * SCALE, 36 * SCALE, 84 * SCALE);
+    line (36 * SCALE, 84 * SCALE, 44 * SCALE, 84 * SCALE);
+    line (44 * SCALE, 84 * SCALE, 44 * SCALE, 76 * SCALE);
+    line (44 * SCALE, 76 * SCALE, 36 * SCALE, 76 * SCALE);
+    pin ("ip2", 40 * SCALE, 80 * SCALE, ANY_ROTATION);
+    line (-44 * SCALE, 76 * SCALE, -44 * SCALE, 84 * SCALE);
+    line (-44 * SCALE, 84 * SCALE, -36 * SCALE, 84 * SCALE);
+    line (-36 * SCALE, 84 * SCALE, -36 * SCALE, 76 * SCALE);
+    line (-36 * SCALE, 76 * SCALE, -44 * SCALE, 76 * SCALE);
+    pin ("ip1", -40 * SCALE, 80 * SCALE, ANY_ROTATION);
+    line (-4 * SCALE, -84 * SCALE, -4 * SCALE, -76 * SCALE);
+    line (-4 * SCALE, -76 * SCALE, 4 * SCALE, -76 * SCALE);
+    line (4 * SCALE, -76 * SCALE, 4 * SCALE, -84 * SCALE);
+    line (4 * SCALE, -84 * SCALE, -4 * SCALE, -84 * SCALE);
+    pin ("op", 0 * SCALE, -80 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, 6 * SCALE, -104 * SCALE, 14 * SCALE);
+    line (-104 * SCALE, 14 * SCALE, -96 * SCALE, 14 * SCALE);
+    line (-96 * SCALE, 14 * SCALE, -96 * SCALE, 6 * SCALE);
+    line (-96 * SCALE, 6 * SCALE, -104 * SCALE, 6 * SCALE);
+    pin ("s", -100 * SCALE, 10 * SCALE, ANY_ROTATION);
+  } /* end of symbol "mux2_4" */
+  symbol ("mux3_2") {
+    set_minimum_boundary (-120 * SCALE, -80 * SCALE, 100 * SCALE, 80 * SCALE);
+    line (-120 * SCALE, -20 * SCALE, -70 * SCALE, -20 * SCALE);
+    line (0 * SCALE, 80 * SCALE, 0 * SCALE, 40 * SCALE);
+    line (-120 * SCALE, 10 * SCALE, -85 * SCALE, 10 * SCALE);
+    line (-60 * SCALE, 40 * SCALE, -60 * SCALE, 80 * SCALE);
+    line (-100 * SCALE, 40 * SCALE, 100 * SCALE, 40 * SCALE);
+    line (100 * SCALE, 40 * SCALE, 60 * SCALE, -40 * SCALE);
+    line (60 * SCALE, -40 * SCALE, -60 * SCALE, -40 * SCALE);
+    line (-100 * SCALE, 40 * SCALE, -60 * SCALE, -40 * SCALE);
+    line (0 * SCALE, -80 * SCALE, 0 * SCALE, -40 * SCALE);
+    line (60 * SCALE, 80 * SCALE, 60 * SCALE, 40 * SCALE);
+    line (-64 * SCALE, 76 * SCALE, -64 * SCALE, 84 * SCALE);
+    line (-64 * SCALE, 84 * SCALE, -56 * SCALE, 84 * SCALE);
+    line (-56 * SCALE, 84 * SCALE, -56 * SCALE, 76 * SCALE);
+    line (-56 * SCALE, 76 * SCALE, -64 * SCALE, 76 * SCALE);
+    pin ("ip1", -60 * SCALE, 80 * SCALE, ANY_ROTATION);
+    line (56 * SCALE, 76 * SCALE, 56 * SCALE, 84 * SCALE);
+    line (56 * SCALE, 84 * SCALE, 64 * SCALE, 84 * SCALE);
+    line (64 * SCALE, 84 * SCALE, 64 * SCALE, 76 * SCALE);
+    line (64 * SCALE, 76 * SCALE, 56 * SCALE, 76 * SCALE);
+    pin ("ip3", 60 * SCALE, 80 * SCALE, ANY_ROTATION);
+    line (-124 * SCALE, -24 * SCALE, -124 * SCALE, -16 * SCALE);
+    line (-124 * SCALE, -16 * SCALE, -116 * SCALE, -16 * SCALE);
+    line (-116 * SCALE, -16 * SCALE, -116 * SCALE, -24 * SCALE);
+    line (-116 * SCALE, -24 * SCALE, -124 * SCALE, -24 * SCALE);
+    pin ("s1", -120 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (-4 * SCALE, 76 * SCALE, -4 * SCALE, 84 * SCALE);
+    line (-4 * SCALE, 84 * SCALE, 4 * SCALE, 84 * SCALE);
+    line (4 * SCALE, 84 * SCALE, 4 * SCALE, 76 * SCALE);
+    line (4 * SCALE, 76 * SCALE, -4 * SCALE, 76 * SCALE);
+    pin ("ip2", 0 * SCALE, 80 * SCALE, ANY_ROTATION);
+    line (-4 * SCALE, -84 * SCALE, -4 * SCALE, -76 * SCALE);
+    line (-4 * SCALE, -76 * SCALE, 4 * SCALE, -76 * SCALE);
+    line (4 * SCALE, -76 * SCALE, 4 * SCALE, -84 * SCALE);
+    line (4 * SCALE, -84 * SCALE, -4 * SCALE, -84 * SCALE);
+    pin ("op", 0 * SCALE, -80 * SCALE, ANY_ROTATION);
+    line (-124 * SCALE, 6 * SCALE, -124 * SCALE, 14 * SCALE);
+    line (-124 * SCALE, 14 * SCALE, -116 * SCALE, 14 * SCALE);
+    line (-116 * SCALE, 14 * SCALE, -116 * SCALE, 6 * SCALE);
+    line (-116 * SCALE, 6 * SCALE, -124 * SCALE, 6 * SCALE);
+    pin ("s0", -120 * SCALE, 10 * SCALE, ANY_ROTATION);
+  } /* end of symbol "mux3_2" */
+  symbol ("mux4_2") {
+    set_minimum_boundary (-140 * SCALE, -80 * SCALE, 110 * SCALE, 80 * SCALE);
+    line (-140 * SCALE, -20 * SCALE, -90 * SCALE, -20 * SCALE);
+    line (20 * SCALE, 80 * SCALE, 20 * SCALE, 40 * SCALE);
+    line (0 * SCALE, -80 * SCALE, 0 * SCALE, -40 * SCALE);
+    line (-30 * SCALE, 80 * SCALE, -30 * SCALE, 40 * SCALE);
+    line (-120 * SCALE, 40 * SCALE, 110 * SCALE, 40 * SCALE);
+    line (110 * SCALE, 40 * SCALE, 70 * SCALE, -40 * SCALE);
+    line (70 * SCALE, -40 * SCALE, -80 * SCALE, -40 * SCALE);
+    line (-120 * SCALE, 40 * SCALE, -80 * SCALE, -40 * SCALE);
+    line (-80 * SCALE, 40 * SCALE, -80 * SCALE, 80 * SCALE);
+    line (-140 * SCALE, 10 * SCALE, -105 * SCALE, 10 * SCALE);
+    line (70 * SCALE, 80 * SCALE, 70 * SCALE, 40 * SCALE);
+    line (-34 * SCALE, 76 * SCALE, -34 * SCALE, 84 * SCALE);
+    line (-34 * SCALE, 84 * SCALE, -26 * SCALE, 84 * SCALE);
+    line (-26 * SCALE, 84 * SCALE, -26 * SCALE, 76 * SCALE);
+    line (-26 * SCALE, 76 * SCALE, -34 * SCALE, 76 * SCALE);
+    pin ("ip2", -30 * SCALE, 80 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, 6 * SCALE, -144 * SCALE, 14 * SCALE);
+    line (-144 * SCALE, 14 * SCALE, -136 * SCALE, 14 * SCALE);
+    line (-136 * SCALE, 14 * SCALE, -136 * SCALE, 6 * SCALE);
+    line (-136 * SCALE, 6 * SCALE, -144 * SCALE, 6 * SCALE);
+    pin ("s0", -140 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (66 * SCALE, 76 * SCALE, 66 * SCALE, 84 * SCALE);
+    line (66 * SCALE, 84 * SCALE, 74 * SCALE, 84 * SCALE);
+    line (74 * SCALE, 84 * SCALE, 74 * SCALE, 76 * SCALE);
+    line (74 * SCALE, 76 * SCALE, 66 * SCALE, 76 * SCALE);
+    pin ("ip4", 70 * SCALE, 80 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, -24 * SCALE, -144 * SCALE, -16 * SCALE);
+    line (-144 * SCALE, -16 * SCALE, -136 * SCALE, -16 * SCALE);
+    line (-136 * SCALE, -16 * SCALE, -136 * SCALE, -24 * SCALE);
+    line (-136 * SCALE, -24 * SCALE, -144 * SCALE, -24 * SCALE);
+    pin ("s1", -140 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (-4 * SCALE, -84 * SCALE, -4 * SCALE, -76 * SCALE);
+    line (-4 * SCALE, -76 * SCALE, 4 * SCALE, -76 * SCALE);
+    line (4 * SCALE, -76 * SCALE, 4 * SCALE, -84 * SCALE);
+    line (4 * SCALE, -84 * SCALE, -4 * SCALE, -84 * SCALE);
+    pin ("op", 0 * SCALE, -80 * SCALE, ANY_ROTATION);
+    line (16 * SCALE, 76 * SCALE, 16 * SCALE, 84 * SCALE);
+    line (16 * SCALE, 84 * SCALE, 24 * SCALE, 84 * SCALE);
+    line (24 * SCALE, 84 * SCALE, 24 * SCALE, 76 * SCALE);
+    line (24 * SCALE, 76 * SCALE, 16 * SCALE, 76 * SCALE);
+    pin ("ip3", 20 * SCALE, 80 * SCALE, ANY_ROTATION);
+    line (-84 * SCALE, 76 * SCALE, -84 * SCALE, 84 * SCALE);
+    line (-84 * SCALE, 84 * SCALE, -76 * SCALE, 84 * SCALE);
+    line (-76 * SCALE, 84 * SCALE, -76 * SCALE, 76 * SCALE);
+    line (-76 * SCALE, 76 * SCALE, -84 * SCALE, 76 * SCALE);
+    pin ("ip1", -80 * SCALE, 80 * SCALE, ANY_ROTATION);
+  } /* end of symbol "mux4_2" */
+  symbol ("nand2_1") {
+    set_minimum_boundary (-100 * SCALE, -30 * SCALE, 100 * SCALE, 30 * SCALE);
+    line (-40 * SCALE, 30 * SCALE, 5 * SCALE, 30 * SCALE);
+    arc (5 * SCALE, 30 * SCALE, 5 * SCALE, -30 * SCALE,\
+        5 * SCALE, -0 * SCALE);
+    line (-40 * SCALE, -30 * SCALE, -40 * SCALE, 30 * SCALE);
+    circle (40 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (-40 * SCALE, -20 * SCALE, -100 * SCALE, -20 * SCALE);
+    line (5 * SCALE, -30 * SCALE, -40 * SCALE, -30 * SCALE);
+    line (-40 * SCALE, 20 * SCALE, -100 * SCALE, 20 * SCALE);
+    line (100 * SCALE, 0 * SCALE, 45 * SCALE, 0 * SCALE);
+    line (96 * SCALE, -4 * SCALE, 96 * SCALE, 4 * SCALE);
+    line (96 * SCALE, 4 * SCALE, 104 * SCALE, 4 * SCALE);
+    line (104 * SCALE, 4 * SCALE, 104 * SCALE, -4 * SCALE);
+    line (104 * SCALE, -4 * SCALE, 96 * SCALE, -4 * SCALE);
+    pin ("op", 100 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, -24 * SCALE, -104 * SCALE, -16 * SCALE);
+    line (-104 * SCALE, -16 * SCALE, -96 * SCALE, -16 * SCALE);
+    line (-96 * SCALE, -16 * SCALE, -96 * SCALE, -24 * SCALE);
+    line (-96 * SCALE, -24 * SCALE, -104 * SCALE, -24 * SCALE);
+    pin ("ip2", -100 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, 16 * SCALE, -104 * SCALE, 24 * SCALE);
+    line (-104 * SCALE, 24 * SCALE, -96 * SCALE, 24 * SCALE);
+    line (-96 * SCALE, 24 * SCALE, -96 * SCALE, 16 * SCALE);
+    line (-96 * SCALE, 16 * SCALE, -104 * SCALE, 16 * SCALE);
+    pin ("ip1", -100 * SCALE, 20 * SCALE, ANY_ROTATION);
+  } /* end of symbol "nand2_1" */
+  symbol ("nand2_2") {
+    set_minimum_boundary (-100 * SCALE, -30 * SCALE, 100 * SCALE, 30 * SCALE);
+    line (100 * SCALE, 0 * SCALE, 45 * SCALE, 0 * SCALE);
+    line (-40 * SCALE, 20 * SCALE, -100 * SCALE, 20 * SCALE);
+    line (5 * SCALE, -30 * SCALE, -40 * SCALE, -30 * SCALE);
+    line (-40 * SCALE, -20 * SCALE, -100 * SCALE, -20 * SCALE);
+    circle (40 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (-40 * SCALE, -30 * SCALE, -40 * SCALE, 30 * SCALE);
+    arc (5 * SCALE, 30 * SCALE, 5 * SCALE, -30 * SCALE,\
+        5 * SCALE, -0 * SCALE);
+    line (-40 * SCALE, 30 * SCALE, 5 * SCALE, 30 * SCALE);
+    line (-104 * SCALE, 16 * SCALE, -104 * SCALE, 24 * SCALE);
+    line (-104 * SCALE, 24 * SCALE, -96 * SCALE, 24 * SCALE);
+    line (-96 * SCALE, 24 * SCALE, -96 * SCALE, 16 * SCALE);
+    line (-96 * SCALE, 16 * SCALE, -104 * SCALE, 16 * SCALE);
+    pin ("ip1", -100 * SCALE, 20 * SCALE, ANY_ROTATION);
+    line (96 * SCALE, -4 * SCALE, 96 * SCALE, 4 * SCALE);
+    line (96 * SCALE, 4 * SCALE, 104 * SCALE, 4 * SCALE);
+    line (104 * SCALE, 4 * SCALE, 104 * SCALE, -4 * SCALE);
+    line (104 * SCALE, -4 * SCALE, 96 * SCALE, -4 * SCALE);
+    pin ("op", 100 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, -24 * SCALE, -104 * SCALE, -16 * SCALE);
+    line (-104 * SCALE, -16 * SCALE, -96 * SCALE, -16 * SCALE);
+    line (-96 * SCALE, -16 * SCALE, -96 * SCALE, -24 * SCALE);
+    line (-96 * SCALE, -24 * SCALE, -104 * SCALE, -24 * SCALE);
+    pin ("ip2", -100 * SCALE, -20 * SCALE, ANY_ROTATION);
+  } /* end of symbol "nand2_2" */
+  symbol ("nand2_4") {
+    set_minimum_boundary (-100 * SCALE, -30 * SCALE, 100 * SCALE, 30 * SCALE);
+    line (-40 * SCALE, 30 * SCALE, 5 * SCALE, 30 * SCALE);
+    arc (5 * SCALE, 30 * SCALE, 5 * SCALE, -30 * SCALE,\
+        5 * SCALE, -0 * SCALE);
+    line (-40 * SCALE, -30 * SCALE, -40 * SCALE, 30 * SCALE);
+    circle (40 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (-40 * SCALE, -20 * SCALE, -100 * SCALE, -20 * SCALE);
+    line (5 * SCALE, -30 * SCALE, -40 * SCALE, -30 * SCALE);
+    line (-40 * SCALE, 20 * SCALE, -100 * SCALE, 20 * SCALE);
+    line (100 * SCALE, 0 * SCALE, 45 * SCALE, 0 * SCALE);
+    line (-104 * SCALE, -24 * SCALE, -104 * SCALE, -16 * SCALE);
+    line (-104 * SCALE, -16 * SCALE, -96 * SCALE, -16 * SCALE);
+    line (-96 * SCALE, -16 * SCALE, -96 * SCALE, -24 * SCALE);
+    line (-96 * SCALE, -24 * SCALE, -104 * SCALE, -24 * SCALE);
+    pin ("ip2", -100 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (96 * SCALE, -4 * SCALE, 96 * SCALE, 4 * SCALE);
+    line (96 * SCALE, 4 * SCALE, 104 * SCALE, 4 * SCALE);
+    line (104 * SCALE, 4 * SCALE, 104 * SCALE, -4 * SCALE);
+    line (104 * SCALE, -4 * SCALE, 96 * SCALE, -4 * SCALE);
+    pin ("op", 100 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, 16 * SCALE, -104 * SCALE, 24 * SCALE);
+    line (-104 * SCALE, 24 * SCALE, -96 * SCALE, 24 * SCALE);
+    line (-96 * SCALE, 24 * SCALE, -96 * SCALE, 16 * SCALE);
+    line (-96 * SCALE, 16 * SCALE, -104 * SCALE, 16 * SCALE);
+    pin ("ip1", -100 * SCALE, 20 * SCALE, ANY_ROTATION);
+  } /* end of symbol "nand2_4" */
+  symbol ("nand3_1") {
+    set_minimum_boundary (-100 * SCALE, -30 * SCALE, 100 * SCALE, 30 * SCALE);
+    line (100 * SCALE, 0 * SCALE, 45 * SCALE, 0 * SCALE);
+    line (-40 * SCALE, 20 * SCALE, -100 * SCALE, 20 * SCALE);
+    line (-40 * SCALE, 0 * SCALE, -100 * SCALE, 0 * SCALE);
+    line (-40 * SCALE, -20 * SCALE, -100 * SCALE, -20 * SCALE);
+    circle (40 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (5 * SCALE, -30 * SCALE, -40 * SCALE, -30 * SCALE);
+    line (-40 * SCALE, 30 * SCALE, 5 * SCALE, 30 * SCALE);
+    line (-40 * SCALE, -30 * SCALE, -40 * SCALE, 30 * SCALE);
+    arc (5 * SCALE, 30 * SCALE, 5 * SCALE, -30 * SCALE,\
+        5 * SCALE, -0 * SCALE);
+    line (-104 * SCALE, -4 * SCALE, -104 * SCALE, 4 * SCALE);
+    line (-104 * SCALE, 4 * SCALE, -96 * SCALE, 4 * SCALE);
+    line (-96 * SCALE, 4 * SCALE, -96 * SCALE, -4 * SCALE);
+    line (-96 * SCALE, -4 * SCALE, -104 * SCALE, -4 * SCALE);
+    pin ("ip2", -100 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, -24 * SCALE, -104 * SCALE, -16 * SCALE);
+    line (-104 * SCALE, -16 * SCALE, -96 * SCALE, -16 * SCALE);
+    line (-96 * SCALE, -16 * SCALE, -96 * SCALE, -24 * SCALE);
+    line (-96 * SCALE, -24 * SCALE, -104 * SCALE, -24 * SCALE);
+    pin ("ip3", -100 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (96 * SCALE, -4 * SCALE, 96 * SCALE, 4 * SCALE);
+    line (96 * SCALE, 4 * SCALE, 104 * SCALE, 4 * SCALE);
+    line (104 * SCALE, 4 * SCALE, 104 * SCALE, -4 * SCALE);
+    line (104 * SCALE, -4 * SCALE, 96 * SCALE, -4 * SCALE);
+    pin ("op", 100 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, 16 * SCALE, -104 * SCALE, 24 * SCALE);
+    line (-104 * SCALE, 24 * SCALE, -96 * SCALE, 24 * SCALE);
+    line (-96 * SCALE, 24 * SCALE, -96 * SCALE, 16 * SCALE);
+    line (-96 * SCALE, 16 * SCALE, -104 * SCALE, 16 * SCALE);
+    pin ("ip1", -100 * SCALE, 20 * SCALE, ANY_ROTATION);
+  } /* end of symbol "nand3_1" */
+  symbol ("nand3_2") {
+    set_minimum_boundary (-100 * SCALE, -30 * SCALE, 100 * SCALE, 30 * SCALE);
+    arc (5 * SCALE, 30 * SCALE, 5 * SCALE, -30 * SCALE,\
+        5 * SCALE, -0 * SCALE);
+    line (-40 * SCALE, -30 * SCALE, -40 * SCALE, 30 * SCALE);
+    line (-40 * SCALE, 30 * SCALE, 5 * SCALE, 30 * SCALE);
+    line (5 * SCALE, -30 * SCALE, -40 * SCALE, -30 * SCALE);
+    circle (40 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (-40 * SCALE, -20 * SCALE, -100 * SCALE, -20 * SCALE);
+    line (-40 * SCALE, 0 * SCALE, -100 * SCALE, 0 * SCALE);
+    line (-40 * SCALE, 20 * SCALE, -100 * SCALE, 20 * SCALE);
+    line (100 * SCALE, 0 * SCALE, 45 * SCALE, 0 * SCALE);
+    line (96 * SCALE, -4 * SCALE, 96 * SCALE, 4 * SCALE);
+    line (96 * SCALE, 4 * SCALE, 104 * SCALE, 4 * SCALE);
+    line (104 * SCALE, 4 * SCALE, 104 * SCALE, -4 * SCALE);
+    line (104 * SCALE, -4 * SCALE, 96 * SCALE, -4 * SCALE);
+    pin ("op", 100 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, -24 * SCALE, -104 * SCALE, -16 * SCALE);
+    line (-104 * SCALE, -16 * SCALE, -96 * SCALE, -16 * SCALE);
+    line (-96 * SCALE, -16 * SCALE, -96 * SCALE, -24 * SCALE);
+    line (-96 * SCALE, -24 * SCALE, -104 * SCALE, -24 * SCALE);
+    pin ("ip3", -100 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, -4 * SCALE, -104 * SCALE, 4 * SCALE);
+    line (-104 * SCALE, 4 * SCALE, -96 * SCALE, 4 * SCALE);
+    line (-96 * SCALE, 4 * SCALE, -96 * SCALE, -4 * SCALE);
+    line (-96 * SCALE, -4 * SCALE, -104 * SCALE, -4 * SCALE);
+    pin ("ip2", -100 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, 16 * SCALE, -104 * SCALE, 24 * SCALE);
+    line (-104 * SCALE, 24 * SCALE, -96 * SCALE, 24 * SCALE);
+    line (-96 * SCALE, 24 * SCALE, -96 * SCALE, 16 * SCALE);
+    line (-96 * SCALE, 16 * SCALE, -104 * SCALE, 16 * SCALE);
+    pin ("ip1", -100 * SCALE, 20 * SCALE, ANY_ROTATION);
+  } /* end of symbol "nand3_2" */
+  symbol ("nand3_4") {
+    set_minimum_boundary (-100 * SCALE, -30 * SCALE, 100 * SCALE, 30 * SCALE);
+    line (100 * SCALE, 0 * SCALE, 45 * SCALE, 0 * SCALE);
+    line (-40 * SCALE, 20 * SCALE, -100 * SCALE, 20 * SCALE);
+    line (-40 * SCALE, 0 * SCALE, -100 * SCALE, 0 * SCALE);
+    line (-40 * SCALE, -20 * SCALE, -100 * SCALE, -20 * SCALE);
+    circle (40 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (5 * SCALE, -30 * SCALE, -40 * SCALE, -30 * SCALE);
+    line (-40 * SCALE, 30 * SCALE, 5 * SCALE, 30 * SCALE);
+    line (-40 * SCALE, -30 * SCALE, -40 * SCALE, 30 * SCALE);
+    arc (5 * SCALE, 30 * SCALE, 5 * SCALE, -30 * SCALE,\
+        5 * SCALE, -0 * SCALE);
+    line (-104 * SCALE, 16 * SCALE, -104 * SCALE, 24 * SCALE);
+    line (-104 * SCALE, 24 * SCALE, -96 * SCALE, 24 * SCALE);
+    line (-96 * SCALE, 24 * SCALE, -96 * SCALE, 16 * SCALE);
+    line (-96 * SCALE, 16 * SCALE, -104 * SCALE, 16 * SCALE);
+    pin ("ip1", -100 * SCALE, 20 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, -4 * SCALE, -104 * SCALE, 4 * SCALE);
+    line (-104 * SCALE, 4 * SCALE, -96 * SCALE, 4 * SCALE);
+    line (-96 * SCALE, 4 * SCALE, -96 * SCALE, -4 * SCALE);
+    line (-96 * SCALE, -4 * SCALE, -104 * SCALE, -4 * SCALE);
+    pin ("ip2", -100 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, -24 * SCALE, -104 * SCALE, -16 * SCALE);
+    line (-104 * SCALE, -16 * SCALE, -96 * SCALE, -16 * SCALE);
+    line (-96 * SCALE, -16 * SCALE, -96 * SCALE, -24 * SCALE);
+    line (-96 * SCALE, -24 * SCALE, -104 * SCALE, -24 * SCALE);
+    pin ("ip3", -100 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (96 * SCALE, -4 * SCALE, 96 * SCALE, 4 * SCALE);
+    line (96 * SCALE, 4 * SCALE, 104 * SCALE, 4 * SCALE);
+    line (104 * SCALE, 4 * SCALE, 104 * SCALE, -4 * SCALE);
+    line (104 * SCALE, -4 * SCALE, 96 * SCALE, -4 * SCALE);
+    pin ("op", 100 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "nand3_4" */
+  symbol ("nand4_1") {
+    set_minimum_boundary (-100 * SCALE, -40 * SCALE, 100 * SCALE, 40 * SCALE);
+    line (-40 * SCALE, -30 * SCALE, -40 * SCALE, -40 * SCALE);
+    line (-100 * SCALE, -10 * SCALE, -80 * SCALE, -10 * SCALE);
+    line (-80 * SCALE, -10 * SCALE, -40 * SCALE, -10 * SCALE);
+    line (-100 * SCALE, -30 * SCALE, -70 * SCALE, -30 * SCALE);
+    line (-70 * SCALE, -30 * SCALE, -40 * SCALE, -30 * SCALE);
+    line (-100 * SCALE, 30 * SCALE, -70 * SCALE, 30 * SCALE);
+    line (-70 * SCALE, 30 * SCALE, -40 * SCALE, 30 * SCALE);
+    line (-100 * SCALE, 10 * SCALE, -80 * SCALE, 10 * SCALE);
+    line (-80 * SCALE, 10 * SCALE, -40 * SCALE, 10 * SCALE);
+    line (100 * SCALE, 0 * SCALE, 45 * SCALE, 0 * SCALE);
+    circle (40 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (-40 * SCALE, 40 * SCALE, 5 * SCALE, 40 * SCALE);
+    line (-40 * SCALE, -30 * SCALE, -40 * SCALE, 30 * SCALE);
+    arc (5 * SCALE, 40 * SCALE, 5 * SCALE, -40 * SCALE,\
+        -6.66667 * SCALE, 0 * SCALE);
+    line (5 * SCALE, -40 * SCALE, -40 * SCALE, -40 * SCALE);
+    line (-40 * SCALE, 30 * SCALE, -40 * SCALE, 40 * SCALE);
+    line (-104 * SCALE, -14 * SCALE, -104 * SCALE, -6 * SCALE);
+    line (-104 * SCALE, -6 * SCALE, -96 * SCALE, -6 * SCALE);
+    line (-96 * SCALE, -6 * SCALE, -96 * SCALE, -14 * SCALE);
+    line (-96 * SCALE, -14 * SCALE, -104 * SCALE, -14 * SCALE);
+    pin ("ip3", -100 * SCALE, -10 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, 6 * SCALE, -104 * SCALE, 14 * SCALE);
+    line (-104 * SCALE, 14 * SCALE, -96 * SCALE, 14 * SCALE);
+    line (-96 * SCALE, 14 * SCALE, -96 * SCALE, 6 * SCALE);
+    line (-96 * SCALE, 6 * SCALE, -104 * SCALE, 6 * SCALE);
+    pin ("ip2", -100 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, -34 * SCALE, -104 * SCALE, -26 * SCALE);
+    line (-104 * SCALE, -26 * SCALE, -96 * SCALE, -26 * SCALE);
+    line (-96 * SCALE, -26 * SCALE, -96 * SCALE, -34 * SCALE);
+    line (-96 * SCALE, -34 * SCALE, -104 * SCALE, -34 * SCALE);
+    pin ("ip4", -100 * SCALE, -30 * SCALE, ANY_ROTATION);
+    line (96 * SCALE, -4 * SCALE, 96 * SCALE, 4 * SCALE);
+    line (96 * SCALE, 4 * SCALE, 104 * SCALE, 4 * SCALE);
+    line (104 * SCALE, 4 * SCALE, 104 * SCALE, -4 * SCALE);
+    line (104 * SCALE, -4 * SCALE, 96 * SCALE, -4 * SCALE);
+    pin ("op", 100 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, 26 * SCALE, -104 * SCALE, 34 * SCALE);
+    line (-104 * SCALE, 34 * SCALE, -96 * SCALE, 34 * SCALE);
+    line (-96 * SCALE, 34 * SCALE, -96 * SCALE, 26 * SCALE);
+    line (-96 * SCALE, 26 * SCALE, -104 * SCALE, 26 * SCALE);
+    pin ("ip1", -100 * SCALE, 30 * SCALE, ANY_ROTATION);
+  } /* end of symbol "nand4_1" */
+  symbol ("nand4_2") {
+    set_minimum_boundary (-100 * SCALE, -40 * SCALE, 100 * SCALE, 40 * SCALE);
+    line (5 * SCALE, -40 * SCALE, -40 * SCALE, -40 * SCALE);
+    arc (5 * SCALE, 40 * SCALE, 5 * SCALE, -40 * SCALE,\
+        -6.66667 * SCALE, 0 * SCALE);
+    line (-40 * SCALE, -40 * SCALE, -40 * SCALE, 40 * SCALE);
+    line (-40 * SCALE, 40 * SCALE, 5 * SCALE, 40 * SCALE);
+    circle (40 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (100 * SCALE, 0 * SCALE, 45 * SCALE, 0 * SCALE);
+    line (-100 * SCALE, 10 * SCALE, -80 * SCALE, 10 * SCALE);
+    line (-80 * SCALE, 10 * SCALE, -40 * SCALE, 10 * SCALE);
+    line (-100 * SCALE, 30 * SCALE, -70 * SCALE, 30 * SCALE);
+    line (-70 * SCALE, 30 * SCALE, -40 * SCALE, 30 * SCALE);
+    line (-100 * SCALE, -30 * SCALE, -70 * SCALE, -30 * SCALE);
+    line (-70 * SCALE, -30 * SCALE, -40 * SCALE, -30 * SCALE);
+    line (-100 * SCALE, -10 * SCALE, -80 * SCALE, -10 * SCALE);
+    line (-80 * SCALE, -10 * SCALE, -40 * SCALE, -10 * SCALE);
+    line (-104 * SCALE, -34 * SCALE, -104 * SCALE, -26 * SCALE);
+    line (-104 * SCALE, -26 * SCALE, -96 * SCALE, -26 * SCALE);
+    line (-96 * SCALE, -26 * SCALE, -96 * SCALE, -34 * SCALE);
+    line (-96 * SCALE, -34 * SCALE, -104 * SCALE, -34 * SCALE);
+    pin ("ip4", -100 * SCALE, -30 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, -14 * SCALE, -104 * SCALE, -6 * SCALE);
+    line (-104 * SCALE, -6 * SCALE, -96 * SCALE, -6 * SCALE);
+    line (-96 * SCALE, -6 * SCALE, -96 * SCALE, -14 * SCALE);
+    line (-96 * SCALE, -14 * SCALE, -104 * SCALE, -14 * SCALE);
+    pin ("ip3", -100 * SCALE, -10 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, 26 * SCALE, -104 * SCALE, 34 * SCALE);
+    line (-104 * SCALE, 34 * SCALE, -96 * SCALE, 34 * SCALE);
+    line (-96 * SCALE, 34 * SCALE, -96 * SCALE, 26 * SCALE);
+    line (-96 * SCALE, 26 * SCALE, -104 * SCALE, 26 * SCALE);
+    pin ("ip1", -100 * SCALE, 30 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, 6 * SCALE, -104 * SCALE, 14 * SCALE);
+    line (-104 * SCALE, 14 * SCALE, -96 * SCALE, 14 * SCALE);
+    line (-96 * SCALE, 14 * SCALE, -96 * SCALE, 6 * SCALE);
+    line (-96 * SCALE, 6 * SCALE, -104 * SCALE, 6 * SCALE);
+    pin ("ip2", -100 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (96 * SCALE, -4 * SCALE, 96 * SCALE, 4 * SCALE);
+    line (96 * SCALE, 4 * SCALE, 104 * SCALE, 4 * SCALE);
+    line (104 * SCALE, 4 * SCALE, 104 * SCALE, -4 * SCALE);
+    line (104 * SCALE, -4 * SCALE, 96 * SCALE, -4 * SCALE);
+    pin ("op", 100 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "nand4_2" */
+  symbol ("nand4_4") {
+    set_minimum_boundary (-100 * SCALE, -40 * SCALE, 100 * SCALE, 40 * SCALE);
+    line (-40 * SCALE, -30 * SCALE, -40 * SCALE, -40 * SCALE);
+    line (-40 * SCALE, 30 * SCALE, -40 * SCALE, 40 * SCALE);
+    line (-100 * SCALE, -10 * SCALE, -80 * SCALE, -10 * SCALE);
+    line (-80 * SCALE, -10 * SCALE, -40 * SCALE, -10 * SCALE);
+    line (-100 * SCALE, -30 * SCALE, -70 * SCALE, -30 * SCALE);
+    line (-70 * SCALE, -30 * SCALE, -40 * SCALE, -30 * SCALE);
+    line (-100 * SCALE, 30 * SCALE, -70 * SCALE, 30 * SCALE);
+    line (-70 * SCALE, 30 * SCALE, -40 * SCALE, 30 * SCALE);
+    line (-100 * SCALE, 10 * SCALE, -80 * SCALE, 10 * SCALE);
+    line (-80 * SCALE, 10 * SCALE, -40 * SCALE, 10 * SCALE);
+    line (100 * SCALE, 0 * SCALE, 45 * SCALE, 0 * SCALE);
+    circle (40 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (-40 * SCALE, 40 * SCALE, 5 * SCALE, 40 * SCALE);
+    line (-40 * SCALE, -30 * SCALE, -40 * SCALE, 30 * SCALE);
+    arc (5 * SCALE, 40 * SCALE, 5 * SCALE, -40 * SCALE,\
+        -6.66667 * SCALE, 0 * SCALE);
+    line (5 * SCALE, -40 * SCALE, -40 * SCALE, -40 * SCALE);
+    line (96 * SCALE, -4 * SCALE, 96 * SCALE, 4 * SCALE);
+    line (96 * SCALE, 4 * SCALE, 104 * SCALE, 4 * SCALE);
+    line (104 * SCALE, 4 * SCALE, 104 * SCALE, -4 * SCALE);
+    line (104 * SCALE, -4 * SCALE, 96 * SCALE, -4 * SCALE);
+    pin ("op", 100 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, 6 * SCALE, -104 * SCALE, 14 * SCALE);
+    line (-104 * SCALE, 14 * SCALE, -96 * SCALE, 14 * SCALE);
+    line (-96 * SCALE, 14 * SCALE, -96 * SCALE, 6 * SCALE);
+    line (-96 * SCALE, 6 * SCALE, -104 * SCALE, 6 * SCALE);
+    pin ("ip2", -100 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, 26 * SCALE, -104 * SCALE, 34 * SCALE);
+    line (-104 * SCALE, 34 * SCALE, -96 * SCALE, 34 * SCALE);
+    line (-96 * SCALE, 34 * SCALE, -96 * SCALE, 26 * SCALE);
+    line (-96 * SCALE, 26 * SCALE, -104 * SCALE, 26 * SCALE);
+    pin ("ip1", -100 * SCALE, 30 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, -14 * SCALE, -104 * SCALE, -6 * SCALE);
+    line (-104 * SCALE, -6 * SCALE, -96 * SCALE, -6 * SCALE);
+    line (-96 * SCALE, -6 * SCALE, -96 * SCALE, -14 * SCALE);
+    line (-96 * SCALE, -14 * SCALE, -104 * SCALE, -14 * SCALE);
+    pin ("ip3", -100 * SCALE, -10 * SCALE, ANY_ROTATION);
+    line (-104 * SCALE, -34 * SCALE, -104 * SCALE, -26 * SCALE);
+    line (-104 * SCALE, -26 * SCALE, -96 * SCALE, -26 * SCALE);
+    line (-96 * SCALE, -26 * SCALE, -96 * SCALE, -34 * SCALE);
+    line (-96 * SCALE, -34 * SCALE, -104 * SCALE, -34 * SCALE);
+    pin ("ip4", -100 * SCALE, -30 * SCALE, ANY_ROTATION);
+  } /* end of symbol "nand4_4" */
+  symbol ("nor2_1") {
+    set_minimum_boundary (-150 * SCALE, -30 * SCALE, 50 * SCALE, 30 * SCALE);
+    arc (-88 * SCALE, 30 * SCALE, -88 * SCALE, -30 * SCALE,\
+        -140.25 * SCALE, 0 * SCALE);
+    arc (-5 * SCALE, 0 * SCALE, -56 * SCALE, -30 * SCALE,\
+        -55.0732 * SCALE, 26.7744 * SCALE);
+    line (-56 * SCALE, -30 * SCALE, -88 * SCALE, -30 * SCALE);
+    line (-56 * SCALE, 30 * SCALE, -88 * SCALE, 30 * SCALE);
+    arc (-56 * SCALE, 30 * SCALE, -5 * SCALE, 0 * SCALE,\
+        -55.0732 * SCALE, -26.7744 * SCALE);
+    line (-84 * SCALE, 20 * SCALE, -150 * SCALE, 20 * SCALE);
+    line (-84 * SCALE, -20 * SCALE, -150 * SCALE, -20 * SCALE);
+    line (5 * SCALE, 0 * SCALE, 50 * SCALE, 0 * SCALE);
+    circle (0 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (-154 * SCALE, 16 * SCALE, -154 * SCALE, 24 * SCALE);
+    line (-154 * SCALE, 24 * SCALE, -146 * SCALE, 24 * SCALE);
+    line (-146 * SCALE, 24 * SCALE, -146 * SCALE, 16 * SCALE);
+    line (-146 * SCALE, 16 * SCALE, -154 * SCALE, 16 * SCALE);
+    pin ("ip1", -150 * SCALE, 20 * SCALE, ANY_ROTATION);
+    line (46 * SCALE, -4 * SCALE, 46 * SCALE, 4 * SCALE);
+    line (46 * SCALE, 4 * SCALE, 54 * SCALE, 4 * SCALE);
+    line (54 * SCALE, 4 * SCALE, 54 * SCALE, -4 * SCALE);
+    line (54 * SCALE, -4 * SCALE, 46 * SCALE, -4 * SCALE);
+    pin ("op", 50 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-154 * SCALE, -24 * SCALE, -154 * SCALE, -16 * SCALE);
+    line (-154 * SCALE, -16 * SCALE, -146 * SCALE, -16 * SCALE);
+    line (-146 * SCALE, -16 * SCALE, -146 * SCALE, -24 * SCALE);
+    line (-146 * SCALE, -24 * SCALE, -154 * SCALE, -24 * SCALE);
+    pin ("ip2", -150 * SCALE, -20 * SCALE, ANY_ROTATION);
+  } /* end of symbol "nor2_1" */
+  symbol ("nor2_2") {
+    set_minimum_boundary (-150 * SCALE, -30 * SCALE, 50 * SCALE, 30 * SCALE);
+    arc (-88 * SCALE, 30 * SCALE, -88 * SCALE, -30 * SCALE,\
+        -140.25 * SCALE, 0 * SCALE);
+    arc (-5 * SCALE, 0 * SCALE, -56 * SCALE, -30 * SCALE,\
+        -55.0732 * SCALE, 26.7744 * SCALE);
+    line (-56 * SCALE, -30 * SCALE, -88 * SCALE, -30 * SCALE);
+    line (-56 * SCALE, 30 * SCALE, -88 * SCALE, 30 * SCALE);
+    arc (-56 * SCALE, 30 * SCALE, -5 * SCALE, 0 * SCALE,\
+        -55.0732 * SCALE, -26.7744 * SCALE);
+    line (-84 * SCALE, 20 * SCALE, -150 * SCALE, 20 * SCALE);
+    line (-84 * SCALE, -20 * SCALE, -150 * SCALE, -20 * SCALE);
+    line (5 * SCALE, 0 * SCALE, 50 * SCALE, 0 * SCALE);
+    circle (0 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (-154 * SCALE, 16 * SCALE, -154 * SCALE, 24 * SCALE);
+    line (-154 * SCALE, 24 * SCALE, -146 * SCALE, 24 * SCALE);
+    line (-146 * SCALE, 24 * SCALE, -146 * SCALE, 16 * SCALE);
+    line (-146 * SCALE, 16 * SCALE, -154 * SCALE, 16 * SCALE);
+    pin ("ip1", -150 * SCALE, 20 * SCALE, ANY_ROTATION);
+    line (46 * SCALE, -4 * SCALE, 46 * SCALE, 4 * SCALE);
+    line (46 * SCALE, 4 * SCALE, 54 * SCALE, 4 * SCALE);
+    line (54 * SCALE, 4 * SCALE, 54 * SCALE, -4 * SCALE);
+    line (54 * SCALE, -4 * SCALE, 46 * SCALE, -4 * SCALE);
+    pin ("op", 50 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-154 * SCALE, -24 * SCALE, -154 * SCALE, -16 * SCALE);
+    line (-154 * SCALE, -16 * SCALE, -146 * SCALE, -16 * SCALE);
+    line (-146 * SCALE, -16 * SCALE, -146 * SCALE, -24 * SCALE);
+    line (-146 * SCALE, -24 * SCALE, -154 * SCALE, -24 * SCALE);
+    pin ("ip2", -150 * SCALE, -20 * SCALE, ANY_ROTATION);
+  } /* end of symbol "nor2_2" */
+  symbol ("nor2_4") {
+    set_minimum_boundary (-150 * SCALE, -30 * SCALE, 50 * SCALE, 30 * SCALE);
+    arc (-88 * SCALE, 30 * SCALE, -88 * SCALE, -30 * SCALE,\
+        -140.25 * SCALE, 0 * SCALE);
+    arc (-5 * SCALE, 0 * SCALE, -56 * SCALE, -30 * SCALE,\
+        -55.0732 * SCALE, 26.7744 * SCALE);
+    line (-56 * SCALE, -30 * SCALE, -88 * SCALE, -30 * SCALE);
+    line (-56 * SCALE, 30 * SCALE, -88 * SCALE, 30 * SCALE);
+    arc (-56 * SCALE, 30 * SCALE, -5 * SCALE, 0 * SCALE,\
+        -55.0732 * SCALE, -26.7744 * SCALE);
+    line (-84 * SCALE, 20 * SCALE, -150 * SCALE, 20 * SCALE);
+    line (-84 * SCALE, -20 * SCALE, -150 * SCALE, -20 * SCALE);
+    line (5 * SCALE, 0 * SCALE, 50 * SCALE, 0 * SCALE);
+    circle (0 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (-154 * SCALE, 16 * SCALE, -154 * SCALE, 24 * SCALE);
+    line (-154 * SCALE, 24 * SCALE, -146 * SCALE, 24 * SCALE);
+    line (-146 * SCALE, 24 * SCALE, -146 * SCALE, 16 * SCALE);
+    line (-146 * SCALE, 16 * SCALE, -154 * SCALE, 16 * SCALE);
+    pin ("ip1", -150 * SCALE, 20 * SCALE, ANY_ROTATION);
+    line (46 * SCALE, -4 * SCALE, 46 * SCALE, 4 * SCALE);
+    line (46 * SCALE, 4 * SCALE, 54 * SCALE, 4 * SCALE);
+    line (54 * SCALE, 4 * SCALE, 54 * SCALE, -4 * SCALE);
+    line (54 * SCALE, -4 * SCALE, 46 * SCALE, -4 * SCALE);
+    pin ("op", 50 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-154 * SCALE, -24 * SCALE, -154 * SCALE, -16 * SCALE);
+    line (-154 * SCALE, -16 * SCALE, -146 * SCALE, -16 * SCALE);
+    line (-146 * SCALE, -16 * SCALE, -146 * SCALE, -24 * SCALE);
+    line (-146 * SCALE, -24 * SCALE, -154 * SCALE, -24 * SCALE);
+    pin ("ip2", -150 * SCALE, -20 * SCALE, ANY_ROTATION);
+  } /* end of symbol "nor2_4" */
+  symbol ("nor3_1") {
+    set_minimum_boundary (-150 * SCALE, -30 * SCALE, 50 * SCALE, 30 * SCALE);
+    circle (0 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (5 * SCALE, 0 * SCALE, 50 * SCALE, 0 * SCALE);
+    line (-84 * SCALE, -20 * SCALE, -150 * SCALE, -20 * SCALE);
+    line (-80 * SCALE, 0 * SCALE, -150 * SCALE, 0 * SCALE);
+    line (-84 * SCALE, 20 * SCALE, -150 * SCALE, 20 * SCALE);
+    arc (-5 * SCALE, 0 * SCALE, -56 * SCALE, -30 * SCALE,\
+        -55.0732 * SCALE, 26.7744 * SCALE);
+    arc (-56 * SCALE, 30 * SCALE, -5 * SCALE, 0 * SCALE,\
+        -55.0732 * SCALE, -26.7744 * SCALE);
+    line (-56 * SCALE, 30 * SCALE, -88 * SCALE, 30 * SCALE);
+    arc (-88 * SCALE, 30 * SCALE, -88 * SCALE, -30 * SCALE,\
+        -140.25 * SCALE, 0 * SCALE);
+    line (-56 * SCALE, -30 * SCALE, -88 * SCALE, -30 * SCALE);
+    line (-154 * SCALE, -4 * SCALE, -154 * SCALE, 4 * SCALE);
+    line (-154 * SCALE, 4 * SCALE, -146 * SCALE, 4 * SCALE);
+    line (-146 * SCALE, 4 * SCALE, -146 * SCALE, -4 * SCALE);
+    line (-146 * SCALE, -4 * SCALE, -154 * SCALE, -4 * SCALE);
+    pin ("ip2", -150 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-154 * SCALE, -24 * SCALE, -154 * SCALE, -16 * SCALE);
+    line (-154 * SCALE, -16 * SCALE, -146 * SCALE, -16 * SCALE);
+    line (-146 * SCALE, -16 * SCALE, -146 * SCALE, -24 * SCALE);
+    line (-146 * SCALE, -24 * SCALE, -154 * SCALE, -24 * SCALE);
+    pin ("ip3", -150 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (-154 * SCALE, 16 * SCALE, -154 * SCALE, 24 * SCALE);
+    line (-154 * SCALE, 24 * SCALE, -146 * SCALE, 24 * SCALE);
+    line (-146 * SCALE, 24 * SCALE, -146 * SCALE, 16 * SCALE);
+    line (-146 * SCALE, 16 * SCALE, -154 * SCALE, 16 * SCALE);
+    pin ("ip1", -150 * SCALE, 20 * SCALE, ANY_ROTATION);
+    line (46 * SCALE, -4 * SCALE, 46 * SCALE, 4 * SCALE);
+    line (46 * SCALE, 4 * SCALE, 54 * SCALE, 4 * SCALE);
+    line (54 * SCALE, 4 * SCALE, 54 * SCALE, -4 * SCALE);
+    line (54 * SCALE, -4 * SCALE, 46 * SCALE, -4 * SCALE);
+    pin ("op", 50 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "nor3_1" */
+  symbol ("nor3_2") {
+    set_minimum_boundary (-150 * SCALE, -30 * SCALE, 50 * SCALE, 30 * SCALE);
+    circle (0 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (5 * SCALE, 0 * SCALE, 50 * SCALE, 0 * SCALE);
+    line (-84 * SCALE, -20 * SCALE, -150 * SCALE, -20 * SCALE);
+    line (-80 * SCALE, 0 * SCALE, -150 * SCALE, 0 * SCALE);
+    line (-84 * SCALE, 20 * SCALE, -150 * SCALE, 20 * SCALE);
+    arc (-5 * SCALE, 0 * SCALE, -56 * SCALE, -30 * SCALE,\
+        -55.0732 * SCALE, 26.7744 * SCALE);
+    arc (-56 * SCALE, 30 * SCALE, -5 * SCALE, 0 * SCALE,\
+        -55.0732 * SCALE, -26.7744 * SCALE);
+    line (-56 * SCALE, 30 * SCALE, -88 * SCALE, 30 * SCALE);
+    arc (-88 * SCALE, 30 * SCALE, -88 * SCALE, -30 * SCALE,\
+        -140.25 * SCALE, 0 * SCALE);
+    line (-56 * SCALE, -30 * SCALE, -88 * SCALE, -30 * SCALE);
+    line (-154 * SCALE, -4 * SCALE, -154 * SCALE, 4 * SCALE);
+    line (-154 * SCALE, 4 * SCALE, -146 * SCALE, 4 * SCALE);
+    line (-146 * SCALE, 4 * SCALE, -146 * SCALE, -4 * SCALE);
+    line (-146 * SCALE, -4 * SCALE, -154 * SCALE, -4 * SCALE);
+    pin ("ip2", -150 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-154 * SCALE, -24 * SCALE, -154 * SCALE, -16 * SCALE);
+    line (-154 * SCALE, -16 * SCALE, -146 * SCALE, -16 * SCALE);
+    line (-146 * SCALE, -16 * SCALE, -146 * SCALE, -24 * SCALE);
+    line (-146 * SCALE, -24 * SCALE, -154 * SCALE, -24 * SCALE);
+    pin ("ip3", -150 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (-154 * SCALE, 16 * SCALE, -154 * SCALE, 24 * SCALE);
+    line (-154 * SCALE, 24 * SCALE, -146 * SCALE, 24 * SCALE);
+    line (-146 * SCALE, 24 * SCALE, -146 * SCALE, 16 * SCALE);
+    line (-146 * SCALE, 16 * SCALE, -154 * SCALE, 16 * SCALE);
+    pin ("ip1", -150 * SCALE, 20 * SCALE, ANY_ROTATION);
+    line (46 * SCALE, -4 * SCALE, 46 * SCALE, 4 * SCALE);
+    line (46 * SCALE, 4 * SCALE, 54 * SCALE, 4 * SCALE);
+    line (54 * SCALE, 4 * SCALE, 54 * SCALE, -4 * SCALE);
+    line (54 * SCALE, -4 * SCALE, 46 * SCALE, -4 * SCALE);
+    pin ("op", 50 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "nor3_2" */
+  symbol ("nor3_4") {
+    set_minimum_boundary (-150 * SCALE, -30 * SCALE, 50 * SCALE, 30 * SCALE);
+    circle (0 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (5 * SCALE, 0 * SCALE, 50 * SCALE, 0 * SCALE);
+    line (-84 * SCALE, -20 * SCALE, -150 * SCALE, -20 * SCALE);
+    line (-80 * SCALE, 0 * SCALE, -150 * SCALE, 0 * SCALE);
+    line (-84 * SCALE, 20 * SCALE, -150 * SCALE, 20 * SCALE);
+    arc (-5 * SCALE, 0 * SCALE, -56 * SCALE, -30 * SCALE,\
+        -55.0732 * SCALE, 26.7744 * SCALE);
+    arc (-56 * SCALE, 30 * SCALE, -5 * SCALE, 0 * SCALE,\
+        -55.0732 * SCALE, -26.7744 * SCALE);
+    line (-56 * SCALE, 30 * SCALE, -88 * SCALE, 30 * SCALE);
+    arc (-88 * SCALE, 30 * SCALE, -88 * SCALE, -30 * SCALE,\
+        -140.25 * SCALE, 0 * SCALE);
+    line (-56 * SCALE, -30 * SCALE, -88 * SCALE, -30 * SCALE);
+    line (-154 * SCALE, -4 * SCALE, -154 * SCALE, 4 * SCALE);
+    line (-154 * SCALE, 4 * SCALE, -146 * SCALE, 4 * SCALE);
+    line (-146 * SCALE, 4 * SCALE, -146 * SCALE, -4 * SCALE);
+    line (-146 * SCALE, -4 * SCALE, -154 * SCALE, -4 * SCALE);
+    pin ("ip2", -150 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-154 * SCALE, -24 * SCALE, -154 * SCALE, -16 * SCALE);
+    line (-154 * SCALE, -16 * SCALE, -146 * SCALE, -16 * SCALE);
+    line (-146 * SCALE, -16 * SCALE, -146 * SCALE, -24 * SCALE);
+    line (-146 * SCALE, -24 * SCALE, -154 * SCALE, -24 * SCALE);
+    pin ("ip3", -150 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (-154 * SCALE, 16 * SCALE, -154 * SCALE, 24 * SCALE);
+    line (-154 * SCALE, 24 * SCALE, -146 * SCALE, 24 * SCALE);
+    line (-146 * SCALE, 24 * SCALE, -146 * SCALE, 16 * SCALE);
+    line (-146 * SCALE, 16 * SCALE, -154 * SCALE, 16 * SCALE);
+    pin ("ip1", -150 * SCALE, 20 * SCALE, ANY_ROTATION);
+    line (46 * SCALE, -4 * SCALE, 46 * SCALE, 4 * SCALE);
+    line (46 * SCALE, 4 * SCALE, 54 * SCALE, 4 * SCALE);
+    line (54 * SCALE, 4 * SCALE, 54 * SCALE, -4 * SCALE);
+    line (54 * SCALE, -4 * SCALE, 46 * SCALE, -4 * SCALE);
+    pin ("op", 50 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "nor3_4" */
+  symbol ("nor4_1") {
+    set_minimum_boundary (-140 * SCALE, -40 * SCALE, 60 * SCALE, 40 * SCALE);
+    line (-71 * SCALE, -10 * SCALE, -120 * SCALE, -10 * SCALE);
+    line (-120 * SCALE, -10 * SCALE, -141 * SCALE, -10 * SCALE);
+    line (-78 * SCALE, -30 * SCALE, -110 * SCALE, -30 * SCALE);
+    line (-110 * SCALE, -30 * SCALE, -140 * SCALE, -30 * SCALE);
+    line (-78 * SCALE, 30 * SCALE, -110 * SCALE, 30 * SCALE);
+    line (-110 * SCALE, 30 * SCALE, -141 * SCALE, 30 * SCALE);
+    line (-71 * SCALE, 10 * SCALE, -120 * SCALE, 10 * SCALE);
+    line (-120 * SCALE, 10 * SCALE, -140 * SCALE, 10 * SCALE);
+    circle (10 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (15 * SCALE, 0 * SCALE, 60 * SCALE, 0 * SCALE);
+    arc (5 * SCALE, 0 * SCALE, -46 * SCALE, -30 * SCALE,\
+        -45.0732 * SCALE, 26.7744 * SCALE);
+    arc (-46 * SCALE, 30 * SCALE, 5 * SCALE, 0 * SCALE,\
+        -45.0732 * SCALE, -26.7744 * SCALE);
+    line (-46 * SCALE, 30 * SCALE, -78 * SCALE, 30 * SCALE);
+    line (-46 * SCALE, -30 * SCALE, -78 * SCALE, -30 * SCALE);
+    arc (-78 * SCALE, 30 * SCALE, -78 * SCALE, -30 * SCALE,\
+        -130.25 * SCALE, 0 * SCALE);
+    line (-144 * SCALE, -14 * SCALE, -144 * SCALE, -6 * SCALE);
+    line (-144 * SCALE, -6 * SCALE, -136 * SCALE, -6 * SCALE);
+    line (-136 * SCALE, -6 * SCALE, -136 * SCALE, -14 * SCALE);
+    line (-136 * SCALE, -14 * SCALE, -144 * SCALE, -14 * SCALE);
+    pin ("ip3", -140 * SCALE, -10 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, 6 * SCALE, -144 * SCALE, 14 * SCALE);
+    line (-144 * SCALE, 14 * SCALE, -136 * SCALE, 14 * SCALE);
+    line (-136 * SCALE, 14 * SCALE, -136 * SCALE, 6 * SCALE);
+    line (-136 * SCALE, 6 * SCALE, -144 * SCALE, 6 * SCALE);
+    pin ("ip2", -140 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, -34 * SCALE, -144 * SCALE, -26 * SCALE);
+    line (-144 * SCALE, -26 * SCALE, -136 * SCALE, -26 * SCALE);
+    line (-136 * SCALE, -26 * SCALE, -136 * SCALE, -34 * SCALE);
+    line (-136 * SCALE, -34 * SCALE, -144 * SCALE, -34 * SCALE);
+    pin ("ip4", -140 * SCALE, -30 * SCALE, ANY_ROTATION);
+    line (56 * SCALE, -4 * SCALE, 56 * SCALE, 4 * SCALE);
+    line (56 * SCALE, 4 * SCALE, 64 * SCALE, 4 * SCALE);
+    line (64 * SCALE, 4 * SCALE, 64 * SCALE, -4 * SCALE);
+    line (64 * SCALE, -4 * SCALE, 56 * SCALE, -4 * SCALE);
+    pin ("op", 60 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, 26 * SCALE, -144 * SCALE, 34 * SCALE);
+    line (-144 * SCALE, 34 * SCALE, -136 * SCALE, 34 * SCALE);
+    line (-136 * SCALE, 34 * SCALE, -136 * SCALE, 26 * SCALE);
+    line (-136 * SCALE, 26 * SCALE, -144 * SCALE, 26 * SCALE);
+    pin ("ip1", -140 * SCALE, 30 * SCALE, ANY_ROTATION);
+  } /* end of symbol "nor4_1" */
+  symbol ("nor4_2") {
+    set_minimum_boundary (-140 * SCALE, -40 * SCALE, 60 * SCALE, 40 * SCALE);
+    line (-71 * SCALE, -10 * SCALE, -120 * SCALE, -10 * SCALE);
+    line (-120 * SCALE, -10 * SCALE, -141 * SCALE, -10 * SCALE);
+    line (-78 * SCALE, -30 * SCALE, -110 * SCALE, -30 * SCALE);
+    line (-110 * SCALE, -30 * SCALE, -140 * SCALE, -30 * SCALE);
+    line (-78 * SCALE, 30 * SCALE, -110 * SCALE, 30 * SCALE);
+    line (-110 * SCALE, 30 * SCALE, -141 * SCALE, 30 * SCALE);
+    line (-71 * SCALE, 10 * SCALE, -120 * SCALE, 10 * SCALE);
+    line (-120 * SCALE, 10 * SCALE, -140 * SCALE, 10 * SCALE);
+    circle (10 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (15 * SCALE, 0 * SCALE, 60 * SCALE, 0 * SCALE);
+    arc (5 * SCALE, 0 * SCALE, -46 * SCALE, -30 * SCALE,\
+        -45.0732 * SCALE, 26.7744 * SCALE);
+    arc (-46 * SCALE, 30 * SCALE, 5 * SCALE, 0 * SCALE,\
+        -45.0732 * SCALE, -26.7744 * SCALE);
+    line (-46 * SCALE, 30 * SCALE, -78 * SCALE, 30 * SCALE);
+    line (-46 * SCALE, -30 * SCALE, -78 * SCALE, -30 * SCALE);
+    arc (-78 * SCALE, 30 * SCALE, -78 * SCALE, -30 * SCALE,\
+        -130.25 * SCALE, 0 * SCALE);
+    line (-144 * SCALE, -14 * SCALE, -144 * SCALE, -6 * SCALE);
+    line (-144 * SCALE, -6 * SCALE, -136 * SCALE, -6 * SCALE);
+    line (-136 * SCALE, -6 * SCALE, -136 * SCALE, -14 * SCALE);
+    line (-136 * SCALE, -14 * SCALE, -144 * SCALE, -14 * SCALE);
+    pin ("ip3", -140 * SCALE, -10 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, 6 * SCALE, -144 * SCALE, 14 * SCALE);
+    line (-144 * SCALE, 14 * SCALE, -136 * SCALE, 14 * SCALE);
+    line (-136 * SCALE, 14 * SCALE, -136 * SCALE, 6 * SCALE);
+    line (-136 * SCALE, 6 * SCALE, -144 * SCALE, 6 * SCALE);
+    pin ("ip2", -140 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, -34 * SCALE, -144 * SCALE, -26 * SCALE);
+    line (-144 * SCALE, -26 * SCALE, -136 * SCALE, -26 * SCALE);
+    line (-136 * SCALE, -26 * SCALE, -136 * SCALE, -34 * SCALE);
+    line (-136 * SCALE, -34 * SCALE, -144 * SCALE, -34 * SCALE);
+    pin ("ip4", -140 * SCALE, -30 * SCALE, ANY_ROTATION);
+    line (56 * SCALE, -4 * SCALE, 56 * SCALE, 4 * SCALE);
+    line (56 * SCALE, 4 * SCALE, 64 * SCALE, 4 * SCALE);
+    line (64 * SCALE, 4 * SCALE, 64 * SCALE, -4 * SCALE);
+    line (64 * SCALE, -4 * SCALE, 56 * SCALE, -4 * SCALE);
+    pin ("op", 60 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, 26 * SCALE, -144 * SCALE, 34 * SCALE);
+    line (-144 * SCALE, 34 * SCALE, -136 * SCALE, 34 * SCALE);
+    line (-136 * SCALE, 34 * SCALE, -136 * SCALE, 26 * SCALE);
+    line (-136 * SCALE, 26 * SCALE, -144 * SCALE, 26 * SCALE);
+    pin ("ip1", -140 * SCALE, 30 * SCALE, ANY_ROTATION);
+  } /* end of symbol "nor4_2" */
+  symbol ("nor4_4") {
+    set_minimum_boundary (-140 * SCALE, -40 * SCALE, 60 * SCALE, 40 * SCALE);
+    line (-71 * SCALE, -10 * SCALE, -120 * SCALE, -10 * SCALE);
+    line (-120 * SCALE, -10 * SCALE, -141 * SCALE, -10 * SCALE);
+    line (-78 * SCALE, -30 * SCALE, -110 * SCALE, -30 * SCALE);
+    line (-110 * SCALE, -30 * SCALE, -140 * SCALE, -30 * SCALE);
+    line (-78 * SCALE, 30 * SCALE, -110 * SCALE, 30 * SCALE);
+    line (-110 * SCALE, 30 * SCALE, -141 * SCALE, 30 * SCALE);
+    line (-71 * SCALE, 10 * SCALE, -120 * SCALE, 10 * SCALE);
+    line (-120 * SCALE, 10 * SCALE, -140 * SCALE, 10 * SCALE);
+    circle (10 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (15 * SCALE, 0 * SCALE, 60 * SCALE, 0 * SCALE);
+    arc (5 * SCALE, 0 * SCALE, -46 * SCALE, -30 * SCALE,\
+        -45.0732 * SCALE, 26.7744 * SCALE);
+    arc (-46 * SCALE, 30 * SCALE, 5 * SCALE, 0 * SCALE,\
+        -45.0732 * SCALE, -26.7744 * SCALE);
+    line (-46 * SCALE, 30 * SCALE, -78 * SCALE, 30 * SCALE);
+    line (-46 * SCALE, -30 * SCALE, -78 * SCALE, -30 * SCALE);
+    arc (-78 * SCALE, 30 * SCALE, -78 * SCALE, -30 * SCALE,\
+        -130.25 * SCALE, 0 * SCALE);
+    line (-144 * SCALE, -14 * SCALE, -144 * SCALE, -6 * SCALE);
+    line (-144 * SCALE, -6 * SCALE, -136 * SCALE, -6 * SCALE);
+    line (-136 * SCALE, -6 * SCALE, -136 * SCALE, -14 * SCALE);
+    line (-136 * SCALE, -14 * SCALE, -144 * SCALE, -14 * SCALE);
+    pin ("ip3", -140 * SCALE, -10 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, 6 * SCALE, -144 * SCALE, 14 * SCALE);
+    line (-144 * SCALE, 14 * SCALE, -136 * SCALE, 14 * SCALE);
+    line (-136 * SCALE, 14 * SCALE, -136 * SCALE, 6 * SCALE);
+    line (-136 * SCALE, 6 * SCALE, -144 * SCALE, 6 * SCALE);
+    pin ("ip2", -140 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, -34 * SCALE, -144 * SCALE, -26 * SCALE);
+    line (-144 * SCALE, -26 * SCALE, -136 * SCALE, -26 * SCALE);
+    line (-136 * SCALE, -26 * SCALE, -136 * SCALE, -34 * SCALE);
+    line (-136 * SCALE, -34 * SCALE, -144 * SCALE, -34 * SCALE);
+    pin ("ip4", -140 * SCALE, -30 * SCALE, ANY_ROTATION);
+    line (56 * SCALE, -4 * SCALE, 56 * SCALE, 4 * SCALE);
+    line (56 * SCALE, 4 * SCALE, 64 * SCALE, 4 * SCALE);
+    line (64 * SCALE, 4 * SCALE, 64 * SCALE, -4 * SCALE);
+    line (64 * SCALE, -4 * SCALE, 56 * SCALE, -4 * SCALE);
+    pin ("op", 60 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, 26 * SCALE, -144 * SCALE, 34 * SCALE);
+    line (-144 * SCALE, 34 * SCALE, -136 * SCALE, 34 * SCALE);
+    line (-136 * SCALE, 34 * SCALE, -136 * SCALE, 26 * SCALE);
+    line (-136 * SCALE, 26 * SCALE, -144 * SCALE, 26 * SCALE);
+    pin ("ip1", -140 * SCALE, 30 * SCALE, ANY_ROTATION);
+  } /* end of symbol "nor4_4" */
+  symbol ("not_ab_or_c_or_d") {
+    set_minimum_boundary (-150 * SCALE, -70 * SCALE, 180 * SCALE, 70 * SCALE);
+    circle (100 * SCALE, -10 * SCALE, 5 * SCALE);
+    arc (95 * SCALE, -10 * SCALE, 44 * SCALE, -40 * SCALE,\
+        44.9268 * SCALE, 16.7744 * SCALE);
+    arc (12 * SCALE, 20 * SCALE, 12 * SCALE, -40 * SCALE,\
+        -40.25 * SCALE, -10 * SCALE);
+    line (44 * SCALE, -40 * SCALE, 12 * SCALE, -40 * SCALE);
+    line (44 * SCALE, 20 * SCALE, 12 * SCALE, 20 * SCALE);
+    arc (44 * SCALE, 20 * SCALE, 95 * SCALE, -10 * SCALE,\
+        44.9268 * SCALE, -36.7744 * SCALE);
+    line (16 * SCALE, 10 * SCALE, 0 * SCALE, 10 * SCALE);
+    line (20 * SCALE, -10 * SCALE, -50 * SCALE, -10 * SCALE);
+    line (16 * SCALE, -30 * SCALE, -50 * SCALE, -30 * SCALE);
+    line (105 * SCALE, -10 * SCALE, 180 * SCALE, -10 * SCALE);
+    line (-90 * SCALE, 10 * SCALE, -90 * SCALE, 70 * SCALE);
+    arc (-45 * SCALE, 70 * SCALE, -45 * SCALE, 10 * SCALE,\
+        -45 * SCALE, 40 * SCALE);
+    line (-90 * SCALE, 70 * SCALE, -45 * SCALE, 70 * SCALE);
+    line (-45 * SCALE, 10 * SCALE, -90 * SCALE, 10 * SCALE);
+    line (-90 * SCALE, 20 * SCALE, -150 * SCALE, 20 * SCALE);
+    line (-90 * SCALE, 60 * SCALE, -150 * SCALE, 60 * SCALE);
+    line (0 * SCALE, 40 * SCALE, -15 * SCALE, 40 * SCALE);
+    line (-150 * SCALE, -30 * SCALE, -50 * SCALE, -30 * SCALE);
+    line (-150 * SCALE, -10 * SCALE, -50 * SCALE, -10 * SCALE);
+    line (0 * SCALE, 40 * SCALE, 0 * SCALE, 10 * SCALE);
+    line (-154 * SCALE, 56 * SCALE, -154 * SCALE, 64 * SCALE);
+    line (-154 * SCALE, 64 * SCALE, -146 * SCALE, 64 * SCALE);
+    line (-146 * SCALE, 64 * SCALE, -146 * SCALE, 56 * SCALE);
+    line (-146 * SCALE, 56 * SCALE, -154 * SCALE, 56 * SCALE);
+    pin ("ip1", -150 * SCALE, 60 * SCALE, ANY_ROTATION);
+    line (-154 * SCALE, 16 * SCALE, -154 * SCALE, 24 * SCALE);
+    line (-154 * SCALE, 24 * SCALE, -146 * SCALE, 24 * SCALE);
+    line (-146 * SCALE, 24 * SCALE, -146 * SCALE, 16 * SCALE);
+    line (-146 * SCALE, 16 * SCALE, -154 * SCALE, 16 * SCALE);
+    pin ("ip2", -150 * SCALE, 20 * SCALE, ANY_ROTATION);
+    line (176 * SCALE, -14 * SCALE, 176 * SCALE, -6 * SCALE);
+    line (176 * SCALE, -6 * SCALE, 184 * SCALE, -6 * SCALE);
+    line (184 * SCALE, -6 * SCALE, 184 * SCALE, -14 * SCALE);
+    line (184 * SCALE, -14 * SCALE, 176 * SCALE, -14 * SCALE);
+    pin ("op", 180 * SCALE, -10 * SCALE, ANY_ROTATION);
+    line (-154 * SCALE, -34 * SCALE, -154 * SCALE, -26 * SCALE);
+    line (-154 * SCALE, -26 * SCALE, -146 * SCALE, -26 * SCALE);
+    line (-146 * SCALE, -26 * SCALE, -146 * SCALE, -34 * SCALE);
+    line (-146 * SCALE, -34 * SCALE, -154 * SCALE, -34 * SCALE);
+    pin ("ip4", -150 * SCALE, -30 * SCALE, ANY_ROTATION);
+    line (-154 * SCALE, -14 * SCALE, -154 * SCALE, -6 * SCALE);
+    line (-154 * SCALE, -6 * SCALE, -146 * SCALE, -6 * SCALE);
+    line (-146 * SCALE, -6 * SCALE, -146 * SCALE, -14 * SCALE);
+    line (-146 * SCALE, -14 * SCALE, -154 * SCALE, -14 * SCALE);
+    pin ("ip3", -150 * SCALE, -10 * SCALE, ANY_ROTATION);
+  } /* end of symbol "not_ab_or_c_or_d" */
+  symbol ("or2_1") {
+    set_minimum_boundary (-140 * SCALE, -30 * SCALE, 60 * SCALE, 30 * SCALE);
+    line (5 * SCALE, 0 * SCALE, 60 * SCALE, 0 * SCALE);
+    line (-74 * SCALE, -20 * SCALE, -140 * SCALE, -20 * SCALE);
+    line (-74 * SCALE, 20 * SCALE, -140 * SCALE, 20 * SCALE);
+    arc (5 * SCALE, 0 * SCALE, -46 * SCALE, -30 * SCALE,\
+        -45.0732 * SCALE, 26.7744 * SCALE);
+    arc (-46 * SCALE, 30 * SCALE, 5 * SCALE, 0 * SCALE,\
+        -45.0732 * SCALE, -26.7744 * SCALE);
+    arc (-78 * SCALE, 30 * SCALE, -78 * SCALE, -30 * SCALE,\
+        -130.25 * SCALE, 0 * SCALE);
+    line (-46 * SCALE, 30 * SCALE, -78 * SCALE, 30 * SCALE);
+    line (-46 * SCALE, -30 * SCALE, -78 * SCALE, -30 * SCALE);
+    line (-144 * SCALE, 16 * SCALE, -144 * SCALE, 24 * SCALE);
+    line (-144 * SCALE, 24 * SCALE, -136 * SCALE, 24 * SCALE);
+    line (-136 * SCALE, 24 * SCALE, -136 * SCALE, 16 * SCALE);
+    line (-136 * SCALE, 16 * SCALE, -144 * SCALE, 16 * SCALE);
+    pin ("ip1", -140 * SCALE, 20 * SCALE, ANY_ROTATION);
+    line (56 * SCALE, -4 * SCALE, 56 * SCALE, 4 * SCALE);
+    line (56 * SCALE, 4 * SCALE, 64 * SCALE, 4 * SCALE);
+    line (64 * SCALE, 4 * SCALE, 64 * SCALE, -4 * SCALE);
+    line (64 * SCALE, -4 * SCALE, 56 * SCALE, -4 * SCALE);
+    pin ("op", 60 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, -24 * SCALE, -144 * SCALE, -16 * SCALE);
+    line (-144 * SCALE, -16 * SCALE, -136 * SCALE, -16 * SCALE);
+    line (-136 * SCALE, -16 * SCALE, -136 * SCALE, -24 * SCALE);
+    line (-136 * SCALE, -24 * SCALE, -144 * SCALE, -24 * SCALE);
+    pin ("ip2", -140 * SCALE, -20 * SCALE, ANY_ROTATION);
+  } /* end of symbol "or2_1" */
+  symbol ("or2_2") {
+    set_minimum_boundary (-140 * SCALE, -30 * SCALE, 60 * SCALE, 30 * SCALE);
+    line (5 * SCALE, 0 * SCALE, 60 * SCALE, 0 * SCALE);
+    line (-74 * SCALE, -20 * SCALE, -140 * SCALE, -20 * SCALE);
+    line (-74 * SCALE, 20 * SCALE, -140 * SCALE, 20 * SCALE);
+    arc (5 * SCALE, 0 * SCALE, -46 * SCALE, -30 * SCALE,\
+        -45.0732 * SCALE, 26.7744 * SCALE);
+    arc (-46 * SCALE, 30 * SCALE, 5 * SCALE, 0 * SCALE,\
+        -45.0732 * SCALE, -26.7744 * SCALE);
+    arc (-78 * SCALE, 30 * SCALE, -78 * SCALE, -30 * SCALE,\
+        -130.25 * SCALE, 0 * SCALE);
+    line (-46 * SCALE, 30 * SCALE, -78 * SCALE, 30 * SCALE);
+    line (-46 * SCALE, -30 * SCALE, -78 * SCALE, -30 * SCALE);
+    line (-144 * SCALE, 16 * SCALE, -144 * SCALE, 24 * SCALE);
+    line (-144 * SCALE, 24 * SCALE, -136 * SCALE, 24 * SCALE);
+    line (-136 * SCALE, 24 * SCALE, -136 * SCALE, 16 * SCALE);
+    line (-136 * SCALE, 16 * SCALE, -144 * SCALE, 16 * SCALE);
+    pin ("ip1", -140 * SCALE, 20 * SCALE, ANY_ROTATION);
+    line (56 * SCALE, -4 * SCALE, 56 * SCALE, 4 * SCALE);
+    line (56 * SCALE, 4 * SCALE, 64 * SCALE, 4 * SCALE);
+    line (64 * SCALE, 4 * SCALE, 64 * SCALE, -4 * SCALE);
+    line (64 * SCALE, -4 * SCALE, 56 * SCALE, -4 * SCALE);
+    pin ("op", 60 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, -24 * SCALE, -144 * SCALE, -16 * SCALE);
+    line (-144 * SCALE, -16 * SCALE, -136 * SCALE, -16 * SCALE);
+    line (-136 * SCALE, -16 * SCALE, -136 * SCALE, -24 * SCALE);
+    line (-136 * SCALE, -24 * SCALE, -144 * SCALE, -24 * SCALE);
+    pin ("ip2", -140 * SCALE, -20 * SCALE, ANY_ROTATION);
+  } /* end of symbol "or2_2" */
+  symbol ("or2_4") {
+    set_minimum_boundary (-140 * SCALE, -30 * SCALE, 60 * SCALE, 30 * SCALE);
+    line (5 * SCALE, 0 * SCALE, 60 * SCALE, 0 * SCALE);
+    line (-74 * SCALE, -20 * SCALE, -140 * SCALE, -20 * SCALE);
+    line (-74 * SCALE, 20 * SCALE, -140 * SCALE, 20 * SCALE);
+    arc (5 * SCALE, 0 * SCALE, -46 * SCALE, -30 * SCALE,\
+        -45.0732 * SCALE, 26.7744 * SCALE);
+    arc (-46 * SCALE, 30 * SCALE, 5 * SCALE, 0 * SCALE,\
+        -45.0732 * SCALE, -26.7744 * SCALE);
+    arc (-78 * SCALE, 30 * SCALE, -78 * SCALE, -30 * SCALE,\
+        -130.25 * SCALE, 0 * SCALE);
+    line (-46 * SCALE, 30 * SCALE, -78 * SCALE, 30 * SCALE);
+    line (-46 * SCALE, -30 * SCALE, -78 * SCALE, -30 * SCALE);
+    line (-144 * SCALE, 16 * SCALE, -144 * SCALE, 24 * SCALE);
+    line (-144 * SCALE, 24 * SCALE, -136 * SCALE, 24 * SCALE);
+    line (-136 * SCALE, 24 * SCALE, -136 * SCALE, 16 * SCALE);
+    line (-136 * SCALE, 16 * SCALE, -144 * SCALE, 16 * SCALE);
+    pin ("ip1", -140 * SCALE, 20 * SCALE, ANY_ROTATION);
+    line (56 * SCALE, -4 * SCALE, 56 * SCALE, 4 * SCALE);
+    line (56 * SCALE, 4 * SCALE, 64 * SCALE, 4 * SCALE);
+    line (64 * SCALE, 4 * SCALE, 64 * SCALE, -4 * SCALE);
+    line (64 * SCALE, -4 * SCALE, 56 * SCALE, -4 * SCALE);
+    pin ("op", 60 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, -24 * SCALE, -144 * SCALE, -16 * SCALE);
+    line (-144 * SCALE, -16 * SCALE, -136 * SCALE, -16 * SCALE);
+    line (-136 * SCALE, -16 * SCALE, -136 * SCALE, -24 * SCALE);
+    line (-136 * SCALE, -24 * SCALE, -144 * SCALE, -24 * SCALE);
+    pin ("ip2", -140 * SCALE, -20 * SCALE, ANY_ROTATION);
+  } /* end of symbol "or2_4" */
+  symbol ("or3_1") {
+    set_minimum_boundary (-140 * SCALE, -30 * SCALE, 60 * SCALE, 30 * SCALE);
+    line (5 * SCALE, 0 * SCALE, 60 * SCALE, 0 * SCALE);
+    line (-74 * SCALE, -20 * SCALE, -140 * SCALE, -20 * SCALE);
+    line (-70 * SCALE, 0 * SCALE, -140 * SCALE, 0 * SCALE);
+    line (-74 * SCALE, 20 * SCALE, -140 * SCALE, 20 * SCALE);
+    arc (-46 * SCALE, 30 * SCALE, 5 * SCALE, 0 * SCALE,\
+        -45.0732 * SCALE, -26.7744 * SCALE);
+    line (-46 * SCALE, 30 * SCALE, -78 * SCALE, 30 * SCALE);
+    line (-46 * SCALE, -30 * SCALE, -78 * SCALE, -30 * SCALE);
+    arc (-78 * SCALE, 30 * SCALE, -78 * SCALE, -30 * SCALE,\
+        -130.25 * SCALE, 0 * SCALE);
+    arc (5 * SCALE, 0 * SCALE, -46 * SCALE, -30 * SCALE,\
+        -45.0732 * SCALE, 26.7744 * SCALE);
+    line (-144 * SCALE, -4 * SCALE, -144 * SCALE, 4 * SCALE);
+    line (-144 * SCALE, 4 * SCALE, -136 * SCALE, 4 * SCALE);
+    line (-136 * SCALE, 4 * SCALE, -136 * SCALE, -4 * SCALE);
+    line (-136 * SCALE, -4 * SCALE, -144 * SCALE, -4 * SCALE);
+    pin ("ip2", -140 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, -24 * SCALE, -144 * SCALE, -16 * SCALE);
+    line (-144 * SCALE, -16 * SCALE, -136 * SCALE, -16 * SCALE);
+    line (-136 * SCALE, -16 * SCALE, -136 * SCALE, -24 * SCALE);
+    line (-136 * SCALE, -24 * SCALE, -144 * SCALE, -24 * SCALE);
+    pin ("ip3", -140 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (56 * SCALE, -4 * SCALE, 56 * SCALE, 4 * SCALE);
+    line (56 * SCALE, 4 * SCALE, 64 * SCALE, 4 * SCALE);
+    line (64 * SCALE, 4 * SCALE, 64 * SCALE, -4 * SCALE);
+    line (64 * SCALE, -4 * SCALE, 56 * SCALE, -4 * SCALE);
+    pin ("op", 60 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, 16 * SCALE, -144 * SCALE, 24 * SCALE);
+    line (-144 * SCALE, 24 * SCALE, -136 * SCALE, 24 * SCALE);
+    line (-136 * SCALE, 24 * SCALE, -136 * SCALE, 16 * SCALE);
+    line (-136 * SCALE, 16 * SCALE, -144 * SCALE, 16 * SCALE);
+    pin ("ip1", -140 * SCALE, 20 * SCALE, ANY_ROTATION);
+  } /* end of symbol "or3_1" */
+  symbol ("or3_2") {
+    set_minimum_boundary (-140 * SCALE, -30 * SCALE, 60 * SCALE, 30 * SCALE);
+    line (5 * SCALE, 0 * SCALE, 60 * SCALE, 0 * SCALE);
+    line (-74 * SCALE, -20 * SCALE, -140 * SCALE, -20 * SCALE);
+    line (-70 * SCALE, 0 * SCALE, -140 * SCALE, 0 * SCALE);
+    line (-74 * SCALE, 20 * SCALE, -140 * SCALE, 20 * SCALE);
+    arc (-46 * SCALE, 30 * SCALE, 5 * SCALE, 0 * SCALE,\
+        -45.0732 * SCALE, -26.7744 * SCALE);
+    line (-46 * SCALE, 30 * SCALE, -78 * SCALE, 30 * SCALE);
+    line (-46 * SCALE, -30 * SCALE, -78 * SCALE, -30 * SCALE);
+    arc (-78 * SCALE, 30 * SCALE, -78 * SCALE, -30 * SCALE,\
+        -130.25 * SCALE, 0 * SCALE);
+    arc (5 * SCALE, 0 * SCALE, -46 * SCALE, -30 * SCALE,\
+        -45.0732 * SCALE, 26.7744 * SCALE);
+    line (-144 * SCALE, -4 * SCALE, -144 * SCALE, 4 * SCALE);
+    line (-144 * SCALE, 4 * SCALE, -136 * SCALE, 4 * SCALE);
+    line (-136 * SCALE, 4 * SCALE, -136 * SCALE, -4 * SCALE);
+    line (-136 * SCALE, -4 * SCALE, -144 * SCALE, -4 * SCALE);
+    pin ("ip2", -140 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, -24 * SCALE, -144 * SCALE, -16 * SCALE);
+    line (-144 * SCALE, -16 * SCALE, -136 * SCALE, -16 * SCALE);
+    line (-136 * SCALE, -16 * SCALE, -136 * SCALE, -24 * SCALE);
+    line (-136 * SCALE, -24 * SCALE, -144 * SCALE, -24 * SCALE);
+    pin ("ip3", -140 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (56 * SCALE, -4 * SCALE, 56 * SCALE, 4 * SCALE);
+    line (56 * SCALE, 4 * SCALE, 64 * SCALE, 4 * SCALE);
+    line (64 * SCALE, 4 * SCALE, 64 * SCALE, -4 * SCALE);
+    line (64 * SCALE, -4 * SCALE, 56 * SCALE, -4 * SCALE);
+    pin ("op", 60 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, 16 * SCALE, -144 * SCALE, 24 * SCALE);
+    line (-144 * SCALE, 24 * SCALE, -136 * SCALE, 24 * SCALE);
+    line (-136 * SCALE, 24 * SCALE, -136 * SCALE, 16 * SCALE);
+    line (-136 * SCALE, 16 * SCALE, -144 * SCALE, 16 * SCALE);
+    pin ("ip1", -140 * SCALE, 20 * SCALE, ANY_ROTATION);
+  } /* end of symbol "or3_2" */
+  symbol ("or3_4") {
+    set_minimum_boundary (-140 * SCALE, -30 * SCALE, 60 * SCALE, 30 * SCALE);
+    line (5 * SCALE, 0 * SCALE, 60 * SCALE, 0 * SCALE);
+    line (-74 * SCALE, -20 * SCALE, -140 * SCALE, -20 * SCALE);
+    line (-70 * SCALE, 0 * SCALE, -140 * SCALE, 0 * SCALE);
+    line (-74 * SCALE, 20 * SCALE, -140 * SCALE, 20 * SCALE);
+    arc (-46 * SCALE, 30 * SCALE, 5 * SCALE, 0 * SCALE,\
+        -45.0732 * SCALE, -26.7744 * SCALE);
+    line (-46 * SCALE, 30 * SCALE, -78 * SCALE, 30 * SCALE);
+    line (-46 * SCALE, -30 * SCALE, -78 * SCALE, -30 * SCALE);
+    arc (-78 * SCALE, 30 * SCALE, -78 * SCALE, -30 * SCALE,\
+        -130.25 * SCALE, 0 * SCALE);
+    arc (5 * SCALE, 0 * SCALE, -46 * SCALE, -30 * SCALE,\
+        -45.0732 * SCALE, 26.7744 * SCALE);
+    line (-144 * SCALE, -4 * SCALE, -144 * SCALE, 4 * SCALE);
+    line (-144 * SCALE, 4 * SCALE, -136 * SCALE, 4 * SCALE);
+    line (-136 * SCALE, 4 * SCALE, -136 * SCALE, -4 * SCALE);
+    line (-136 * SCALE, -4 * SCALE, -144 * SCALE, -4 * SCALE);
+    pin ("ip2", -140 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, -24 * SCALE, -144 * SCALE, -16 * SCALE);
+    line (-144 * SCALE, -16 * SCALE, -136 * SCALE, -16 * SCALE);
+    line (-136 * SCALE, -16 * SCALE, -136 * SCALE, -24 * SCALE);
+    line (-136 * SCALE, -24 * SCALE, -144 * SCALE, -24 * SCALE);
+    pin ("ip3", -140 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (56 * SCALE, -4 * SCALE, 56 * SCALE, 4 * SCALE);
+    line (56 * SCALE, 4 * SCALE, 64 * SCALE, 4 * SCALE);
+    line (64 * SCALE, 4 * SCALE, 64 * SCALE, -4 * SCALE);
+    line (64 * SCALE, -4 * SCALE, 56 * SCALE, -4 * SCALE);
+    pin ("op", 60 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, 16 * SCALE, -144 * SCALE, 24 * SCALE);
+    line (-144 * SCALE, 24 * SCALE, -136 * SCALE, 24 * SCALE);
+    line (-136 * SCALE, 24 * SCALE, -136 * SCALE, 16 * SCALE);
+    line (-136 * SCALE, 16 * SCALE, -144 * SCALE, 16 * SCALE);
+    pin ("ip1", -140 * SCALE, 20 * SCALE, ANY_ROTATION);
+  } /* end of symbol "or3_4" */
+  symbol ("or4_1") {
+    set_minimum_boundary (-141 * SCALE, -40 * SCALE, 60 * SCALE, 40 * SCALE);
+    line (-78 * SCALE, -30 * SCALE, -110 * SCALE, -30 * SCALE);
+    line (-110 * SCALE, -30 * SCALE, -140 * SCALE, -30 * SCALE);
+    line (-71 * SCALE, -10 * SCALE, -120 * SCALE, -10 * SCALE);
+    line (-120 * SCALE, -10 * SCALE, -141 * SCALE, -10 * SCALE);
+    line (-78 * SCALE, 30 * SCALE, -110 * SCALE, 30 * SCALE);
+    line (-110 * SCALE, 30 * SCALE, -141 * SCALE, 30 * SCALE);
+    line (-71 * SCALE, 10 * SCALE, -120 * SCALE, 10 * SCALE);
+    line (-120 * SCALE, 10 * SCALE, -140 * SCALE, 10 * SCALE);
+    line (5 * SCALE, 0 * SCALE, 60 * SCALE, 0 * SCALE);
+    arc (-46 * SCALE, 30 * SCALE, 5 * SCALE, 0 * SCALE,\
+        -45.0732 * SCALE, -26.7744 * SCALE);
+    line (-46 * SCALE, 30 * SCALE, -78 * SCALE, 30 * SCALE);
+    line (-46 * SCALE, -30 * SCALE, -78 * SCALE, -30 * SCALE);
+    arc (5 * SCALE, 0 * SCALE, -46 * SCALE, -30 * SCALE,\
+        -45.0732 * SCALE, 26.7744 * SCALE);
+    arc (-78 * SCALE, 30 * SCALE, -78 * SCALE, -30 * SCALE,\
+        -130.25 * SCALE, 0 * SCALE);
+    line (-144 * SCALE, -34 * SCALE, -144 * SCALE, -26 * SCALE);
+    line (-144 * SCALE, -26 * SCALE, -136 * SCALE, -26 * SCALE);
+    line (-136 * SCALE, -26 * SCALE, -136 * SCALE, -34 * SCALE);
+    line (-136 * SCALE, -34 * SCALE, -144 * SCALE, -34 * SCALE);
+    pin ("ip4", -140 * SCALE, -30 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, 26 * SCALE, -144 * SCALE, 34 * SCALE);
+    line (-144 * SCALE, 34 * SCALE, -136 * SCALE, 34 * SCALE);
+    line (-136 * SCALE, 34 * SCALE, -136 * SCALE, 26 * SCALE);
+    line (-136 * SCALE, 26 * SCALE, -144 * SCALE, 26 * SCALE);
+    pin ("ip1", -140 * SCALE, 30 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, 6 * SCALE, -144 * SCALE, 14 * SCALE);
+    line (-144 * SCALE, 14 * SCALE, -136 * SCALE, 14 * SCALE);
+    line (-136 * SCALE, 14 * SCALE, -136 * SCALE, 6 * SCALE);
+    line (-136 * SCALE, 6 * SCALE, -144 * SCALE, 6 * SCALE);
+    pin ("ip2", -140 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, -14 * SCALE, -144 * SCALE, -6 * SCALE);
+    line (-144 * SCALE, -6 * SCALE, -136 * SCALE, -6 * SCALE);
+    line (-136 * SCALE, -6 * SCALE, -136 * SCALE, -14 * SCALE);
+    line (-136 * SCALE, -14 * SCALE, -144 * SCALE, -14 * SCALE);
+    pin ("ip3", -140 * SCALE, -10 * SCALE, ANY_ROTATION);
+    line (56 * SCALE, -4 * SCALE, 56 * SCALE, 4 * SCALE);
+    line (56 * SCALE, 4 * SCALE, 64 * SCALE, 4 * SCALE);
+    line (64 * SCALE, 4 * SCALE, 64 * SCALE, -4 * SCALE);
+    line (64 * SCALE, -4 * SCALE, 56 * SCALE, -4 * SCALE);
+    pin ("op", 60 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "or4_1" */
+  symbol ("or4_2") {
+    set_minimum_boundary (-141 * SCALE, -40 * SCALE, 60 * SCALE, 40 * SCALE);
+    line (-78 * SCALE, -30 * SCALE, -110 * SCALE, -30 * SCALE);
+    line (-110 * SCALE, -30 * SCALE, -140 * SCALE, -30 * SCALE);
+    line (-71 * SCALE, -10 * SCALE, -120 * SCALE, -10 * SCALE);
+    line (-120 * SCALE, -10 * SCALE, -141 * SCALE, -10 * SCALE);
+    line (-78 * SCALE, 30 * SCALE, -110 * SCALE, 30 * SCALE);
+    line (-110 * SCALE, 30 * SCALE, -141 * SCALE, 30 * SCALE);
+    line (-71 * SCALE, 10 * SCALE, -120 * SCALE, 10 * SCALE);
+    line (-120 * SCALE, 10 * SCALE, -140 * SCALE, 10 * SCALE);
+    line (5 * SCALE, 0 * SCALE, 60 * SCALE, 0 * SCALE);
+    arc (-46 * SCALE, 30 * SCALE, 5 * SCALE, 0 * SCALE,\
+        -45.0732 * SCALE, -26.7744 * SCALE);
+    line (-46 * SCALE, 30 * SCALE, -78 * SCALE, 30 * SCALE);
+    line (-46 * SCALE, -30 * SCALE, -78 * SCALE, -30 * SCALE);
+    arc (5 * SCALE, 0 * SCALE, -46 * SCALE, -30 * SCALE,\
+        -45.0732 * SCALE, 26.7744 * SCALE);
+    arc (-78 * SCALE, 30 * SCALE, -78 * SCALE, -30 * SCALE,\
+        -130.25 * SCALE, 0 * SCALE);
+    line (-144 * SCALE, -34 * SCALE, -144 * SCALE, -26 * SCALE);
+    line (-144 * SCALE, -26 * SCALE, -136 * SCALE, -26 * SCALE);
+    line (-136 * SCALE, -26 * SCALE, -136 * SCALE, -34 * SCALE);
+    line (-136 * SCALE, -34 * SCALE, -144 * SCALE, -34 * SCALE);
+    pin ("ip4", -140 * SCALE, -30 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, 26 * SCALE, -144 * SCALE, 34 * SCALE);
+    line (-144 * SCALE, 34 * SCALE, -136 * SCALE, 34 * SCALE);
+    line (-136 * SCALE, 34 * SCALE, -136 * SCALE, 26 * SCALE);
+    line (-136 * SCALE, 26 * SCALE, -144 * SCALE, 26 * SCALE);
+    pin ("ip1", -140 * SCALE, 30 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, 6 * SCALE, -144 * SCALE, 14 * SCALE);
+    line (-144 * SCALE, 14 * SCALE, -136 * SCALE, 14 * SCALE);
+    line (-136 * SCALE, 14 * SCALE, -136 * SCALE, 6 * SCALE);
+    line (-136 * SCALE, 6 * SCALE, -144 * SCALE, 6 * SCALE);
+    pin ("ip2", -140 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, -14 * SCALE, -144 * SCALE, -6 * SCALE);
+    line (-144 * SCALE, -6 * SCALE, -136 * SCALE, -6 * SCALE);
+    line (-136 * SCALE, -6 * SCALE, -136 * SCALE, -14 * SCALE);
+    line (-136 * SCALE, -14 * SCALE, -144 * SCALE, -14 * SCALE);
+    pin ("ip3", -140 * SCALE, -10 * SCALE, ANY_ROTATION);
+    line (56 * SCALE, -4 * SCALE, 56 * SCALE, 4 * SCALE);
+    line (56 * SCALE, 4 * SCALE, 64 * SCALE, 4 * SCALE);
+    line (64 * SCALE, 4 * SCALE, 64 * SCALE, -4 * SCALE);
+    line (64 * SCALE, -4 * SCALE, 56 * SCALE, -4 * SCALE);
+    pin ("op", 60 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "or4_2" */
+  symbol ("or4_4") {
+    set_minimum_boundary (-141 * SCALE, -40 * SCALE, 60 * SCALE, 40 * SCALE);
+    line (-78 * SCALE, -30 * SCALE, -110 * SCALE, -30 * SCALE);
+    line (-110 * SCALE, -30 * SCALE, -140 * SCALE, -30 * SCALE);
+    line (-71 * SCALE, -10 * SCALE, -120 * SCALE, -10 * SCALE);
+    line (-120 * SCALE, -10 * SCALE, -141 * SCALE, -10 * SCALE);
+    line (-78 * SCALE, 30 * SCALE, -110 * SCALE, 30 * SCALE);
+    line (-110 * SCALE, 30 * SCALE, -141 * SCALE, 30 * SCALE);
+    line (-71 * SCALE, 10 * SCALE, -120 * SCALE, 10 * SCALE);
+    line (-120 * SCALE, 10 * SCALE, -140 * SCALE, 10 * SCALE);
+    line (5 * SCALE, 0 * SCALE, 60 * SCALE, 0 * SCALE);
+    arc (-46 * SCALE, 30 * SCALE, 5 * SCALE, 0 * SCALE,\
+        -45.0732 * SCALE, -26.7744 * SCALE);
+    line (-46 * SCALE, 30 * SCALE, -78 * SCALE, 30 * SCALE);
+    line (-46 * SCALE, -30 * SCALE, -78 * SCALE, -30 * SCALE);
+    arc (5 * SCALE, 0 * SCALE, -46 * SCALE, -30 * SCALE,\
+        -45.0732 * SCALE, 26.7744 * SCALE);
+    arc (-78 * SCALE, 30 * SCALE, -78 * SCALE, -30 * SCALE,\
+        -130.25 * SCALE, 0 * SCALE);
+    line (-144 * SCALE, -34 * SCALE, -144 * SCALE, -26 * SCALE);
+    line (-144 * SCALE, -26 * SCALE, -136 * SCALE, -26 * SCALE);
+    line (-136 * SCALE, -26 * SCALE, -136 * SCALE, -34 * SCALE);
+    line (-136 * SCALE, -34 * SCALE, -144 * SCALE, -34 * SCALE);
+    pin ("ip4", -140 * SCALE, -30 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, 26 * SCALE, -144 * SCALE, 34 * SCALE);
+    line (-144 * SCALE, 34 * SCALE, -136 * SCALE, 34 * SCALE);
+    line (-136 * SCALE, 34 * SCALE, -136 * SCALE, 26 * SCALE);
+    line (-136 * SCALE, 26 * SCALE, -144 * SCALE, 26 * SCALE);
+    pin ("ip1", -140 * SCALE, 30 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, 6 * SCALE, -144 * SCALE, 14 * SCALE);
+    line (-144 * SCALE, 14 * SCALE, -136 * SCALE, 14 * SCALE);
+    line (-136 * SCALE, 14 * SCALE, -136 * SCALE, 6 * SCALE);
+    line (-136 * SCALE, 6 * SCALE, -144 * SCALE, 6 * SCALE);
+    pin ("ip2", -140 * SCALE, 10 * SCALE, ANY_ROTATION);
+    line (-144 * SCALE, -14 * SCALE, -144 * SCALE, -6 * SCALE);
+    line (-144 * SCALE, -6 * SCALE, -136 * SCALE, -6 * SCALE);
+    line (-136 * SCALE, -6 * SCALE, -136 * SCALE, -14 * SCALE);
+    line (-136 * SCALE, -14 * SCALE, -144 * SCALE, -14 * SCALE);
+    pin ("ip3", -140 * SCALE, -10 * SCALE, ANY_ROTATION);
+    line (56 * SCALE, -4 * SCALE, 56 * SCALE, 4 * SCALE);
+    line (56 * SCALE, 4 * SCALE, 64 * SCALE, 4 * SCALE);
+    line (64 * SCALE, 4 * SCALE, 64 * SCALE, -4 * SCALE);
+    line (64 * SCALE, -4 * SCALE, 56 * SCALE, -4 * SCALE);
+    pin ("op", 60 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "or4_4" */
+  symbol ("xnor2_1") {
+    set_minimum_boundary (-160 * SCALE, -30 * SCALE, 40 * SCALE, 30 * SCALE);
+    circle (0 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (5 * SCALE, 0 * SCALE, 40 * SCALE, 0 * SCALE);
+    arc (-56 * SCALE, 30 * SCALE, -5 * SCALE, 0 * SCALE,\
+        -55.0732 * SCALE, -26.7744 * SCALE);
+    line (-56 * SCALE, 30 * SCALE, -88 * SCALE, 30 * SCALE);
+    line (-56 * SCALE, -30 * SCALE, -88 * SCALE, -30 * SCALE);
+    line (-94 * SCALE, 20 * SCALE, -160 * SCALE, 20 * SCALE);
+    arc (-5 * SCALE, 0 * SCALE, -56 * SCALE, -30 * SCALE,\
+        -55.0732 * SCALE, 26.7744 * SCALE);
+    arc (-98 * SCALE, 30 * SCALE, -98 * SCALE, -30 * SCALE,\
+        -150.25 * SCALE, 0 * SCALE);
+    line (-94 * SCALE, -20 * SCALE, -160 * SCALE, -20 * SCALE);
+    arc (-88 * SCALE, 30 * SCALE, -88 * SCALE, -30 * SCALE,\
+        -140.25 * SCALE, 0 * SCALE);
+    line (-164 * SCALE, -24 * SCALE, -164 * SCALE, -16 * SCALE);
+    line (-164 * SCALE, -16 * SCALE, -156 * SCALE, -16 * SCALE);
+    line (-156 * SCALE, -16 * SCALE, -156 * SCALE, -24 * SCALE);
+    line (-156 * SCALE, -24 * SCALE, -164 * SCALE, -24 * SCALE);
+    pin ("ip2", -160 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (36 * SCALE, -4 * SCALE, 36 * SCALE, 4 * SCALE);
+    line (36 * SCALE, 4 * SCALE, 44 * SCALE, 4 * SCALE);
+    line (44 * SCALE, 4 * SCALE, 44 * SCALE, -4 * SCALE);
+    line (44 * SCALE, -4 * SCALE, 36 * SCALE, -4 * SCALE);
+    pin ("op", 40 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-164 * SCALE, 16 * SCALE, -164 * SCALE, 24 * SCALE);
+    line (-164 * SCALE, 24 * SCALE, -156 * SCALE, 24 * SCALE);
+    line (-156 * SCALE, 24 * SCALE, -156 * SCALE, 16 * SCALE);
+    line (-156 * SCALE, 16 * SCALE, -164 * SCALE, 16 * SCALE);
+    pin ("ip1", -160 * SCALE, 20 * SCALE, ANY_ROTATION);
+  } /* end of symbol "xnor2_1" */
+  symbol ("xnor2_2") {
+    set_minimum_boundary (-160 * SCALE, -30 * SCALE, 40 * SCALE, 30 * SCALE);
+    circle (0 * SCALE, 0 * SCALE, 5 * SCALE);
+    line (5 * SCALE, 0 * SCALE, 40 * SCALE, 0 * SCALE);
+    arc (-56 * SCALE, 30 * SCALE, -5 * SCALE, 0 * SCALE,\
+        -55.0732 * SCALE, -26.7744 * SCALE);
+    line (-56 * SCALE, 30 * SCALE, -88 * SCALE, 30 * SCALE);
+    line (-56 * SCALE, -30 * SCALE, -88 * SCALE, -30 * SCALE);
+    line (-94 * SCALE, 20 * SCALE, -160 * SCALE, 20 * SCALE);
+    arc (-5 * SCALE, 0 * SCALE, -56 * SCALE, -30 * SCALE,\
+        -55.0732 * SCALE, 26.7744 * SCALE);
+    arc (-98 * SCALE, 30 * SCALE, -98 * SCALE, -30 * SCALE,\
+        -150.25 * SCALE, 0 * SCALE);
+    line (-94 * SCALE, -20 * SCALE, -160 * SCALE, -20 * SCALE);
+    arc (-88 * SCALE, 30 * SCALE, -88 * SCALE, -30 * SCALE,\
+        -140.25 * SCALE, 0 * SCALE);
+    line (-164 * SCALE, -24 * SCALE, -164 * SCALE, -16 * SCALE);
+    line (-164 * SCALE, -16 * SCALE, -156 * SCALE, -16 * SCALE);
+    line (-156 * SCALE, -16 * SCALE, -156 * SCALE, -24 * SCALE);
+    line (-156 * SCALE, -24 * SCALE, -164 * SCALE, -24 * SCALE);
+    pin ("ip2", -160 * SCALE, -20 * SCALE, ANY_ROTATION);
+    line (36 * SCALE, -4 * SCALE, 36 * SCALE, 4 * SCALE);
+    line (36 * SCALE, 4 * SCALE, 44 * SCALE, 4 * SCALE);
+    line (44 * SCALE, 4 * SCALE, 44 * SCALE, -4 * SCALE);
+    line (44 * SCALE, -4 * SCALE, 36 * SCALE, -4 * SCALE);
+    pin ("op", 40 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-164 * SCALE, 16 * SCALE, -164 * SCALE, 24 * SCALE);
+    line (-164 * SCALE, 24 * SCALE, -156 * SCALE, 24 * SCALE);
+    line (-156 * SCALE, 24 * SCALE, -156 * SCALE, 16 * SCALE);
+    line (-156 * SCALE, 16 * SCALE, -164 * SCALE, 16 * SCALE);
+    pin ("ip1", -160 * SCALE, 20 * SCALE, ANY_ROTATION);
+  } /* end of symbol "xnor2_2" */
+  symbol ("xor2_2") {
+    set_minimum_boundary (-160 * SCALE, -30 * SCALE, 40 * SCALE, 30 * SCALE);
+    line (-5 * SCALE, 0 * SCALE, 40 * SCALE, 0 * SCALE);
+    arc (-56 * SCALE, 30 * SCALE, -5 * SCALE, 0 * SCALE,\
+        -55.0732 * SCALE, -26.7744 * SCALE);
+    line (-56 * SCALE, 30 * SCALE, -88 * SCALE, 30 * SCALE);
+    line (-56 * SCALE, -30 * SCALE, -88 * SCALE, -30 * SCALE);
+    line (-94 * SCALE, 20 * SCALE, -160 * SCALE, 20 * SCALE);
+    arc (-5 * SCALE, 0 * SCALE, -56 * SCALE, -30 * SCALE,\
+        -55.0732 * SCALE, 26.7744 * SCALE);
+    arc (-98 * SCALE, 30 * SCALE, -98 * SCALE, -30 * SCALE,\
+        -150.25 * SCALE, 0 * SCALE);
+    line (-94 * SCALE, -20 * SCALE, -160 * SCALE, -20 * SCALE);
+    arc (-88 * SCALE, 30 * SCALE, -88 * SCALE, -30 * SCALE,\
+        -140.25 * SCALE, 0 * SCALE);
+    line (36 * SCALE, -4 * SCALE, 36 * SCALE, 4 * SCALE);
+    line (36 * SCALE, 4 * SCALE, 44 * SCALE, 4 * SCALE);
+    line (44 * SCALE, 4 * SCALE, 44 * SCALE, -4 * SCALE);
+    line (44 * SCALE, -4 * SCALE, 36 * SCALE, -4 * SCALE);
+    pin ("op", 40 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-164 * SCALE, 16 * SCALE, -164 * SCALE, 24 * SCALE);
+    line (-164 * SCALE, 24 * SCALE, -156 * SCALE, 24 * SCALE);
+    line (-156 * SCALE, 24 * SCALE, -156 * SCALE, 16 * SCALE);
+    line (-156 * SCALE, 16 * SCALE, -164 * SCALE, 16 * SCALE);
+    pin ("ip1", -160 * SCALE, 20 * SCALE, ANY_ROTATION);
+    line (-164 * SCALE, -24 * SCALE, -164 * SCALE, -16 * SCALE);
+    line (-164 * SCALE, -16 * SCALE, -156 * SCALE, -16 * SCALE);
+    line (-156 * SCALE, -16 * SCALE, -156 * SCALE, -24 * SCALE);
+    line (-156 * SCALE, -24 * SCALE, -164 * SCALE, -24 * SCALE);
+    pin ("ip2", -160 * SCALE, -20 * SCALE, ANY_ROTATION);
+  } /* end of symbol "xor2_2" */
+  symbol ("xor2_1") {
+    set_minimum_boundary (-160 * SCALE, -30 * SCALE, 40 * SCALE, 30 * SCALE);
+    line (-5 * SCALE, 0 * SCALE, 40 * SCALE, 0 * SCALE);
+    arc (-56 * SCALE, 30 * SCALE, -5 * SCALE, 0 * SCALE,\
+        -55.0732 * SCALE, -26.7744 * SCALE);
+    line (-56 * SCALE, 30 * SCALE, -88 * SCALE, 30 * SCALE);
+    line (-56 * SCALE, -30 * SCALE, -88 * SCALE, -30 * SCALE);
+    line (-94 * SCALE, 20 * SCALE, -160 * SCALE, 20 * SCALE);
+    arc (-5 * SCALE, 0 * SCALE, -56 * SCALE, -30 * SCALE,\
+        -55.0732 * SCALE, 26.7744 * SCALE);
+    arc (-98 * SCALE, 30 * SCALE, -98 * SCALE, -30 * SCALE,\
+        -150.25 * SCALE, 0 * SCALE);
+    line (-94 * SCALE, -20 * SCALE, -160 * SCALE, -20 * SCALE);
+    arc (-88 * SCALE, 30 * SCALE, -88 * SCALE, -30 * SCALE,\
+        -140.25 * SCALE, 0 * SCALE);
+    line (36 * SCALE, -4 * SCALE, 36 * SCALE, 4 * SCALE);
+    line (36 * SCALE, 4 * SCALE, 44 * SCALE, 4 * SCALE);
+    line (44 * SCALE, 4 * SCALE, 44 * SCALE, -4 * SCALE);
+    line (44 * SCALE, -4 * SCALE, 36 * SCALE, -4 * SCALE);
+    pin ("op", 40 * SCALE, 0 * SCALE, ANY_ROTATION);
+    line (-164 * SCALE, 16 * SCALE, -164 * SCALE, 24 * SCALE);
+    line (-164 * SCALE, 24 * SCALE, -156 * SCALE, 24 * SCALE);
+    line (-156 * SCALE, 24 * SCALE, -156 * SCALE, 16 * SCALE);
+    line (-156 * SCALE, 16 * SCALE, -164 * SCALE, 16 * SCALE);
+    pin ("ip1", -160 * SCALE, 20 * SCALE, ANY_ROTATION);
+    line (-164 * SCALE, -24 * SCALE, -164 * SCALE, -16 * SCALE);
+    line (-164 * SCALE, -16 * SCALE, -156 * SCALE, -16 * SCALE);
+    line (-156 * SCALE, -16 * SCALE, -156 * SCALE, -24 * SCALE);
+    line (-156 * SCALE, -24 * SCALE, -164 * SCALE, -24 * SCALE);
+    pin ("ip2", -160 * SCALE, -20 * SCALE, ANY_ROTATION);
+  } /* end of symbol "xor2_1" */
+} /* end of library "vtvt_tsmc180" */
+library("allSymbolsLib") {
+  SCALE = 1.0 / 1.0;
+  ROUTE_GRID = 1024;
+  set_route_grid(ROUTE_GRID);
+  set_meter_scale(0.0254 / (160 * SCALE * ROUTE_GRID));
+  symbol ("allSymbols") {
+  } /* end of symbol "allSymbols" */
+} /* end of library "allSymbolsLib" */

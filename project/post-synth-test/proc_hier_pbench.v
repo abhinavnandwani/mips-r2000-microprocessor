@@ -122,61 +122,98 @@ module proc_hier_pbench();
    /* Assign internal signals to top level wires
       The internal module names and signal names will vary depending
       on your naming convention and your design */
-
+   wire Done_DM;
    // Edit the example below. You must change the signal
    // names on the right hand side
     
-   assign PC = DUT.PC_Out;
-   assign Inst = DUT.Instruction_f;
+   // Fetch stage signals
+   assign PC = {DUT.p0.fetch0.instr_mem.\Addr<15> , DUT.p0.fetch0.instr_mem.\Addr<14> , DUT.p0.fetch0.instr_mem.\Addr<13> , 
+             DUT.p0.fetch0.instr_mem.\Addr<12> , DUT.p0.fetch0.instr_mem.\Addr<11> , DUT.p0.fetch0.instr_mem.\Addr<10> , 
+             DUT.p0.fetch0.instr_mem.\Addr<9> ,  DUT.p0.fetch0.instr_mem.\Addr<8> ,  DUT.p0.fetch0.instr_mem.\Addr<7> , 
+             DUT.p0.fetch0.instr_mem.\Addr<6> ,  DUT.p0.fetch0.instr_mem.\Addr<5> ,  DUT.p0.fetch0.instr_mem.\Addr<4> , 
+             DUT.p0.fetch0.instr_mem.\Addr<3> ,  DUT.p0.fetch0.instr_mem.\Addr<2> ,  DUT.p0.fetch0.instr_mem.\Addr<1> , 
+             DUT.p0.fetch0.instr_mem.\Addr<0> };  // Current PC from fetch stage
+
+   assign Inst = {DUT.p0.decode0.\instr<15> , DUT.p0.decode0.\instr<14> , DUT.p0.decode0.\instr<13> , 
+                  DUT.p0.decode0.\instr<12> , DUT.p0.decode0.\instr<11> , DUT.p0.decode0.\instr<10> , 
+                  DUT.p0.decode0.\instr<9> ,  DUT.p0.decode0.\instr<8> ,  DUT.p0.decode0.\instr<7> , 
+                  DUT.p0.decode0.\instr<6> ,  DUT.p0.decode0.\instr<5> ,  DUT.p0.decode0.\instr<4> , 
+                  DUT.p0.decode0.\instr<3> ,  DUT.p0.decode0.\instr<2> ,  DUT.p0.decode0.\instr<1> , 
+                  DUT.p0.decode0.\instr<0> }; // Instruction fetched
+
    
-   assign RegWrite = DUT.p0.regWrite;
+      // Decode stage signals
+   assign RegWrite = DUT.p0.decode0.regFile0.writeEn;     // Register write enable
    // Is register file being written to, one bit signal (1 means yes, 0 means no)
-   //    
-   assign WriteRegister = DUT.p0.DstwithJmout;
+   
+   assign WriteRegister = {DUT.p0.\DMWB_RD<2> , DUT.p0.\DMWB_RD<1> , DUT.p0.\DMWB_RD<0> };  // Register destination address
    // The name of the register being written to. (3 bit signal)
    
-   assign WriteData = DUT.p0.wData;
+   assign WriteData = {DUT.p0.wb0.\WB<15> , DUT.p0.wb0.\WB<14> , DUT.p0.wb0.\WB<13> , 
+                    DUT.p0.wb0.\WB<12> , DUT.p0.wb0.\WB<11> , DUT.p0.wb0.\WB<10> , 
+                    DUT.p0.wb0.\WB<9> ,  DUT.p0.wb0.\WB<8> ,  DUT.p0.wb0.\WB<7> , 
+                    DUT.p0.wb0.\WB<6> ,  DUT.p0.wb0.\WB<5> ,  DUT.p0.wb0.\WB<4> , 
+                    DUT.p0.wb0.\WB<3> ,  DUT.p0.wb0.\WB<2> ,  DUT.p0.wb0.\WB<1> , 
+                    DUT.p0.wb0.\WB<0> };
+
+            
+   // Data to write to register
    // Data being written to the register. (16 bits)
    
-   assign MemRead =  (DUT.p0.memRxout & ~DUT.p0.notdonem);
+   // Memory stage signals
+   assign Done_DM = DUT.p0.Done_DM;
+
+   assign MemRead =  (DUT.p0.memory0.data_mem.Rd & Done_DM);      // Memory read enable
    // Is memory being read, one bit signal (1 means yes, 0 means no)
    
-   assign MemWrite = (DUT.p0.memWxout & ~DUT.p0.notdonem);
+   assign MemWrite =  (DUT.p0.memory0.data_mem.Wr & Done_DM);   // Memory write enable
    // Is memory being written to (1 bit signal)
    
-   assign MemAddress = DUT.p0.data1out;
-   // Address to access memory with (for both reads and writes to memory, 16 bits)
-   
-   assign MemDataIn = DUT.p0.data2out;
-   // Data to be written to memory for memory writes (16 bits)
-   
-   assign MemDataOut = DUT.p0.readData;
-   // Data read from memory for memory reads (16 bits)
+   assign MemAddress = {DUT.p0.memory0.\ALU<15> , DUT.p0.memory0.\ALU<14> , DUT.p0.memory0.\ALU<13> , 
+                     DUT.p0.memory0.\ALU<12> , DUT.p0.memory0.\ALU<11> , DUT.p0.memory0.\ALU<10> , 
+                     DUT.p0.memory0.\ALU<9> ,  DUT.p0.memory0.\ALU<8> ,  DUT.p0.memory0.\ALU<7> , 
+                     DUT.p0.memory0.\ALU<6> ,  DUT.p0.memory0.\ALU<5> ,  DUT.p0.memory0.\ALU<4> , 
+                     DUT.p0.memory0.\ALU<3> ,  DUT.p0.memory0.\ALU<2> ,  DUT.p0.memory0.\ALU<1> , 
+                     DUT.p0.memory0.\ALU<0> }; // Address for memory read/write
+
+   assign MemDataIn = {DUT.p0.memory0.data_mem.\DataIn<15> , DUT.p0.memory0.data_mem.\DataIn<14> , 
+                     DUT.p0.memory0.data_mem.\DataIn<13> , DUT.p0.memory0.data_mem.\DataIn<12> , 
+                     DUT.p0.memory0.data_mem.\DataIn<11> , DUT.p0.memory0.data_mem.\DataIn<10> , 
+                     DUT.p0.memory0.data_mem.\DataIn<9> ,  DUT.p0.memory0.data_mem.\DataIn<8> ,  
+                     DUT.p0.memory0.data_mem.\DataIn<7> ,  DUT.p0.memory0.data_mem.\DataIn<6> ,  
+                     DUT.p0.memory0.data_mem.\DataIn<5> ,  DUT.p0.memory0.data_mem.\DataIn<4> ,  
+                     DUT.p0.memory0.data_mem.\DataIn<3> ,  DUT.p0.memory0.data_mem.\DataIn<2> ,  
+                     DUT.p0.memory0.data_mem.\DataIn<1> ,  DUT.p0.memory0.data_mem.\DataIn<0> }; // Data to write to memory
+
+   assign MemDataOut = {DUT.p0.memory0.data_mem.\DataOut<15> , DUT.p0.memory0.data_mem.\DataOut<14> , 
+                        DUT.p0.memory0.data_mem.\DataOut<13> , DUT.p0.memory0.data_mem.\DataOut<12> , 
+                        DUT.p0.memory0.data_mem.\DataOut<11> , DUT.p0.memory0.data_mem.\DataOut<10> , 
+                        DUT.p0.memory0.data_mem.\DataOut<9> ,  DUT.p0.memory0.data_mem.\DataOut<8> ,  
+                        DUT.p0.memory0.data_mem.\DataOut<7> ,  DUT.p0.memory0.data_mem.\DataOut<6> ,  
+                        DUT.p0.memory0.data_mem.\DataOut<5> ,  DUT.p0.memory0.data_mem.\DataOut<4> ,  
+                        DUT.p0.memory0.data_mem.\DataOut<3> ,  DUT.p0.memory0.data_mem.\DataOut<2> ,  
+                        DUT.p0.memory0.data_mem.\DataOut<1> ,  DUT.p0.memory0.data_mem.\DataOut<0> }; // Data read from memory
+
 
    // new added 05/03
-   assign ICacheReq = DUT.p0.readData;
+   assign ICacheReq = DUT.p0.fetch0.instr_mem.Rd;
    // Signal indicating a valid instruction read request to cache
    // Above assignment is a dummy example
    
-   assign ICacheHit = DUT.p0.readData;
+   assign ICacheHit = DUT.p0.fetch0.instr_mem.CacheHit;
    // Signal indicating a valid instruction cache hit
    // Above assignment is a dummy example
 
-   assign DCacheReq = DUT.p0.readData;
+   assign DCacheReq = DUT.p0.memory0.data_mem.Rd | DUT.p0.memory0.data_mem.Wr;
    // Signal indicating a valid instruction data read or write request to cache
    // Above assignment is a dummy example
    //    
-   assign DCacheHit = DUT.p0.readData;
+   assign DCacheHit = DUT.p0.memory0.data_mem.CacheHit;
    // Signal indicating a valid data cache hit
    // Above assignment is a dummy example
    
-   assign Halt = DUT.p0.haltxout;
+   assign Halt = DUT.p0.EXDM_HaltSig;
    // Processor halted
-   
-   
-   /* Add anything else you want here */
-
-   
 endmodule
 `default_nettype wire
 // DUMMY LINE FOR REV CONTROL :0:

@@ -1,0 +1,117 @@
+/* Edif file name is "CADENCE_EDIF" */
+
+/* EDIF version: 2 0 0 */
+
+library("basic") {
+
+  SCALE = 1.0 / 10.0;
+  ROUTE_GRID = 1024;
+  set_route_grid(ROUTE_GRID);
+  set_meter_scale(0.0254 / (160 * SCALE * ROUTE_GRID));
+
+  /* special symbol name declarations */
+
+  in_port_symbol	: ipin;
+  out_port_symbol	: opin;
+  inout_port_symbol	: iopin;
+  in_osc_symbol		: iosc;
+  out_osc_symbol	: oosc;
+  inout_osc_symbol	: oosc;
+  logic_1_symbol	: vdd;
+  logic_0_symbol	: gnd;
+
+  symbol("ipin") {
+    set_minimum_boundary(-20 * SCALE, -10 * SCALE, 0 * SCALE, 10 * SCALE);
+    line(-20 * SCALE, -9 * SCALE, -20 * SCALE, 9 * SCALE);
+    line(-20 * SCALE, 9 * SCALE, -9 * SCALE, 9 * SCALE);
+    line(-9 * SCALE, 9 * SCALE, 0 * SCALE, 0 * SCALE);
+    line(0 * SCALE, 0 * SCALE, -9 * SCALE, -9 * SCALE);
+    line(-20 * SCALE, -9 * SCALE, -9 * SCALE, -9 * SCALE);
+    line(-20 * SCALE, -9 * SCALE, -20 * SCALE, 9 * SCALE);
+    line(-20 * SCALE, 9 * SCALE, -9 * SCALE, 9 * SCALE);
+    line(-9 * SCALE, 9 * SCALE, 0 * SCALE, 0 * SCALE);
+    line(0 * SCALE, 0 * SCALE, -9 * SCALE, -9 * SCALE);
+    line(-9 * SCALE, -9 * SCALE, -20 * SCALE, -9 * SCALE);
+    pin("ipin", 0 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "ipin" */
+
+  symbol("opin") {
+    set_minimum_boundary(0 * SCALE, -10 * SCALE, 20 * SCALE, 10 * SCALE);
+    line(0 * SCALE, -9 * SCALE, 0 * SCALE, 9 * SCALE);
+    line(0 * SCALE, 9 * SCALE, 11 * SCALE, 9 * SCALE);
+    line(11 * SCALE, 9 * SCALE, 20 * SCALE, 0 * SCALE);
+    line(20 * SCALE, 0 * SCALE, 11 * SCALE, -9 * SCALE);
+    line(0 * SCALE, -9 * SCALE, 11 * SCALE, -9 * SCALE);
+    line(0 * SCALE, -9 * SCALE, 0 * SCALE, 9 * SCALE);
+    line(0 * SCALE, 9 * SCALE, 11 * SCALE, 9 * SCALE);
+    line(11 * SCALE, 9 * SCALE, 20 * SCALE, 0 * SCALE);
+    line(20 * SCALE, 0 * SCALE, 11 * SCALE, -9 * SCALE);
+    line(11 * SCALE, -9 * SCALE, 0 * SCALE, -9 * SCALE);
+    pin("opin", 0 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "opin" */
+
+  symbol("iopin") {
+    set_minimum_boundary(-14 * SCALE, -10 * SCALE, 14 * SCALE, 10 * SCALE);
+    line(14 * SCALE, 0 * SCALE, 5 * SCALE, 9 * SCALE);
+    line(5 * SCALE, 9 * SCALE, -5 * SCALE, 9 * SCALE);
+    line(-5 * SCALE, 9 * SCALE, -14 * SCALE, 0 * SCALE);
+    line(-14 * SCALE, 0 * SCALE, -5 * SCALE, -9 * SCALE);
+    line(-5 * SCALE, -9 * SCALE, 5 * SCALE, -9 * SCALE);
+    line(14 * SCALE, 0 * SCALE, 5 * SCALE, -9 * SCALE);
+    line(14 * SCALE, 0 * SCALE, 5 * SCALE, -9 * SCALE);
+    line(5 * SCALE, -9 * SCALE, -5 * SCALE, -9 * SCALE);
+    line(-5 * SCALE, -9 * SCALE, -14 * SCALE, 0 * SCALE);
+    line(-14 * SCALE, 0 * SCALE, -5 * SCALE, 9 * SCALE);
+    line(-5 * SCALE, 9 * SCALE, 5 * SCALE, 9 * SCALE);
+    line(14 * SCALE, 0 * SCALE, 5 * SCALE, 9 * SCALE);
+    pin("iopin", 0 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "iopin" */
+
+  symbol("iosc") {
+    set_minimum_boundary(-20 * SCALE, -10 * SCALE, 0 * SCALE, 10 * SCALE);
+    line(-11 * SCALE, 0 * SCALE, -20 * SCALE, 9 * SCALE);
+    line(-20 * SCALE, 9 * SCALE, -20 * SCALE, -9 * SCALE);
+    line(-11 * SCALE, 0 * SCALE, -20 * SCALE, -9 * SCALE);
+    line(-11 * SCALE, 0 * SCALE, 0 * SCALE, 0 * SCALE);
+    line(0 * SCALE, 0 * SCALE, -11 * SCALE, 0 * SCALE);
+    line(-20 * SCALE, -9 * SCALE, -11 * SCALE, 0 * SCALE);
+    line(-11 * SCALE, 0 * SCALE, 0 * SCALE, 0 * SCALE);
+    line(0 * SCALE, 0 * SCALE, -11 * SCALE, 0 * SCALE);
+    line(-11 * SCALE, 0 * SCALE, -20 * SCALE, 9 * SCALE);
+    line(-20 * SCALE, -9 * SCALE, -20 * SCALE, 9 * SCALE);
+    pin("iosc", 0 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "iosc" */
+
+  symbol("oosc") {
+    set_minimum_boundary(0 * SCALE, -10 * SCALE, 20 * SCALE, 10 * SCALE);
+    line(0 * SCALE, 0 * SCALE, 11 * SCALE, 0 * SCALE);
+    line(11 * SCALE, 0 * SCALE, 0 * SCALE, 0 * SCALE);
+    line(20 * SCALE, 0 * SCALE, 11 * SCALE, 9 * SCALE);
+    line(11 * SCALE, 9 * SCALE, 11 * SCALE, -9 * SCALE);
+    line(20 * SCALE, 0 * SCALE, 11 * SCALE, -9 * SCALE);
+    line(11 * SCALE, 0 * SCALE, 11 * SCALE, 9 * SCALE);
+    line(11 * SCALE, 9 * SCALE, 20 * SCALE, 0 * SCALE);
+    line(20 * SCALE, 0 * SCALE, 11 * SCALE, -9 * SCALE);
+    line(11 * SCALE, -9 * SCALE, 11 * SCALE, 0 * SCALE);
+    line(11 * SCALE, 0 * SCALE, 0 * SCALE, 0 * SCALE);
+    line(11 * SCALE, 0 * SCALE, 0 * SCALE, 0 * SCALE);
+    pin("oosc", 0 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "oosc" */
+
+  symbol("vdd") {
+    set_minimum_boundary(-25 * SCALE, 0 * SCALE, 25 * SCALE, 50 * SCALE);
+    line(0 * SCALE, 0 * SCALE, 0 * SCALE, 40 * SCALE);
+    line(-25 * SCALE, 40 * SCALE, 25 * SCALE, 40 * SCALE);
+    pin("vdd!", 0 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "vdd" */
+
+  symbol("gnd") {
+    set_minimum_boundary(-10 * SCALE, -40 * SCALE, 10 * SCALE, 0 * SCALE);
+    line(-10 * SCALE, -30 * SCALE, 10 * SCALE, -30 * SCALE);
+    line(10 * SCALE, -30 * SCALE, 0 * SCALE, -40 * SCALE);
+    line(-10 * SCALE, -30 * SCALE, 0 * SCALE, -40 * SCALE);
+    line(0 * SCALE, 0 * SCALE, 0 * SCALE, -30 * SCALE);
+    pin("gnd!", 0 * SCALE, 0 * SCALE, ANY_ROTATION);
+  } /* end of symbol "gnd" */
+
+} /* end of library "basic" */

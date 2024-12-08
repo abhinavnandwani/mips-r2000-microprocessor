@@ -1,0 +1,432 @@
+/* Edif file name is "CADENCE_EDIF" */
+
+/* EDIF version: 2 0 0 */
+
+library("US.8ths") {
+
+  SCALE = 1.0 / 10.0;
+  ROUTE_GRID = 1024;
+  set_route_grid(ROUTE_GRID);
+  set_meter_scale(0.0254 / (160 * SCALE * ROUTE_GRID));
+
+  symbol("Sup.ABG") {
+    set_minimum_boundary(0 * SCALE, 0 * SCALE, 500 * SCALE, 40 * SCALE);
+    line(120 * SCALE, 40 * SCALE, 120 * SCALE, 0 * SCALE);
+    line(380 * SCALE, 0 * SCALE, 380 * SCALE, 40 * SCALE);
+    line(380 * SCALE, 0 * SCALE, 380 * SCALE, 40 * SCALE);
+    line(440 * SCALE, 40 * SCALE, 440 * SCALE, 0 * SCALE);
+    line(440 * SCALE, 0 * SCALE, 440 * SCALE, 40 * SCALE);
+    line(140 * SCALE, 0 * SCALE, 500 * SCALE, 0 * SCALE);
+    line(500 * SCALE, 0 * SCALE, 500 * SCALE, 40 * SCALE);
+    line(500 * SCALE, 40 * SCALE, 0 * SCALE, 40 * SCALE);
+    line(0 * SCALE, 40 * SCALE, 0 * SCALE, 0 * SCALE);
+    line(0 * SCALE, 0 * SCALE, 140 * SCALE, 0 * SCALE);
+  } /* end of symbol "Sup.ABG" */
+
+  symbol("Sup.CDEFHJK") {
+    set_minimum_boundary(0 * SCALE, 0 * SCALE, 760 * SCALE, 60 * SCALE);
+    line(140 * SCALE, 0 * SCALE, 760 * SCALE, 0 * SCALE);
+    line(760 * SCALE, 0 * SCALE, 760 * SCALE, 60 * SCALE);
+    line(760 * SCALE, 60 * SCALE, 0 * SCALE, 60 * SCALE);
+    line(0 * SCALE, 60 * SCALE, 0 * SCALE, 0 * SCALE);
+    line(0 * SCALE, 0 * SCALE, 140 * SCALE, 0 * SCALE);
+    line(670 * SCALE, 0 * SCALE, 670 * SCALE, 60 * SCALE);
+    line(600 * SCALE, 0 * SCALE, 600 * SCALE, 60 * SCALE);
+    line(670 * SCALE, 60 * SCALE, 670 * SCALE, 0 * SCALE);
+    line(120 * SCALE, 0 * SCALE, 120 * SCALE, 60 * SCALE);
+    line(600 * SCALE, 0 * SCALE, 600 * SCALE, 60 * SCALE);
+  } /* end of symbol "Sup.CDEFHJK" */
+
+  symbol("Title") {
+    set_minimum_boundary(0 * SCALE, 0 * SCALE, 1010 * SCALE, 280 * SCALE);
+    line(320 * SCALE, 0 * SCALE, 320 * SCALE, 280 * SCALE);
+    line(0 * SCALE, 48 * SCALE, 320 * SCALE, 48 * SCALE);
+    line(320 * SCALE, 48 * SCALE, 320 * SCALE, 96 * SCALE);
+    line(320 * SCALE, 96 * SCALE, 0 * SCALE, 96 * SCALE);
+    line(0 * SCALE, 96 * SCALE, 0 * SCALE, 144 * SCALE);
+    line(0 * SCALE, 144 * SCALE, 320 * SCALE, 144 * SCALE);
+    line(320 * SCALE, 144 * SCALE, 320 * SCALE, 192 * SCALE);
+    line(320 * SCALE, 192 * SCALE, 0 * SCALE, 192 * SCALE);
+    line(0 * SCALE, 192 * SCALE, 0 * SCALE, 240 * SCALE);
+    line(0 * SCALE, 240 * SCALE, 320 * SCALE, 240 * SCALE);
+    line(240 * SCALE, 281 * SCALE, 240 * SCALE, 0 * SCALE);
+    line(320 * SCALE, 220 * SCALE, 1010 * SCALE, 220 * SCALE);
+    line(730 * SCALE, 0 * SCALE, 730 * SCALE, 40 * SCALE);
+    line(950 * SCALE, 40 * SCALE, 950 * SCALE, 100 * SCALE);
+    line(380 * SCALE, 40 * SCALE, 380 * SCALE, 100 * SCALE);
+    line(1010 * SCALE, 40 * SCALE, 320 * SCALE, 40 * SCALE);
+    line(490 * SCALE, 0 * SCALE, 490 * SCALE, 40 * SCALE);
+    line(320 * SCALE, 0 * SCALE, 0 * SCALE, 0 * SCALE);
+    line(0 * SCALE, 0 * SCALE, 0 * SCALE, 280 * SCALE);
+    line(0 * SCALE, 280 * SCALE, 1010 * SCALE, 280 * SCALE);
+    line(1010 * SCALE, 280 * SCALE, 1010 * SCALE, 0 * SCALE);
+    line(1010 * SCALE, 0 * SCALE, 320 * SCALE, 0 * SCALE);
+    line(320 * SCALE, 100 * SCALE, 1010 * SCALE, 100 * SCALE);
+    line(560 * SCALE, 40 * SCALE, 560 * SCALE, 100 * SCALE);
+  } /* end of symbol "Title" */
+
+  symbol("TitleL") {
+    set_minimum_boundary(0 * SCALE, 0 * SCALE, 1220 * SCALE, 400 * SCALE);
+    line(690 * SCALE, 40 * SCALE, 690 * SCALE, 120 * SCALE);
+    line(600 * SCALE, 0 * SCALE, 600 * SCALE, 40 * SCALE);
+    line(940 * SCALE, 0 * SCALE, 940 * SCALE, 40 * SCALE);
+    line(480 * SCALE, 40 * SCALE, 480 * SCALE, 120 * SCALE);
+    line(400 * SCALE, 0 * SCALE, 400 * SCALE, 400 * SCALE);
+    line(0 * SCALE, 64 * SCALE, 400 * SCALE, 64 * SCALE);
+    line(400 * SCALE, 64 * SCALE, 400 * SCALE, 128 * SCALE);
+    line(400 * SCALE, 128 * SCALE, 0 * SCALE, 128 * SCALE);
+    line(0 * SCALE, 128 * SCALE, 0 * SCALE, 192 * SCALE);
+    line(0 * SCALE, 192 * SCALE, 400 * SCALE, 192 * SCALE);
+    line(400 * SCALE, 192 * SCALE, 400 * SCALE, 256 * SCALE);
+    line(400 * SCALE, 256 * SCALE, 0 * SCALE, 256 * SCALE);
+    line(0 * SCALE, 256 * SCALE, 0 * SCALE, 320 * SCALE);
+    line(0 * SCALE, 320 * SCALE, 400 * SCALE, 320 * SCALE);
+    line(1140 * SCALE, 40 * SCALE, 1140 * SCALE, 120 * SCALE);
+    line(400 * SCALE, 300 * SCALE, 1220 * SCALE, 300 * SCALE);
+    line(400 * SCALE, 0 * SCALE, 0 * SCALE, 0 * SCALE);
+    line(0 * SCALE, 0 * SCALE, 0 * SCALE, 400 * SCALE);
+    line(0 * SCALE, 400 * SCALE, 1220 * SCALE, 400 * SCALE);
+    line(1220 * SCALE, 400 * SCALE, 1220 * SCALE, 0 * SCALE);
+    line(1220 * SCALE, 0 * SCALE, 400 * SCALE, 0 * SCALE);
+    line(400 * SCALE, 120 * SCALE, 1220 * SCALE, 120 * SCALE);
+    line(1220 * SCALE, 40 * SCALE, 400 * SCALE, 40 * SCALE);
+    line(320 * SCALE, 401 * SCALE, 320 * SCALE, 0 * SCALE);
+  } /* end of symbol "TitleL" */
+
+  symbol("revBlock") {
+    set_minimum_boundary(0 * SCALE, 0 * SCALE, 840 * SCALE, 120 * SCALE);
+    line(120 * SCALE, 0 * SCALE, 120 * SCALE, 80 * SCALE);
+    line(0 * SCALE, 80 * SCALE, 840 * SCALE, 80 * SCALE);
+    line(840 * SCALE, 0 * SCALE, 840 * SCALE, 120 * SCALE);
+    line(840 * SCALE, 120 * SCALE, 0 * SCALE, 120 * SCALE);
+    line(0 * SCALE, 120 * SCALE, 0 * SCALE, 0 * SCALE);
+    line(60 * SCALE, 80 * SCALE, 60 * SCALE, 0 * SCALE);
+    line(560 * SCALE, 0 * SCALE, 560 * SCALE, 80 * SCALE);
+    line(-5 * SCALE, 120 * SCALE, 840 * SCALE, 120 * SCALE);
+    line(840 * SCALE, 120 * SCALE, 840 * SCALE, 0 * SCALE);
+    line(680 * SCALE, 0 * SCALE, 680 * SCALE, 80 * SCALE);
+    line(840 * SCALE, 40 * SCALE, 0 * SCALE, 40 * SCALE);
+  } /* end of symbol "revBlock" */
+
+  symbol("revBlockL") {
+    set_minimum_boundary(0 * SCALE, 0 * SCALE, 1200 * SCALE, 120 * SCALE);
+    line(-5 * SCALE, 120 * SCALE, 1200 * SCALE, 120 * SCALE);
+    line(1200 * SCALE, 120 * SCALE, 1200 * SCALE, 0 * SCALE);
+    line(120 * SCALE, 0 * SCALE, 120 * SCALE, 80 * SCALE);
+    line(1040 * SCALE, 0 * SCALE, 1040 * SCALE, 80 * SCALE);
+    line(1200 * SCALE, 40 * SCALE, 0 * SCALE, 40 * SCALE);
+    line(60 * SCALE, 80 * SCALE, 60 * SCALE, 0 * SCALE);
+    line(920 * SCALE, 0 * SCALE, 920 * SCALE, 80 * SCALE);
+    line(1200 * SCALE, 0 * SCALE, 1200 * SCALE, 120 * SCALE);
+    line(1200 * SCALE, 120 * SCALE, 0 * SCALE, 120 * SCALE);
+    line(0 * SCALE, 120 * SCALE, 0 * SCALE, 0 * SCALE);
+    line(0 * SCALE, 80 * SCALE, 1200 * SCALE, 80 * SCALE);
+  } /* end of symbol "revBlockL" */
+
+  symbol("Asize") {
+    template : A;
+    landscape : TRUE;
+    set_usable_area(40 * SCALE, 60 * SCALE, 1720 * SCALE, 1300 * SCALE);
+    line(13 * SCALE, 690 * SCALE, 38 * SCALE, 680 * SCALE);
+    line(38 * SCALE, 680 * SCALE, 13 * SCALE, 670 * SCALE);
+    line(13 * SCALE, 690 * SCALE, 13 * SCALE, 670 * SCALE);
+    line(38 * SCALE, 680 * SCALE, 0 * SCALE, 680 * SCALE);
+    line(1747 * SCALE, 670 * SCALE, 1722 * SCALE, 680 * SCALE);
+    line(1722 * SCALE, 680 * SCALE, 1747 * SCALE, 690 * SCALE);
+    line(1747 * SCALE, 670 * SCALE, 1747 * SCALE, 690 * SCALE);
+    line(890 * SCALE, 1327 * SCALE, 880 * SCALE, 1302 * SCALE);
+    line(880 * SCALE, 1302 * SCALE, 870 * SCALE, 1327 * SCALE);
+    line(890 * SCALE, 1327 * SCALE, 870 * SCALE, 1327 * SCALE);
+    line(1722 * SCALE, 680 * SCALE, 1760 * SCALE, 680 * SCALE);
+    line(880 * SCALE, 1302 * SCALE, 880 * SCALE, 1347 * SCALE);
+    line(870 * SCALE, 33 * SCALE, 880 * SCALE, 58 * SCALE);
+    line(880 * SCALE, 58 * SCALE, 890 * SCALE, 33 * SCALE);
+    line(870 * SCALE, 33 * SCALE, 890 * SCALE, 33 * SCALE);
+    line(880 * SCALE, 58 * SCALE, 880 * SCALE, 13 * SCALE);
+    line(1720 * SCALE, 60 * SCALE, 40 * SCALE, 60 * SCALE);
+    line(40 * SCALE, 60 * SCALE, 40 * SCALE, 1300 * SCALE);
+    line(40 * SCALE, 1300 * SCALE, 1720 * SCALE, 1300 * SCALE);
+    line(1720 * SCALE, 1300 * SCALE, 1720 * SCALE, 60 * SCALE);
+    line(0 * SCALE, 0 * SCALE, 1760 * SCALE, 0 * SCALE);
+    line(1760 * SCALE, 0 * SCALE, 1760 * SCALE, 1360 * SCALE);
+    line(1760 * SCALE, 1360 * SCALE, 0 * SCALE, 1360 * SCALE);
+    line(0 * SCALE, 1360 * SCALE, 0 * SCALE, 0 * SCALE);
+  } /* end of symbol "Asize" */
+
+  symbol("Asize.book") {
+    template : A;
+    landscape : FALSE;
+    set_usable_area(60 * SCALE, 40 * SCALE, 1300 * SCALE, 1720 * SCALE);
+    line(1302 * SCALE, 880 * SCALE, 1347 * SCALE, 880 * SCALE);
+    line(1300 * SCALE, 1700 * SCALE, 1300 * SCALE, 40 * SCALE);
+    line(1300 * SCALE, 40 * SCALE, 60 * SCALE, 40 * SCALE);
+    line(60 * SCALE, 40 * SCALE, 60 * SCALE, 1720 * SCALE);
+    line(60 * SCALE, 1720 * SCALE, 1300 * SCALE, 1720 * SCALE);
+    line(1300 * SCALE, 1720 * SCALE, 1300 * SCALE, 1700 * SCALE);
+    line(1327 * SCALE, 870 * SCALE, 1302 * SCALE, 880 * SCALE);
+    line(1302 * SCALE, 880 * SCALE, 1327 * SCALE, 890 * SCALE);
+    line(1327 * SCALE, 870 * SCALE, 1327 * SCALE, 890 * SCALE);
+    line(58 * SCALE, 880 * SCALE, 13 * SCALE, 880 * SCALE);
+    line(690 * SCALE, 1747 * SCALE, 680 * SCALE, 1722 * SCALE);
+    line(680 * SCALE, 1722 * SCALE, 670 * SCALE, 1747 * SCALE);
+    line(690 * SCALE, 1747 * SCALE, 670 * SCALE, 1747 * SCALE);
+    line(33 * SCALE, 890 * SCALE, 58 * SCALE, 880 * SCALE);
+    line(58 * SCALE, 880 * SCALE, 33 * SCALE, 870 * SCALE);
+    line(33 * SCALE, 890 * SCALE, 33 * SCALE, 870 * SCALE);
+    line(680 * SCALE, 38 * SCALE, 680 * SCALE, 0 * SCALE);
+    line(680 * SCALE, 1722 * SCALE, 680 * SCALE, 1760 * SCALE);
+    line(1360 * SCALE, 0 * SCALE, 1360 * SCALE, 1760 * SCALE);
+    line(1360 * SCALE, 1760 * SCALE, 0 * SCALE, 1760 * SCALE);
+    line(0 * SCALE, 1760 * SCALE, 0 * SCALE, 0 * SCALE);
+    line(0 * SCALE, 0 * SCALE, 1360 * SCALE, 0 * SCALE);
+    line(670 * SCALE, 13 * SCALE, 680 * SCALE, 38 * SCALE);
+    line(680 * SCALE, 38 * SCALE, 690 * SCALE, 13 * SCALE);
+    line(670 * SCALE, 13 * SCALE, 690 * SCALE, 13 * SCALE);
+  } /* end of symbol "Asize.book" */
+
+  symbol("Bsize") {
+    template : B;
+    landscape : TRUE;
+    set_usable_area(100 * SCALE, 60 * SCALE, 2620 * SCALE, 1700 * SCALE);
+    line(160 * SCALE, 60 * SCALE, 100 * SCALE, 60 * SCALE);
+    line(100 * SCALE, 60 * SCALE, 100 * SCALE, 1700 * SCALE);
+    line(100 * SCALE, 1700 * SCALE, 2620 * SCALE, 1700 * SCALE);
+    line(2620 * SCALE, 1700 * SCALE, 2620 * SCALE, 60 * SCALE);
+    line(2620 * SCALE, 60 * SCALE, 160 * SCALE, 60 * SCALE);
+    line(60 * SCALE, 890 * SCALE, 97 * SCALE, 880 * SCALE);
+    line(97 * SCALE, 880 * SCALE, 60 * SCALE, 870 * SCALE);
+    line(60 * SCALE, 890 * SCALE, 60 * SCALE, 870 * SCALE);
+    line(97 * SCALE, 880 * SCALE, 20 * SCALE, 880 * SCALE);
+    line(2660 * SCALE, 870 * SCALE, 2622 * SCALE, 880 * SCALE);
+    line(2622 * SCALE, 880 * SCALE, 2660 * SCALE, 890 * SCALE);
+    line(2660 * SCALE, 870 * SCALE, 2660 * SCALE, 890 * SCALE);
+    line(1360 * SCALE, 58 * SCALE, 1360 * SCALE, 13 * SCALE);
+    line(1370 * SCALE, 1727 * SCALE, 1360 * SCALE, 1702 * SCALE);
+    line(1360 * SCALE, 1702 * SCALE, 1350 * SCALE, 1727 * SCALE);
+    line(1370 * SCALE, 1727 * SCALE, 1350 * SCALE, 1727 * SCALE);
+    line(2622 * SCALE, 880 * SCALE, 2700 * SCALE, 880 * SCALE);
+    line(1350 * SCALE, 33 * SCALE, 1360 * SCALE, 58 * SCALE);
+    line(1360 * SCALE, 58 * SCALE, 1370 * SCALE, 33 * SCALE);
+    line(1350 * SCALE, 33 * SCALE, 1370 * SCALE, 33 * SCALE);
+    line(0 * SCALE, 0 * SCALE, 2720 * SCALE, 0 * SCALE);
+    line(2720 * SCALE, 0 * SCALE, 2720 * SCALE, 1760 * SCALE);
+    line(2720 * SCALE, 1760 * SCALE, 0 * SCALE, 1760 * SCALE);
+    line(0 * SCALE, 1760 * SCALE, 0 * SCALE, 0 * SCALE);
+    line(1360 * SCALE, 1702 * SCALE, 1360 * SCALE, 1747 * SCALE);
+  } /* end of symbol "Bsize" */
+
+  symbol("Csize") {
+    template : C;
+    landscape : TRUE;
+    set_usable_area(80 * SCALE, 120 * SCALE, 3440 * SCALE, 2600 * SCALE);
+    line(1750 * SCALE, 87 * SCALE, 1760 * SCALE, 119 * SCALE);
+    line(1760 * SCALE, 119 * SCALE, 1770 * SCALE, 87 * SCALE);
+    line(1750 * SCALE, 87 * SCALE, 1770 * SCALE, 87 * SCALE);
+    line(160 * SCALE, 120 * SCALE, 80 * SCALE, 120 * SCALE);
+    line(80 * SCALE, 120 * SCALE, 80 * SCALE, 2600 * SCALE);
+    line(80 * SCALE, 2600 * SCALE, 3440 * SCALE, 2600 * SCALE);
+    line(3440 * SCALE, 2600 * SCALE, 3440 * SCALE, 120 * SCALE);
+    line(3440 * SCALE, 120 * SCALE, 160 * SCALE, 120 * SCALE);
+    line(1760 * SCALE, 2623 * SCALE, 1760 * SCALE, 2663 * SCALE);
+    line(45 * SCALE, 1350 * SCALE, 77 * SCALE, 1360 * SCALE);
+    line(77 * SCALE, 1360 * SCALE, 45 * SCALE, 1370 * SCALE);
+    line(45 * SCALE, 1350 * SCALE, 45 * SCALE, 1370 * SCALE);
+    line(80 * SCALE, 680 * SCALE, 20 * SCALE, 680 * SCALE);
+    line(880 * SCALE, 2600 * SCALE, 880 * SCALE, 2660 * SCALE);
+    line(3460 * SCALE, 1360 * SCALE, 3500 * SCALE, 1360 * SCALE);
+    line(1770 * SCALE, 2635 * SCALE, 1760 * SCALE, 2603 * SCALE);
+    line(1760 * SCALE, 2603 * SCALE, 1750 * SCALE, 2635 * SCALE);
+    line(1770 * SCALE, 2635 * SCALE, 1750 * SCALE, 2635 * SCALE);
+    line(80 * SCALE, 2040 * SCALE, 20 * SCALE, 2040 * SCALE);
+    line(1760 * SCALE, 99 * SCALE, 1760 * SCALE, 59 * SCALE);
+    line(57 * SCALE, 1360 * SCALE, 17 * SCALE, 1360 * SCALE);
+    line(3440 * SCALE, 2040 * SCALE, 3500 * SCALE, 2040 * SCALE);
+    line(3472 * SCALE, 1350 * SCALE, 3440 * SCALE, 1360 * SCALE);
+    line(3440 * SCALE, 1360 * SCALE, 3472 * SCALE, 1370 * SCALE);
+    line(3472 * SCALE, 1350 * SCALE, 3472 * SCALE, 1370 * SCALE);
+    line(2640 * SCALE, 2660 * SCALE, 2640 * SCALE, 2600 * SCALE);
+    line(0 * SCALE, 0 * SCALE, 3520 * SCALE, 0 * SCALE);
+    line(3520 * SCALE, 0 * SCALE, 3520 * SCALE, 2720 * SCALE);
+    line(3520 * SCALE, 2720 * SCALE, 0 * SCALE, 2720 * SCALE);
+    line(0 * SCALE, 2720 * SCALE, 0 * SCALE, 0 * SCALE);
+    line(2640 * SCALE, 60 * SCALE, 2640 * SCALE, 120 * SCALE);
+    line(880 * SCALE, 120 * SCALE, 880 * SCALE, 60 * SCALE);
+  } /* end of symbol "Csize" */
+
+  symbol("Dsize") {
+    template : D;
+    landscape : TRUE;
+    set_usable_area(160 * SCALE, 80 * SCALE, 5280 * SCALE, 3440 * SCALE);
+    line(5310 * SCALE, 1750 * SCALE, 5280 * SCALE, 1760 * SCALE);
+    line(5280 * SCALE, 1760 * SCALE, 5310 * SCALE, 1770 * SCALE);
+    line(5310 * SCALE, 1750 * SCALE, 5310 * SCALE, 1770 * SCALE);
+    line(2710 * SCALE, 3471 * SCALE, 2720 * SCALE, 3440 * SCALE);
+    line(2720 * SCALE, 3440 * SCALE, 2730 * SCALE, 3471 * SCALE);
+    line(2710 * SCALE, 3471 * SCALE, 2730 * SCALE, 3471 * SCALE);
+    line(5310 * SCALE, 1760 * SCALE, 5349 * SCALE, 1760 * SCALE);
+    line(2720 * SCALE, 3471 * SCALE, 2720 * SCALE, 3510 * SCALE);
+    line(5280 * SCALE, 1760 * SCALE, 5325 * SCALE, 1760 * SCALE);
+    line(2720 * SCALE, 49 * SCALE, 2720 * SCALE, 13 * SCALE);
+    line(160 * SCALE, 1760 * SCALE, 115 * SCALE, 1760 * SCALE);
+    line(2720 * SCALE, 3440 * SCALE, 2720 * SCALE, 3485 * SCALE);
+    line(130 * SCALE, 1760 * SCALE, 87 * SCALE, 1760 * SCALE);
+    line(2720 * SCALE, 80 * SCALE, 2720 * SCALE, 35 * SCALE);
+    line(4760 * SCALE, 3440 * SCALE, 4760 * SCALE, 3500 * SCALE);
+    line(4080 * SCALE, 3440 * SCALE, 4080 * SCALE, 3500 * SCALE);
+    line(3400 * SCALE, 3440 * SCALE, 3400 * SCALE, 3500 * SCALE);
+    line(2040 * SCALE, 3440 * SCALE, 2040 * SCALE, 3500 * SCALE);
+    line(1360 * SCALE, 3440 * SCALE, 1360 * SCALE, 3500 * SCALE);
+    line(680 * SCALE, 3440 * SCALE, 680 * SCALE, 3500 * SCALE);
+    line(4760 * SCALE, 80 * SCALE, 4760 * SCALE, 20 * SCALE);
+    line(4080 * SCALE, 80 * SCALE, 4080 * SCALE, 20 * SCALE);
+    line(3400 * SCALE, 80 * SCALE, 3400 * SCALE, 20 * SCALE);
+    line(2040 * SCALE, 80 * SCALE, 2040 * SCALE, 20 * SCALE);
+    line(1360 * SCALE, 80 * SCALE, 1360 * SCALE, 20 * SCALE);
+    line(680 * SCALE, 80 * SCALE, 680 * SCALE, 20 * SCALE);
+    line(5280 * SCALE, 880 * SCALE, 5340 * SCALE, 880 * SCALE);
+    line(5280 * SCALE, 2640 * SCALE, 5360 * SCALE, 2640 * SCALE);
+    line(160 * SCALE, 2640 * SCALE, 100 * SCALE, 2640 * SCALE);
+    line(160 * SCALE, 880 * SCALE, 100 * SCALE, 880 * SCALE);
+    line(2710 * SCALE, 49 * SCALE, 2720 * SCALE, 80 * SCALE);
+    line(2720 * SCALE, 80 * SCALE, 2730 * SCALE, 49 * SCALE);
+    line(2710 * SCALE, 49 * SCALE, 2730 * SCALE, 49 * SCALE);
+    line(4760 * SCALE, 80 * SCALE, 160 * SCALE, 80 * SCALE);
+    line(160 * SCALE, 80 * SCALE, 160 * SCALE, 3440 * SCALE);
+    line(160 * SCALE, 3440 * SCALE, 5280 * SCALE, 3440 * SCALE);
+    line(5280 * SCALE, 3440 * SCALE, 5280 * SCALE, 80 * SCALE);
+    line(5280 * SCALE, 80 * SCALE, 4700 * SCALE, 80 * SCALE);
+    line(130 * SCALE, 1750 * SCALE, 160 * SCALE, 1760 * SCALE);
+    line(160 * SCALE, 1760 * SCALE, 130 * SCALE, 1770 * SCALE);
+    line(130 * SCALE, 1750 * SCALE, 130 * SCALE, 1770 * SCALE);
+    line(0 * SCALE, 0 * SCALE, 5440 * SCALE, 0 * SCALE);
+    line(5440 * SCALE, 0 * SCALE, 5440 * SCALE, 3520 * SCALE);
+    line(5440 * SCALE, 3520 * SCALE, 0 * SCALE, 3520 * SCALE);
+    line(0 * SCALE, 3520 * SCALE, 0 * SCALE, 0 * SCALE);
+  } /* end of symbol "Dsize" */
+
+  symbol("Esize") {
+    template : E;
+    landscape : TRUE;
+    set_usable_area(80 * SCALE, 160 * SCALE, 6960 * SCALE, 5280 * SCALE);
+    line(48 * SCALE, 2720 * SCALE, 16 * SCALE, 2720 * SCALE);
+    line(80 * SCALE, 2720 * SCALE, 48 * SCALE, 2704 * SCALE);
+    line(48 * SCALE, 2704 * SCALE, 48 * SCALE, 2736 * SCALE);
+    line(80 * SCALE, 2720 * SCALE, 48 * SCALE, 2736 * SCALE);
+    line(6960 * SCALE, 4080 * SCALE, 7020 * SCALE, 4080 * SCALE);
+    line(6960 * SCALE, 1360 * SCALE, 7020 * SCALE, 1360 * SCALE);
+    line(6960 * SCALE, 4760 * SCALE, 7020 * SCALE, 4760 * SCALE);
+    line(6960 * SCALE, 2040 * SCALE, 7020 * SCALE, 2040 * SCALE);
+    line(6960 * SCALE, 3400 * SCALE, 7020 * SCALE, 3400 * SCALE);
+    line(6960 * SCALE, 680 * SCALE, 7020 * SCALE, 680 * SCALE);
+    line(80 * SCALE, 4760 * SCALE, 20 * SCALE, 4760 * SCALE);
+    line(80 * SCALE, 4080 * SCALE, 20 * SCALE, 4080 * SCALE);
+    line(80 * SCALE, 3400 * SCALE, 20 * SCALE, 3400 * SCALE);
+    line(80 * SCALE, 2040 * SCALE, 20 * SCALE, 2040 * SCALE);
+    line(80 * SCALE, 1360 * SCALE, 20 * SCALE, 1360 * SCALE);
+    line(5280 * SCALE, 5280 * SCALE, 5280 * SCALE, 5340 * SCALE);
+    line(1760 * SCALE, 5280 * SCALE, 1760 * SCALE, 5340 * SCALE);
+    line(6160 * SCALE, 5280 * SCALE, 6160 * SCALE, 5340 * SCALE);
+    line(2640 * SCALE, 5280 * SCALE, 2640 * SCALE, 5340 * SCALE);
+    line(880 * SCALE, 5280 * SCALE, 880 * SCALE, 5340 * SCALE);
+    line(4400 * SCALE, 5280 * SCALE, 4400 * SCALE, 5340 * SCALE);
+    line(80 * SCALE, 680 * SCALE, 20 * SCALE, 680 * SCALE);
+    line(6160 * SCALE, 160 * SCALE, 6160 * SCALE, 100 * SCALE);
+    line(5280 * SCALE, 160 * SCALE, 5280 * SCALE, 100 * SCALE);
+    line(4400 * SCALE, 160 * SCALE, 4400 * SCALE, 100 * SCALE);
+    line(2640 * SCALE, 160 * SCALE, 2640 * SCALE, 100 * SCALE);
+    line(1760 * SCALE, 160 * SCALE, 1760 * SCALE, 100 * SCALE);
+    line(3520 * SCALE, 128 * SCALE, 3520 * SCALE, 32 * SCALE);
+    line(3520 * SCALE, 5280 * SCALE, 3504 * SCALE, 5344 * SCALE);
+    line(3504 * SCALE, 5344 * SCALE, 3536 * SCALE, 5344 * SCALE);
+    line(3520 * SCALE, 5280 * SCALE, 3536 * SCALE, 5344 * SCALE);
+    line(6992 * SCALE, 2720 * SCALE, 7024 * SCALE, 2720 * SCALE);
+    line(6960 * SCALE, 2720 * SCALE, 6992 * SCALE, 2704 * SCALE);
+    line(6992 * SCALE, 2704 * SCALE, 6992 * SCALE, 2736 * SCALE);
+    line(6960 * SCALE, 2720 * SCALE, 6992 * SCALE, 2736 * SCALE);
+    line(880 * SCALE, 160 * SCALE, 880 * SCALE, 100 * SCALE);
+    line(3520 * SCALE, 5312 * SCALE, 3520 * SCALE, 5408 * SCALE);
+    line(3520 * SCALE, 160 * SCALE, 3504 * SCALE, 96 * SCALE);
+    line(3504 * SCALE, 96 * SCALE, 3536 * SCALE, 96 * SCALE);
+    line(3520 * SCALE, 160 * SCALE, 3536 * SCALE, 96 * SCALE);
+    line(5920 * SCALE, 160 * SCALE, 80 * SCALE, 160 * SCALE);
+    line(80 * SCALE, 160 * SCALE, 80 * SCALE, 5280 * SCALE);
+    line(80 * SCALE, 5280 * SCALE, 6960 * SCALE, 5280 * SCALE);
+    line(6960 * SCALE, 5280 * SCALE, 6960 * SCALE, 160 * SCALE);
+    line(6960 * SCALE, 160 * SCALE, 5920 * SCALE, 160 * SCALE);
+    line(0 * SCALE, 0 * SCALE, 7040 * SCALE, 0 * SCALE);
+    line(7040 * SCALE, 0 * SCALE, 7040 * SCALE, 5440 * SCALE);
+    line(7040 * SCALE, 5440 * SCALE, 0 * SCALE, 5440 * SCALE);
+    line(0 * SCALE, 5440 * SCALE, 0 * SCALE, 0 * SCALE);
+  } /* end of symbol "Esize" */
+
+  symbol("Fsize") {
+    template : F;
+    landscape : TRUE;
+    set_usable_area(80 * SCALE, 160 * SCALE, 10800 * SCALE, 6880 * SCALE);
+    line(10200 * SCALE, 6884 * SCALE, 10200 * SCALE, 6944 * SCALE);
+    line(9520 * SCALE, 6884 * SCALE, 9520 * SCALE, 6944 * SCALE);
+    line(8840 * SCALE, 6884 * SCALE, 8840 * SCALE, 6944 * SCALE);
+    line(8160 * SCALE, 6884 * SCALE, 8160 * SCALE, 6944 * SCALE);
+    line(7480 * SCALE, 6884 * SCALE, 7480 * SCALE, 6944 * SCALE);
+    line(6800 * SCALE, 6884 * SCALE, 6800 * SCALE, 6944 * SCALE);
+    line(6120 * SCALE, 6884 * SCALE, 6120 * SCALE, 6944 * SCALE);
+    line(2720 * SCALE, 6882 * SCALE, 2720 * SCALE, 6942 * SCALE);
+    line(2040 * SCALE, 6882 * SCALE, 2040 * SCALE, 6942 * SCALE);
+    line(5440 * SCALE, 6909 * SCALE, 5440 * SCALE, 6946 * SCALE);
+    line(1360 * SCALE, 6882 * SCALE, 1360 * SCALE, 6942 * SCALE);
+    line(680 * SCALE, 6884 * SCALE, 680 * SCALE, 6944 * SCALE);
+    line(5452 * SCALE, 6911 * SCALE, 5440 * SCALE, 6882 * SCALE);
+    line(5440 * SCALE, 6882 * SCALE, 5428 * SCALE, 6911 * SCALE);
+    line(5452 * SCALE, 6911 * SCALE, 5428 * SCALE, 6911 * SCALE);
+    line(4760 * SCALE, 6884 * SCALE, 4760 * SCALE, 6944 * SCALE);
+    line(4080 * SCALE, 6884 * SCALE, 4080 * SCALE, 6944 * SCALE);
+    line(3400 * SCALE, 6882 * SCALE, 3400 * SCALE, 6942 * SCALE);
+    line(10200 * SCALE, 158 * SCALE, 10200 * SCALE, 98 * SCALE);
+    line(9520 * SCALE, 158 * SCALE, 9520 * SCALE, 98 * SCALE);
+    line(8840 * SCALE, 158 * SCALE, 8840 * SCALE, 98 * SCALE);
+    line(8160 * SCALE, 158 * SCALE, 8160 * SCALE, 98 * SCALE);
+    line(7480 * SCALE, 158 * SCALE, 7480 * SCALE, 98 * SCALE);
+    line(6800 * SCALE, 158 * SCALE, 6800 * SCALE, 98 * SCALE);
+    line(6120 * SCALE, 158 * SCALE, 6120 * SCALE, 98 * SCALE);
+    line(4760 * SCALE, 158 * SCALE, 4760 * SCALE, 98 * SCALE);
+    line(4080 * SCALE, 158 * SCALE, 4080 * SCALE, 98 * SCALE);
+    line(3400 * SCALE, 158 * SCALE, 3400 * SCALE, 98 * SCALE);
+    line(10860 * SCALE, 1760 * SCALE, 10802 * SCALE, 1760 * SCALE);
+    line(2040 * SCALE, 156 * SCALE, 2040 * SCALE, 96 * SCALE);
+    line(78 * SCALE, 6160 * SCALE, 20 * SCALE, 6160 * SCALE);
+    line(10860 * SCALE, 5280 * SCALE, 10802 * SCALE, 5280 * SCALE);
+    line(78 * SCALE, 880 * SCALE, 20 * SCALE, 880 * SCALE);
+    line(10860 * SCALE, 4400 * SCALE, 10802 * SCALE, 4400 * SCALE);
+    line(10860 * SCALE, 2640 * SCALE, 10802 * SCALE, 2640 * SCALE);
+    line(10860 * SCALE, 6160 * SCALE, 10802 * SCALE, 6160 * SCALE);
+    line(78 * SCALE, 2640 * SCALE, 20 * SCALE, 2640 * SCALE);
+    line(78 * SCALE, 4400 * SCALE, 20 * SCALE, 4400 * SCALE);
+    line(78 * SCALE, 5280 * SCALE, 20 * SCALE, 5280 * SCALE);
+    line(50 * SCALE, 3520 * SCALE, 10 * SCALE, 3520 * SCALE);
+    line(0 * SCALE, 0 * SCALE, 10880 * SCALE, 0 * SCALE);
+    line(10880 * SCALE, 0 * SCALE, 10880 * SCALE, 7040 * SCALE);
+    line(10880 * SCALE, 7040 * SCALE, 0 * SCALE, 7040 * SCALE);
+    line(0 * SCALE, 7040 * SCALE, 0 * SCALE, 0 * SCALE);
+    line(6960 * SCALE, 160 * SCALE, 80 * SCALE, 160 * SCALE);
+    line(80 * SCALE, 160 * SCALE, 80 * SCALE, 6880 * SCALE);
+    line(80 * SCALE, 6880 * SCALE, 10800 * SCALE, 6880 * SCALE);
+    line(10800 * SCALE, 6880 * SCALE, 10800 * SCALE, 160 * SCALE);
+    line(10800 * SCALE, 160 * SCALE, 6960 * SCALE, 160 * SCALE);
+    line(1360 * SCALE, 156 * SCALE, 1360 * SCALE, 96 * SCALE);
+    line(5428 * SCALE, 129 * SCALE, 5440 * SCALE, 158 * SCALE);
+    line(5440 * SCALE, 158 * SCALE, 5452 * SCALE, 129 * SCALE);
+    line(5428 * SCALE, 129 * SCALE, 5452 * SCALE, 129 * SCALE);
+    line(78 * SCALE, 1760 * SCALE, 20 * SCALE, 1760 * SCALE);
+    line(2720 * SCALE, 158 * SCALE, 2720 * SCALE, 98 * SCALE);
+    line(5440 * SCALE, 131 * SCALE, 5440 * SCALE, 94 * SCALE);
+    line(10830 * SCALE, 3520 * SCALE, 10870 * SCALE, 3520 * SCALE);
+    line(48 * SCALE, 3508 * SCALE, 77 * SCALE, 3520 * SCALE);
+    line(77 * SCALE, 3520 * SCALE, 48 * SCALE, 3531 * SCALE);
+    line(48 * SCALE, 3508 * SCALE, 48 * SCALE, 3531 * SCALE);
+    line(10832 * SCALE, 3508 * SCALE, 10803 * SCALE, 3520 * SCALE);
+    line(10803 * SCALE, 3520 * SCALE, 10832 * SCALE, 3531 * SCALE);
+    line(10832 * SCALE, 3508 * SCALE, 10832 * SCALE, 3531 * SCALE);
+    line(680 * SCALE, 156 * SCALE, 680 * SCALE, 96 * SCALE);
+  } /* end of symbol "Fsize" */
+
+} /* end of library "US.8ths" */

@@ -37,7 +37,7 @@ module mem_system(/*AUTOARG*/
    wire cache_in, mem_in, mem_stall;
    wire [4:0] tag_in;
    wire [2:0] offset_in;
-   wire victimway, evict, cache_sel, CacheHit_0, CacheHit_1;
+   wire victimway, evict, cache_sel, CacheHit_0, CacheHit_1,data_out_sel;
 
    wire [255:0] lru_out;                  // Current LRU state
    wire [255:0] lru_in;                    // Next-state LRU
@@ -113,6 +113,7 @@ module mem_system(/*AUTOARG*/
       .offset_in(Addr[2:0]),
       .tag_out(tag_out),
       //outputs
+      .data_out_sel(data_out_sel),
       .valid_in(valid_in),
       .offset_out(offset_out),
       .mem_addr(mem_addr),
@@ -197,7 +198,7 @@ module mem_system(/*AUTOARG*/
    assign write_1 = cache_sel ? write : 1'b0;
 
    // Data output based on selected way
-   assign DataOut = cache_sel ? data_out_cache_1 : data_out_cache_0;
+   assign DataOut = data_out_sel ? (cache_sel ? data_out_cache_1 : data_out_cache_0) : data_out_mem;
 
    // Aggregate error signals
    assign err = err_mem | err_cache_0 | err_cache_1;

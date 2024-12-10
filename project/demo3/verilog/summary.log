@@ -1,1 +1,1 @@
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/rand_icache/t_8_icache.asm SUCCESS CPI:16.3 CYCLES:929 ICOUNT:57 IHITRATE: 9.2 DHITRATE: 0
+/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/rand_final/ldld_rand_large.asm SUCCESS CPI:3.1 CYCLES:3168 ICOUNT:1035 IHITRATE: 56.7 DHITRATE: 81.8

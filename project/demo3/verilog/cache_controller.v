@@ -20,6 +20,7 @@ module cache_controller (
     output reg [2:0] offset_out,
     output reg [15:0] mem_addr,
     output wire CacheHit,
+	output reg data_out_sel,
     output reg Stall,
     output reg valid_in,
     output reg comp,
@@ -46,8 +47,7 @@ module cache_controller (
     parameter FILL_CACHE_3   = 4'b1000; // Fetch fourth word and continue writing
     parameter FILL_CACHE_4   = 4'b1001; // Complete cache fill (first half)
     parameter FILL_CACHE_5   = 4'b1010; // Complete cache fill (second half)
-    parameter CWRITE         = 4'b1011; // Write new data to cache
-    parameter DONE           = 4'b1100; // Operation complete, return to IDLE
+
 
 
     // State and next state signals
@@ -78,6 +78,7 @@ module cache_controller (
         valid_in = 1'b0;
         lru_in = lru_out;
         cache_in = 1'b0;
+		data_out_sel = 1'b1;
         mem_in = 1'b0;
         mem_addr = 16'h0000;
         offset_out = offset_in;
@@ -98,6 +99,7 @@ module cache_controller (
                 valid_in = write;
                 cache_in = ~write;
                 done = comp & CacheHit;
+				lru_in[index_in] =  done ? ~cache_sel :lru_out[index_in] ;
 
                 // - If a read or write misses, move to WRITE_BACK or FILL_CACHE based on the dirty bit.
                 // - If a hit occurs, complete the operation in the same cycle.
@@ -171,6 +173,7 @@ module cache_controller (
                 cache_in = 1'b1;
                 mem_addr = {tag_in, index_in, 3'b100};
                 offset_out = 3'b000;
+				data_out_sel = (Rd & (offset_in == 3'b000)) ? 1'b0 : 1'b1;
                 next_state = FILL_CACHE_3;
             end
 
@@ -183,6 +186,7 @@ module cache_controller (
                 cache_in = 1'b1;
                 mem_addr = {tag_in, index_in, 3'b110};
                 offset_out = 3'b010;
+				data_out_sel = (Rd & (offset_in == 3'b010)) ? 1'b0 : 1'b1;
                 next_state = FILL_CACHE_4;
             end
 
@@ -193,6 +197,7 @@ module cache_controller (
                 valid_in = 1'b1;
                 cache_in = 1'b1;
                 offset_out = 3'b100;
+				data_out_sel = (Rd & (offset_in == 3'b100)) ? 1'b0 : 1'b1;
                 next_state = FILL_CACHE_5;
             end
 
@@ -206,24 +211,9 @@ module cache_controller (
                 cache_in = 1'b1;
                 valid_in = 1'b1;
                 offset_out = 3'b110;
-                next_state = Wr ? CWRITE : DONE ;
-            end
-
-            CWRITE: begin
-                // Handles cache write operations by updating 
-                // the cache with the new data provided by a write command.
-                cache_in = 1'b0;
-                comp = 1'b1;
-                write = 1'b1;
-                valid_in = 1'b1;
-                offset_out = offset_in;
-                next_state = DONE;
-            end
-
-            DONE: begin
-                // Signals the completion of a read or write operation and returns the controller to the IDLE state.
-                done = 1'b1;
-                lru_in[index_in] = ~cache_sel;
+				data_out_sel = (Rd & (offset_in == 3'b110)) ? 1'b0 : 1'b1;
+				done = Rd & ~data_out_sel;
+				lru_in[index_in] = done ? ~cache_sel : lru_out[index_in] ;
                 next_state = IDLE;
             end
 

@@ -124,10 +124,6 @@ module proc (/*AUTOARG*/
       .EXDM_RegWrt(EXDM_RegWrt)
    );
 
-   //  always@(posedge clk)
-   //      $display("PC %h ID_Rs : %h ID_Rt : %h EXDM_RegSrc : %h EXDM_ALU : %h DMWB_RegSrc : %h DMWB_ALU : %h BrchCnd %h NOP_Branch %h BranchTaken %b", PC,ID_Rs,ID_Rt,EXDM_RegSrc,EXDM_ALU,DMWB_RegSrc,DMWB_ALU,BrchCnd, NOP_Branch, BranchTaken);
-
-
    /* Decode Stage */
    decode decode0 (
       .clk(clk), 
@@ -175,11 +171,6 @@ module proc (/*AUTOARG*/
       .BT(BT),
       .Done_DM_ff(Done_DM_ff)
    );
-
-    always@(posedge clk)
-        if (IDEX_Rs == 6)
-        $display("PC : %h instr : %h execute0.ALU_RSData : %h execute0.ALUIn : %h BT : %b halt : %h ", fetch0.instr_mem.Addr,instr,execute0.ALU_RSData, execute0.ALUIn,decode0.BT,fetch0.HaltSig);
-
 
    /* IDEX latch */
    IDEX_latch IDEX (

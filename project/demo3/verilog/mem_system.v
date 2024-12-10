@@ -169,12 +169,6 @@ module mem_system(/*AUTOARG*/
    //                         CacheHit_1 ? 1'b0 :   // If Way 1 is hit, mark Way 0 as LRU
    //                         lru_out[Addr[10:3]];  // Default to current LRU state
 
-
-   always @(posedge clk) begin
-      $display("evict : %h",evict);
-      
-   end
-
    // Victim Selection Logic
    assign evict = valid_0 ? (valid_1 ? lru_out[Addr[10:3]] : 1'b1) : 1'b0;
 

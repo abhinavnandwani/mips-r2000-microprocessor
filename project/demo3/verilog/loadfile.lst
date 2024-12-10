@@ -1,532 +1,132 @@
-0000 c000 lbi r0, 0
-0002 8806 ld r0, r0, 6
-0004 2800 jr r0, 0
-0006 040a data 0x040a
-0008 0092 data 0x0092
-000a 0200 data 0x0200 // i 0000
-000c 02aa data 0x02aa // i 0002
-000e 0022 data 0x0022 // i 0004
-0010 0006 data 0x0006 // i 0006
-0012 00b2 data 0x00b2 // i 0008
-0014 01ba data 0x01ba // i 000a
-0016 02c2 data 0x02c2 // i 000c
-0018 034e data 0x034e // i 000e
-001a 0362 data 0x0362 // i 0010
-001c 0394 data 0x0394 // i 0012
-001e 0316 data 0x0316 // i 0014
-0020 010e data 0x010e // i 0016
-0022 0266 data 0x0266 // i 0018
-0024 03d4 data 0x03d4 // i 001a
-0026 028c data 0x028c // i 001c
-0028 03f8 data 0x03f8 // i 001e
-002a 0128 data 0x0128 // i 0020
-002c 00ce data 0x00ce // i 0022
-002e 0296 data 0x0296 // i 0024
-0030 01e4 data 0x01e4 // i 0026
-0032 0214 data 0x0214 // i 0028
-0034 02ce data 0x02ce // i 002a
-0036 02ca data 0x02ca // i 002c
-0038 00c4 data 0x00c4 // i 002e
-003a 0376 data 0x0376 // i 0030
-003c 0350 data 0x0350 // i 0032
-003e 015e data 0x015e // i 0034
-0040 0272 data 0x0272 // i 0036
-0042 005a data 0x005a // i 0038
-0044 0096 data 0x0096 // i 003a
-0046 00ce data 0x00ce // i 003c
-0048 0210 data 0x0210 // i 003e
-004a 022c data 0x022c // i 0040
-004c 0344 data 0x0344 // i 0042
-004e 02fa data 0x02fa // i 0044
-0050 01ce data 0x01ce // i 0046
-0052 02f8 data 0x02f8 // i 0048
-0054 0340 data 0x0340 // i 004a
-0056 01a4 data 0x01a4 // i 004c
-0058 02aa data 0x02aa // i 004e
-005a 0214 data 0x0214 // i 0050
-005c 0276 data 0x0276 // i 0052
-005e 01a6 data 0x01a6 // i 0054
-0060 01fa data 0x01fa // i 0056
-0062 0232 data 0x0232 // i 0058
-0064 03ee data 0x03ee // i 005a
-0066 039c data 0x039c // i 005c
-0068 0380 data 0x0380 // i 005e
-006a 016e data 0x016e // i 0060
-006c 00a2 data 0x00a2 // i 0062
-006e 0090 data 0x0090 // i 0064
-0070 0292 data 0x0292 // i 0066
-0072 038a data 0x038a // i 0068
-0074 0390 data 0x0390 // i 006a
-0076 0040 data 0x0040 // i 006c
-0078 0248 data 0x0248 // i 006e
-007a 01d2 data 0x01d2 // i 0070
-007c 039c data 0x039c // i 0072
-007e 0084 data 0x0084 // i 0074
-0080 0248 data 0x0248 // i 0076
-0082 03d6 data 0x03d6 // i 0078
-0084 037c data 0x037c // i 007a
-0086 00a6 data 0x00a6 // i 007c
-0088 02e6 data 0x02e6 // i 007e
-008a 0384 data 0x0384 // i 0080
-008c 036e data 0x036e // i 0082
-008e 02e4 data 0x02e4 // i 0084
-0090 0358 data 0x0358 // i 0086
-0092 00c2 data 0x00c2 // i 0088
-0094 01f0 data 0x01f0 // i 008a
-0096 0026 data 0x0026 // i 008c
-0098 01c6 data 0x01c6 // i 008e
-009a 001c data 0x001c // i 0090
-009c 0234 data 0x0234 // i 0092
-009e 0312 data 0x0312 // i 0094
-00a0 02c4 data 0x02c4 // i 0096
-00a2 01a2 data 0x01a2 // i 0098
-00a4 0074 data 0x0074 // i 009a
-00a6 036e data 0x036e // i 009c
-00a8 011e data 0x011e // i 009e
-00aa 028e data 0x028e // i 00a0
-00ac 03fe data 0x03fe // i 00a2
-00ae 022c data 0x022c // i 00a4
-00b0 0284 data 0x0284 // i 00a6
-00b2 01ba data 0x01ba // i 00a8
-00b4 0014 data 0x0014 // i 00aa
-00b6 01ea data 0x01ea // i 00ac
-00b8 02f8 data 0x02f8 // i 00ae
-00ba 009e data 0x009e // i 00b0
-00bc 0270 data 0x0270 // i 00b2
-00be 033c data 0x033c // i 00b4
-00c0 0084 data 0x0084 // i 00b6
-00c2 03ca data 0x03ca // i 00b8
-00c4 0184 data 0x0184 // i 00ba
-00c6 01a8 data 0x01a8 // i 00bc
-00c8 002e data 0x002e // i 00be
-00ca 019c data 0x019c // i 00c0
-00cc 0058 data 0x0058 // i 00c2
-00ce 01a8 data 0x01a8 // i 00c4
-00d0 0296 data 0x0296 // i 00c6
-00d2 0116 data 0x0116 // i 00c8
-00d4 031a data 0x031a // i 00ca
-00d6 017a data 0x017a // i 00cc
-00d8 0046 data 0x0046 // i 00ce
-00da 00a2 data 0x00a2 // i 00d0
-00dc 0320 data 0x0320 // i 00d2
-00de 0028 data 0x0028 // i 00d4
-00e0 032a data 0x032a // i 00d6
-00e2 03b6 data 0x03b6 // i 00d8
-00e4 02ae data 0x02ae // i 00da
-00e6 0398 data 0x0398 // i 00dc
-00e8 001e data 0x001e // i 00de
-00ea 020a data 0x020a // i 00e0
-00ec 0212 data 0x0212 // i 00e2
-00ee 01fe data 0x01fe // i 00e4
-00f0 0108 data 0x0108 // i 00e6
-00f2 025a data 0x025a // i 00e8
-00f4 0362 data 0x0362 // i 00ea
-00f6 008a data 0x008a // i 00ec
-00f8 038e data 0x038e // i 00ee
-00fa 006e data 0x006e // i 00f0
-00fc 0396 data 0x0396 // i 00f2
-00fe 009c data 0x009c // i 00f4
-0100 03c4 data 0x03c4 // i 00f6
-0102 0162 data 0x0162 // i 00f8
-0104 0332 data 0x0332 // i 00fa
-0106 0078 data 0x0078 // i 00fc
-0108 01d8 data 0x01d8 // i 00fe
-010a 00e2 data 0x00e2 // i 0100
-010c 0032 data 0x0032 // i 0102
-010e 03a4 data 0x03a4 // i 0104
-0110 0132 data 0x0132 // i 0106
-0112 0354 data 0x0354 // i 0108
-0114 007c data 0x007c // i 010a
-0116 00ea data 0x00ea // i 010c
-0118 0300 data 0x0300 // i 010e
-011a 00a8 data 0x00a8 // i 0110
-011c 0382 data 0x0382 // i 0112
-011e 0150 data 0x0150 // i 0114
-0120 01a6 data 0x01a6 // i 0116
-0122 00c0 data 0x00c0 // i 0118
-0124 015e data 0x015e // i 011a
-0126 02ce data 0x02ce // i 011c
-0128 0008 data 0x0008 // i 011e
-012a 0238 data 0x0238 // i 0120
-012c 0308 data 0x0308 // i 0122
-012e 0132 data 0x0132 // i 0124
-0130 0124 data 0x0124 // i 0126
-0132 0374 data 0x0374 // i 0128
-0134 00f8 data 0x00f8 // i 012a
-0136 00f2 data 0x00f2 // i 012c
-0138 0020 data 0x0020 // i 012e
-013a 03b0 data 0x03b0 // i 0130
-013c 02d6 data 0x02d6 // i 0132
-013e 0358 data 0x0358 // i 0134
-0140 0358 data 0x0358 // i 0136
-0142 031a data 0x031a // i 0138
-0144 0082 data 0x0082 // i 013a
-0146 00d4 data 0x00d4 // i 013c
-0148 0202 data 0x0202 // i 013e
-014a 0096 data 0x0096 // i 0140
-014c 001c data 0x001c // i 0142
-014e 01ce data 0x01ce // i 0144
-0150 028c data 0x028c // i 0146
-0152 0134 data 0x0134 // i 0148
-0154 0252 data 0x0252 // i 014a
-0156 01d8 data 0x01d8 // i 014c
-0158 0206 data 0x0206 // i 014e
-015a 0308 data 0x0308 // i 0150
-015c 039e data 0x039e // i 0152
-015e 0284 data 0x0284 // i 0154
-0160 0166 data 0x0166 // i 0156
-0162 006e data 0x006e // i 0158
-0164 02bc data 0x02bc // i 015a
-0166 00d6 data 0x00d6 // i 015c
-0168 029a data 0x029a // i 015e
-016a 004a data 0x004a // i 0160
-016c 03fe data 0x03fe // i 0162
-016e 0388 data 0x0388 // i 0164
-0170 0394 data 0x0394 // i 0166
-0172 016c data 0x016c // i 0168
-0174 02cc data 0x02cc // i 016a
-0176 0012 data 0x0012 // i 016c
-0178 017a data 0x017a // i 016e
-017a 02ac data 0x02ac // i 0170
-017c 03ec data 0x03ec // i 0172
-017e 01ba data 0x01ba // i 0174
-0180 014c data 0x014c // i 0176
-0182 00d0 data 0x00d0 // i 0178
-0184 02e8 data 0x02e8 // i 017a
-0186 0390 data 0x0390 // i 017c
-0188 0308 data 0x0308 // i 017e
-018a 02d6 data 0x02d6 // i 0180
-018c 0034 data 0x0034 // i 0182
-018e 03b8 data 0x03b8 // i 0184
-0190 03c0 data 0x03c0 // i 0186
-0192 00c0 data 0x00c0 // i 0188
-0194 0150 data 0x0150 // i 018a
-0196 01be data 0x01be // i 018c
-0198 029e data 0x029e // i 018e
-019a 0274 data 0x0274 // i 0190
-019c 03ae data 0x03ae // i 0192
-019e 015a data 0x015a // i 0194
-01a0 0252 data 0x0252 // i 0196
-01a2 03c6 data 0x03c6 // i 0198
-01a4 0078 data 0x0078 // i 019a
-01a6 0090 data 0x0090 // i 019c
-01a8 03ca data 0x03ca // i 019e
-01aa 0046 data 0x0046 // i 01a0
-01ac 030e data 0x030e // i 01a2
-01ae 0160 data 0x0160 // i 01a4
-01b0 02ce data 0x02ce // i 01a6
-01b2 02fa data 0x02fa // i 01a8
-01b4 014e data 0x014e // i 01aa
-01b6 02f2 data 0x02f2 // i 01ac
-01b8 0262 data 0x0262 // i 01ae
-01ba 037c data 0x037c // i 01b0
-01bc 0290 data 0x0290 // i 01b2
-01be 03a0 data 0x03a0 // i 01b4
-01c0 0066 data 0x0066 // i 01b6
-01c2 01b0 data 0x01b0 // i 01b8
-01c4 0154 data 0x0154 // i 01ba
-01c6 0296 data 0x0296 // i 01bc
-01c8 017e data 0x017e // i 01be
-01ca 0294 data 0x0294 // i 01c0
-01cc 018e data 0x018e // i 01c2
-01ce 0388 data 0x0388 // i 01c4
-01d0 019c data 0x019c // i 01c6
-01d2 0264 data 0x0264 // i 01c8
-01d4 02a0 data 0x02a0 // i 01ca
-01d6 022e data 0x022e // i 01cc
-01d8 014c data 0x014c // i 01ce
-01da 0378 data 0x0378 // i 01d0
-01dc 03e2 data 0x03e2 // i 01d2
-01de 02fe data 0x02fe // i 01d4
-01e0 0108 data 0x0108 // i 01d6
-01e2 0120 data 0x0120 // i 01d8
-01e4 03be data 0x03be // i 01da
-01e6 01f4 data 0x01f4 // i 01dc
-01e8 01c6 data 0x01c6 // i 01de
-01ea 010a data 0x010a // i 01e0
-01ec 0346 data 0x0346 // i 01e2
-01ee 03a8 data 0x03a8 // i 01e4
-01f0 0100 data 0x0100 // i 01e6
-01f2 0132 data 0x0132 // i 01e8
-01f4 0366 data 0x0366 // i 01ea
-01f6 02ae data 0x02ae // i 01ec
-01f8 0252 data 0x0252 // i 01ee
-01fa 0218 data 0x0218 // i 01f0
-01fc 0270 data 0x0270 // i 01f2
-01fe 0286 data 0x0286 // i 01f4
-0200 0220 data 0x0220 // i 01f6
-0202 0244 data 0x0244 // i 01f8
-0204 022a data 0x022a // i 01fa
-0206 02ee data 0x02ee // i 01fc
-0208 002c data 0x002c // i 01fe
-020a 039e data 0x039e // i 0200
-020c 0034 data 0x0034 // i 0202
-020e 01fc data 0x01fc // i 0204
-0210 00ac data 0x00ac // i 0206
-0212 00dc data 0x00dc // i 0208
-0214 01e8 data 0x01e8 // i 020a
-0216 02d2 data 0x02d2 // i 020c
-0218 01c4 data 0x01c4 // i 020e
-021a 0072 data 0x0072 // i 0210
-021c 0266 data 0x0266 // i 0212
-021e 0038 data 0x0038 // i 0214
-0220 00e2 data 0x00e2 // i 0216
-0222 0036 data 0x0036 // i 0218
-0224 012c data 0x012c // i 021a
-0226 0014 data 0x0014 // i 021c
-0228 00f8 data 0x00f8 // i 021e
-022a 0052 data 0x0052 // i 0220
-022c 02ae data 0x02ae // i 0222
-022e 01ee data 0x01ee // i 0224
-0230 0210 data 0x0210 // i 0226
-0232 017e data 0x017e // i 0228
-0234 0072 data 0x0072 // i 022a
-0236 027c data 0x027c // i 022c
-0238 0022 data 0x0022 // i 022e
-023a 004e data 0x004e // i 0230
-023c 0332 data 0x0332 // i 0232
-023e 017a data 0x017a // i 0234
-0240 02ac data 0x02ac // i 0236
-0242 006e data 0x006e // i 0238
-0244 0146 data 0x0146 // i 023a
-0246 02b0 data 0x02b0 // i 023c
-0248 0016 data 0x0016 // i 023e
-024a 0096 data 0x0096 // i 0240
-024c 012e data 0x012e // i 0242
-024e 026e data 0x026e // i 0244
-0250 0332 data 0x0332 // i 0246
-0252 033e data 0x033e // i 0248
-0254 033e data 0x033e // i 024a
-0256 036e data 0x036e // i 024c
-0258 02fc data 0x02fc // i 024e
-025a 019c data 0x019c // i 0250
-025c 035c data 0x035c // i 0252
-025e 0364 data 0x0364 // i 0254
-0260 03ec data 0x03ec // i 0256
-0262 0212 data 0x0212 // i 0258
-0264 02da data 0x02da // i 025a
-0266 0118 data 0x0118 // i 025c
-0268 03fa data 0x03fa // i 025e
-026a 02aa data 0x02aa // i 0260
-026c 0246 data 0x0246 // i 0262
-026e 0054 data 0x0054 // i 0264
-0270 039a data 0x039a // i 0266
-0272 03a4 data 0x03a4 // i 0268
-0274 0248 data 0x0248 // i 026a
-0276 03aa data 0x03aa // i 026c
-0278 01da data 0x01da // i 026e
-027a 01c4 data 0x01c4 // i 0270
-027c 0272 data 0x0272 // i 0272
-027e 032a data 0x032a // i 0274
-0280 00f8 data 0x00f8 // i 0276
-0282 0164 data 0x0164 // i 0278
-0284 01fe data 0x01fe // i 027a
-0286 0312 data 0x0312 // i 027c
-0288 0276 data 0x0276 // i 027e
-028a 00f8 data 0x00f8 // i 0280
-028c 0074 data 0x0074 // i 0282
-028e 00ca data 0x00ca // i 0284
-0290 0326 data 0x0326 // i 0286
-0292 02fa data 0x02fa // i 0288
-0294 0338 data 0x0338 // i 028a
-0296 03da data 0x03da // i 028c
-0298 0316 data 0x0316 // i 028e
-029a 010a data 0x010a // i 0290
-029c 02dc data 0x02dc // i 0292
-029e 0276 data 0x0276 // i 0294
-02a0 02f0 data 0x02f0 // i 0296
-02a2 011a data 0x011a // i 0298
-02a4 005c data 0x005c // i 029a
-02a6 003e data 0x003e // i 029c
-02a8 03a4 data 0x03a4 // i 029e
-02aa 037a data 0x037a // i 02a0
-02ac 0206 data 0x0206 // i 02a2
-02ae 0398 data 0x0398 // i 02a4
-02b0 00f4 data 0x00f4 // i 02a6
-02b2 01ba data 0x01ba // i 02a8
-02b4 0138 data 0x0138 // i 02aa
-02b6 03a0 data 0x03a0 // i 02ac
-02b8 00c0 data 0x00c0 // i 02ae
-02ba 01f4 data 0x01f4 // i 02b0
-02bc 03c6 data 0x03c6 // i 02b2
-02be 01d2 data 0x01d2 // i 02b4
-02c0 02a4 data 0x02a4 // i 02b6
-02c2 03ba data 0x03ba // i 02b8
-02c4 031e data 0x031e // i 02ba
-02c6 0062 data 0x0062 // i 02bc
-02c8 02be data 0x02be // i 02be
-02ca 0118 data 0x0118 // i 02c0
-02cc 00fa data 0x00fa // i 02c2
-02ce 0398 data 0x0398 // i 02c4
-02d0 003a data 0x003a // i 02c6
-02d2 01d8 data 0x01d8 // i 02c8
-02d4 00e0 data 0x00e0 // i 02ca
-02d6 020a data 0x020a // i 02cc
-02d8 0178 data 0x0178 // i 02ce
-02da 02a4 data 0x02a4 // i 02d0
-02dc 02fa data 0x02fa // i 02d2
-02de 00fe data 0x00fe // i 02d4
-02e0 016e data 0x016e // i 02d6
-02e2 0108 data 0x0108 // i 02d8
-02e4 02ba data 0x02ba // i 02da
-02e6 03de data 0x03de // i 02dc
-02e8 0106 data 0x0106 // i 02de
-02ea 0304 data 0x0304 // i 02e0
-02ec 02e0 data 0x02e0 // i 02e2
-02ee 010a data 0x010a // i 02e4
-02f0 012a data 0x012a // i 02e6
-02f2 0034 data 0x0034 // i 02e8
-02f4 020a data 0x020a // i 02ea
-02f6 03dc data 0x03dc // i 02ec
-02f8 0352 data 0x0352 // i 02ee
-02fa 0238 data 0x0238 // i 02f0
-02fc 02be data 0x02be // i 02f2
-02fe 0350 data 0x0350 // i 02f4
-0300 0210 data 0x0210 // i 02f6
-0302 0158 data 0x0158 // i 02f8
-0304 00ea data 0x00ea // i 02fa
-0306 0006 data 0x0006 // i 02fc
-0308 009a data 0x009a // i 02fe
-030a 0220 data 0x0220 // i 0300
-030c 00b0 data 0x00b0 // i 0302
-030e 01f8 data 0x01f8 // i 0304
-0310 03d6 data 0x03d6 // i 0306
-0312 03f4 data 0x03f4 // i 0308
-0314 03ba data 0x03ba // i 030a
-0316 0006 data 0x0006 // i 030c
-0318 00b8 data 0x00b8 // i 030e
-031a 022c data 0x022c // i 0310
-031c 03be data 0x03be // i 0312
-031e 021e data 0x021e // i 0314
-0320 019a data 0x019a // i 0316
-0322 02f4 data 0x02f4 // i 0318
-0324 0076 data 0x0076 // i 031a
-0326 036c data 0x036c // i 031c
-0328 0164 data 0x0164 // i 031e
-032a 005e data 0x005e // i 0320
-032c 02b8 data 0x02b8 // i 0322
-032e 0296 data 0x0296 // i 0324
-0330 0304 data 0x0304 // i 0326
-0332 03e0 data 0x03e0 // i 0328
-0334 01fa data 0x01fa // i 032a
-0336 01f2 data 0x01f2 // i 032c
-0338 0344 data 0x0344 // i 032e
-033a 03ba data 0x03ba // i 0330
-033c 02e0 data 0x02e0 // i 0332
-033e 0312 data 0x0312 // i 0334
-0340 004c data 0x004c // i 0336
-0342 017c data 0x017c // i 0338
-0344 0320 data 0x0320 // i 033a
-0346 006e data 0x006e // i 033c
-0348 01ec data 0x01ec // i 033e
-034a 0216 data 0x0216 // i 0340
-034c 0076 data 0x0076 // i 0342
-034e 01a0 data 0x01a0 // i 0344
-0350 031c data 0x031c // i 0346
-0352 03c6 data 0x03c6 // i 0348
-0354 01be data 0x01be // i 034a
-0356 01f2 data 0x01f2 // i 034c
-0358 02a6 data 0x02a6 // i 034e
-035a 033c data 0x033c // i 0350
-035c 032c data 0x032c // i 0352
-035e 0094 data 0x0094 // i 0354
-0360 0268 data 0x0268 // i 0356
-0362 0148 data 0x0148 // i 0358
-0364 0386 data 0x0386 // i 035a
-0366 036c data 0x036c // i 035c
-0368 003e data 0x003e // i 035e
-036a 0178 data 0x0178 // i 0360
-036c 0272 data 0x0272 // i 0362
-036e 00c0 data 0x00c0 // i 0364
-0370 0300 data 0x0300 // i 0366
-0372 01dc data 0x01dc // i 0368
-0374 02c2 data 0x02c2 // i 036a
-0376 0194 data 0x0194 // i 036c
-0378 0182 data 0x0182 // i 036e
-037a 0384 data 0x0384 // i 0370
-037c 03a8 data 0x03a8 // i 0372
-037e 0022 data 0x0022 // i 0374
-0380 0124 data 0x0124 // i 0376
-0382 02c2 data 0x02c2 // i 0378
-0384 00f6 data 0x00f6 // i 037a
-0386 013c data 0x013c // i 037c
-0388 02cc data 0x02cc // i 037e
-038a 03d6 data 0x03d6 // i 0380
-038c 0028 data 0x0028 // i 0382
-038e 02e2 data 0x02e2 // i 0384
-0390 00e8 data 0x00e8 // i 0386
-0392 001c data 0x001c // i 0388
-0394 0364 data 0x0364 // i 038a
-0396 0008 data 0x0008 // i 038c
-0398 024c data 0x024c // i 038e
-039a 0346 data 0x0346 // i 0390
-039c 033c data 0x033c // i 0392
-039e 02b6 data 0x02b6 // i 0394
-03a0 017c data 0x017c // i 0396
-03a2 01ca data 0x01ca // i 0398
-03a4 015c data 0x015c // i 039a
-03a6 0380 data 0x0380 // i 039c
-03a8 034a data 0x034a // i 039e
-03aa 0118 data 0x0118 // i 03a0
-03ac 03e4 data 0x03e4 // i 03a2
-03ae 02a2 data 0x02a2 // i 03a4
-03b0 0150 data 0x0150 // i 03a6
-03b2 01a6 data 0x01a6 // i 03a8
-03b4 008e data 0x008e // i 03aa
-03b6 0084 data 0x0084 // i 03ac
-03b8 0030 data 0x0030 // i 03ae
-03ba 0070 data 0x0070 // i 03b0
-03bc 008c data 0x008c // i 03b2
-03be 0322 data 0x0322 // i 03b4
-03c0 031c data 0x031c // i 03b6
-03c2 0118 data 0x0118 // i 03b8
-03c4 0318 data 0x0318 // i 03ba
-03c6 0116 data 0x0116 // i 03bc
-03c8 038e data 0x038e // i 03be
-03ca 0312 data 0x0312 // i 03c0
-03cc 009c data 0x009c // i 03c2
-03ce 00a2 data 0x00a2 // i 03c4
-03d0 01c8 data 0x01c8 // i 03c6
-03d2 021e data 0x021e // i 03c8
-03d4 0192 data 0x0192 // i 03ca
-03d6 009a data 0x009a // i 03cc
-03d8 03ea data 0x03ea // i 03ce
-03da 0192 data 0x0192 // i 03d0
-03dc 01e0 data 0x01e0 // i 03d2
-03de 0270 data 0x0270 // i 03d4
-03e0 0136 data 0x0136 // i 03d6
-03e2 0398 data 0x0398 // i 03d8
-03e4 02e4 data 0x02e4 // i 03da
-03e6 0262 data 0x0262 // i 03dc
-03e8 0276 data 0x0276 // i 03de
-03ea 02e2 data 0x02e2 // i 03e0
-03ec 03dc data 0x03dc // i 03e2
-03ee 03f0 data 0x03f0 // i 03e4
-03f0 01e2 data 0x01e2 // i 03e6
-03f2 030e data 0x030e // i 03e8
-03f4 0208 data 0x0208 // i 03ea
-03f6 00a2 data 0x00a2 // i 03ec
-03f8 02aa data 0x02aa // i 03ee
-03fa 0136 data 0x0136 // i 03f0
-03fc 00fc data 0x00fc // i 03f2
-03fe 0048 data 0x0048 // i 03f4
-0400 036e data 0x036e // i 03f6
-0402 01c8 data 0x01c8 // i 03f8
-0404 01ac data 0x01ac // i 03fa
-0406 03c2 data 0x03c2 // i 03fc
-0408 00be data 0x00be // i 03fe
-040a      .realstart:
-040a c008 lbi r0, 8
-040c 8800 ld r0, r0, 0
-040e c10a lbi r1, 10
-0410      .loopstart:
-0410 8920 ld r1, r1, 0
-0412 8920 ld r1, r1, 0
-0414 8920 ld r1, r1, 0
-0416 8920 ld r1, r1, 0
-0418 8920 ld r1, r1, 0
-041a 8920 ld r1, r1, 0
-041c 401f addi r0, r0, -1
-041e 78f0 bgez r0, .loopstart
-0420 0000 halt
-          
+0000 c001 lbi r0, 1
+0002 9060 slbi r0, 96
+0004 c109 lbi  r1, 9
+0006 9160 slbi r1, 96
+0008 c229 lbi  r2, 41
+000a 9260 slbi r2, 96
+000c 8000 st r0, r0, 0  
+000e 8000 st r0, r0, 0
+0010 8120 st r1, r1, 0  
+0012 88c0 ld r6, r0, 0
+0014 8000 st r0, r0, 0
+0016 8240 st r2, r2, 0  
+0018 88c0 ld r6, r0, 0   
+001a 8000 st r0, r0, 0
+001c 8120 st r1, r1, 0  
+001e 88c0 ld r6, r0, 0
+0020 8000 st r0, r0, 0   
+0022 8000 st r0, r0, 0
+0024 8a40 ld r2, r2, 0
+0026 8000 st r0, r0, 0
+0028 8000 st r0, r0, 0  
+002a 8000 st r0, r0, 0
+002c 8120 st r1, r1, 0  
+002e 88c0 ld r6, r0, 0
+0030 8000 st r0, r0, 0
+0032 8240 st r2, r2, 0  
+0034 88c0 ld r6, r0, 0   
+0036 8000 st r0, r0, 0
+0038 8120 st r1, r1, 0  
+003a 88c0 ld r6, r0, 0
+003c 8000 st r0, r0, 0   
+003e 8000 st r0, r0, 0
+0040 8a40 ld r2, r2, 0
+0042 8000 st r0, r0, 0
+0044 8000 st r0, r0, 0  
+0046 8000 st r0, r0, 0
+0048 8120 st r1, r1, 0  
+004a 88c0 ld r6, r0, 0
+004c 8000 st r0, r0, 0
+004e 8240 st r2, r2, 0  
+0050 88c0 ld r6, r0, 0   
+0052 8000 st r0, r0, 0
+0054 8120 st r1, r1, 0  
+0056 88c0 ld r6, r0, 0
+0058 8000 st r0, r0, 0   
+005a 8000 st r0, r0, 0
+005c 8a40 ld r2, r2, 0
+005e 8000 st r0, r0, 0
+0060 8000 st r0, r0, 0  
+0062 8000 st r0, r0, 0
+0064 8120 st r1, r1, 0  
+0066 88c0 ld r6, r0, 0
+0068 8000 st r0, r0, 0
+006a 8240 st r2, r2, 0  
+006c 88c0 ld r6, r0, 0   
+006e 8000 st r0, r0, 0
+0070 8120 st r1, r1, 0  
+0072 88c0 ld r6, r0, 0
+0074 8000 st r0, r0, 0   
+0076 8000 st r0, r0, 0
+0078 8a40 ld r2, r2, 0
+007a 8000 st r0, r0, 0
+007c 8000 st r0, r0, 0  
+007e 8000 st r0, r0, 0
+0080 8120 st r1, r1, 0  
+0082 88c0 ld r6, r0, 0
+0084 8000 st r0, r0, 0
+0086 8240 st r2, r2, 0  
+0088 88c0 ld r6, r0, 0   
+008a 8000 st r0, r0, 0
+008c 8120 st r1, r1, 0  
+008e 88c0 ld r6, r0, 0
+0090 8000 st r0, r0, 0   
+0092 8000 st r0, r0, 0
+0094 8a40 ld r2, r2, 0
+0096 8000 st r0, r0, 0
+0098 8000 st r0, r0, 0  
+009a 8000 st r0, r0, 0
+009c 8120 st r1, r1, 0  
+009e 88c0 ld r6, r0, 0
+00a0 8000 st r0, r0, 0
+00a2 8240 st r2, r2, 0  
+00a4 88c0 ld r6, r0, 0   
+00a6 8000 st r0, r0, 0
+00a8 8120 st r1, r1, 0  
+00aa 88c0 ld r6, r0, 0
+00ac 8000 st r0, r0, 0   
+00ae 8000 st r0, r0, 0
+00b0 8a40 ld r2, r2, 0
+00b2 8000 st r0, r0, 0
+00b4 8000 st r0, r0, 0  
+00b6 8000 st r0, r0, 0
+00b8 8120 st r1, r1, 0  
+00ba 88c0 ld r6, r0, 0
+00bc 8000 st r0, r0, 0
+00be 8240 st r2, r2, 0  
+00c0 88c0 ld r6, r0, 0   
+00c2 8000 st r0, r0, 0
+00c4 8120 st r1, r1, 0  
+00c6 88c0 ld r6, r0, 0
+00c8 8000 st r0, r0, 0   
+00ca 8000 st r0, r0, 0
+00cc 8a40 ld r2, r2, 0
+00ce 8000 st r0, r0, 0
+00d0 8000 st r0, r0, 0  
+00d2 8000 st r0, r0, 0
+00d4 8120 st r1, r1, 0  
+00d6 88c0 ld r6, r0, 0
+00d8 8000 st r0, r0, 0
+00da 8240 st r2, r2, 0  
+00dc 88c0 ld r6, r0, 0   
+00de 8000 st r0, r0, 0
+00e0 8120 st r1, r1, 0  
+00e2 88c0 ld r6, r0, 0
+00e4 8000 st r0, r0, 0   
+00e6 8000 st r0, r0, 0
+00e8 8a40 ld r2, r2, 0
+00ea 8000 st r0, r0, 0
+00ec 8000 st r0, r0, 0  
+00ee 8000 st r0, r0, 0
+00f0 8120 st r1, r1, 0  
+00f2 88c0 ld r6, r0, 0
+00f4 8000 st r0, r0, 0
+00f6 8240 st r2, r2, 0  
+00f8 88c0 ld r6, r0, 0   
+00fa 8000 st r0, r0, 0
+00fc 8120 st r1, r1, 0  
+00fe 88c0 ld r6, r0, 0
+0100 8000 st r0, r0, 0   
+0102 8000 st r0, r0, 0
+0104 8a40 ld r2, r2, 0
+0106 8000 st r0, r0, 0

@@ -38,7 +38,7 @@ module fetch (
 
     // Instruction Memory: Fetch instruction based on current PC
     mem_system #(0) instr_mem (
-        .DataOut(instr_memm), 
+        .DataOut(instr), 
         .Done(Done), 
         .Stall(Stall), 
         .CacheHit(CacheHit), 
@@ -51,14 +51,6 @@ module fetch (
         .clk(clk), 
         .rst(rst)
     );
-
-     //stallmem instr_mem(.DataOut(instr_memm), .Done(Done), .Stall(Stall), .CacheHit(), .DataIn(16'h0000), .Addr(PC_curr), .Rd(1'b1), .Wr(1'b0), .createdump(HaltSig), .clk(clk), .rst(rst), .err(err));
-   
-
-   
-
-    // Default instruction assignment (placeholder, could be conditional logic)
-    assign instr = (1'b0) ? 16'h0800 : instr_memm;
 
     // Adder: Compute PC + 2 for sequential execution
     cla_16b pc_add2 (

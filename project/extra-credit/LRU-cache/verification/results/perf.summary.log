@@ -1,7 +1,0 @@
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/perf/Ackermann.asm SUCCESS CPI:2.1 CYCLES:615 ICOUNT:292 IHITRATE: 89.5 DHITRATE: 76.7
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/perf/Primes.asm SUCCESS CPI:2.4 CYCLES:1649 ICOUNT:683 IHITRATE: 94.0 DHITRATE: 0
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/perf/branchPrediction.asm SUCCESS CPI:3.1 CYCLES:235 ICOUNT:77 IHITRATE: 55.4 DHITRATE: 0
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/perf/bubbleSort.asm SUCCESS CPI:2.5 CYCLES:2115 ICOUNT:839 IHITRATE: 75.6 DHITRATE: 75.9
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/perf/cache_thrash.asm SUCCESS CPI:3.2 CYCLES:12157 ICOUNT:3803 IHITRATE: 99.3 DHITRATE: 11.7
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/perf/cache_thrash2.asm SUCCESS CPI:8.5 CYCLES:26148 ICOUNT:3082 IHITRATE: 53.7 DHITRATE: 10.0
-/u/s/i/sinclair/courses/cs552/spring2022/handouts/testprograms/public/perf/fib.asm SUCCESS CPI:2.4 CYCLES:491 ICOUNT:208 IHITRATE: 85.8 DHITRATE: 43.8
